@@ -67,7 +67,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 
 		if (result == JOptionPane.OK_OPTION) {
 			return doImport(importedObjectClass, mapping, excelImporterDefinitionPanel.getSelectedFile(),
-					excelImporterDefinitionPanel.getLastHeaderRow());
+					excelImporterDefinitionPanel.getFirstDataRow());
 		}
 
 		return null;

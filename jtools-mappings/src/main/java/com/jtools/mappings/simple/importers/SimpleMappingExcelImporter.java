@@ -52,14 +52,14 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 
 		if (result == JOptionPane.OK_OPTION) {
 			return importData(objectClass, mappings, excelImporterDefinitionPanel.getSelectedFile(),
-					excelImporterDefinitionPanel.getLastHeaderRow());
+					excelImporterDefinitionPanel.getFirstDataRow());
 		}
 
 		return null;
 	}
 
 	public <T extends Object> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings, File file,
-			int lastHeaderRow) {
+			int firstDataRowIndex) {
 		List<T> data = new ArrayList<>();
 
 		try {
@@ -76,16 +76,15 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 				Row row = rowIterator.next();
 
 				rowIndex++;
-				if (rowIndex <= lastHeaderRow) {
+				if (rowIndex < firstDataRowIndex) {
 					continue;
 				}
 
 				Constructor<T> constructor = objectClass.getConstructor();
 				T object = constructor.newInstance();
 
-				data.add(object);
-
 				// For each row, iterate through all the columns
+				// Fill the object's attributes
 				Iterator<Cell> cellIterator = row.cellIterator();
 
 				while (cellIterator.hasNext()) {
@@ -132,6 +131,9 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 								"No mapping found for column " + inputColumn);
 					}
 				}
+
+				// Add the object to the list
+				data.add(object);
 			}
 
 			workbook.close();
