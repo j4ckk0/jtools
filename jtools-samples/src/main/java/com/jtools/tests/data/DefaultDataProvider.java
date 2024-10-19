@@ -33,7 +33,7 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 	private final JComboBox<Class<?>> dataClassesComboBox;
 
 	public DefaultDataProvider(Class<?>[] dataClasses) {
-		super("Default data types provider");
+		super("Default data provider");
 
 		this.dataClasses = dataClasses;
 
@@ -55,12 +55,12 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 			@Override
 			public void internalFrameOpened(InternalFrameEvent e) {
-				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, DefaultDataProvider.this);
+				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_ADDED_PROPERTY, null, DefaultDataProvider.this);
 			}
 
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
-				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, null);
+				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_REMOVED_PROPERTY, null, DefaultDataProvider.this);
 
 				// Note technically, this removes the DefaultDataProvider,
 				// but we avoid to have no data provider through the code of
@@ -86,6 +86,11 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 		Logger.getLogger(getClass().getName()).log(Level.WARNING,
 				"Default data provider. It can only provide empty data lists");
 		return Collections.emptyList();
+	}
+	
+	@Override
+	public String getProviderName() {
+		return getTitle();
 	}
 
 }

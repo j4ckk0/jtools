@@ -52,6 +52,11 @@ public class TestBlockExporter {
 			public List<?> getDataList() {
 				return generateTestData();
 			}
+			
+			@Override
+			public String getProviderName() {
+				return "Person provider (test block mappings)";
+			}
 		};
 	}
 

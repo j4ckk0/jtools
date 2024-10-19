@@ -69,6 +69,11 @@ public class TestSimpleExporter {
 			public Class<Person> getDataClass() {
 				return Person.class;
 			}
+			
+			@Override
+			public String getProviderName() {
+				return "Person provider (test simple mappings)";
+			}
 		};
 	}
 

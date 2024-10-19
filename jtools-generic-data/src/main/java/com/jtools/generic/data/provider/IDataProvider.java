@@ -17,6 +17,8 @@ import java.util.logging.Logger;
  *
  */
 public interface IDataProvider {
+	
+	public String getProviderName();
 
 	public Class<?> getDataClass();
 
