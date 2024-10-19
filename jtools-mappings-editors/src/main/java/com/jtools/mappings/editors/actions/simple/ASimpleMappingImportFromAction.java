@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.jtools.generic.data.DataEditor;
+import com.jtools.generic.data.provider.DataProviderChangeSupport;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.importers.ASimpleMappingImporter;
@@ -89,6 +90,7 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 				DataEditor dataEditor = new DataEditor(importedObjects, simpleMapping.getObjectClass());
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the data table ?", "Import succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
+					firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, dataEditor);
 					showEditor(dataEditor);
 				}
 			}

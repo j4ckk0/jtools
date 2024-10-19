@@ -201,11 +201,13 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 		blockMappingImportFromExcelAction.setDesktopPane(desktopPane);
 
 		//
-		// Listeners
+		// Register mappings demo as listener of actions
 		//
 		defaultDataProvider.addPropertyChangeListener(this);
 		createDataTableAction.addPropertyChangeListener(this);
 		loadDataTableAction.addPropertyChangeListener(this);
+		simpleMappingImportFromExcelAction.addPropertyChangeListener(this);
+		blockMappingImportFromExcelItem.addPropertyChangeListener(this);
 
 		//
 		// Data provider
