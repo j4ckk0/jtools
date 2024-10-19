@@ -78,8 +78,9 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		this.objectClasses = getObjectsClasses(dataList, objectsClasses);
 
 		if (dataList != null) {
-			for (Object data : dataList) {
-				addData(data);
+			// Reverse loop on dataList as we do an "insert row" (because of the "+" row)
+			for(int i = dataList.size() - 1; i >= 0; i--) {
+				insertData(dataList.get(i));
 			}
 		}
 
@@ -239,9 +240,9 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	}
 
 	@SuppressWarnings("unchecked")
-	private <T> void addData(T data) {
+	private <T> void insertData(T data) {
 		ObjectsTable<T> objectsTable = getObjectsTable((Class<T>) data.getClass());
-		objectsTable.addRow(data);
+		objectsTable.insertRow(data);
 	}
 
 	// //////////////////////////////

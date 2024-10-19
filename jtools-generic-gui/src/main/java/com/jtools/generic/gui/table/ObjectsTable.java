@@ -80,7 +80,7 @@ public class ObjectsTable<E extends Object> extends JTable {
 		return objectClass;
 	}
 	
-	public void addRow(E object) {
+	public void insertRow(E object) {
 		ObjectsTableModel model = (ObjectsTableModel) getModel();
 		model.insertRow(new ObjectRow<E>(object));
 		model.fireTableRowsInserted(model.getRowCount() - 1 , model.getRowCount() - 1);
