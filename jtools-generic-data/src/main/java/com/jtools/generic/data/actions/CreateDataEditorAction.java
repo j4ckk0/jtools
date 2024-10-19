@@ -33,10 +33,10 @@ public class CreateDataEditorAction extends AEditorAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		DataEditor dataEditor = new DataEditor(dataClasses);
 
-		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, dataEditor);
+		installPropertyChangeListeners(dataEditor);
 
 		showEditor(dataEditor);
 	}

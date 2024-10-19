@@ -65,8 +65,9 @@ public class SimpleMappingLoadAction extends AEditorAction {
 
 		try {
 			SimpleMapping<?> simpleMapping = SimpleMappingFileManager.instance().loadMapping(localMappingFilepath);
-			SimpleMappingEditor<?> editor = new SimpleMappingEditor<>(simpleMapping);
-			showEditor(editor);
+			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(simpleMapping);
+			installPropertyChangeListeners(mappingEditor);
+			showEditor(mappingEditor);
 		} catch (InstantiationException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error while loading editor", JOptionPane.ERROR_MESSAGE);
