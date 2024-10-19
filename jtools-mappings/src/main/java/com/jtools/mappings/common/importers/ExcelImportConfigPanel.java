@@ -36,8 +36,8 @@ public class ExcelImportConfigPanel extends JPanel {
 	private final JTextField excelFileTextField;
 	private final JLinkButton excelFileSelectionButton;
 
-	private final JLabel headerIndexLabel;
-	private final NumberTextField<Integer> headerIndexTextField;
+	private final JLabel firsDataRowIndexLabel;
+	private final NumberTextField<Integer> firstDataRowIndexTextField;
 
 	private File inputFile;
 
@@ -105,8 +105,8 @@ public class ExcelImportConfigPanel extends JPanel {
 		gc.gridwidth = 1;
 		gc.weightx = 0.2;
 		gc.anchor = GridBagConstraints.LINE_END;
-		headerIndexLabel = new JLabel("Last header row index:");
-		add(headerIndexLabel, gc);
+		firsDataRowIndexLabel = new JLabel("First data row index (as shown in file):");
+		add(firsDataRowIndexLabel, gc);
 
 		gc.gridx = 1;
 		gc.gridy = 2;
@@ -114,11 +114,11 @@ public class ExcelImportConfigPanel extends JPanel {
 		gc.weightx = 0.8;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.fill = GridBagConstraints.HORIZONTAL;
-		headerIndexTextField = new NumberTextField<>(Integer.class);
-		Dimension headerIndexTextFieldPreferredSize = excelFileTextField.getPreferredSize();
-		headerIndexTextFieldPreferredSize.width = 300;
-		excelFileTextField.setPreferredSize(headerIndexTextFieldPreferredSize);
-		add(headerIndexTextField, gc);
+		firstDataRowIndexTextField = new NumberTextField<>(Integer.class);
+		Dimension firstDataRowIndexTextFieldPreferredSize = excelFileTextField.getPreferredSize();
+		firstDataRowIndexTextFieldPreferredSize.width = 300;
+		excelFileTextField.setPreferredSize(firstDataRowIndexTextFieldPreferredSize);
+		add(firstDataRowIndexTextField, gc);
 
 		// select excel file action
 		excelFileSelectionButton.setAction(new AbstractAction("...") {
@@ -141,8 +141,9 @@ public class ExcelImportConfigPanel extends JPanel {
 		return inputFile;
 	}
 
-	public int getLastHeaderRow() {
-		return Integer.parseInt(headerIndexTextField.getText());
+	public int getFirstDataRow() {
+		// -1 is because index is starting on 0 and first line in excel is line 1
+		return Integer.parseInt(firstDataRowIndexTextField.getText()) - 1 ; 
 	}
 
 }
