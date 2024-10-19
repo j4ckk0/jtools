@@ -1,0 +1,7 @@
+#2022-11-21T05:29:05.704820211Z
+#Mon Nov 21 06:29:05 CET 2022
+age=C [Age]
+firstName=A [Pr\u00E9nom]
+lastName=D [Nom]
+object.class=com.jtools.tests.data.models.Person
+josmap=Java Object Simple MAPping
