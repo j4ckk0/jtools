@@ -49,7 +49,7 @@ public abstract class AEditor extends JPanel {
 	 * 
 	 * @return
 	 */
-	protected abstract String getEditoName();
+	protected abstract String getEditorName();
 
 	/**
 	 * 
@@ -77,7 +77,7 @@ public abstract class AEditor extends JPanel {
 			NamedCallable<Void> onCancel) {
 
 		JDialog editorFrame = new JDialog(parentWindow);
-		editorFrame.setTitle(getEditoName());
+		editorFrame.setTitle(getEditorName());
 		editorFrame.setPreferredSize(new Dimension(1200, 600));
 
 		Container contentPane = editorFrame.getContentPane();
@@ -136,7 +136,7 @@ public abstract class AEditor extends JPanel {
 	 */
 	public JFrame showEditorAsFrame(Window parentWindow, NamedCallable<Void> onOK, NamedCallable<Void> onCancel) {
 
-		JFrame editorFrame = new JFrame(getEditoName());
+		JFrame editorFrame = new JFrame(getEditorName());
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		editorFrame.setPreferredSize(new Dimension(1200, 600));
 
@@ -193,7 +193,7 @@ public abstract class AEditor extends JPanel {
 	 */
 	public JInternalFrame showEditorAsInternalFrame(NamedCallable<Void> onOK, NamedCallable<Void> onCancel) {
 
-		JInternalFrame editorFrame = new JInternalFrame(getEditoName(), true, true);
+		JInternalFrame editorFrame = new JInternalFrame(getEditorName(), true, true);
 		editorFrame.setPreferredSize(new Dimension(1200, 600));
 		editorFrame.setIconifiable(true);
 		editorFrame.setClosable(true);
@@ -247,7 +247,7 @@ public abstract class AEditor extends JPanel {
 	public int showEditorAsOptionDialog(Window parentWindow) {
 		Object[] options = { "Save", "Cancel" };
 
-		int result = JOptionPane.showOptionDialog(parentWindow, this, getEditoName(), JOptionPane.OK_CANCEL_OPTION,
+		int result = JOptionPane.showOptionDialog(parentWindow, this, getEditorName(), JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.PLAIN_MESSAGE, null, options, null);
 		if (result == JOptionPane.OK_OPTION) {
 			try {

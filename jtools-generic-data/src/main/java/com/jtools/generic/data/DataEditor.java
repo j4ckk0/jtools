@@ -124,18 +124,18 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	// //////////////////////////////
 
 	@Override
-	protected String getEditoName() {
-		return "Data table";
+	protected String getEditorName() {
+		return "Data table " + hashCode();
 	}
 
 	@Override
 	protected void onWindowOpened() {
-		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, DataEditor.this);
+		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_ADDED_PROPERTY, null, DataEditor.this);
 	}
 
 	@Override
 	protected void onWindowClosed() {
-		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, null);
+		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_REMOVED_PROPERTY, null, DataEditor.this);
 	}
 
 	@Override
@@ -176,6 +176,11 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	// IDataProvider methods
 	//
 	// //////////////////////////////
+	
+	@Override
+	public String getProviderName() {
+		return getEditorName();
+	}
 
 	@Override
 	public Class<?> getDataClass() {

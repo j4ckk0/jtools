@@ -63,7 +63,7 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	// ////////////////////////////
 
 	@Override
-	public String getEditoName() {
+	public String getEditorName() {
 		return "Simple mapping " + getObjectClass().getCanonicalName();
 	}
 
