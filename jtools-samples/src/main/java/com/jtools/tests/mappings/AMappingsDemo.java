@@ -33,6 +33,7 @@ import com.jtools.tests.actions.ClearStdOutputAction;
 import com.jtools.tests.actions.ExitAction;
 import com.jtools.tests.actions.ShowDefaultDataProviderAction;
 import com.jtools.tests.actions.ShowStdOutputAction;
+import com.jtools.tests.data.DataProviderSelector;
 import com.jtools.tests.data.DefaultDataProvider;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
 
@@ -51,6 +52,9 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 	private static final long serialVersionUID = 7125491173800101032L;
 
 	private final JDesktopPane desktopPane;
+	
+	private final DataProviderSelector dataProviderSelector;
+	
 	private final DefaultDataProvider defaultDataProvider;
 
 	private final CreateDataEditorAction createDataTableAction;
@@ -89,6 +93,9 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 
 		this.desktopPane = new CascadeDesktopPane();
 
+		this.dataProviderSelector = new DataProviderSelector();
+		desktopPane.add(dataProviderSelector);
+		
 		this.defaultDataProvider = new DefaultDataProvider(testObjectClasses);
 
 		// Menu
@@ -203,6 +210,7 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 		//
 		// Register mappings demo as listener of actions
 		//
+		dataProviderSelector.addPropertyChangeListener(this);
 		defaultDataProvider.addPropertyChangeListener(this);
 		createDataTableAction.addPropertyChangeListener(this);
 		loadDataTableAction.addPropertyChangeListener(this);
