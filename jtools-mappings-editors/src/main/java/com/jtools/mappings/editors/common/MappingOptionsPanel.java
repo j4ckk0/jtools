@@ -112,9 +112,9 @@ public class MappingOptionsPanel extends JPanel {
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {
 			Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-			if (c instanceof JLabel jlabel && value instanceof CoordinatesFormat coordinateFormat) {
-				jlabel.setText(coordinateFormat.getLabel());
-				jlabel.setToolTipText("Exemple: " + coordinateFormat.getExemple());
+			if (c instanceof JLabel && value instanceof CoordinatesFormat) {
+				((JLabel) c).setText(((CoordinatesFormat) value).getLabel());
+				((JLabel) c).setToolTipText("Exemple: " + ((CoordinatesFormat) value).getExemple());
 			}
 
 			return c;

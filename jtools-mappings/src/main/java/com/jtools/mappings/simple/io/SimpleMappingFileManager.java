@@ -216,29 +216,29 @@ public class SimpleMappingFileManager {
 
 		// Get date format
 		Object dateFormatProperty = properties.get(DATE_FORMAT_PROPERTY);
-		if (!(dateFormatProperty instanceof String dateFormatPropertyStr)) {
+		if (!(dateFormatProperty instanceof String)) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Unable to find the date format. Using default one.");
 			DateFormatManager.instance().setActiveDateFormat(DateFormatManager.BASIC_DATE_FORMAT);
 		} else {
-			DateFormatManager.instance().setActiveDateFormat(dateFormatPropertyStr);
+			DateFormatManager.instance().setActiveDateFormat((String)dateFormatProperty);
 		}
 
 		// Get formats
 		Object coordinatesFormatProperty = properties.get(COORDINATES_FORMAT_PROPERTY);
-		if (!(coordinatesFormatProperty instanceof String coordinatesFormatPropertyStr)) {
+		if (!(coordinatesFormatProperty instanceof String)) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Unable to find the coordinates format. Using default one.");
 			CoordinatesFormatManager.instance().setActiveCoordinatesFormat(CoordinatesFormat.LAT_LON_DD);
 		} else {
-			CoordinatesFormatManager.instance().setActiveCoordinatesFormat(Enum.valueOf(CoordinatesFormat.class, coordinatesFormatPropertyStr));
+			CoordinatesFormatManager.instance().setActiveCoordinatesFormat(Enum.valueOf(CoordinatesFormat.class, (String) coordinatesFormatProperty));
 		}
 
 		// Test if the Properties does contains the appropriate mappings
 		Object objectClassProperty = properties.get(OBJECT_CLASS_PROPERTY);
-		if(!(objectClassProperty instanceof String objectClassPropertyStr)) {
+		if(!(objectClassProperty instanceof String)) {
 			throw new MappingException("Loaded mapping file seems not to be a valid mapping file: no ObjectClass property found");
 		}
 		try {
-			Class<?> objectClassToTest = Class.forName(objectClassPropertyStr);
+			Class<?> objectClassToTest = Class.forName((String) objectClassProperty);
 
 			if(objectClassToTest != objectClass) {
 				throw new MappingException("Loaded mappings do not match with the object to export");
