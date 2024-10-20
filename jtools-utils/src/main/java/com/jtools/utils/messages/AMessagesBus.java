@@ -15,6 +15,9 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Session;
 
 /**
+ * Help:
+ * https://examples.javacodegeeks.com/java-development/enterprise-java/jms/jms-messagelistener-example/
+ * 
  * Examples: 
  * ACTIVEMQ_URL = "tcp://localhost:61616"
  * BROKER_URL = "broker:(" + ACTIVEMQ_URL + ")";
