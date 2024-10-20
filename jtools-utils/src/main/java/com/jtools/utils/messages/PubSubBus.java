@@ -22,7 +22,7 @@ import jakarta.jms.Topic;
  * @author j4ckk0
  *
  */
-public class PubSubMessagesBus extends AMessagesBus {
+public class PubSubBus extends AMessagesBus {
 
 	// //////////////////////////////
 	//
@@ -41,7 +41,7 @@ public class PubSubMessagesBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
-	public PubSubMessagesBus(String url) {
+	public PubSubBus(String url) {
 		super(url);
 
 		this.topics = new HashMap<>();

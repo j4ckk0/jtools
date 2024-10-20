@@ -23,7 +23,7 @@ import jakarta.jms.Session;
  * @author j4ckk0
  *
  */
-public class PTPMessagesBus extends AMessagesBus {
+public class PTPBus extends AMessagesBus {
 
 	// //////////////////////////////
 	//
@@ -43,7 +43,7 @@ public class PTPMessagesBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
-	public PTPMessagesBus(String url) {
+	public PTPBus(String url) {
 		super(url);
 	}
 	
