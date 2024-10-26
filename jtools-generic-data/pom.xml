@@ -22,6 +22,11 @@
 	    <artifactId>jtools-generic-gui</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
+  	<dependency>
+    	<groupId>com.jtools</groupId>
+	    <artifactId>jtools-utils-messages</artifactId>
+	    <version>${project.version}</version>
+	</dependency>
 	<dependency>
 	    <groupId>org.javers</groupId>
 	    <artifactId>javers-core</artifactId>

@@ -53,8 +53,6 @@ public class LoadDataAction extends AEditorAction {
 			if(showEditor) {
 				DataEditor dataEditor = new DataEditor(dataList, dataClasses);
 
-				installPropertyChangeListeners(dataEditor);
-
 				showEditor(dataEditor);
 			}
 

@@ -26,11 +26,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.jtools.generic.data.io.DataFileManager;
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
+import com.jtools.generic.data.provider.DataProviderPubSubTopics;
+import com.jtools.generic.data.provider.DataProviderRegistry;
 import com.jtools.generic.data.provider.IDataProvider;
 import com.jtools.generic.gui.table.ObjectsTable;
 import com.jtools.utils.CommonUtils;
 import com.jtools.utils.gui.editor.AEditor;
+import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 
 /**
  * @author j4ckk0
@@ -46,7 +48,6 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 	private static final long serialVersionUID = -1428948320263663684L;
 
-	public static final String OBJECT_TYPE_CHANGED_PROPERTY = "OBJECT_TYPE_CHANGED_PROPERTY";
 
 	private final Map<Class<?>, ObjectsTable<?>> objectsTableMap;
 
@@ -111,6 +112,9 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		setLayout(new BorderLayout(6, 6));
 		add(objectTypePanel, BorderLayout.NORTH);
 		add(objectsTableScrollPane, BorderLayout.CENTER);
+		
+		// Register the DataEditor to the DataProvider registry
+		DataProviderRegistry.instance().register(this);
 	}
 
 	public ObjectsTable<?> getObjectsTable() {
@@ -130,12 +134,12 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 	@Override
 	protected void onWindowOpened() {
-		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_ADDED_PROPERTY, null, DataEditor.this);
+		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_ADDED, DataEditor.this.getProviderName());
 	}
 
 	@Override
 	protected void onWindowClosed() {
-		firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_REMOVED_PROPERTY, null, DataEditor.this);
+		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_REMOVED, DataEditor.this.getProviderName());
 	}
 
 	@Override
@@ -166,8 +170,6 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 			ObjectsTable<?> objectTable = getObjectsTable(selectedObjectClass);
 			objectsTableScrollPane.setViewportView(objectTable);
-
-			firePropertyChange(OBJECT_TYPE_CHANGED_PROPERTY, null, (Class<?>) item);
 		}
 	}
 
