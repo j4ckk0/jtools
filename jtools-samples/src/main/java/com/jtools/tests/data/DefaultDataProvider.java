@@ -14,9 +14,11 @@ import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
+import com.jtools.generic.data.provider.DataProviderPubSubTopics;
+import com.jtools.generic.data.provider.DataProviderRegistry;
 import com.jtools.generic.data.provider.IDataProvider;
 import com.jtools.generic.gui.list.cellRenderers.DefaultClassListCellRenderer;
+import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 
 /**
  * Default data provider : only provides possible classes, but no data
@@ -55,19 +57,17 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 			@Override
 			public void internalFrameOpened(InternalFrameEvent e) {
-				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_ADDED_PROPERTY, null, DefaultDataProvider.this);
+				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_ADDED, DefaultDataProvider.this.getProviderName());
 			}
 
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
-				firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_REMOVED_PROPERTY, null, DefaultDataProvider.this);
-
-				// Note technically, this removes the DefaultDataProvider,
-				// but we avoid to have no data provider through the code of
-				// com.jtools.tests.TestMappingsGUI.propertyChange(PropertyChangeEvent)
-				// The code above is kept as an example of the propertyChange interactions
+				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_REMOVED, DefaultDataProvider.this.getProviderName());
 			}
 		});
+		
+		// Register the DataEditor to the DataProvider registry
+		DataProviderRegistry.instance().register(this);
 
 	}
 
@@ -87,7 +87,7 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 				"Default data provider. It can only provide empty data lists");
 		return Collections.emptyList();
 	}
-	
+
 	@Override
 	public String getProviderName() {
 		return getTitle();

@@ -76,7 +76,6 @@ public class BlockMappingLoadAction extends AEditorAction {
 			BlockMapping<?> blockMapping = BlockMappingFileManager.instance().loadMapping(localMappingFilepath);
 			
 			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(blockMapping, MappingUtils.getPossibleColumns(), additionalPossibleClasses);
-			installPropertyChangeListeners(mappingEditor);
 			showEditor(mappingEditor);
 		} catch (InstantiationException | IOException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);

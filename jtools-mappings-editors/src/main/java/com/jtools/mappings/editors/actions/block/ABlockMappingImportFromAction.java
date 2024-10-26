@@ -15,7 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.jtools.generic.data.DataEditor;
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.block.importers.ABlockMappingImporter;
 import com.jtools.mappings.block.io.BlockMappingFileManager;
@@ -90,7 +89,6 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 				DataEditor dataEditor = new DataEditor(importedObjects, blockMapping.getObjectClass());
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the data table ?", "Import succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
-					installPropertyChangeListeners(dataEditor);
 					showEditor(dataEditor);
 				}
 			}

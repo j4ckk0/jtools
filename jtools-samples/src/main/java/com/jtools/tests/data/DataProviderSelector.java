@@ -8,8 +8,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
@@ -17,14 +17,21 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
+import com.jtools.generic.data.provider.DataProviderPubSubTopics;
+import com.jtools.generic.data.provider.DataProviderRegistry;
 import com.jtools.generic.data.provider.IDataProvider;
+import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
+import com.jtools.utils.messages.pubsub.PubSubMessageListener;
+
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.TextMessage;
 
 /**
  * @author j4ckk0
  *
  */
-public class DataProviderSelector extends JInternalFrame implements PropertyChangeListener, ItemListener {
+public class DataProviderSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
 	private static final long serialVersionUID = -6803902145432674502L;
 
@@ -35,7 +42,7 @@ public class DataProviderSelector extends JInternalFrame implements PropertyChan
 
 		setIconifiable(true);
 		setClosable(true);
-		setResizable(false);
+		setResizable(true);
 
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout(6, 6));
@@ -45,29 +52,41 @@ public class DataProviderSelector extends JInternalFrame implements PropertyChan
 
 		dataProvidersComboBox.setRenderer(new DataProviderListCellRenderer());
 
-		addPropertyChangeListener(this);
-		
 		dataProvidersComboBox.addItemListener(this);
+
+		DefaultPubSubBus.instance().addListener(this, DataProviderPubSubTopics.DATA_PROVIDER_ADDED, DataProviderPubSubTopics.DATA_PROVIDER_REMOVED);
 
 		pack();
 
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-
-		if (evt.getPropertyName().equals(DataProviderChangeSupport.DATA_PROVIDER_ADDED_PROPERTY)) {
-			Object newValue = evt.getNewValue();
-			if (newValue instanceof IDataProvider) {
-				dataProvidersComboBox.addItem((IDataProvider)newValue);
+	public void onMessage(String topicName, Message message) {
+		try {
+			if(!(message instanceof TextMessage)) {
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content");
+				return;
 			}
-		}
-
-		if (evt.getPropertyName().equals(DataProviderChangeSupport.DATA_PROVIDER_REMOVED_PROPERTY)) {
-			Object newValue = evt.getNewValue();
-			if (newValue instanceof IDataProvider) {
-				dataProvidersComboBox.removeItem((IDataProvider)newValue);
+			
+			String providerName = ((TextMessage)message).getText();
+			
+			IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
+			
+			if(dataProvider == null) {
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content: not a IDataProvider matching with name: " + providerName);
+				return;
 			}
+
+			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_ADDED)) {
+				dataProvidersComboBox.addItem(dataProvider);
+			}
+
+			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_REMOVED)) {
+				dataProvidersComboBox.removeItem(dataProvider);
+			}
+
+		} catch (JMSException e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -90,11 +109,11 @@ public class DataProviderSelector extends JInternalFrame implements PropertyChan
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object selectedItem = e.getItem();
-		
+
 		if(selectedItem instanceof IDataProvider) {
-			firePropertyChange(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY, null, (IDataProvider)selectedItem);
+			DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_CHANGED, ((IDataProvider)selectedItem).getProviderName());
 		}
-		
+
 	}
 
 }

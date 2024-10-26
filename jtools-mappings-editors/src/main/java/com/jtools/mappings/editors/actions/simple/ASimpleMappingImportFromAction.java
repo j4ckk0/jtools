@@ -15,7 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.jtools.generic.data.DataEditor;
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.importers.ASimpleMappingImporter;
@@ -33,29 +32,29 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 
 	private String mappingFilepath;
 
-	private ASimpleMappingImporter importer;
+	private transient ASimpleMappingImporter importer;
 
-	private List<?> importedObjects;
+	private transient List<?> importedObjects;
 
-	public ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer) {
+	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 		this.mappingFilepath = null;
 	}
 
-	public ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer) {
+	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 		this.mappingFilepath = null;
 	}
 
-	public ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer, String mappingsFilepath) {
+	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer, String mappingsFilepath) {
 		super(name, icon);
 		this.importer = importer;
 		this.mappingFilepath = mappingsFilepath;
 	}
 
-	public ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer, String mappingsFilepath) {
+	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer, String mappingsFilepath) {
 		super(name);
 		this.importer = importer;
 		this.mappingFilepath = mappingsFilepath;
@@ -90,7 +89,6 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 				DataEditor dataEditor = new DataEditor(importedObjects, simpleMapping.getObjectClass());
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the data table ?", "Import succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
-					installPropertyChangeListeners(dataEditor);
 					showEditor(dataEditor);
 				}
 			}

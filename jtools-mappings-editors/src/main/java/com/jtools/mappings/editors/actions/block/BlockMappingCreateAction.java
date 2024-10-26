@@ -53,7 +53,6 @@ public class BlockMappingCreateAction extends AEditorAction {
 			BlockMapping<?> blockMapping = new BlockMapping<>(dataClass);
 
 			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(blockMapping, MappingUtils.getPossibleColumns(), CommonUtils.classListToArray(possibleDataClasses));
-			installPropertyChangeListeners(mappingEditor);
 			showEditor(mappingEditor);
 		} catch (IOException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);

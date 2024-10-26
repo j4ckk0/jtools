@@ -5,8 +5,8 @@ package com.jtools.tests.mappings;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -15,10 +15,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.ToolTipManager;
+import javax.swing.WindowConstants;
 
 import com.jtools.generic.data.actions.CreateDataEditorAction;
 import com.jtools.generic.data.actions.LoadDataAction;
-import com.jtools.generic.data.provider.DataProviderChangeSupport;
+import com.jtools.generic.data.provider.DataProviderPubSubTopics;
+import com.jtools.generic.data.provider.DataProviderRegistry;
 import com.jtools.generic.data.provider.IDataProvider;
 import com.jtools.mappings.editors.actions.block.BlockMappingCreateAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingExportToExcelAction;
@@ -31,17 +33,24 @@ import com.jtools.mappings.editors.actions.simple.SimpleMappingImportFromExcelAc
 import com.jtools.mappings.editors.actions.simple.SimpleMappingLoadAction;
 import com.jtools.tests.actions.ClearStdOutputAction;
 import com.jtools.tests.actions.ExitAction;
+import com.jtools.tests.actions.ShowDataProviderSelectorAction;
 import com.jtools.tests.actions.ShowDefaultDataProviderAction;
 import com.jtools.tests.actions.ShowStdOutputAction;
 import com.jtools.tests.data.DataProviderSelector;
 import com.jtools.tests.data.DefaultDataProvider;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
+import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
+import com.jtools.utils.messages.pubsub.PubSubMessageListener;
+
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.TextMessage;
 
 /**
  * @author j4ckk0
  *
  */
-public abstract class AMappingsDemo extends JFrame implements PropertyChangeListener {
+public abstract class AMappingsDemo extends JFrame implements PubSubMessageListener {
 
 	// //////////////////////////////
 	//
@@ -52,9 +61,9 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 	private static final long serialVersionUID = 7125491173800101032L;
 
 	private final JDesktopPane desktopPane;
-	
+
 	private final DataProviderSelector dataProviderSelector;
-	
+
 	private final DefaultDataProvider defaultDataProvider;
 
 	private final CreateDataEditorAction createDataTableAction;
@@ -81,21 +90,34 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 	//
 	// //////////////////////////////
 
-	public AMappingsDemo(Class<?>[] testObjectClasses) {
+	protected AMappingsDemo(Class<?>[] testObjectClasses) {
 		super("Demo");
+		
+		//
+		// Start broker for messages between components
+		//
+		try {
+			DefaultPubSubBus.instance().startBroker();
+		} catch (Exception e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+		}
 
+		
+		//
+		// Build the GUI
+		//
+		
 		ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
 
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setPreferredSize(new Dimension(screenSize.width * 90 / 100, screenSize.height * 90 / 100));
 
 		this.desktopPane = new CascadeDesktopPane();
 
 		this.dataProviderSelector = new DataProviderSelector();
-		desktopPane.add(dataProviderSelector);
-		
+
 		this.defaultDataProvider = new DefaultDataProvider(testObjectClasses);
 
 		// Menu
@@ -129,6 +151,13 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 				"Show/hide possible data classes", desktopPane, defaultDataProvider);
 		JMenuItem showDataTypesProviderItem = new JMenuItem(showDataTypesProviderAction);
 		dataMenu.add(showDataTypesProviderItem);
+
+		dataMenu.add(new JSeparator());
+
+		ShowDataProviderSelectorAction showDataProviderSelectorAction = new ShowDataProviderSelectorAction(
+				"Show/hide data providers", desktopPane, dataProviderSelector);
+		JMenuItem showDataProviderSelectorItem = new JMenuItem(showDataProviderSelectorAction);
+		dataMenu.add(showDataProviderSelectorItem);
 
 		dataMenu.add(new JSeparator());
 
@@ -208,14 +237,9 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 		blockMappingImportFromExcelAction.setDesktopPane(desktopPane);
 
 		//
-		// Register mappings demo as listener of actions
+		// Subscribe to pub/sub
 		//
-		dataProviderSelector.addPropertyChangeListener(this);
-		defaultDataProvider.addPropertyChangeListener(this);
-		createDataTableAction.addPropertyChangeListener(this);
-		loadDataTableAction.addPropertyChangeListener(this);
-		simpleMappingImportFromExcelAction.addPropertyChangeListener(this);
-		blockMappingImportFromExcelItem.addPropertyChangeListener(this);
+		DefaultPubSubBus.instance().addListener(this, DataProviderPubSubTopics.DATA_PROVIDER_CHANGED);
 
 		//
 		// Data provider
@@ -230,29 +254,43 @@ public abstract class AMappingsDemo extends JFrame implements PropertyChangeList
 		// Initial state
 		//
 		showDataTypesProviderAction.actionPerformed(null);
+		showDataProviderSelectorAction.actionPerformed(null);
 	}
 
+
 	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void onMessage(String topicName, Message message) {
+		try {
+			if(!(message instanceof TextMessage)) {
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content");
+				return;
+			}
+			
+			String providerName = ((TextMessage)message).getText();
+			
+			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_CHANGED)) {
+				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
+				
+				if (dataProvider != null) {
+					simpleMappingExportToStdOutputAction.setDataProvider(dataProvider);
+					createSimpleMappingAction.setDataProvider(dataProvider);
+					simpleMappingExportToExcelAction.setDataProvider(dataProvider);
 
-		if (evt.getPropertyName().equals(DataProviderChangeSupport.DATA_PROVIDER_CHANGED_PROPERTY)) {
-			Object newValue = evt.getNewValue();
-			if (newValue instanceof IDataProvider) {
-				simpleMappingExportToStdOutputAction.setDataProvider((IDataProvider) newValue);
-				createSimpleMappingAction.setDataProvider((IDataProvider) newValue);
-				simpleMappingExportToExcelAction.setDataProvider((IDataProvider) newValue);
+					createBlockMappingAction.setDataProvider(dataProvider);
+					blockMappingExportToExcelAction.setDataProvider(dataProvider);
+				}
 
-				createBlockMappingAction.setDataProvider((IDataProvider) newValue);
-				blockMappingExportToExcelAction.setDataProvider((IDataProvider) newValue);
+				// Avoid having no data provider
+				else {
+					simpleMappingExportToStdOutputAction.setDataProvider(defaultDataProvider);
+					createSimpleMappingAction.setDataProvider(defaultDataProvider);
+					simpleMappingExportToExcelAction.setDataProvider(defaultDataProvider);
+					createBlockMappingAction.setDataProvider(defaultDataProvider);
+				}
 			}
 
-			// Avoid having no data provider
-			if (newValue == null) {
-				simpleMappingExportToStdOutputAction.setDataProvider(defaultDataProvider);
-				createSimpleMappingAction.setDataProvider(defaultDataProvider);
-				simpleMappingExportToExcelAction.setDataProvider(defaultDataProvider);
-				createBlockMappingAction.setDataProvider(defaultDataProvider);
-			}
+		} catch (JMSException e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 

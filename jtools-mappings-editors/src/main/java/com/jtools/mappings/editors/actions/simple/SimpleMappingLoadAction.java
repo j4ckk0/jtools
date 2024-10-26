@@ -66,7 +66,6 @@ public class SimpleMappingLoadAction extends AEditorAction {
 		try {
 			SimpleMapping<?> simpleMapping = SimpleMappingFileManager.instance().loadMapping(localMappingFilepath);
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(simpleMapping);
-			installPropertyChangeListeners(mappingEditor);
 			showEditor(mappingEditor);
 		} catch (InstantiationException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
