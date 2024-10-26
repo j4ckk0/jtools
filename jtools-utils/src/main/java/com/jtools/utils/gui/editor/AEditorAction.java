@@ -3,8 +3,6 @@
  */
 package com.jtools.utils.gui.editor;
 
-import java.beans.PropertyChangeListener;
-
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.JDesktopPane;
@@ -20,15 +18,15 @@ public abstract class AEditorAction extends AbstractAction {
 
 	protected JDesktopPane desktopPane;
 
-	public AEditorAction() {
+	protected AEditorAction() {
 		super();
 	}
 
-	public AEditorAction(String name) {
+	protected AEditorAction(String name) {
 		super(name);
 	}
 
-	public AEditorAction(String name, Icon icon) {
+	protected AEditorAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
@@ -47,12 +45,6 @@ public abstract class AEditorAction extends AbstractAction {
 			editorFrame.moveToFront();
 		} else {
 			mappingEditor.showEditorAsDialog(null, true);
-		}
-	}
-
-	protected void installPropertyChangeListeners(AEditor editor) {
-		for (PropertyChangeListener listener : getPropertyChangeListeners()) {
-			editor.addPropertyChangeListener(listener);
 		}
 	}
 

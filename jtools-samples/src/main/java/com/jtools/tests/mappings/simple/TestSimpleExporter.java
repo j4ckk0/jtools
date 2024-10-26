@@ -31,7 +31,7 @@ public class TestSimpleExporter {
 		try {
 
 			SimpleMapping<Person> simpleMapping = new SimpleMapping<>(Person.class);
-			
+
 			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(simpleMapping);
 			personMappingEditor.showEditorAsFrame(null, new NamedCallable<Void>() {
 
@@ -46,7 +46,7 @@ public class TestSimpleExporter {
 
 					return null;
 				}
-				
+
 				@Override
 				public String getName() {
 					return "Export";
@@ -69,7 +69,7 @@ public class TestSimpleExporter {
 			public Class<Person> getDataClass() {
 				return Person.class;
 			}
-			
+
 			@Override
 			public String getProviderName() {
 				return "Person provider (test simple mappings)";

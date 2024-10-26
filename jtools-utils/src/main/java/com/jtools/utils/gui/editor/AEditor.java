@@ -178,10 +178,9 @@ public abstract class AEditor extends JPanel {
 	/**
 	 * 
 	 * @param parentWindow
-	 * @param modal
 	 * @return
 	 */
-	public JFrame showEditorAsFrame(Window parentWindow, boolean modal) {
+	public JFrame showEditorAsFrame(Window parentWindow) {
 		return this.showEditorAsFrame(parentWindow, saveAndCloseCallable(), closeCallable());
 	}
 

@@ -33,7 +33,7 @@ public class TestBlockImporter {
 			List<Person> data = BlockMappingExcelImporter.getInstance().importData(Person.class, blockMapping);
 			if(data != null) {
 				for(Person p : data) {
-					System.out.println(p);
+					Logger.getLogger(TestBlockImporter.class.getName()).log(Level.INFO, p.toString());
 				}
 			}
 
