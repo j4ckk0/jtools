@@ -5,6 +5,7 @@ package com.jtools.tests.mappings;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,13 +24,14 @@ import com.jtools.data.actions.CreateDataEditorAction;
 import com.jtools.data.actions.LoadDataAction;
 import com.jtools.data.gui.desktop.DataProviderSelector;
 import com.jtools.data.gui.desktop.DefaultDataProvider;
-import com.jtools.data.gui.desktop.ShowDataProviderSelectorAction;
-import com.jtools.data.gui.desktop.ShowDefaultDataProviderAction;
 import com.jtools.data.provider.DataProviderPubSub;
 import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.gui.desktop.ClearStdOutputAction;
-import com.jtools.gui.desktop.ShowStdOutputAction;
+import com.jtools.gui.desktop.ShowComponentSelectorAction;
+import com.jtools.gui.desktop.StdOutputFrame;
+import com.jtools.mappings.block.BlockMapping;
+import com.jtools.mappings.common.IMapping;
 import com.jtools.mappings.editors.actions.block.BlockMappingCreateAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingExportToExcelAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingImportFromExcelAction;
@@ -39,6 +41,10 @@ import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToExcelActi
 import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToStdOutputAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingImportFromExcelAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingLoadAction;
+import com.jtools.mappings.editors.common.MappingPubSub;
+import com.jtools.mappings.editors.common.MappingRegistry;
+import com.jtools.mappings.gui.desktop.MappingSelector;
+import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.utils.actions.ExitAction;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
 import com.jtools.utils.logging.LoggingUtils;
@@ -69,6 +75,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	private static final String CLEAR_STD_OUTPUT = "Clear std output";
 	private static final String SHOW_HIDE_POSSIBLE_DATA_CLASSES = "Show/hide possible data classes";
 	private static final String SHOW_HIDE_DATA_PROVIDERS = "Show/hide data providers";
+	private static final String SHOW_HIDE_SIMPLE_MAPPINGS = "Show/hide simple mappings";
+	private static final String SHOW_HIDE_BLOCK_MAPPINGS = "Show/hide block mappings";
 	private static final String CREATE_DATA_TABLE = "Create data table";
 	private static final String LOAD_DATA_TABLE = "Load data table";
 	private static final String CREATE_SIMPLE_MAPPING = "Create simple mapping";
@@ -96,7 +104,13 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	private final JDesktopPane blockMappingDesktopPane;
 	private final JDesktopPane consoleDesktopPane;
 
+	private final StdOutputFrame stdOutputFrame;
+
 	private final DataProviderSelector dataProviderSelector;
+
+	private final MappingSelector simpleMappingSelector;
+
+	private final MappingSelector blockMappingSelector;
 
 	private final DefaultDataProvider defaultDataProvider;
 
@@ -129,7 +143,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 
 		// Logging
 		LoggingUtils.loadDefaultConfig();
-		
+
 		// L&F
 		FlatLightLaf.setup();
 
@@ -169,7 +183,13 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		this.consoleDesktopPane = new CascadeDesktopPane();
 		tabbedPane.addTab(CONSOLE, consoleDesktopPane);
 
+		this.stdOutputFrame = new StdOutputFrame();
+
 		this.dataProviderSelector = new DataProviderSelector();
+
+		this.simpleMappingSelector = new MappingSelector(SimpleMapping.class);
+
+		this.blockMappingSelector = new MappingSelector(BlockMapping.class);
 
 		this.defaultDataProvider = new DefaultDataProvider(testObjectClasses);
 
@@ -184,31 +204,35 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		JMenuItem exitItem = new JMenuItem(new ExitAction(EXIT));
 		menuMenu.add(exitItem);
 
+		//
 		// Console menu
+		//
+
 		JMenu consoleMenu = new JMenu(CONSOLE);
 		menuBar.add(consoleMenu);
 
-		ShowStdOutputAction showStdOutputAction = new ShowStdOutputAction(SHOW_STD_OUTPUT, consoleDesktopPane);
+		ShowComponentSelectorAction showStdOutputAction = new ShowComponentSelectorAction(SHOW_STD_OUTPUT, consoleDesktopPane, stdOutputFrame);
 		JMenuItem showStdOutputItem = new JMenuItem(showStdOutputAction);
 		consoleMenu.add(showStdOutputItem);
 
-		ClearStdOutputAction clearStdOutputAction = new ClearStdOutputAction(CLEAR_STD_OUTPUT, showStdOutputAction);
+		ClearStdOutputAction clearStdOutputAction = new ClearStdOutputAction(CLEAR_STD_OUTPUT, stdOutputFrame);
 		JMenuItem clearStdOutputItem = new JMenuItem(clearStdOutputAction);
 		consoleMenu.add(clearStdOutputItem);
 
+		//
 		// Data menu
+		//
+
 		JMenu dataMenu = new JMenu(TEST_DATA);
 		menuBar.add(dataMenu);
 
-		ShowDefaultDataProviderAction showDataTypesProviderAction = new ShowDefaultDataProviderAction(
-				SHOW_HIDE_POSSIBLE_DATA_CLASSES, testDataDesktopPane, defaultDataProvider);
+		ShowComponentSelectorAction showDataTypesProviderAction = new ShowComponentSelectorAction(SHOW_HIDE_POSSIBLE_DATA_CLASSES, testDataDesktopPane, defaultDataProvider);
 		JMenuItem showDataTypesProviderItem = new JMenuItem(showDataTypesProviderAction);
 		dataMenu.add(showDataTypesProviderItem);
 
 		dataMenu.add(new JSeparator());
 
-		ShowDataProviderSelectorAction showDataProviderSelectorAction = new ShowDataProviderSelectorAction(
-				SHOW_HIDE_DATA_PROVIDERS, testDataDesktopPane, dataProviderSelector);
+		ShowComponentSelectorAction showDataProviderSelectorAction = new ShowComponentSelectorAction(SHOW_HIDE_DATA_PROVIDERS, testDataDesktopPane, dataProviderSelector);
 		JMenuItem showDataProviderSelectorItem = new JMenuItem(showDataProviderSelectorAction);
 		dataMenu.add(showDataProviderSelectorItem);
 
@@ -222,9 +246,18 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		JMenuItem loadDataTableItem = new JMenuItem(loadDataTableAction);
 		dataMenu.add(loadDataTableItem);
 
+		//
 		// Simple mapping menu
+		//
+
 		JMenu simpleMappingMenu = new JMenu(SIMPLE_MAPPING);
 		menuBar.add(simpleMappingMenu);
+
+		ShowComponentSelectorAction showSimpleMappingSelectorAction = new ShowComponentSelectorAction(SHOW_HIDE_SIMPLE_MAPPINGS, simpleMappingDesktopPane, simpleMappingSelector);
+		JMenuItem showSimpleMappingSelectorItem = new JMenuItem(showSimpleMappingSelectorAction);
+		simpleMappingMenu.add(showSimpleMappingSelectorItem);
+
+		simpleMappingMenu.add(new JSeparator());
 
 		this.createSimpleMappingAction = new SimpleMappingCreateAction(CREATE_SIMPLE_MAPPING);
 		JMenuItem createSimpleMappingItem = new JMenuItem(createSimpleMappingAction);
@@ -236,8 +269,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 
 		simpleMappingMenu.add(new JSeparator());
 
-		this.simpleMappingExportToStdOutputAction = new SimpleMappingExportToStdOutputAction(
-				EXPORT_DATA_TO_STANDARD_OUTPUT);
+		this.simpleMappingExportToStdOutputAction = new SimpleMappingExportToStdOutputAction(EXPORT_DATA_TO_STANDARD_OUTPUT);
 		JMenuItem simpleMappingExportToStdOutputItem = new JMenuItem(simpleMappingExportToStdOutputAction);
 		simpleMappingMenu.add(simpleMappingExportToStdOutputItem);
 
@@ -251,9 +283,18 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		JMenuItem simpleMappingImportFromExcelItem = new JMenuItem(simpleMappingImportFromExcelAction);
 		simpleMappingMenu.add(simpleMappingImportFromExcelItem);
 
+		//
 		// Block mapping menu
+		//
+
 		JMenu blockMappingMenu = new JMenu(BLOCK_MAPPING);
 		menuBar.add(blockMappingMenu);
+
+		ShowComponentSelectorAction showBlockMappingSelectorAction = new ShowComponentSelectorAction(SHOW_HIDE_BLOCK_MAPPINGS, blockMappingDesktopPane, blockMappingSelector);
+		JMenuItem showBlockMappingSelectorItem = new JMenuItem(showBlockMappingSelectorAction);
+		blockMappingMenu.add(showBlockMappingSelectorItem);
+
+		blockMappingMenu.add(new JSeparator());
 
 		this.createBlockMappingAction = new BlockMappingCreateAction(CREATE_BLOCK_MAPPING);
 		JMenuItem createBlockMappingItem = new JMenuItem(createBlockMappingAction);
@@ -292,17 +333,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		//
 		// Subscribe to pub/sub
 		//
-		DefaultPubSubBus.instance().addListener(this, DataProviderPubSub.DATA_PROVIDER_CHANGED);
-
-		//
-		// Data provider
-		//
-		simpleMappingExportToStdOutputAction.setDataProvider(defaultDataProvider);
-		createSimpleMappingAction.setDataProvider(defaultDataProvider);
-		simpleMappingExportToExcelAction.setDataProvider(defaultDataProvider);
-
-		createBlockMappingAction.setDataProvider(defaultDataProvider);
-		loadBlockMappingAction.setDataProvider(defaultDataProvider);
+		DefaultPubSubBus.instance().addListener(this, DataProviderPubSub.DATA_PROVIDER_CHANGED, MappingPubSub.MAPPING_CHANGED);
 
 		//
 		// Initial state
@@ -315,26 +346,67 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	public void onMessage(String topicName, Message message) {
 		try {
 
-			String providerName = DataProviderPubSub.readMessage(message);
-
 			if (topicName.equals(DataProviderPubSub.DATA_PROVIDER_CHANGED)) {
+
+				String providerName = DataProviderPubSub.readMessage(message);
+
 				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
 
-				if (dataProvider != null) {
-					simpleMappingExportToStdOutputAction.setDataProvider(dataProvider);
-					createSimpleMappingAction.setDataProvider(dataProvider);
-					simpleMappingExportToExcelAction.setDataProvider(dataProvider);
-
-					createBlockMappingAction.setDataProvider(dataProvider);
-					blockMappingExportToExcelAction.setDataProvider(dataProvider);
+				// Avoid having no data provider
+				if(dataProvider == null) {
+					dataProvider = defaultDataProvider;
 				}
 
-				// Avoid having no data provider
-				else {
-					simpleMappingExportToStdOutputAction.setDataProvider(defaultDataProvider);
-					createSimpleMappingAction.setDataProvider(defaultDataProvider);
-					simpleMappingExportToExcelAction.setDataProvider(defaultDataProvider);
-					createBlockMappingAction.setDataProvider(defaultDataProvider);
+				//
+				// Update "Create mappings" actions
+				//
+				createSimpleMappingAction.setDataClassProvider(dataProvider);
+				createBlockMappingAction.setDataClassProvider(dataProvider);
+
+				//
+				// Update "Export" actions 
+				// 
+				simpleMappingExportToStdOutputAction.setDataProvider(dataProvider);
+				simpleMappingExportToExcelAction.setDataProvider(dataProvider);
+
+				//				blockMappingExportToStdOutputAction.setDataProvider(dataProvider);
+				blockMappingExportToExcelAction.setDataProvider(dataProvider);
+			}
+
+			if(topicName.equals(MappingPubSub.MAPPING_CHANGED)) {
+
+				UUID mappingId = MappingPubSub.readMessage(message);
+
+				IMapping mapping = MappingRegistry.instance().get(mappingId);
+
+				// Simple mapping
+				if(mapping instanceof SimpleMapping<?>) {
+
+					//
+					// Update "Export" actions 
+					// 
+					simpleMappingExportToStdOutputAction.setMapping((SimpleMapping<?>)mapping);
+					simpleMappingExportToExcelAction.setMapping((SimpleMapping<?>)mapping);
+
+					//
+					// Update "Import" actions 
+					// 
+					simpleMappingImportFromExcelAction.setMapping((SimpleMapping<?>)mapping);
+				}
+
+				// Block mapping
+				if(mapping instanceof BlockMapping<?>) {
+
+					//
+					// Update "Export" actions 
+					// 
+					//					blockMappingExportToStdOutputAction.setDataProvider(dataProvider);
+					blockMappingExportToExcelAction.setMapping((BlockMapping<?>)mapping);
+
+					//
+					// Update "Import" actions 
+					// 
+					blockMappingImportFromExcelAction.setMapping((BlockMapping<?>)mapping);
 				}
 			}
 
