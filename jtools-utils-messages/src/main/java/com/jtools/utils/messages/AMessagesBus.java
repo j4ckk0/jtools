@@ -3,8 +3,10 @@
  */
 package com.jtools.utils.messages;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +67,10 @@ public abstract class AMessagesBus implements AutoCloseable {
 	 * @param clientConnectionProperties
 	 */
 	protected AMessagesBus(String url, Properties clientConnectionProperties) {
+		if(url == null) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Cannot create messages bus: URL is null");
+		}
+		
 		this.brokerURL = BROKER + "(" + url + ")";
 
 		if (clientConnectionProperties == null) {
@@ -125,6 +131,8 @@ public abstract class AMessagesBus implements AutoCloseable {
 				Logger.getLogger(getClass().getName()).log(Level.FINE, "Starting broker at " + brokerURL);
 				broker.start();
 				Logger.getLogger(getClass().getName()).log(Level.INFO, "Broker at " + brokerURL + " started");
+			} catch (IOException e) {
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
 			} catch (Exception e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
@@ -150,18 +158,19 @@ public abstract class AMessagesBus implements AutoCloseable {
 			// Connection
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Creating client connection to broker at " + brokerURL);
 			this.connection = connectionFactory.createConnection();
-			connection.setClientID("Client to " + brokerURL);
+			
+			String clientID = UUID.randomUUID().toString();
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "Set client connection to broker at " + brokerURL + " to: " + clientID);
+			connection.setClientID(clientID);
 
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Starting client connection to broker at " + brokerURL);
 			connection.start();
-			Logger.getLogger(getClass().getName()).log(Level.INFO,
-					"Client connection to broker at " + brokerURL + " started");
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "Client connection to broker at " + brokerURL + " started");
 
 			// Session
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Creating client session to broker at " + brokerURL);
 			this.session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-			Logger.getLogger(getClass().getName()).log(Level.FINE,
-					"Client session to broker at " + brokerURL + " created");
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Client session to broker at " + brokerURL + " created");
 		}
 		return session;
 	}

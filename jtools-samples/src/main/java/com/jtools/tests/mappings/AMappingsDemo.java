@@ -5,8 +5,6 @@ package com.jtools.tests.mappings;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.net.URL;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

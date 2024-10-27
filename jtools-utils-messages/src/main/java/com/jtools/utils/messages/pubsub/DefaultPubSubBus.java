@@ -3,6 +3,8 @@
  */
 package com.jtools.utils.messages.pubsub;
 
+import com.jtools.utils.messages.DefaultBusConfig;
+
 /**
  * @author j4ckk0
  *
@@ -11,14 +13,12 @@ public class DefaultPubSubBus extends PubSubBus {
 
 	private static DefaultPubSubBus instance;
 
-	private static final String URL = "tcp://localhost:61616";
-
 	private DefaultPubSubBus() {
-		super(URL);
+		super(DefaultBusConfig.getUrl());
 	}
 
 	public static DefaultPubSubBus instance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new DefaultPubSubBus();
 		}
 		return instance;
