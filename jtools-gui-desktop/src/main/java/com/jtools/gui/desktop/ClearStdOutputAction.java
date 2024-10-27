@@ -1,10 +1,8 @@
-package com.jtools.gui.desktop.actions;
+package com.jtools.gui.desktop;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-
-import com.jtools.gui.desktop.StdOutputFrame;
 
 /**
  * 

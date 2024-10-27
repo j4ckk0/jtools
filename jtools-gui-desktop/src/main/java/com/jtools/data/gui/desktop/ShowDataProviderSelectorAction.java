@@ -1,11 +1,9 @@
-package com.jtools.gui.desktop.actions;
+package com.jtools.data.gui.desktop;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDesktopPane;
-
-import com.jtools.gui.desktop.DataProviderSelector;
 
 /**
  * 

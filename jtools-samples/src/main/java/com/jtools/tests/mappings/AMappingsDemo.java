@@ -19,16 +19,15 @@ import javax.swing.WindowConstants;
 
 import com.jtools.data.actions.CreateDataEditorAction;
 import com.jtools.data.actions.LoadDataAction;
+import com.jtools.data.gui.desktop.DataProviderSelector;
+import com.jtools.data.gui.desktop.DefaultDataProvider;
+import com.jtools.data.gui.desktop.ShowDataProviderSelectorAction;
+import com.jtools.data.gui.desktop.ShowDefaultDataProviderAction;
 import com.jtools.data.provider.DataProviderPubSubTopics;
 import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
-import com.jtools.gui.desktop.DataProviderSelector;
-import com.jtools.gui.desktop.DefaultDataProvider;
-import com.jtools.gui.desktop.actions.ClearStdOutputAction;
-import com.jtools.gui.desktop.actions.ExitAction;
-import com.jtools.gui.desktop.actions.ShowDataProviderSelectorAction;
-import com.jtools.gui.desktop.actions.ShowDefaultDataProviderAction;
-import com.jtools.gui.desktop.actions.ShowStdOutputAction;
+import com.jtools.gui.desktop.ClearStdOutputAction;
+import com.jtools.gui.desktop.ShowStdOutputAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingCreateAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingExportToExcelAction;
 import com.jtools.mappings.editors.actions.block.BlockMappingImportFromExcelAction;
@@ -38,6 +37,7 @@ import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToExcelActi
 import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToStdOutputAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingImportFromExcelAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingLoadAction;
+import com.jtools.utils.actions.ExitAction;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
 import com.jtools.utils.logging.LoggingUtils;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
@@ -100,7 +100,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		// Start broker for messages between components
 		//
 		try {
-			DefaultPubSubBus.instance().startBroker();
+			DefaultPubSubBus.instance().start();
 		} catch (Exception e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);

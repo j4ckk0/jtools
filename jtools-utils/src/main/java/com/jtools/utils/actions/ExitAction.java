@@ -1,4 +1,4 @@
-package com.jtools.gui.desktop.actions;
+package com.jtools.utils.actions;
 
 import java.awt.event.ActionEvent;
 
