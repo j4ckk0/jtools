@@ -338,7 +338,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		//
 		// Initial state
 		//
-		showDataTypesProviderAction.actionPerformed(null);
+		showBlockMappingSelectorAction.actionPerformed(null);
+		showSimpleMappingSelectorAction.actionPerformed(null);
 		showDataProviderSelectorAction.actionPerformed(null);
 	}
 
