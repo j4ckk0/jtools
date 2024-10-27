@@ -33,7 +33,7 @@ public class TestSimpleExporter {
 
 			SimpleMapping<Person> mapping = new SimpleMapping<>(Person.class);
 			
-			MappingRegistry.instance().registerSimpleMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 
 			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(mapping);
 			personMappingEditor.showEditorAsFrame(null, new NamedCallable<Void>() {

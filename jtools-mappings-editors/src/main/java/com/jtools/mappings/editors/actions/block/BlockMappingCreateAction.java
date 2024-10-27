@@ -53,7 +53,7 @@ public class BlockMappingCreateAction extends AEditorAction {
 		try {
 			BlockMapping<?> mapping = new BlockMapping<>(dataClass);
 			
-			MappingRegistry.instance().registerBlockMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 
 			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), CommonUtils.classListToArray(possibleDataClasses));
 			showEditor(mappingEditor);

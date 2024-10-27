@@ -49,7 +49,7 @@ public class SimpleMappingCreateAction extends AEditorAction {
 		try {
 			SimpleMapping<?> mapping = new SimpleMapping<>(dataClass);
 			
-			MappingRegistry.instance().registerSimpleMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 			
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(mapping);
 			showEditor(mappingEditor);

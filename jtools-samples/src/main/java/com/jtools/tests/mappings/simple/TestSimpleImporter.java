@@ -27,7 +27,7 @@ public class TestSimpleImporter {
 		try {
 			SimpleMapping<Person> mapping = new SimpleMapping<>(Person.class);
 			
-			MappingRegistry.instance().registerSimpleMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 
 			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(mapping);
 

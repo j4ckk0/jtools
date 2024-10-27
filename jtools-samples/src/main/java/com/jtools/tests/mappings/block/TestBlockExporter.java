@@ -32,7 +32,7 @@ public class TestBlockExporter {
 
 			BlockMapping<Person> mapping = new BlockMapping<>(Person.class);
 			
-			MappingRegistry.instance().registerBlockMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 			
 			BlockMappingEditor<Person> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), Person.class, Book.class);
 

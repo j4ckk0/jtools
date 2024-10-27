@@ -146,7 +146,7 @@ public class SimpleMappingFileManager {
 			SimpleMapping<E> mapping = new SimpleMapping<>(objectClass, rows);
 			mappingsFilePaths.put(mapping.getId(), mappingFilepath);
 			
-			MappingRegistry.instance().registerSimpleMapping(mapping);
+			MappingRegistry.instance().register(mapping);
 			
 			return mapping;
 

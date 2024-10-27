@@ -6,9 +6,8 @@ package com.jtools.mappings.common;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
-import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.simple.SimpleMapping;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author j4ckk0
@@ -18,12 +17,10 @@ public class MappingRegistry {
 
 	private static MappingRegistry instance;
 
-	private final Map<UUID, SimpleMapping<?>> simpleMappings;
-	private final Map<UUID, BlockMapping<?>> blockMappings;
+	private final Map<UUID, IMapping> mappings;
 
 	private MappingRegistry() {
-		this.simpleMappings = new HashMap<>();
-		this.blockMappings = new HashMap<>();
+		this.mappings = new HashMap<>();
 	}
 
 	public static MappingRegistry instance() {
@@ -33,27 +30,27 @@ public class MappingRegistry {
 		return instance;
 	}
 
-	public void registerSimpleMapping(SimpleMapping<?> simpleMapping) {
-		simpleMappings.put(simpleMapping.getId(), simpleMapping);
+	public void register(IMapping mapping) {
+		mappings.put(mapping.getId(), mapping);
 	}
 
-	public void unregisterSimpleMapping(SimpleMapping<?> simpleMapping) {
-		simpleMappings.remove(simpleMapping.getId());
+	public void unregister(IMapping mapping) {
+		mappings.remove(mapping.getId());
 	}
 
-	public SimpleMapping<?> getSimpleMapping(UUID simpleMappingId) {
-		return simpleMappings.get(simpleMappingId);
+	public IMapping getMapping(UUID mappingId) {
+		return mappings.get(mappingId);
 	}
 
-	public void registerBlockMapping(BlockMapping<?> blockMapping) {
-		blockMappings.put(blockMapping.getId(), blockMapping);
-	}
+	public <M extends IMapping> M getMapping(UUID mappingId, Class<M> mappingClass) {
+		IMapping mapping = getMapping(mappingId);
 
-	public void unregisterBlockMapping(BlockMapping<?> blockMapping) {
-		blockMappings.remove(blockMapping.getId());
-	}
-
-	public BlockMapping<?> getBlockMapping(UUID blockMappingId) {
-		return blockMappings.get(blockMappingId);
+		try {
+			return mappingClass.cast(mapping);
+		} catch (ClassCastException e) {
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Wrong mapping type found for mappingId: "
+					+ mappingId + ". Found: " + mapping.getClass() + ". Requested: " + mappingClass);
+			return null;
+		}
 	}
 }
