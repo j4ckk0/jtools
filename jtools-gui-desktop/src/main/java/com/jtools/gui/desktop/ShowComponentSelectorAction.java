@@ -26,19 +26,15 @@ public class ShowComponentSelectorAction extends AbstractAction {
 	private final JDesktopPane desktopPane;
 	private final Component component;
 
-	private boolean isVisible;
-
 	public ShowComponentSelectorAction(String name, JDesktopPane desktopPane, Component component) {
 		super(name);
 		this.desktopPane = desktopPane;
 		this.component = component;
-
-		isVisible = false;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (!isVisible) {
+		if (!component.isVisible()) {
 			if(desktopPane instanceof CascadeDesktopPane) {
 				((CascadeDesktopPane)desktopPane).add(component, CASCADE_HORIZONTAL_OFFSET, CASCADE_VERTICAL_OFFSET);
 			}
@@ -66,6 +62,5 @@ public class ShowComponentSelectorAction extends AbstractAction {
 			}
 
 		}
-		isVisible = !isVisible;
 	}
 }

@@ -3,6 +3,8 @@ package com.jtools.data.gui.desktop;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -55,12 +57,15 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 		pack();
 
-		addInternalFrameListener(new InternalFrameAdapter() {
-
+		addComponentListener(new ComponentAdapter() {
+			
 			@Override
-			public void internalFrameOpened(InternalFrameEvent e) {
+			public void componentShown(ComponentEvent e) {
 				DataProviderRegistry.instance().register(DefaultDataProvider.this);
 			}
+		});
+		
+		addInternalFrameListener(new InternalFrameAdapter() {
 
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
