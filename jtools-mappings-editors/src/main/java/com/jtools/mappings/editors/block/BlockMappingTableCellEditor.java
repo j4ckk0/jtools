@@ -20,7 +20,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
-import com.jtools.generic.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
+import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.utils.concurrent.NamedCallable;

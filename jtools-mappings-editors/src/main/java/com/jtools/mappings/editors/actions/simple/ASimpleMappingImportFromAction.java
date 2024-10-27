@@ -14,7 +14,7 @@ import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.jtools.generic.data.DataEditor;
+import com.jtools.data.DataEditor;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.importers.ASimpleMappingImporter;

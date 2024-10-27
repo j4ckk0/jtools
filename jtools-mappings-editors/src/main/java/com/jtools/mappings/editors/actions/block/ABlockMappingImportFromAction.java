@@ -14,7 +14,7 @@ import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.jtools.generic.data.DataEditor;
+import com.jtools.data.DataEditor;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.block.importers.ABlockMappingImporter;
 import com.jtools.mappings.block.io.BlockMappingFileManager;

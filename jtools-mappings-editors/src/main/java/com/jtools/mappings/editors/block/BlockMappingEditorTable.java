@@ -11,9 +11,9 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import com.jtools.generic.gui.table.cellEditors.DefaultFieldTableCellEditor;
-import com.jtools.generic.gui.table.cellRenderers.DefaultFieldTableCellRenderer;
-import com.jtools.generic.gui.table.utils.TableUtils;
+import com.jtools.gui.table.cellEditors.DefaultFieldTableCellEditor;
+import com.jtools.gui.table.cellRenderers.DefaultFieldTableCellRenderer;
+import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.block.BlockMappingRow;
 import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingEditorNewRow;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.jtools.generic.data.provider.IDataProvider;
+import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.editors.block.BlockMappingEditor;

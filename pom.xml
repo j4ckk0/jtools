@@ -18,9 +18,9 @@
   <modules>
   	<module>jtools-utils</module>
   	<module>jtools-utils-messages</module>
-  	<module>jtools-generic-gui</module>
-  	<module>jtools-generic-data</module>
-  	<module>jtools-generic-data-gui</module>
+  	<module>jtools-data</module>
+  	<module>jtools-gui</module>
+  	<module>jtools-gui-desktop</module>
   	<module>jtools-mappings</module>
   	<module>jtools-mappings-editors</module>
   	<module>jtools-samples</module>

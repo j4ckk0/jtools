@@ -13,9 +13,9 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.AbstractTableModel;
 
-import com.jtools.generic.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
-import com.jtools.generic.gui.table.tableModels.ITableModelWithCellsCustomBackground;
-import com.jtools.generic.gui.table.tableModels.ITableModelWithMandatoryCells;
+import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
+import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomBackground;
+import com.jtools.gui.table.tableModels.ITableModelWithMandatoryCells;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingEditorNewRow;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import com.jtools.mappings.simple.SimpleMappingRow;

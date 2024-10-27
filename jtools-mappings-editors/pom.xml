@@ -24,12 +24,12 @@
 	</dependency>
   	<dependency>
     	<groupId>com.jtools</groupId>
-	    <artifactId>jtools-generic-gui</artifactId>
+	    <artifactId>jtools-gui</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   	<dependency>
     	<groupId>com.jtools</groupId>
-	    <artifactId>jtools-generic-data</artifactId>
+	    <artifactId>jtools-data</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   	<dependency>

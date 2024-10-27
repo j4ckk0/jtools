@@ -15,7 +15,7 @@ import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.jtools.generic.data.provider.IDataProvider;
+import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.mappings.simple.exporters.ASimpleMappingExporter;

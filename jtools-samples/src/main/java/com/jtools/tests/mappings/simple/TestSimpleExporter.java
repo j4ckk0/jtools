@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.jtools.generic.data.provider.IDataProvider;
+import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.editors.simple.SimpleMappingEditor;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
