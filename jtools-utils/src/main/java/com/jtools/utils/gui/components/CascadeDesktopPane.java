@@ -15,9 +15,8 @@ public class CascadeDesktopPane extends JDesktopPane {
 	
 	private static final long serialVersionUID = 419155362915146329L;
 	
-	private static final int horizontalOffset = 30;
-	
-	private static final int verticalOffset = 30;
+	private static final int DEFAUT_HORIZONTAL_OFFSET = 60;
+	private static final int DEFAULT_VERTICAL_OFFSET = 60;
 
 	/**
      * Appends the specified component to the end of this container.
@@ -38,6 +37,10 @@ public class CascadeDesktopPane extends JDesktopPane {
      */
 	@Override
 	public Component add(Component comp) {
+		return add(comp, DEFAUT_HORIZONTAL_OFFSET, DEFAULT_VERTICAL_OFFSET);
+	}
+	
+	public Component add(Component comp, int horizontalOffset, int verticalOffset) {
 		comp.setBounds(getComponentCount() * horizontalOffset, getComponentCount() * verticalOffset, comp.getWidth(), comp.getHeight());
 		addImpl(comp, null, -1);
 		return comp;

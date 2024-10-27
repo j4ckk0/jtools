@@ -9,6 +9,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
 
+import com.jtools.utils.gui.components.CascadeDesktopPane;
+
 /**
  * 
  * @author j4ckk0
@@ -17,6 +19,9 @@ import javax.swing.JTabbedPane;
 public class ShowComponentSelectorAction extends AbstractAction {
 
 	private static final long serialVersionUID = 2870619093541127857L;
+
+	private static final int CASCADE_HORIZONTAL_OFFSET = 0;
+	private static final int CASCADE_VERTICAL_OFFSET = 60;
 
 	private final JDesktopPane desktopPane;
 	private final Component component;
@@ -34,7 +39,12 @@ public class ShowComponentSelectorAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (!isVisible) {
-			desktopPane.add(component);
+			if(desktopPane instanceof CascadeDesktopPane) {
+				((CascadeDesktopPane)desktopPane).add(component, CASCADE_HORIZONTAL_OFFSET, CASCADE_VERTICAL_OFFSET);
+			}
+			else {
+				desktopPane.add(component);
+			}
 
 			Container parent = desktopPane.getParent();
 			if(parent instanceof JTabbedPane) {
