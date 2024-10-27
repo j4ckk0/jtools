@@ -27,7 +27,6 @@ public class StdOutputTextArea extends JTextArea {
 	public StdOutputTextArea(int rows, int columns) {
 		super(rows, columns);
 		this.printStream = new PrintStream(new StdOutputTextAreaOutputStream());
-		redirectStdOutput(true);
 	}
 
 	public void redirectStdOutput(boolean enable) {

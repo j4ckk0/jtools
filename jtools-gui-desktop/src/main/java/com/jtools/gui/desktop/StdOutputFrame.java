@@ -37,6 +37,14 @@ public class StdOutputFrame extends JInternalFrame {
 	}
 
 	@Override
+	public void setVisible(boolean aFlag) {
+		if(stdOutputTextArea != null) {
+			stdOutputTextArea.redirectStdOutput(aFlag);
+		}
+		super.setVisible(aFlag);
+	}
+
+	@Override
 	public void dispose() {
 		stdOutputTextArea.dispose();
 	}

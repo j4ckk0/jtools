@@ -13,16 +13,15 @@ public class ClearStdOutputAction extends AbstractAction {
 
 	private static final long serialVersionUID = -915029730697379837L;
 
-	private ShowStdOutputAction showStdOutputAction;
+	private StdOutputFrame stdOutputFrame;
 
-	public ClearStdOutputAction(String name, ShowStdOutputAction showStdOutputAction) {
+	public ClearStdOutputAction(String name, StdOutputFrame stdOutputFrame) {
 		super(name);
-		this.showStdOutputAction = showStdOutputAction;
+		this.stdOutputFrame = stdOutputFrame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		StdOutputFrame stdOutputFrame = showStdOutputAction.getStdOutputFrame();
 		if (stdOutputFrame != null) {
 			stdOutputFrame.clear();
 		}
