@@ -16,17 +16,11 @@ import java.util.logging.Logger;
  * @author j4ckk0
  *
  */
-public interface IDataProvider {
+public interface IDataProvider extends IDataClassProvider {
 	
 	public String getProviderName();
 
-	public Class<?> getDataClass();
-
 	public List<?> getDataList();
-
-	public default List<Class<?>> getPossibleDataClasses() {
-		return Collections.singletonList(getDataClass());
-	}
 
 	public default Map<Class<?>, List<?>> getDataMap() {
 		return Collections.singletonMap(getDataClass(), getDataList());

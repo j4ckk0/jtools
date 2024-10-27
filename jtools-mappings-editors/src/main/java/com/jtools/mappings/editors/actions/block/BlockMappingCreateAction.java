@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
-import com.jtools.data.provider.IDataProvider;
+import com.jtools.data.provider.IDataClassProvider;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.editors.block.BlockMappingEditor;
@@ -27,7 +27,7 @@ public class BlockMappingCreateAction extends AEditorAction {
 
 	private static final long serialVersionUID = 5655082933456528045L;
 
-	private transient IDataProvider dataProvider;
+	private transient IDataClassProvider dataProvider;
 
 	public BlockMappingCreateAction(String name) {
 		super(name);
@@ -59,7 +59,7 @@ public class BlockMappingCreateAction extends AEditorAction {
 		}
 	}
 
-	public void setDataProvider(IDataProvider dataProvider) {
+	public void setDataClassProvider(IDataClassProvider dataProvider) {
 		this.dataProvider = dataProvider;
 	}
 }
