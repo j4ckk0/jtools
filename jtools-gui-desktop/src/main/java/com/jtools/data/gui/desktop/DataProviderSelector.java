@@ -67,8 +67,8 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
-			if(!(message instanceof TextMessage)) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content");
+			if(!(DataProviderPubSubTopics.MESSAGES_TYPE.isAssignableFrom(message.getClass()))) {
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected message type");
 				return;
 			}
 			
