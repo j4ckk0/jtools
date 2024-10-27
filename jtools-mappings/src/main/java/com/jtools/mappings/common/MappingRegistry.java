@@ -38,12 +38,12 @@ public class MappingRegistry {
 		mappings.remove(mapping.getId());
 	}
 
-	public IMapping getMapping(UUID mappingId) {
+	public IMapping get(UUID mappingId) {
 		return mappings.get(mappingId);
 	}
 
-	public <M extends IMapping> M getMapping(UUID mappingId, Class<M> mappingClass) {
-		IMapping mapping = getMapping(mappingId);
+	public <M extends IMapping> M get(UUID mappingId, Class<M> mappingClass) {
+		IMapping mapping = get(mappingId);
 
 		try {
 			return mappingClass.cast(mapping);
