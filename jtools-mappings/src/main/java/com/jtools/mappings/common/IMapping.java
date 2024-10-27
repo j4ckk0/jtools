@@ -12,5 +12,7 @@ import java.util.UUID;
 public interface IMapping {
 
 	public UUID getId();
+	
+	public Class<?> getObjectClass();
 
 }

@@ -39,6 +39,7 @@ public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 		return id;
 	}
 
+	@Override
 	public Class<E> getObjectClass() {
 		return objectClass;
 	}
