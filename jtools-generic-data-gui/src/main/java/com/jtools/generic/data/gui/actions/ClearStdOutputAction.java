@@ -1,10 +1,10 @@
-package com.jtools.tests.actions;
+package com.jtools.generic.data.gui.actions;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.jtools.tests.gui.StdOutputFrame;
+import com.jtools.generic.data.gui.iframe.StdOutputFrame;
 
 /**
  * 

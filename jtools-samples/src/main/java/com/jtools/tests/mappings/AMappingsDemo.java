@@ -19,6 +19,13 @@ import javax.swing.WindowConstants;
 
 import com.jtools.generic.data.actions.CreateDataEditorAction;
 import com.jtools.generic.data.actions.LoadDataAction;
+import com.jtools.generic.data.gui.actions.ClearStdOutputAction;
+import com.jtools.generic.data.gui.actions.ExitAction;
+import com.jtools.generic.data.gui.actions.ShowDataProviderSelectorAction;
+import com.jtools.generic.data.gui.actions.ShowDefaultDataProviderAction;
+import com.jtools.generic.data.gui.actions.ShowStdOutputAction;
+import com.jtools.generic.data.gui.iframe.DataProviderSelector;
+import com.jtools.generic.data.gui.iframe.DefaultDataProvider;
 import com.jtools.generic.data.provider.DataProviderPubSubTopics;
 import com.jtools.generic.data.provider.DataProviderRegistry;
 import com.jtools.generic.data.provider.IDataProvider;
@@ -31,13 +38,6 @@ import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToExcelActi
 import com.jtools.mappings.editors.actions.simple.SimpleMappingExportToStdOutputAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingImportFromExcelAction;
 import com.jtools.mappings.editors.actions.simple.SimpleMappingLoadAction;
-import com.jtools.tests.actions.ClearStdOutputAction;
-import com.jtools.tests.actions.ExitAction;
-import com.jtools.tests.actions.ShowDataProviderSelectorAction;
-import com.jtools.tests.actions.ShowDefaultDataProviderAction;
-import com.jtools.tests.actions.ShowStdOutputAction;
-import com.jtools.tests.data.DataProviderSelector;
-import com.jtools.tests.data.DefaultDataProvider;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
 import com.jtools.utils.logging.LoggingUtils;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;

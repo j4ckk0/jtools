@@ -1,4 +1,4 @@
-package com.jtools.tests.actions;
+package com.jtools.generic.data.gui.actions;
 
 import java.awt.event.ActionEvent;
 

@@ -8,9 +8,9 @@
   	<version>1.0</version>
   </parent>
   
-  <artifactId>jtools-samples</artifactId>
+  <artifactId>jtools-generic-data-gui</artifactId>
   <packaging>jar</packaging>
-  <name>Java Tools - Samples</name>
+  <name>Java Tools - Generic Data - GUI</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,22 +19,7 @@
   <dependencies>
   	<dependency>
     	<groupId>com.jtools</groupId>
-	    <artifactId>jtools-generic-gui</artifactId>
-	    <version>${project.version}</version>
-	</dependency>
-  	<dependency>
-    	<groupId>com.jtools</groupId>
 	    <artifactId>jtools-generic-data</artifactId>
-	    <version>${project.version}</version>
-	</dependency>
-  	<dependency>
-    	<groupId>com.jtools</groupId>
-	    <artifactId>jtools-generic-data-gui</artifactId>
-	    <version>${project.version}</version>
-	</dependency>
-  	<dependency>
-    	<groupId>com.jtools</groupId>
-	    <artifactId>jtools-mappings-editors</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   </dependencies>

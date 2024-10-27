@@ -1,4 +1,4 @@
-package com.jtools.tests.gui;
+package com.jtools.generic.data.gui.iframe;
 
 import java.awt.BorderLayout;
 import java.awt.Container;

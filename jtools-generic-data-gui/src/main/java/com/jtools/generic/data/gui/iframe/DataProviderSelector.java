@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jtools.tests.data;
+package com.jtools.generic.data.gui.iframe;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

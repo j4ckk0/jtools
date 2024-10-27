@@ -20,6 +20,7 @@
   	<module>jtools-utils-messages</module>
   	<module>jtools-generic-gui</module>
   	<module>jtools-generic-data</module>
+  	<module>jtools-generic-data-gui</module>
   	<module>jtools-mappings</module>
   	<module>jtools-mappings-editors</module>
   	<module>jtools-samples</module>

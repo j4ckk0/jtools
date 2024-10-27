@@ -1,11 +1,11 @@
-package com.jtools.tests.actions;
+package com.jtools.generic.data.gui.actions;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDesktopPane;
 
-import com.jtools.tests.data.DataProviderSelector;
+import com.jtools.generic.data.gui.iframe.DataProviderSelector;
 
 /**
  * 
