@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import com.jtools.data.DataEditor;
 import com.jtools.data.DataException;
 import com.jtools.data.io.DataFileManager;
+import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.utils.gui.editor.AEditorAction;
 
 /**
@@ -52,6 +53,8 @@ public class LoadDataAction extends AEditorAction {
 
 			if(showEditor) {
 				DataEditor dataEditor = new DataEditor(dataList, dataClasses);
+				
+				DataProviderRegistry.instance().register(dataEditor);
 
 				showEditor(dataEditor);
 			}

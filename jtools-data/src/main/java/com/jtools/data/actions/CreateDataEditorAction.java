@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Icon;
 
 import com.jtools.data.DataEditor;
+import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.utils.gui.editor.AEditorAction;
 
 /**
@@ -34,6 +35,8 @@ public class CreateDataEditorAction extends AEditorAction {
 	public void actionPerformed(ActionEvent e) {
 
 		DataEditor dataEditor = new DataEditor(dataClasses);
+		
+		DataProviderRegistry.instance().register(dataEditor);
 
 		showEditor(dataEditor);
 	}

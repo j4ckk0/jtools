@@ -112,9 +112,6 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		setLayout(new BorderLayout(6, 6));
 		add(objectTypePanel, BorderLayout.NORTH);
 		add(objectsTableScrollPane, BorderLayout.CENTER);
-		
-		// Register the DataEditor to the DataProvider registry
-		DataProviderRegistry.instance().register(this);
 	}
 
 	public ObjectsTable<?> getObjectsTable() {
