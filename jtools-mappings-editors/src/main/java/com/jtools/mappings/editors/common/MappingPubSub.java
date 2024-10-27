@@ -52,7 +52,7 @@ public interface MappingPubSub {
 
 		Serializable object = objectMessage.getObject();
 		
-		if (!(object instanceof ObjectMessage)) {
+		if (!(object instanceof UUID)) {
 			String msg = "Pub/Sub message received. Unexpected message content. Expected: " + UUID.class + ". Got: "
 					+ object.getClass();
 			Logger.getLogger(DataProviderPubSub.class.getName()).log(Level.WARNING, msg);
