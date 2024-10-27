@@ -68,10 +68,12 @@ public class SimpleMappingLoadAction extends AEditorAction {
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(simpleMapping);
 			showEditor(mappingEditor);
 		} catch (InstantiationException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error while loading editor", JOptionPane.ERROR_MESSAGE);
 		} catch(MappingException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad mapping", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);

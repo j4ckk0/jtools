@@ -44,7 +44,8 @@ public class SerializableField implements Serializable {
 			}
 			return field;
 		} catch (NoSuchFieldException | ClassNotFoundException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			throw new RuntimeException(e);
 		}
 	}

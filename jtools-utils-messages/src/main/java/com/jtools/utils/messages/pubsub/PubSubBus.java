@@ -97,7 +97,8 @@ public class PubSubBus extends AMessagesBus {
 				PubSubMessagesDispatcher messagesDispatcher = getMessagesDispatcher(topicName);
 				messagesDispatcher.addListener(listener);
 			} catch (JMSException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 	}
@@ -108,7 +109,8 @@ public class PubSubBus extends AMessagesBus {
 				PubSubMessagesDispatcher messagesDispatcher = getMessagesDispatcher(topicName);
 				messagesDispatcher.removeListener(listener);
 			} catch (JMSException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 	}
@@ -123,7 +125,8 @@ public class PubSubBus extends AMessagesBus {
 			MessageProducer producer = getProducer(topicName);
 			producer.send(msg);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -137,7 +140,8 @@ public class PubSubBus extends AMessagesBus {
 			MessageProducer producer = getProducer(topicName);
 			producer.send(msg);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -181,7 +185,8 @@ public class PubSubBus extends AMessagesBus {
 
 				topics.put(topicName, topic);
 			} catch (JMSException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 		return topic;

@@ -83,7 +83,8 @@ public class PointToPointBus extends AMessagesBus {
 			PointToPointMessageDispatcher messagesDispatcher = getMessagesDispatcher();
 			messagesDispatcher.addListener(listener);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -92,7 +93,8 @@ public class PointToPointBus extends AMessagesBus {
 			PointToPointMessageDispatcher messagesDispatcher = getMessagesDispatcher();
 			messagesDispatcher.removeListener(listener);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -106,7 +108,8 @@ public class PointToPointBus extends AMessagesBus {
 			MessageProducer producer = getProducer();
 			producer.send(msg);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -120,7 +123,8 @@ public class PointToPointBus extends AMessagesBus {
 			MessageProducer producer = getProducer();
 			producer.send(msg);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 

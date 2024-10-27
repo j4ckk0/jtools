@@ -75,7 +75,8 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 				}
 
 			} catch (IOException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 	}
@@ -130,7 +131,8 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 						}
 					}
 				} catch(Exception e) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}
 			}
 

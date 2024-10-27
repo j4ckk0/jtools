@@ -94,9 +94,11 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 			}
 
 		} catch (IOException | InstantiationException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		} catch(MappingException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad mapping", JOptionPane.ERROR_MESSAGE);
 		}
 	}

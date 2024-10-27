@@ -102,9 +102,11 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 
 			exporter.exportData(objectsToExport, rows);
 		} catch (IOException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		} catch(MappingException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad mapping", JOptionPane.ERROR_MESSAGE);
 		}
 

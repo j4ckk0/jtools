@@ -90,7 +90,8 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 				}
 
 			} catch (IOException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 	}
@@ -224,7 +225,8 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 						}
 					}
 				} catch (Exception e) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}
 			}
 		}

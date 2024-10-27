@@ -78,7 +78,8 @@ public class DateFormatManager {
 		try {
 			return dateFormat.parse(source);
 		} catch (ParseException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			return null;
 		}
 	}
@@ -126,7 +127,8 @@ public class DateFormatManager {
 		try {
 			return dateFormat.parse(source);
 		} catch (ParseException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			return null;
 		}
 	}

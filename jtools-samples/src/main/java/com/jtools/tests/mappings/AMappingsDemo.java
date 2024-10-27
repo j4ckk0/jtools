@@ -99,7 +99,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		try {
 			DefaultPubSubBus.instance().startBroker();
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
 		
@@ -290,7 +291,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 			}
 
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 

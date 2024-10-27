@@ -49,7 +49,8 @@ public class DefaultMessageListener implements MessageListener {
 			String text = message.getText();
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a TextMessage: " + text);
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -59,7 +60,8 @@ public class DefaultMessageListener implements MessageListener {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received an ObjectMessage : " + "["
 					+ object.getClass().getSimpleName() + "] " + object.toString());
 		} catch (JMSException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -67,7 +69,8 @@ public class DefaultMessageListener implements MessageListener {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a BytesMessage");
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -75,7 +78,8 @@ public class DefaultMessageListener implements MessageListener {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a MapMessage");
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -83,7 +87,8 @@ public class DefaultMessageListener implements MessageListener {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a StreamMessage");
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 
@@ -91,7 +96,8 @@ public class DefaultMessageListener implements MessageListener {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received an ActiveMQMessage");
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 

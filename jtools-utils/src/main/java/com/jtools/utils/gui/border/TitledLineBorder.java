@@ -134,13 +134,15 @@ public class TitledLineBorder extends TitledBorder {
 				drawStringMethod = su.getMethod("drawString", JComponent.class, Graphics.class, String.class, int.class,
 						int.class);
 			} catch (Throwable e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 		try {
 			drawStringMethod.invoke(null, jc, g, getTitle(), textLoc.x, textLoc.y);
 		} catch (Throwable e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
 		g.setColor(Color.LIGHT_GRAY);

@@ -48,7 +48,8 @@ public class SaveDataAction extends AbstractAction {
 			List<?> dataList = dataProvider.getDataList();
 			DataFileManager.instance().save(dataList);
 		} catch (IOException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 }

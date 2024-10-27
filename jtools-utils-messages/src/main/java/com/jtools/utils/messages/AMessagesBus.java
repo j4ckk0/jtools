@@ -115,15 +115,21 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
-	public BrokerService startBroker() throws Exception {
+	public BrokerService startBroker() {
 		if (broker == null) {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Creating broker at " + brokerURL);
-			this.broker = BrokerFactory.createBroker(new URI(brokerURL));
-			broker.setPersistent(false);
+			try {
+				this.broker = BrokerFactory.createBroker(new URI(brokerURL));
+				broker.setPersistent(false);
 
-			Logger.getLogger(getClass().getName()).log(Level.FINE, "Starting broker at " + brokerURL);
-			broker.start();
-			Logger.getLogger(getClass().getName()).log(Level.INFO, "Broker at " + brokerURL + " started");
+				Logger.getLogger(getClass().getName()).log(Level.FINE, "Starting broker at " + brokerURL);
+				broker.start();
+				Logger.getLogger(getClass().getName()).log(Level.INFO, "Broker at " + brokerURL + " started");
+			} catch (Exception e) {
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
+			}
+
 		}
 		return broker;
 	}

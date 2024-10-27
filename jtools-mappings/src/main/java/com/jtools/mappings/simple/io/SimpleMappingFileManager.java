@@ -244,7 +244,8 @@ public class SimpleMappingFileManager {
 				throw new MappingException("Loaded mappings do not match with the object to export");
 			}
 		} catch (ClassNotFoundException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			throw new MappingException("Could not find class " + objectClassProperty);
 		}
 
@@ -255,7 +256,8 @@ public class SimpleMappingFileManager {
 			try {
 				propertyToRow(objectClass, rows, property);
 			} catch (SecurityException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 
@@ -282,7 +284,8 @@ public class SimpleMappingFileManager {
 				outputColumn = matcher.group(1);
 				outputColumnHeader = matcher.group(2);
 			} catch(Exception e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 
 			SimpleMappingRow row = new SimpleMappingRow(outputColumnHeader, outputColumn, ObjectUtils.getField(objectClass, objectFieldName));

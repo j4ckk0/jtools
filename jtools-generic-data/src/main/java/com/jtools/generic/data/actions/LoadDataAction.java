@@ -57,9 +57,11 @@ public class LoadDataAction extends AEditorAction {
 			}
 
 		} catch (InstantiationException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		} catch(DataException e) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad data", JOptionPane.ERROR_MESSAGE);
 		}
 	}

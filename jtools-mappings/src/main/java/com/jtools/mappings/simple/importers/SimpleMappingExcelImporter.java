@@ -124,7 +124,8 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 										"setter not found for field " + objectField.getName());
 							}
 						} catch (Exception e) {
-							Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+							Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+							Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 						}
 					} else {
 						Logger.getLogger(getClass().getName()).log(Level.WARNING,
@@ -139,7 +140,8 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 			workbook.close();
 
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
 		return data;

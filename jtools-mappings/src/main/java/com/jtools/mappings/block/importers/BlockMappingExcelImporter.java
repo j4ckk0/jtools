@@ -118,7 +118,8 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 			workbook.close();
 
 		} catch (Exception e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
 		return importedObjects;

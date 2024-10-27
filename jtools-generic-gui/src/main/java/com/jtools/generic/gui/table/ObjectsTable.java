@@ -115,6 +115,7 @@ public class ObjectsTable<E extends Object> extends JTable {
 				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException | NoSuchMethodException | SecurityException e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}
 			} else {
 				model.removeRow(row);

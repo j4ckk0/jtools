@@ -219,7 +219,8 @@ public class BlockMappingFileManager {
 				throw new MappingException("Loaded mappings do not match with the object to export");
 			}
 		} catch (ClassNotFoundException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			throw new MappingException("Could not find class " + objectClassProperty);
 		}
 
@@ -235,7 +236,8 @@ public class BlockMappingFileManager {
 				}
 
 			} catch (SecurityException e) {
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
 		}
 

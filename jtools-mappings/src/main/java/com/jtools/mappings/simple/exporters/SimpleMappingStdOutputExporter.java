@@ -71,7 +71,8 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 						}
 					}
 				} catch(IllegalAccessException | InvocationTargetException e) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}
 			}
 			System.out.println("--");

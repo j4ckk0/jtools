@@ -49,6 +49,7 @@ public interface IObjectRow {
 				}
 			} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				return null;
 			}
 		}
@@ -66,6 +67,7 @@ public interface IObjectRow {
 				}
 			} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				return;
 			}
 		}
