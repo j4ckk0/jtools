@@ -18,6 +18,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.ToolTipManager;
 import javax.swing.WindowConstants;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.jtools.data.actions.CreateDataEditorAction;
 import com.jtools.data.actions.LoadDataAction;
 import com.jtools.data.gui.desktop.DataProviderSelector;
@@ -126,7 +127,11 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	protected AMappingsDemo(Class<?>[] testObjectClasses) {
 		super(DEMO);
 
+		// Logging
 		LoggingUtils.loadDefaultConfig();
+		
+		// L&F
+		FlatLightLaf.setup();
 
 		//
 		// Start broker for messages between components
