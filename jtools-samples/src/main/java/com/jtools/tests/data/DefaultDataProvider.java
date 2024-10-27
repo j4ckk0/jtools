@@ -2,6 +2,7 @@ package com.jtools.tests.data;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,7 +36,7 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 	private final JComboBox<Class<?>> dataClassesComboBox;
 
 	public DefaultDataProvider(Class<?>[] dataClasses) {
-		super("Default data provider");
+		super("Example classes provider");
 
 		this.dataClasses = dataClasses;
 
@@ -48,6 +49,9 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 		dataClassesComboBox = new JComboBox<Class<?>>(new DefaultComboBoxModel<>(dataClasses));
 		contentPane.add(dataClassesComboBox, BorderLayout.CENTER);
+
+		Dimension preferredSize = dataClassesComboBox.getPreferredSize();
+		dataClassesComboBox.setPreferredSize(new Dimension(300, preferredSize.height));
 
 		dataClassesComboBox.setRenderer(new DefaultClassListCellRenderer());
 

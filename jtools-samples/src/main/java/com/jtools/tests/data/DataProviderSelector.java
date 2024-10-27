@@ -6,6 +6,7 @@ package com.jtools.tests.data;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.logging.Level;
@@ -50,6 +51,9 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 		this.dataProvidersComboBox = new JComboBox<>();
 		contentPane.add(dataProvidersComboBox, BorderLayout.CENTER);
 
+		Dimension preferredSize = dataProvidersComboBox.getPreferredSize();
+		dataProvidersComboBox.setPreferredSize(new Dimension(300, preferredSize.height));
+		
 		dataProvidersComboBox.setRenderer(new DataProviderListCellRenderer());
 
 		dataProvidersComboBox.addItemListener(this);
