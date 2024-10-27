@@ -33,29 +33,29 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 
 	private String mappingFilepath;
 
-	private ABlockMappingImporter importer;
+	private transient ABlockMappingImporter importer;
 
-	private List<?> importedObjects;
+	private transient List<?> importedObjects;
 
-	public ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer) {
+	protected ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 		this.mappingFilepath = null;
 	}
 
-	public ABlockMappingImportFromAction(String name, ABlockMappingImporter importer) {
+	protected ABlockMappingImportFromAction(String name, ABlockMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 		this.mappingFilepath = null;
 	}
 
-	public ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer, String mappingsFilepath) {
+	protected ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer, String mappingsFilepath) {
 		super(name, icon);
 		this.importer = importer;
 		this.mappingFilepath = mappingsFilepath;
 	}
 
-	public ABlockMappingImportFromAction(String name, ABlockMappingImporter importer, String mappingsFilepath) {
+	protected ABlockMappingImportFromAction(String name, ABlockMappingImporter importer, String mappingsFilepath) {
 		super(name);
 		this.importer = importer;
 		this.mappingFilepath = mappingsFilepath;

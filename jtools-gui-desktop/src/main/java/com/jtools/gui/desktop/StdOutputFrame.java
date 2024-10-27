@@ -36,6 +36,7 @@ public class StdOutputFrame extends JInternalFrame {
 		pack();
 	}
 
+	@Override
 	public void dispose() {
 		stdOutputTextArea.dispose();
 	}
