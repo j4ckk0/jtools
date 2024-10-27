@@ -5,6 +5,8 @@ package com.jtools.tests.mappings;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.URL;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,6 +41,7 @@ import com.jtools.tests.actions.ShowStdOutputAction;
 import com.jtools.tests.data.DataProviderSelector;
 import com.jtools.tests.data.DefaultDataProvider;
 import com.jtools.utils.gui.components.CascadeDesktopPane;
+import com.jtools.utils.logging.LoggingUtils;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 import com.jtools.utils.messages.pubsub.PubSubMessageListener;
 
@@ -93,6 +96,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	protected AMappingsDemo(Class<?>[] testObjectClasses) {
 		super("Demo");
 		
+		LoggingUtils.loadDefaultConfig();
+
 		//
 		// Start broker for messages between components
 		//
@@ -103,11 +108,11 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
-		
+
 		//
 		// Build the GUI
 		//
-		
+
 		ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
 
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -266,12 +271,12 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content");
 				return;
 			}
-			
+
 			String providerName = ((TextMessage)message).getText();
-			
+
 			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_CHANGED)) {
 				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
-				
+
 				if (dataProvider != null) {
 					simpleMappingExportToStdOutputAction.setDataProvider(dataProvider);
 					createSimpleMappingAction.setDataProvider(dataProvider);
