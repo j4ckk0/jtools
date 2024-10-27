@@ -17,9 +17,9 @@ import javax.swing.table.TableModel;
 
 import com.jtools.gui.list.ObjectsListPanel;
 import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
+import com.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
 import com.jtools.gui.table.tableModels.ITableModelWithParameterizedObjectWrapper;
 import com.jtools.gui.table.tableModels.ITableModelWithParameterizedTypes;
-import com.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
 import com.jtools.utils.objects.ObjectUtils;
 
 /**

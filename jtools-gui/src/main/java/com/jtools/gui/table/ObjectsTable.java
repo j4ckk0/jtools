@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 
 import com.jtools.gui.table.tableModels.IObjectRow;
-import com.jtools.gui.table.tableModels.ObjectsTableModel;
 import com.jtools.gui.table.tableModels.IObjectRow.NewRow;
 import com.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
+import com.jtools.gui.table.tableModels.ObjectsTableModel;
 import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.utils.gui.components.ButtonColumn;
 

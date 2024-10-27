@@ -29,7 +29,6 @@ public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 	}
 
 	public SimpleMapping(Class<E> objectClass, List<SimpleMappingRow> mappings) {
-		super();
 		this.objectClass = objectClass;
 		this.mappings = mappings;
 	}
