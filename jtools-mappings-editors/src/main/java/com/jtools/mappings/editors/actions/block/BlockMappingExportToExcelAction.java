@@ -22,13 +22,5 @@ public class BlockMappingExportToExcelAction extends ABlockMappingExportToAction
 	public BlockMappingExportToExcelAction(String name) {
 		super(name, BlockMappingExcelExporter.getInstance());
 	}
-	
-	public BlockMappingExportToExcelAction(String name, Icon icon, String mappingsFilepath) {
-		super(name, icon, BlockMappingExcelExporter.getInstance(), mappingsFilepath);
-	}
-
-	public BlockMappingExportToExcelAction(String name, String mappingsFilepath) {
-		super(name, BlockMappingExcelExporter.getInstance(), mappingsFilepath);
-	}
 
 }

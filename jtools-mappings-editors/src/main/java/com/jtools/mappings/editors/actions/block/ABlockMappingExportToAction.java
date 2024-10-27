@@ -33,37 +33,26 @@ public abstract class ABlockMappingExportToAction extends AbstractAction {
 
 	private transient IDataProvider dataProvider;
 
-	private transient String mappingFilepath;
+	private transient BlockMapping<?> blockMapping;
 
 	private transient ABlockMappingExporter exporter;
 
 	protected ABlockMappingExportToAction(String name, Icon icon, ABlockMappingExporter exporter) {
 		super(name, icon);
 		this.exporter = exporter;
-		this.mappingFilepath = null;
 	}
 
 	protected ABlockMappingExportToAction(String name, ABlockMappingExporter exporter) {
 		super(name);
 		this.exporter = exporter;
-		this.mappingFilepath = null;
-	}
-
-	protected ABlockMappingExportToAction(String name, Icon icon, ABlockMappingExporter exporter,
-			String mappingsFilepath) {
-		super(name, icon);
-		this.exporter = exporter;
-		this.mappingFilepath = mappingsFilepath;
-	}
-
-	protected ABlockMappingExportToAction(String name, ABlockMappingExporter exporter, String mappingsFilepath) {
-		super(name);
-		this.exporter = exporter;
-		this.mappingFilepath = mappingsFilepath;
 	}
 
 	public void setDataProvider(IDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
+	}
+
+	public void setMapping(BlockMapping<?> mapping) {
+		this.blockMapping = mapping;
 	}
 
 	@Override
@@ -83,25 +72,17 @@ public abstract class ABlockMappingExportToAction extends AbstractAction {
 			return;
 		}
 
-		Map<Class<?>, List<?>> dataMap = dataProvider.getDataMap();
-		
-		if (dataMap == null || dataMap.isEmpty()) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, "No data to export");
-			JOptionPane.showMessageDialog(null, "No data to export", "No data", JOptionPane.WARNING_MESSAGE);
-			return;
-		}
-
-		String mappingFilepath = this.mappingFilepath;
-		if (mappingFilepath == null || mappingFilepath.length() == 0) {
-			File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."),
-					BlockMappingFileManager.LOAD_BLOCK_MAPPING_DIALOG_TITLE,
-					BlockMappingFileManager.BLOCK_MAPPING_FILE_EXTENSION);
-			mappingFilepath = choosenMappingFile.getAbsolutePath();
-		}
-
 		try {
 
-			BlockMapping<?> blockMapping = BlockMappingFileManager.instance().loadMapping(mappingFilepath);
+			if (blockMapping == null) {
+				Logger.getLogger(getClass().getName()).log(Level.INFO, "No mapping defined. Load one");
+
+				File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), BlockMappingFileManager.LOAD_BLOCK_MAPPING_DIALOG_TITLE, BlockMappingFileManager.BLOCK_MAPPING_FILE_EXTENSION);
+
+				blockMapping = BlockMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
+			}
+
+			Map<Class<?>, List<?>> dataMap = dataProvider.getDataMap();
 
 			List<?> data = dataMap.get(blockMapping.getObjectClass());
 

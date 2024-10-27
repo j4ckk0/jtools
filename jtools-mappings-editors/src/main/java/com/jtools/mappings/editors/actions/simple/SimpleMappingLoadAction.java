@@ -28,43 +28,20 @@ public class SimpleMappingLoadAction extends AEditorAction {
 
 	private static final long serialVersionUID = -7300287893183273865L;
 
-	private String mappingFilepath;
-
 	public SimpleMappingLoadAction(String name, Icon icon) {
 		super(name, icon);
-		this.mappingFilepath = null;
 	}
 
 	public SimpleMappingLoadAction(String name) {
 		super(name);
-		this.mappingFilepath = null;
-	}
-
-	public SimpleMappingLoadAction(String name, Icon icon, String mappingsFilepath) {
-		super(name, icon);
-		this.mappingFilepath = mappingsFilepath;
-	}
-
-	public SimpleMappingLoadAction(String name, String mappingsFilepath) {
-		super(name);
-		this.mappingFilepath = mappingsFilepath;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		String localMappingFilepath;
-		if (this.mappingFilepath == null || this.mappingFilepath.length() == 0) {
-			File mappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, null, SimpleMappingFileManager.SAVE_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);
-			if(mappingFile == null) {
-				return;
-			}
-			localMappingFilepath = mappingFile.getAbsolutePath();
-		} else {
-			localMappingFilepath = this.mappingFilepath;
-		}
+		File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), SimpleMappingFileManager.LOAD_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);
 
 		try {
-			SimpleMapping<?> simpleMapping = SimpleMappingFileManager.instance().loadMapping(localMappingFilepath);
+			SimpleMapping<?> simpleMapping = SimpleMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(simpleMapping);
 			showEditor(mappingEditor);
 		} catch (InstantiationException e) {

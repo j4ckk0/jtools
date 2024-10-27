@@ -30,34 +30,24 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 
 	private static final long serialVersionUID = -5347933034897416218L;
 
-	private String mappingFilepath;
-
 	private transient ABlockMappingImporter importer;
+
+	private transient BlockMapping<?> blockMapping;
 
 	private transient List<?> importedObjects;
 
 	protected ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
-		this.mappingFilepath = null;
 	}
 
 	protected ABlockMappingImportFromAction(String name, ABlockMappingImporter importer) {
 		super(name);
 		this.importer = importer;
-		this.mappingFilepath = null;
 	}
 
-	protected ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer, String mappingsFilepath) {
-		super(name, icon);
-		this.importer = importer;
-		this.mappingFilepath = mappingsFilepath;
-	}
-
-	protected ABlockMappingImportFromAction(String name, ABlockMappingImporter importer, String mappingsFilepath) {
-		super(name);
-		this.importer = importer;
-		this.mappingFilepath = mappingsFilepath;
+	public void setMapping(BlockMapping<?> mapping) {
+		this.blockMapping = mapping;
 	}
 
 	@Override
@@ -69,25 +59,20 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 			return;
 		}
 
-		String localMappingFilepath;
-		if (this.mappingFilepath == null || this.mappingFilepath.length() == 0) {
-			File mappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, null, BlockMappingFileManager.LOAD_BLOCK_MAPPING_DIALOG_TITLE, BlockMappingFileManager.BLOCK_MAPPING_FILE_EXTENSION);
-			if(mappingFile == null) {
-				return;
-			}
-			localMappingFilepath = mappingFile.getAbsolutePath();
-		} else {
-			localMappingFilepath = this.mappingFilepath;
-		}
-
 		try {
-			BlockMapping<?> blockMapping = BlockMappingFileManager.instance().loadMapping(localMappingFilepath);
-			
+			if (blockMapping == null) {
+				Logger.getLogger(getClass().getName()).log(Level.INFO, "No mapping defined. Load one");
+
+				File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), BlockMappingFileManager.LOAD_BLOCK_MAPPING_DIALOG_TITLE, BlockMappingFileManager.BLOCK_MAPPING_FILE_EXTENSION);
+
+				blockMapping = BlockMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
+			}
+
 			importedObjects = importer.importData(blockMapping.getObjectClass(), blockMapping);
 
 			if(importedObjects != null) {
 				DataEditor dataEditor = new DataEditor(importedObjects, blockMapping.getObjectClass());
-				
+
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the data table ?", "Import succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
 					showEditor(dataEditor);

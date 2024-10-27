@@ -22,13 +22,5 @@ public class SimpleMappingExportToStdOutputAction extends ASimpleMappingExportTo
 	public SimpleMappingExportToStdOutputAction(String name) {
 		super(name, SimpleMappingStdOutputExporter.getInstance());
 	}
-	
-	public SimpleMappingExportToStdOutputAction(String name, Icon icon, String mappingsFilepath) {
-		super(name, icon, SimpleMappingStdOutputExporter.getInstance(), mappingsFilepath);
-	}
-
-	public SimpleMappingExportToStdOutputAction(String name, String mappingsFilepath) {
-		super(name, SimpleMappingStdOutputExporter.getInstance(), mappingsFilepath);
-	}
 
 }

@@ -30,34 +30,24 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 
 	private static final long serialVersionUID = -5347933034897416218L;
 
-	private String mappingFilepath;
-
 	private transient ASimpleMappingImporter importer;
+
+	private transient SimpleMapping<?> simpleMapping;
 
 	private transient List<?> importedObjects;
 
 	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
-		this.mappingFilepath = null;
 	}
 
 	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer) {
 		super(name);
 		this.importer = importer;
-		this.mappingFilepath = null;
 	}
 
-	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer, String mappingsFilepath) {
-		super(name, icon);
-		this.importer = importer;
-		this.mappingFilepath = mappingsFilepath;
-	}
-
-	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer, String mappingsFilepath) {
-		super(name);
-		this.importer = importer;
-		this.mappingFilepath = mappingsFilepath;
+	public void setMapping(SimpleMapping<?> mapping) {
+		this.simpleMapping = mapping;
 	}
 
 	@Override
@@ -69,25 +59,20 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 			return;
 		}
 
-		String localMappingFilepath;
-		if (this.mappingFilepath == null || this.mappingFilepath.length() == 0) {
-			File mappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, null, SimpleMappingFileManager.LOAD_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);
-			if(mappingFile == null) {
-				return;
-			}
-			localMappingFilepath = mappingFile.getAbsolutePath();
-		} else {
-			localMappingFilepath = this.mappingFilepath;
-		}
-
 		try {
-			SimpleMapping<Object> simpleMapping = SimpleMappingFileManager.instance().loadMapping(localMappingFilepath);
+			if(simpleMapping == null) {
+				Logger.getLogger(getClass().getName()).log(Level.INFO, "No mapping defined. Load one");
+
+				File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), SimpleMappingFileManager.LOAD_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);
+
+				simpleMapping = SimpleMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
+			}
 
 			importedObjects = importer.importData(simpleMapping.getObjectClass(), simpleMapping.getMappingRows());
 
 			if(importedObjects != null) {
 				DataEditor dataEditor = new DataEditor(importedObjects, simpleMapping.getObjectClass());
-				
+
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the data table ?", "Import succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
 					showEditor(dataEditor);

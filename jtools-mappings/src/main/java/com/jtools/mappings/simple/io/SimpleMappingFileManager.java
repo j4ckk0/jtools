@@ -89,19 +89,6 @@ public class SimpleMappingFileManager {
 
 	/**
 	 * 
-	 * @param objectClass
-	 * @param mappingFilepath
-	 * @return
-	 * @throws IOException 
-	 * @throws MappingException 
-	 */
-	public List<SimpleMappingRow> loadRows(Class<?> objectClass, String mappingFilepath) throws IOException, MappingException {
-		Properties properties = CommonUtils.loadProperties(mappingFilepath);
-		return propertiesToRows(properties, objectClass);
-	}
-
-	/**
-	 * 
 	 * @param mappingFilepath
 	 * @return
 	 * @throws InstantiationException

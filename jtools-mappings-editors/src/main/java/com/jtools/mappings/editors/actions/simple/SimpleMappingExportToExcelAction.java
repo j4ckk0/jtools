@@ -22,13 +22,5 @@ public class SimpleMappingExportToExcelAction extends ASimpleMappingExportToActi
 	public SimpleMappingExportToExcelAction(String name) {
 		super(name, SimpleMappingExcelExporter.getInstance());
 	}
-	
-	public SimpleMappingExportToExcelAction(String name, Icon icon, String mappingsFilepath) {
-		super(name, icon, SimpleMappingExcelExporter.getInstance(), mappingsFilepath);
-	}
-
-	public SimpleMappingExportToExcelAction(String name, String mappingsFilepath) {
-		super(name, SimpleMappingExcelExporter.getInstance(), mappingsFilepath);
-	}
 
 }
