@@ -33,7 +33,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 
 	private transient IDataProvider dataProvider;
 
-	private transient SimpleMapping<?> simpleMapping;
+	private transient SimpleMapping<?> mapping;
 
 	private transient ASimpleMappingExporter exporter;
 
@@ -52,7 +52,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 	}
 
 	public void setMapping(SimpleMapping<?>  mapping) {
-		this.simpleMapping = mapping;
+		this.mapping = mapping;
 	}
 
 	@Override
@@ -72,18 +72,24 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 
 		try {
 
-			if(simpleMapping == null) {
+			if(mapping == null) {
 				Logger.getLogger(getClass().getName()).log(Level.INFO, "No mapping defined. Load one");
 
 				File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), SimpleMappingFileManager.LOAD_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);
 
-				simpleMapping = SimpleMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
+				mapping = SimpleMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
 			}
 
-			List<SimpleMappingRow> rows = simpleMapping.getMappingRows();
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "========");
+		
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "Exporting data from provider: " + dataProvider.getProviderName() + " with mapping: " + mapping.getMappingName());
+			
+			List<SimpleMappingRow> rows = mapping.getMappingRows();
 			List<?> objectsToExport = dataProvider.getDataList();
 
 			exporter.exportData(objectsToExport, rows);
+			
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "=======");
 
 		} catch (IOException | InstantiationException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
