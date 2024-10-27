@@ -18,7 +18,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import com.jtools.data.provider.DataProviderPubSubTopics;
+import com.jtools.data.provider.DataProviderPubSub;
 import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
@@ -26,7 +26,6 @@ import com.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
-import jakarta.jms.TextMessage;
 
 /**
  * @author j4ckk0
@@ -58,7 +57,7 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 
 		dataProvidersComboBox.addItemListener(this);
 
-		DefaultPubSubBus.instance().addListener(this, DataProviderPubSubTopics.DATA_PROVIDER_ADDED, DataProviderPubSubTopics.DATA_PROVIDER_REMOVED);
+		DefaultPubSubBus.instance().addListener(this, DataProviderPubSub.DATA_PROVIDER_ADDED, DataProviderPubSub.DATA_PROVIDER_REMOVED);
 
 		pack();
 
@@ -67,29 +66,25 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
-			if(!(DataProviderPubSubTopics.MESSAGES_TYPE.isAssignableFrom(message.getClass()))) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected message type");
-				return;
-			}
 			
-			String providerName = ((TextMessage)message).getText();
+			String providerName = DataProviderPubSub.readMessage(message);
 			
 			IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
 			
 			if(dataProvider == null) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected content: not a IDataProvider matching with name: " + providerName);
+				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Could not retieve IDataProvider matching with name: " + providerName);
 				return;
 			}
 
-			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_ADDED)) {
+			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_ADDED)) {
 				dataProvidersComboBox.addItem(dataProvider);
 			}
 
-			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_REMOVED)) {
+			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_REMOVED)) {
 				dataProvidersComboBox.removeItem(dataProvider);
 			}
 
-		} catch (JMSException e) {
+		} catch (JMSException | ClassCastException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
@@ -116,7 +111,7 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 		Object selectedItem = e.getItem();
 
 		if(selectedItem instanceof IDataProvider) {
-			DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_CHANGED, ((IDataProvider)selectedItem).getProviderName());
+			DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_CHANGED, ((IDataProvider)selectedItem).getProviderName());
 		}
 
 	}

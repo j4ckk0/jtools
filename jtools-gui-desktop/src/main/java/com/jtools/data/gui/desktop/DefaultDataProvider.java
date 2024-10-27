@@ -15,7 +15,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-import com.jtools.data.provider.DataProviderPubSubTopics;
+import com.jtools.data.provider.DataProviderPubSub;
 import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.gui.list.cellRenderers.DefaultClassListCellRenderer;
@@ -61,12 +61,12 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 			@Override
 			public void internalFrameOpened(InternalFrameEvent e) {
-				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_ADDED, DefaultDataProvider.this.getProviderName());
+				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_ADDED, DefaultDataProvider.this.getProviderName());
 			}
 
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
-				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSubTopics.DATA_PROVIDER_REMOVED, DefaultDataProvider.this.getProviderName());
+				DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_REMOVED, DefaultDataProvider.this.getProviderName());
 			}
 		});
 		

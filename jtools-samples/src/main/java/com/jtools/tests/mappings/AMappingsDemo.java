@@ -23,7 +23,7 @@ import com.jtools.data.gui.desktop.DataProviderSelector;
 import com.jtools.data.gui.desktop.DefaultDataProvider;
 import com.jtools.data.gui.desktop.ShowDataProviderSelectorAction;
 import com.jtools.data.gui.desktop.ShowDefaultDataProviderAction;
-import com.jtools.data.provider.DataProviderPubSubTopics;
+import com.jtools.data.provider.DataProviderPubSub;
 import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.gui.desktop.ClearStdOutputAction;
@@ -45,7 +45,6 @@ import com.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
-import jakarta.jms.TextMessage;
 
 /**
  * @author j4ckk0
@@ -243,7 +242,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		//
 		// Subscribe to pub/sub
 		//
-		DefaultPubSubBus.instance().addListener(this, DataProviderPubSubTopics.DATA_PROVIDER_CHANGED);
+		DefaultPubSubBus.instance().addListener(this, DataProviderPubSub.DATA_PROVIDER_CHANGED);
 
 		//
 		// Data provider
@@ -265,14 +264,10 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
-			if(!(DataProviderPubSubTopics.MESSAGES_TYPE.isAssignableFrom(message.getClass()))) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Unexpected message type");
-				return;
-			}
+			
+			String providerName = DataProviderPubSub.readMessage(message);
 
-			String providerName = ((TextMessage)message).getText();
-
-			if(topicName.equals(DataProviderPubSubTopics.DATA_PROVIDER_CHANGED)) {
+			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_CHANGED)) {
 				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
 
 				if (dataProvider != null) {
@@ -293,7 +288,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 				}
 			}
 
-		} catch (JMSException e) {
+		} catch (JMSException | ClassCastException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
