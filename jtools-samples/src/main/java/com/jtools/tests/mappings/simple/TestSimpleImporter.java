@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.editors.simple.SimpleMappingEditor;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.importers.SimpleMappingExcelImporter;
@@ -24,9 +25,11 @@ public class TestSimpleImporter {
 	 */
 	public static void main(String[] args) {
 		try {
-			SimpleMapping<Person> simpleMapping = new SimpleMapping<>(Person.class);
+			SimpleMapping<Person> mapping = new SimpleMapping<>(Person.class);
+			
+			MappingRegistry.instance().registerSimpleMapping(mapping);
 
-			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(simpleMapping);
+			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(mapping);
 
 			List<Person> data = SimpleMappingExcelImporter.getInstance().importData(Person.class, personMappingEditor.getRows());
 			if(data != null) {

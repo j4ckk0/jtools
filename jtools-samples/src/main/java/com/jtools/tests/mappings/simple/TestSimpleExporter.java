@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.jtools.data.provider.IDataProvider;
+import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.editors.simple.SimpleMappingEditor;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
@@ -30,9 +31,11 @@ public class TestSimpleExporter {
 	public static void main(String[] args) {
 		try {
 
-			SimpleMapping<Person> simpleMapping = new SimpleMapping<>(Person.class);
+			SimpleMapping<Person> mapping = new SimpleMapping<>(Person.class);
+			
+			MappingRegistry.instance().registerSimpleMapping(mapping);
 
-			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(simpleMapping);
+			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(mapping);
 			personMappingEditor.showEditorAsFrame(null, new NamedCallable<Void>() {
 
 				@Override

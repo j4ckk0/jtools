@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.block.BlockMapping;
+import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.editors.block.BlockMappingEditor;
 import com.jtools.utils.CommonUtils;
@@ -50,9 +51,11 @@ public class BlockMappingCreateAction extends AEditorAction {
 		Class<?> dataClass = dataProvider.getDataClass();
 
 		try {
-			BlockMapping<?> blockMapping = new BlockMapping<>(dataClass);
+			BlockMapping<?> mapping = new BlockMapping<>(dataClass);
+			
+			MappingRegistry.instance().registerBlockMapping(mapping);
 
-			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(blockMapping, MappingUtils.getPossibleColumns(), CommonUtils.classListToArray(possibleDataClasses));
+			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), CommonUtils.classListToArray(possibleDataClasses));
 			showEditor(mappingEditor);
 		} catch (IOException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
