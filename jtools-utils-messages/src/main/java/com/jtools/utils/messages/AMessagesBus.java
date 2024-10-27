@@ -121,7 +121,7 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
-	public BrokerService startBroker() {
+	public void start() {
 		if (broker == null) {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Creating broker at " + brokerURL);
 			try {
@@ -137,9 +137,11 @@ public abstract class AMessagesBus implements AutoCloseable {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 				Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			}
-
 		}
-		return broker;
+	}
+	
+	public boolean isStarted() {
+		return broker != null;
 	}
 
 	// //////////////////////////////

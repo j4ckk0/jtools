@@ -116,6 +116,11 @@ public class PubSubBus extends AMessagesBus {
 	}
 
 	public void sendObjectMessage(String topicName, Serializable payload) {
+		
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+		}
+		
 		try {
 			Session session = getSession();
 			Message msg = session.createObjectMessage(payload);
@@ -131,6 +136,11 @@ public class PubSubBus extends AMessagesBus {
 	}
 
 	public void sendTextMessage(String topicName, String payload) {
+		
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+		}
+		
 		try {
 			Session session = getSession();
 			Message msg = session.createTextMessage(payload);

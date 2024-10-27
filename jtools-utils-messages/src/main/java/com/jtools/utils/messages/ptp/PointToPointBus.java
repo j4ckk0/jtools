@@ -99,6 +99,11 @@ public class PointToPointBus extends AMessagesBus {
 	}
 
 	public void sendObjectMessage(Serializable payload) {
+		
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+		}
+		
 		try {
 			Session session = getSession();
 			Message msg = session.createObjectMessage(payload);
@@ -114,6 +119,11 @@ public class PointToPointBus extends AMessagesBus {
 	}
 
 	public void sendTextMessage(String payload) {
+		
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+		}
+		
 		try {
 			Session session = getSession();
 			Message msg = session.createTextMessage(payload);
