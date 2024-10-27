@@ -92,6 +92,11 @@ public class PubSubBus extends AMessagesBus {
 	// //////////////////////////////
 
 	public void addListener(PubSubMessageListener listener, String... topicsNames) {
+
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. Register listener will fail");
+		}
+		
 		for (String topicName : topicsNames) {
 			try {
 				PubSubMessagesDispatcher messagesDispatcher = getMessagesDispatcher(topicName);
@@ -104,6 +109,11 @@ public class PubSubBus extends AMessagesBus {
 	}
 
 	public void removeListener(PubSubMessageListener listener, String... topicsNames) {
+
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. Unregister listener will fail");
+		}
+		
 		for (String topicName : topicsNames) {
 			try {
 				PubSubMessagesDispatcher messagesDispatcher = getMessagesDispatcher(topicName);

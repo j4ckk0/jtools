@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jtools.utils.messages.ptp;
+package com.jtools.utils.messages.pointtopoint;
 
 import java.io.Serializable;
 import java.util.Properties;
@@ -79,6 +79,11 @@ public class PointToPointBus extends AMessagesBus {
 	// //////////////////////////////
 
 	public void addListener(MessageListener listener) {
+
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Point To Point bus is not started. Register listener will fail");
+		}
+		
 		try {
 			PointToPointMessageDispatcher messagesDispatcher = getMessagesDispatcher();
 			messagesDispatcher.addListener(listener);
@@ -89,6 +94,11 @@ public class PointToPointBus extends AMessagesBus {
 	}
 
 	public void removeListener(MessageListener listener) {
+
+		if(!isStarted()) {
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Point To Point bus is not started. Register listener will fail");
+		}
+		
 		try {
 			PointToPointMessageDispatcher messagesDispatcher = getMessagesDispatcher();
 			messagesDispatcher.removeListener(listener);
@@ -101,7 +111,7 @@ public class PointToPointBus extends AMessagesBus {
 	public void sendObjectMessage(Serializable payload) {
 		
 		if(!isStarted()) {
-			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Point To Point bus is not started. No message will be sent");
 		}
 		
 		try {
@@ -121,7 +131,7 @@ public class PointToPointBus extends AMessagesBus {
 	public void sendTextMessage(String payload) {
 		
 		if(!isStarted()) {
-			Logger.getLogger(getClass().getName()).log(Level.FINE, "Pub/Sub bus is not started. No message will be sent");
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Point To Point bus is not started. No message will be sent");
 		}
 		
 		try {

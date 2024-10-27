@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jtools.utils.messages.ptp;
+package com.jtools.utils.messages.pointtopoint;
 
 import com.jtools.utils.messages.DefaultBusConfig;
 
