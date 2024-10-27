@@ -1,13 +1,16 @@
 /**
  * 
  */
-package com.jtools.mappings.common;
+package com.jtools.mappings.editors.common;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.jtools.mappings.common.IMapping;
+import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 
 /**
  * @author j4ckk0
@@ -32,10 +35,14 @@ public class MappingRegistry {
 
 	public void register(IMapping mapping) {
 		mappings.put(mapping.getId(), mapping);
+		
+		DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.MAPPING_ADDED, mapping.getId());
 	}
 
 	public void unregister(IMapping mapping) {
 		mappings.remove(mapping.getId());
+		
+		DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.MAPPING_REMOVED, mapping.getId());
 	}
 
 	public IMapping get(UUID mappingId) {

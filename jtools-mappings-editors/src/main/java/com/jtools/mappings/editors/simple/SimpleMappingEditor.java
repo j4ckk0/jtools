@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JScrollPane;
 
 import com.jtools.mappings.editors.common.MappingOptionsPanel;
+import com.jtools.mappings.editors.common.MappingRegistry;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.mappings.simple.io.SimpleMappingFileManager;
@@ -56,11 +57,11 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 		buildPanel();
 	}
 
-	// ////////////////////////////
+	//////////////////////////////
 	//
-	// 	Methods
+	// Public methods
 	//
-	// ////////////////////////////
+	//////////////////////////////
 
 	@Override
 	public String getEditorName() {
@@ -83,6 +84,22 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	protected void save() throws IOException {
 		SimpleMappingFileManager.instance().save(mapping);
 	}
+
+	@Override
+	protected void onWindowOpened() {
+		MappingRegistry.instance().register(mapping);
+	}
+
+	@Override
+	protected void onWindowClosed() {
+		MappingRegistry.instance().unregister(mapping);
+	}
+
+	//////////////////////////////
+	//
+	// Private methods
+	//
+	//////////////////////////////
 
 	private void buildPanel() {
 		setLayout(new BorderLayout(6, 6));

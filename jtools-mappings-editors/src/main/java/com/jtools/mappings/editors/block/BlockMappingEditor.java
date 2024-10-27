@@ -15,6 +15,7 @@ import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.block.BlockMappingRow;
 import com.jtools.mappings.block.io.BlockMappingFileManager;
 import com.jtools.mappings.editors.common.MappingOptionsPanel;
+import com.jtools.mappings.editors.common.MappingRegistry;
 import com.jtools.utils.CommonUtils;
 import com.jtools.utils.gui.border.MarginTitledBorder;
 import com.jtools.utils.gui.editor.AEditor;
@@ -115,6 +116,16 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 	@Override
 	protected void save() throws IOException {
 		BlockMappingFileManager.instance().save(mapping);
+	}
+
+	@Override
+	protected void onWindowOpened() {
+		MappingRegistry.instance().register(mapping);
+	}
+
+	@Override
+	protected void onWindowClosed() {
+		MappingRegistry.instance().unregister(mapping);
 	}
 
 	//////////////////////////////

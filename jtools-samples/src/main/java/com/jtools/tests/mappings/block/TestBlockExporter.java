@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.editors.block.BlockMappingEditor;
 import com.jtools.tests.data.models.Person;
@@ -31,8 +30,6 @@ public class TestBlockExporter {
 		try {
 
 			BlockMapping<Person> mapping = new BlockMapping<>(Person.class);
-			
-			MappingRegistry.instance().register(mapping);
 			
 			BlockMappingEditor<Person> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), Person.class, Book.class);
 

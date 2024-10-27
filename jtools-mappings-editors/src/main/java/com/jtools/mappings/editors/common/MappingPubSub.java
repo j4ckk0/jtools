@@ -21,17 +21,11 @@ import jakarta.jms.TextMessage;
  */
 public interface MappingPubSub {
 
-	public static final String SIMPLE_MAPPING_ADDED = "SIMPLE_MAPPING_ADDED";
+	public static final String MAPPING_ADDED = "MAPPING_ADDED";
 
-	public static final String SIMPLE_MAPPING_REMOVED = "SIMPLE_MAPPING_REMOVED";
+	public static final String MAPPING_REMOVED = "MAPPING_REMOVED";
 
-	public static final String SIMPLE_MAPPING_CHANGED = "SIMPLE_MAPPING_CHANGED";
-
-	public static final String BLOCK_MAPPING_ADDED = "BLOCK_MAPPING_ADDED";
-
-	public static final String BLOCK_MAPPING_REMOVED = "BLOCK_MAPPING_REMOVED";
-
-	public static final String BLOCK_MAPPING_CHANGED = "BLOCK_MAPPING_CHANGED";
+	public static final String MAPPING_CHANGED = "MAPPING_CHANGED";
 
 	public static ObjectMessage castMessage(Message message) throws ClassCastException {
 		if (!(message instanceof ObjectMessage)) {

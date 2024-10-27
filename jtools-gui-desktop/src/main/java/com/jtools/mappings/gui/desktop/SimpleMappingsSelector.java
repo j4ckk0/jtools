@@ -16,9 +16,9 @@ import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 
 import com.jtools.mappings.common.IMapping;
-import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.editors.common.MappingListCellRenderer;
 import com.jtools.mappings.editors.common.MappingPubSub;
+import com.jtools.mappings.editors.common.MappingRegistry;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 import com.jtools.utils.messages.pubsub.PubSubMessageListener;
@@ -56,8 +56,7 @@ public class SimpleMappingsSelector extends JInternalFrame implements PubSubMess
 
 		mappingsComboBox.addItemListener(this);
 
-		DefaultPubSubBus.instance().addListener(this, MappingPubSub.SIMPLE_MAPPING_ADDED,
-				MappingPubSub.SIMPLE_MAPPING_REMOVED);
+		DefaultPubSubBus.instance().addListener(this, MappingPubSub.MAPPING_ADDED, MappingPubSub.MAPPING_REMOVED);
 
 		pack();
 
@@ -72,16 +71,16 @@ public class SimpleMappingsSelector extends JInternalFrame implements PubSubMess
 			SimpleMapping<?> simpleMapping = MappingRegistry.instance().get(mappingId, SimpleMapping.class);
 
 			if (simpleMapping == null) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING,
+				Logger.getLogger(getClass().getName()).log(Level.FINE,
 						"Pub/Sub message received. Could not retriev a SimpleMapping matching with id: " + mappingId);
 				return;
 			}
 
-			if (topicName.equals(MappingPubSub.SIMPLE_MAPPING_ADDED)) {
+			if (topicName.equals(MappingPubSub.MAPPING_ADDED)) {
 				mappingsComboBox.addItem(simpleMapping);
 			}
 
-			if (topicName.equals(MappingPubSub.SIMPLE_MAPPING_ADDED)) {
+			if (topicName.equals(MappingPubSub.MAPPING_REMOVED)) {
 				mappingsComboBox.removeItem(simpleMapping);
 			}
 
@@ -96,7 +95,7 @@ public class SimpleMappingsSelector extends JInternalFrame implements PubSubMess
 		Object selectedItem = e.getItem();
 
 		if (selectedItem instanceof IMapping) {
-			DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.SIMPLE_MAPPING_CHANGED,
+			DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.MAPPING_CHANGED,
 					((IMapping) selectedItem).getId());
 		}
 

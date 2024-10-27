@@ -22,7 +22,6 @@ import javax.swing.JFileChooser;
 import org.apache.commons.collections4.map.HashedMap;
 
 import com.jtools.mappings.common.MappingException;
-import com.jtools.mappings.common.MappingRegistry;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.utils.CommonUtils;
@@ -145,8 +144,6 @@ public class SimpleMappingFileManager {
 		try {
 			SimpleMapping<E> mapping = new SimpleMapping<>(objectClass, rows);
 			mappingsFilePaths.put(mapping.getId(), mappingFilepath);
-			
-			MappingRegistry.instance().register(mapping);
 			
 			return mapping;
 
