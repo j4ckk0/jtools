@@ -135,7 +135,7 @@ public class PubSubBus extends AMessagesBus {
 			Session session = getSession();
 			Message msg = session.createObjectMessage(payload);
 
-			Logger.getLogger(getClass().getName()).log(Level.FINE, "Sending message '" + payload + "'");
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Sending message: '" + payload + "' on topic: " + topicName);
 
 			MessageProducer producer = getProducer(topicName);
 			producer.send(msg);
@@ -155,7 +155,7 @@ public class PubSubBus extends AMessagesBus {
 			Session session = getSession();
 			Message msg = session.createTextMessage(payload);
 
-			Logger.getLogger(getClass().getName()).log(Level.FINE, "Sending message '" + payload + "'");
+			Logger.getLogger(getClass().getName()).log(Level.FINE, "Sending message: '" + payload + "' on topic: " + topicName);
 
 			MessageProducer producer = getProducer(topicName);
 			producer.send(msg);
