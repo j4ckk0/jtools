@@ -26,12 +26,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.jtools.data.io.DataFileManager;
-import com.jtools.data.provider.DataProviderPubSub;
+import com.jtools.data.provider.DataProviderRegistry;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.gui.table.ObjectsTable;
 import com.jtools.utils.CommonUtils;
 import com.jtools.utils.gui.editor.AEditor;
-import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 
 /**
  * @author j4ckk0
@@ -130,12 +129,12 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 	@Override
 	protected void onWindowOpened() {
-		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_ADDED, DataEditor.this.getProviderName());
+		DataProviderRegistry.instance().register(DataEditor.this);
 	}
 
 	@Override
 	protected void onWindowClosed() {
-		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_REMOVED, DataEditor.this.getProviderName());
+		DataProviderRegistry.instance().unregister(DataEditor.this);
 	}
 
 	@Override
