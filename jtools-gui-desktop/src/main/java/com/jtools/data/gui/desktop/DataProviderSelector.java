@@ -48,7 +48,7 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 
 		Dimension preferredSize = dataProvidersComboBox.getPreferredSize();
 		dataProvidersComboBox.setPreferredSize(new Dimension(300, preferredSize.height));
-		
+
 		dataProvidersComboBox.setRenderer(new DataProviderListCellRenderer());
 
 		dataProvidersComboBox.addItemListener(this);
@@ -62,28 +62,42 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
-			
+
 			String providerName = DataProviderPubSub.readMessage(message);
-			
-			IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
-			
-			if(dataProvider == null) {
-				Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Could not retieve IDataProvider matching with name: " + providerName);
-				return;
-			}
 
 			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_ADDED)) {
+
+				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
+
+				if(dataProvider == null) {
+					Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Could not retieve IDataProvider matching with name: " + providerName);
+					return;
+				}
+
 				dataProvidersComboBox.addItem(dataProvider);
 			}
 
 			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_REMOVED)) {
-				dataProvidersComboBox.removeItem(dataProvider);
+				IDataProvider dataProvider = getDataProviderForName(providerName);
+				if(dataProvider != null) {
+					dataProvidersComboBox.removeItem(dataProvider);
+				}
 			}
 
 		} catch (JMSException | ClassCastException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
+	}
+
+	private IDataProvider getDataProviderForName(String providerName) {
+		for(int i = 0; i < dataProvidersComboBox.getItemCount(); i++) {
+			IDataProvider dataProvider = dataProvidersComboBox.getItemAt(i);
+			if(dataProvider.getProviderName().equals(providerName)) {
+				return dataProvider;
+			}
+		}
+		return null;
 	}
 
 	@Override

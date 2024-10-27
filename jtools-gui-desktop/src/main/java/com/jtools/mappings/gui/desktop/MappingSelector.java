@@ -19,7 +19,6 @@ import com.jtools.mappings.common.IMapping;
 import com.jtools.mappings.editors.common.MappingListCellRenderer;
 import com.jtools.mappings.editors.common.MappingPubSub;
 import com.jtools.mappings.editors.common.MappingRegistry;
-import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.utils.messages.pubsub.DefaultPubSubBus;
 import com.jtools.utils.messages.pubsub.PubSubMessageListener;
 
@@ -30,14 +29,18 @@ import jakarta.jms.Message;
  * @author j4ckk0
  *
  */
-public class SimpleMappingsSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
+public class MappingSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
-	private static final long serialVersionUID = -3813295486024271091L;
+	private static final long serialVersionUID = -4168476618127593101L;
 
-	private final JComboBox<SimpleMapping<?>> mappingsComboBox;
+	private final JComboBox<IMapping> mappingsComboBox;
 
-	public SimpleMappingsSelector() {
-		super("Simple mappings selector");
+	private final Class<? extends IMapping> mappingClass;
+
+	public MappingSelector(Class<? extends IMapping> mappingClass) {
+		super(mappingClass.getSimpleName() + " mappings selector");
+
+		this.mappingClass = mappingClass;
 
 		setIconifiable(true);
 		setClosable(true);
@@ -50,7 +53,7 @@ public class SimpleMappingsSelector extends JInternalFrame implements PubSubMess
 		contentPane.add(mappingsComboBox, BorderLayout.CENTER);
 
 		Dimension preferredSize = mappingsComboBox.getPreferredSize();
-		mappingsComboBox.setPreferredSize(new Dimension(300, preferredSize.height));
+		mappingsComboBox.setPreferredSize(new Dimension(700, preferredSize.height));
 
 		mappingsComboBox.setRenderer(new MappingListCellRenderer());
 
@@ -68,26 +71,44 @@ public class SimpleMappingsSelector extends JInternalFrame implements PubSubMess
 
 			UUID mappingId = MappingPubSub.readMessage(message);
 
-			SimpleMapping<?> simpleMapping = MappingRegistry.instance().get(mappingId, SimpleMapping.class);
-
-			if (simpleMapping == null) {
-				Logger.getLogger(getClass().getName()).log(Level.FINE,
-						"Pub/Sub message received. Could not retriev a SimpleMapping matching with id: " + mappingId);
-				return;
-			}
-
 			if (topicName.equals(MappingPubSub.MAPPING_ADDED)) {
-				mappingsComboBox.addItem(simpleMapping);
+
+				IMapping mapping = MappingRegistry.instance().get(mappingId);
+
+				if ( mapping ==null ) {
+					Logger.getLogger(getClass().getName()).log(Level.WARNING, "Pub/Sub message received. Could not retrieve a " + mappingClass.getSimpleName() + " matching with id: " + mappingId);
+					return;
+				}
+
+				if ( !(mappingClass.isAssignableFrom(mapping.getClass())) ) {
+					Logger.getLogger(getClass().getName()).log(Level.FINER, "Pub/Sub message received. Mapping class not matching -> ignore message");
+					return;
+				}
+
+				mappingsComboBox.addItem(mapping);
 			}
 
 			if (topicName.equals(MappingPubSub.MAPPING_REMOVED)) {
-				mappingsComboBox.removeItem(simpleMapping);
+				IMapping mapping = getMappingForId(mappingId);
+				if(mapping != null) {
+					mappingsComboBox.removeItem(mapping);
+				}
 			}
 
 		} catch (JMSException | ClassCastException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
+	}
+
+	private IMapping getMappingForId(UUID mappingId) {
+		for(int i = 0; i < mappingsComboBox.getItemCount(); i++) {
+			IMapping mapping = mappingsComboBox.getItemAt(i);
+			if(mapping.getId().equals(mappingId)) {
+				return mapping;
+			}
+		}
+		return null;
 	}
 
 	@Override

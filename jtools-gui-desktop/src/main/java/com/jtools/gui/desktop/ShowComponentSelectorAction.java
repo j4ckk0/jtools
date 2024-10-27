@@ -1,10 +1,12 @@
-package com.jtools.data.gui.desktop;
+package com.jtools.gui.desktop;
 
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
 
 /**
@@ -12,20 +14,19 @@ import javax.swing.JTabbedPane;
  * @author j4ckk0
  *
  */
-public class ShowDefaultDataProviderAction extends AbstractAction {
+public class ShowComponentSelectorAction extends AbstractAction {
 
-	private static final long serialVersionUID = 2914655924914576949L;
+	private static final long serialVersionUID = 2870619093541127857L;
 
 	private final JDesktopPane desktopPane;
-	private final DefaultDataProvider defaultDataTypesProvider;
+	private final Component component;
 
 	private boolean isVisible;
 
-	public ShowDefaultDataProviderAction(String name, JDesktopPane desktopPane,
-			DefaultDataProvider defaultDataTypesProvider) {
+	public ShowComponentSelectorAction(String name, JDesktopPane desktopPane, Component component) {
 		super(name);
 		this.desktopPane = desktopPane;
-		this.defaultDataTypesProvider = defaultDataTypesProvider;
+		this.component = component;
 
 		isVisible = false;
 	}
@@ -33,24 +34,27 @@ public class ShowDefaultDataProviderAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (!isVisible) {
-			desktopPane.add(defaultDataTypesProvider);
-			
+			desktopPane.add(component);
+
 			Container parent = desktopPane.getParent();
 			if(parent instanceof JTabbedPane) {
 				((JTabbedPane)parent).setSelectedComponent(desktopPane);
 			}
-			
-			defaultDataTypesProvider.setVisible(true);
-			defaultDataTypesProvider.moveToFront();
+
+			component.setVisible(true);
+
+			if(component instanceof JInternalFrame) {
+				((JInternalFrame)component).moveToFront();
+			}
 		} else {
-			defaultDataTypesProvider.setVisible(false);
-			desktopPane.remove(defaultDataTypesProvider);
-			
+			component.setVisible(false);
+			desktopPane.remove(component);
+
 			Container parent = desktopPane.getParent();
 			if(parent instanceof JTabbedPane) {
 				((JTabbedPane)parent).setSelectedComponent(desktopPane);
 			}
-			
+
 		}
 		isVisible = !isVisible;
 	}
