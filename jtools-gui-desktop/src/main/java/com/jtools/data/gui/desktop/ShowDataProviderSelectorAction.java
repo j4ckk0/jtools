@@ -1,9 +1,11 @@
 package com.jtools.data.gui.desktop;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDesktopPane;
+import javax.swing.JTabbedPane;
 
 /**
  * 
@@ -32,11 +34,23 @@ public class ShowDataProviderSelectorAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		if (!isVisible) {
 			desktopPane.add(dataProviderSelector);
+			
+			Container parent = desktopPane.getParent();
+			if(parent instanceof JTabbedPane) {
+				((JTabbedPane)parent).setSelectedComponent(desktopPane);
+			}
+			
 			dataProviderSelector.setVisible(true);
 			dataProviderSelector.moveToFront();
 		} else {
 			dataProviderSelector.setVisible(false);
 			desktopPane.remove(dataProviderSelector);
+			
+			Container parent = desktopPane.getParent();
+			if(parent instanceof JTabbedPane) {
+				((JTabbedPane)parent).setSelectedComponent(desktopPane);
+			}
+			
 		}
 		isVisible = !isVisible;
 	}

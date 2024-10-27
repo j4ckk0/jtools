@@ -1,9 +1,11 @@
 package com.jtools.gui.desktop;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDesktopPane;
+import javax.swing.JTabbedPane;
 
 /**
  * 
@@ -30,12 +32,27 @@ public class ShowStdOutputAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		if (!isVisible) {
 			stdOutputFrame = new StdOutputFrame();
+			
 			desktopPane.add(stdOutputFrame);
+			
+			Container parent = desktopPane.getParent();
+			if(parent instanceof JTabbedPane) {
+				((JTabbedPane)parent).setSelectedComponent(desktopPane);
+			}
+			
 			stdOutputFrame.setVisible(true);
 			stdOutputFrame.moveToFront();
 		} else {
 			stdOutputFrame.setVisible(false);
+			
 			desktopPane.remove(stdOutputFrame);
+			
+			Container parent = desktopPane.getParent();
+			if(parent instanceof JTabbedPane) {
+				((JTabbedPane)parent).setSelectedComponent(desktopPane);
+			}
+			
+			
 			stdOutputFrame = null;
 		}
 		isVisible = !isVisible;

@@ -14,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
 import javax.swing.ToolTipManager;
 import javax.swing.WindowConstants;
 
@@ -52,15 +53,47 @@ import jakarta.jms.Message;
  */
 public abstract class AMappingsDemo extends JFrame implements PubSubMessageListener {
 
-	// //////////////////////////////
-	//
-	// Attributes and constants
-	//
-	// //////////////////////////////
-
 	private static final long serialVersionUID = 7125491173800101032L;
 
-	private final JDesktopPane desktopPane;
+	// //////////////////////////////
+	//
+	// I18N resources constants
+	//
+	// //////////////////////////////
+
+	private static final String DEMO = "Demo";
+	private static final String MENU = "Menu";
+	private static final String EXIT = "Exit";
+	private static final String SHOW_STD_OUTPUT = "Show std output";
+	private static final String CLEAR_STD_OUTPUT = "Clear std output";
+	private static final String SHOW_HIDE_POSSIBLE_DATA_CLASSES = "Show/hide possible data classes";
+	private static final String SHOW_HIDE_DATA_PROVIDERS = "Show/hide data providers";
+	private static final String CREATE_DATA_TABLE = "Create data table";
+	private static final String LOAD_DATA_TABLE = "Load data table";
+	private static final String CREATE_SIMPLE_MAPPING = "Create simple mapping";
+	private static final String LOAD_SIMPLE_MAPPING = "Load simple mapping";
+	private static final String EXPORT_DATA_TO_STANDARD_OUTPUT = "Export data to standard output";
+	private static final String CREATE_BLOCK_MAPPING = "Create block mapping";
+	private static final String LOAD_BLOCK_MAPPING = "Load block mapping";
+	private static final String EXPORT_DATA_TO_EXCEL = "Export data to Excel";
+	private static final String IMPORT_DATA_FROM_EXCEL = "Import data from Excel";
+	private static final String CONSOLE = "Console";
+	private static final String TEST_DATA = "Test data";
+	private static final String SIMPLE_MAPPING = "Simple mapping";
+	private static final String BLOCK_MAPPING = "Block mapping";
+
+	// //////////////////////////////
+	//
+	// Attributes
+	//
+	// //////////////////////////////
+
+	private final JTabbedPane tabbedPane;
+
+	private final JDesktopPane testDataDesktopPane;
+	private final JDesktopPane simpleMappingDesktopPane;
+	private final JDesktopPane blockMappingDesktopPane;
+	private final JDesktopPane consoleDesktopPane;
 
 	private final DataProviderSelector dataProviderSelector;
 
@@ -91,8 +124,8 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	// //////////////////////////////
 
 	protected AMappingsDemo(Class<?>[] testObjectClasses) {
-		super("Demo");
-		
+		super(DEMO);
+
 		LoggingUtils.loadDefaultConfig();
 
 		//
@@ -105,7 +138,6 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 
-
 		//
 		// Build the GUI
 		//
@@ -117,7 +149,20 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setPreferredSize(new Dimension(screenSize.width * 90 / 100, screenSize.height * 90 / 100));
 
-		this.desktopPane = new CascadeDesktopPane();
+		this.tabbedPane = new JTabbedPane();
+		setContentPane(tabbedPane);
+
+		this.testDataDesktopPane = new CascadeDesktopPane();
+		tabbedPane.addTab(TEST_DATA, testDataDesktopPane);
+
+		this.simpleMappingDesktopPane = new CascadeDesktopPane();
+		tabbedPane.addTab(SIMPLE_MAPPING, simpleMappingDesktopPane);
+
+		this.blockMappingDesktopPane = new CascadeDesktopPane();
+		tabbedPane.addTab(BLOCK_MAPPING, blockMappingDesktopPane);
+
+		this.consoleDesktopPane = new CascadeDesktopPane();
+		tabbedPane.addTab(CONSOLE, consoleDesktopPane);
 
 		this.dataProviderSelector = new DataProviderSelector();
 
@@ -128,116 +173,116 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		setJMenuBar(menuBar);
 
 		// Menu menu
-		JMenu menuMenu = new JMenu("Menu");
+		JMenu menuMenu = new JMenu(MENU);
 		menuBar.add(menuMenu);
 
-		JMenuItem exitItem = new JMenuItem(new ExitAction("Exit"));
+		JMenuItem exitItem = new JMenuItem(new ExitAction(EXIT));
 		menuMenu.add(exitItem);
 
-		// View menu
-		JMenu viewMenu = new JMenu("View");
-		menuBar.add(viewMenu);
+		// Console menu
+		JMenu consoleMenu = new JMenu(CONSOLE);
+		menuBar.add(consoleMenu);
 
-		ShowStdOutputAction showStdOutputAction = new ShowStdOutputAction("Show std output", desktopPane);
+		ShowStdOutputAction showStdOutputAction = new ShowStdOutputAction(SHOW_STD_OUTPUT, consoleDesktopPane);
 		JMenuItem showStdOutputItem = new JMenuItem(showStdOutputAction);
-		viewMenu.add(showStdOutputItem);
+		consoleMenu.add(showStdOutputItem);
 
-		ClearStdOutputAction clearStdOutputAction = new ClearStdOutputAction("Clear std output", showStdOutputAction);
+		ClearStdOutputAction clearStdOutputAction = new ClearStdOutputAction(CLEAR_STD_OUTPUT, showStdOutputAction);
 		JMenuItem clearStdOutputItem = new JMenuItem(clearStdOutputAction);
-		viewMenu.add(clearStdOutputItem);
+		consoleMenu.add(clearStdOutputItem);
 
 		// Data menu
-		JMenu dataMenu = new JMenu("Test data");
+		JMenu dataMenu = new JMenu(TEST_DATA);
 		menuBar.add(dataMenu);
 
 		ShowDefaultDataProviderAction showDataTypesProviderAction = new ShowDefaultDataProviderAction(
-				"Show/hide possible data classes", desktopPane, defaultDataProvider);
+				SHOW_HIDE_POSSIBLE_DATA_CLASSES, testDataDesktopPane, defaultDataProvider);
 		JMenuItem showDataTypesProviderItem = new JMenuItem(showDataTypesProviderAction);
 		dataMenu.add(showDataTypesProviderItem);
 
 		dataMenu.add(new JSeparator());
 
 		ShowDataProviderSelectorAction showDataProviderSelectorAction = new ShowDataProviderSelectorAction(
-				"Show/hide data providers", desktopPane, dataProviderSelector);
+				SHOW_HIDE_DATA_PROVIDERS, testDataDesktopPane, dataProviderSelector);
 		JMenuItem showDataProviderSelectorItem = new JMenuItem(showDataProviderSelectorAction);
 		dataMenu.add(showDataProviderSelectorItem);
 
 		dataMenu.add(new JSeparator());
 
-		this.createDataTableAction = new CreateDataEditorAction("Create data table", testObjectClasses);
+		this.createDataTableAction = new CreateDataEditorAction(CREATE_DATA_TABLE, testObjectClasses);
 		JMenuItem createDataTableItem = new JMenuItem(createDataTableAction);
 		dataMenu.add(createDataTableItem);
 
-		this.loadDataTableAction = new LoadDataAction("Load data table", testObjectClasses);
+		this.loadDataTableAction = new LoadDataAction(LOAD_DATA_TABLE, testObjectClasses);
 		JMenuItem loadDataTableItem = new JMenuItem(loadDataTableAction);
 		dataMenu.add(loadDataTableItem);
 
 		// Simple mapping menu
-		JMenu simpleMappingMenu = new JMenu("Simple mapping");
+		JMenu simpleMappingMenu = new JMenu(SIMPLE_MAPPING);
 		menuBar.add(simpleMappingMenu);
 
-		this.createSimpleMappingAction = new SimpleMappingCreateAction("Create simple mapping");
+		this.createSimpleMappingAction = new SimpleMappingCreateAction(CREATE_SIMPLE_MAPPING);
 		JMenuItem createSimpleMappingItem = new JMenuItem(createSimpleMappingAction);
 		simpleMappingMenu.add(createSimpleMappingItem);
 
-		this.loadSimpleMappingAction = new SimpleMappingLoadAction("Load simple mapping");
+		this.loadSimpleMappingAction = new SimpleMappingLoadAction(LOAD_SIMPLE_MAPPING);
 		JMenuItem loadSimpleMappingItem = new JMenuItem(loadSimpleMappingAction);
 		simpleMappingMenu.add(loadSimpleMappingItem);
 
 		simpleMappingMenu.add(new JSeparator());
 
 		this.simpleMappingExportToStdOutputAction = new SimpleMappingExportToStdOutputAction(
-				"Export data to standard output");
+				EXPORT_DATA_TO_STANDARD_OUTPUT);
 		JMenuItem simpleMappingExportToStdOutputItem = new JMenuItem(simpleMappingExportToStdOutputAction);
 		simpleMappingMenu.add(simpleMappingExportToStdOutputItem);
 
-		this.simpleMappingExportToExcelAction = new SimpleMappingExportToExcelAction("Export data to Excel");
+		this.simpleMappingExportToExcelAction = new SimpleMappingExportToExcelAction(EXPORT_DATA_TO_EXCEL);
 		JMenuItem simpleMappingExportToExcelItem = new JMenuItem(simpleMappingExportToExcelAction);
 		simpleMappingMenu.add(simpleMappingExportToExcelItem);
 
 		simpleMappingMenu.add(new JSeparator());
 
-		this.simpleMappingImportFromExcelAction = new SimpleMappingImportFromExcelAction("Import data from Excel");
+		this.simpleMappingImportFromExcelAction = new SimpleMappingImportFromExcelAction(IMPORT_DATA_FROM_EXCEL);
 		JMenuItem simpleMappingImportFromExcelItem = new JMenuItem(simpleMappingImportFromExcelAction);
 		simpleMappingMenu.add(simpleMappingImportFromExcelItem);
 
 		// Block mapping menu
-		JMenu blockMappingMenu = new JMenu("Block mapping");
+		JMenu blockMappingMenu = new JMenu(BLOCK_MAPPING);
 		menuBar.add(blockMappingMenu);
 
-		this.createBlockMappingAction = new BlockMappingCreateAction("Create block mapping");
+		this.createBlockMappingAction = new BlockMappingCreateAction(CREATE_BLOCK_MAPPING);
 		JMenuItem createBlockMappingItem = new JMenuItem(createBlockMappingAction);
 		blockMappingMenu.add(createBlockMappingItem);
 
-		this.loadBlockMappingAction = new BlockMappingLoadAction("Load block mapping");
+		this.loadBlockMappingAction = new BlockMappingLoadAction(LOAD_BLOCK_MAPPING);
 		JMenuItem loadBlockMappingItem = new JMenuItem(loadBlockMappingAction);
 		blockMappingMenu.add(loadBlockMappingItem);
 
 		blockMappingMenu.add(new JSeparator());
 
-		this.blockMappingExportToExcelAction = new BlockMappingExportToExcelAction("Export data to Excel");
+		this.blockMappingExportToExcelAction = new BlockMappingExportToExcelAction(EXPORT_DATA_TO_EXCEL);
 		JMenuItem blockMappingExportToExcelItem = new JMenuItem(blockMappingExportToExcelAction);
 		blockMappingMenu.add(blockMappingExportToExcelItem);
 
 		blockMappingMenu.add(new JSeparator());
 
-		this.blockMappingImportFromExcelAction = new BlockMappingImportFromExcelAction("Import data from Excel");
+		this.blockMappingImportFromExcelAction = new BlockMappingImportFromExcelAction(IMPORT_DATA_FROM_EXCEL);
 		JMenuItem blockMappingImportFromExcelItem = new JMenuItem(blockMappingImportFromExcelAction);
 		blockMappingMenu.add(blockMappingImportFromExcelItem);
 
 		//
 		// Build frame
 		//
-		setContentPane(desktopPane);
+		createDataTableAction.setDesktopPane(testDataDesktopPane);
+		loadDataTableAction.setDesktopPane(testDataDesktopPane);
 
-		createDataTableAction.setDesktopPane(desktopPane);
-		createSimpleMappingAction.setDesktopPane(desktopPane);
-		loadSimpleMappingAction.setDesktopPane(desktopPane);
-		createBlockMappingAction.setDesktopPane(desktopPane);
-		loadBlockMappingAction.setDesktopPane(desktopPane);
-		loadDataTableAction.setDesktopPane(desktopPane);
-		simpleMappingImportFromExcelAction.setDesktopPane(desktopPane);
-		blockMappingImportFromExcelAction.setDesktopPane(desktopPane);
+		createSimpleMappingAction.setDesktopPane(simpleMappingDesktopPane);
+		loadSimpleMappingAction.setDesktopPane(simpleMappingDesktopPane);
+		simpleMappingImportFromExcelAction.setDesktopPane(simpleMappingDesktopPane);
+
+		createBlockMappingAction.setDesktopPane(blockMappingDesktopPane);
+		loadBlockMappingAction.setDesktopPane(blockMappingDesktopPane);
+		blockMappingImportFromExcelAction.setDesktopPane(blockMappingDesktopPane);
 
 		//
 		// Subscribe to pub/sub
@@ -250,6 +295,7 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		simpleMappingExportToStdOutputAction.setDataProvider(defaultDataProvider);
 		createSimpleMappingAction.setDataProvider(defaultDataProvider);
 		simpleMappingExportToExcelAction.setDataProvider(defaultDataProvider);
+
 		createBlockMappingAction.setDataProvider(defaultDataProvider);
 		loadBlockMappingAction.setDataProvider(defaultDataProvider);
 
@@ -260,14 +306,13 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		showDataProviderSelectorAction.actionPerformed(null);
 	}
 
-
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
-			
+
 			String providerName = DataProviderPubSub.readMessage(message);
 
-			if(topicName.equals(DataProviderPubSub.DATA_PROVIDER_CHANGED)) {
+			if (topicName.equals(DataProviderPubSub.DATA_PROVIDER_CHANGED)) {
 				IDataProvider dataProvider = DataProviderRegistry.instance().get(providerName);
 
 				if (dataProvider != null) {

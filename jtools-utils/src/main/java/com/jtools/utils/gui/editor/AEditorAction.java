@@ -3,10 +3,13 @@
  */
 package com.jtools.utils.gui.editor;
 
+import java.awt.Container;
+
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+import javax.swing.JTabbedPane;
 
 /**
  * @author j4ckk0
@@ -41,7 +44,14 @@ public abstract class AEditorAction extends AbstractAction {
 	public void showEditor(AEditor mappingEditor) {
 		if (desktopPane != null) {
 			JInternalFrame editorFrame = mappingEditor.showEditorAsInternalFrame();
+			
 			desktopPane.add(editorFrame);
+			
+			Container parent = desktopPane.getParent();
+			if(parent instanceof JTabbedPane) {
+				((JTabbedPane)parent).setSelectedComponent(desktopPane);
+			}
+			
 			editorFrame.moveToFront();
 		} else {
 			mappingEditor.showEditorAsDialog(null, true);
