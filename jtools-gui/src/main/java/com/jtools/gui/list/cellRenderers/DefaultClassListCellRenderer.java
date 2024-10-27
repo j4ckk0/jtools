@@ -22,7 +22,8 @@ public class DefaultClassListCellRenderer extends DefaultListCellRenderer {
 			boolean cellHasFocus) {
 		Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		if (c instanceof JLabel && value instanceof Class<?>) {
-			((JLabel) c).setText(((Class<?>) value).getSimpleName());
+			String className = ((Class<?>) value).getCanonicalName();
+			((JLabel) c).setText(className);
 		}
 		return c;
 	}
