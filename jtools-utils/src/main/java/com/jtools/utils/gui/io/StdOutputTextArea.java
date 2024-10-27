@@ -3,14 +3,13 @@
  */
 package com.jtools.utils.gui.io;
 
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
 
@@ -22,20 +21,29 @@ public class StdOutputTextArea extends JTextArea {
 
 	private static final long serialVersionUID = 514734858253559607L;
 
+	private final PrintStream initialOut;
+	private final PrintStream initialErr;
+
 	private final PrintStream printStream;
 
 	public StdOutputTextArea(int rows, int columns) {
 		super(rows, columns);
+
+		setEditable(false);
+
+		this.initialOut = System.out;
+		this.initialErr = System.err;
+
 		this.printStream = new PrintStream(new StdOutputTextAreaOutputStream());
 	}
 
 	public void redirectStdOutput(boolean enable) {
-		if(enable) {
+		if (enable) {
 			System.setOut(printStream);
 			System.setErr(printStream);
 		} else {
-			System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-			System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+			System.setOut(initialOut);
+			System.setErr(initialErr);
 		}
 	}
 
@@ -45,13 +53,12 @@ public class StdOutputTextArea extends JTextArea {
 	}
 
 	public void dispose() {
-		System.setOut(null);
-		System.setErr(null);
+		redirectStdOutput(false);
 	}
 
 	private void scrollToEnd() {
 		try {
-			setCaretPosition(getLineEndOffset(getLineCount()-1));
+			setCaretPosition(getLineEndOffset(getLineCount() - 1));
 		} catch (BadLocationException e) {
 			Logger.getLogger(getClass().getName()).log(Level.FINEST, e.getMessage());
 		}
@@ -65,15 +72,47 @@ public class StdOutputTextArea extends JTextArea {
 		@Override
 		public void write(int b) throws IOException {
 			// redirects data to the text area
-			//textArea.append(String.valueOf((char) b));
+			// textArea.append(String.valueOf((char) b));
 			// scrolls the text area to the end of data
-			//textArea.setCaretPosition(textArea.getDocument().getLength());
+			// textArea.setCaretPosition(textArea.getDocument().getLength());
 			// keeps the textArea up to date
-			//textArea.update(textArea.getGraphics());
+			// textArea.update(textArea.getGraphics());
 
-			setText(getText() + String.valueOf((char)b));
+			setText(getText() + String.valueOf((char) b));
 			scrollToEnd();
 		}
+	}
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		StdOutputTextArea ta = new StdOutputTextArea(100, 100);
+		frame.add(ta);
+
+		ta.redirectStdOutput(true);
+
+		frame.pack();
+		frame.setVisible(true);
+
+		for (int i = 0; i < 100; i++) {
+			System.out.println("Counter is " + i);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		ta.redirectStdOutput(false);
+
+		for (int i = 0; i < 100; i++) {
+			System.out.println("Counter is " + i);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }

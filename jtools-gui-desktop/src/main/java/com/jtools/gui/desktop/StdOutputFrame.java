@@ -18,11 +18,10 @@ public class StdOutputFrame extends JInternalFrame {
 	private static final long serialVersionUID = 7894578588310528769L;
 
 	private StdOutputTextArea stdOutputTextArea;
+	private JScrollPane stdOutputTextAreaScrollPane;
 
 	public StdOutputFrame() {
 		super("Standard output");
-
-		this.stdOutputTextArea = new StdOutputTextArea(40, 40);
 
 		setIconifiable(true);
 		setClosable(true);
@@ -31,26 +30,47 @@ public class StdOutputFrame extends JInternalFrame {
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout(6, 6));
 
-		add(new JScrollPane(stdOutputTextArea));
-
 		pack();
 	}
 
 	@Override
-	public void setVisible(boolean aFlag) {
-		if(stdOutputTextArea != null) {
-			stdOutputTextArea.redirectStdOutput(aFlag);
+	public void setVisible(boolean visible) {
+
+		if (visible && stdOutputTextArea == null) {
+			this.stdOutputTextArea = new StdOutputTextArea(40, 40);
+			this.stdOutputTextAreaScrollPane = new JScrollPane(stdOutputTextArea);
+			add(stdOutputTextAreaScrollPane);
+
+			pack();
+
+			stdOutputTextArea.redirectStdOutput(visible);
 		}
-		super.setVisible(aFlag);
+
+		if (!visible && stdOutputTextArea != null) {
+			stdOutputTextArea.redirectStdOutput(visible);
+
+			remove(stdOutputTextAreaScrollPane);
+
+			stdOutputTextAreaScrollPane = null;
+
+			stdOutputTextArea.dispose();
+			stdOutputTextArea = null;
+		}
+
+		super.setVisible(visible);
 	}
 
 	@Override
 	public void dispose() {
-		stdOutputTextArea.dispose();
+		if (stdOutputTextArea != null) {
+			stdOutputTextArea.dispose();
+		}
 	}
 
 	public void clear() {
-		stdOutputTextArea.clear();
+		if (stdOutputTextArea != null) {
+			stdOutputTextArea.clear();
+		}
 	}
 
 }
