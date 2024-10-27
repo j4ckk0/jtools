@@ -17,8 +17,7 @@ public class MappingListCellRenderer extends DefaultListCellRenderer {
 			boolean cellHasFocus) {
 		Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		if (c instanceof JLabel && value instanceof IMapping) {
-			((JLabel) c).setText("Simple mapping og " + ((IMapping) value).getObjectClass() + "["
-					+ ((IMapping) value).getId() + "]");
+			((JLabel) c).setText(((IMapping) value).getMappingName());
 		}
 		return c;
 	}

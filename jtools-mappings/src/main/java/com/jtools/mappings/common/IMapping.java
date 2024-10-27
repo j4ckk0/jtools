@@ -14,5 +14,9 @@ public interface IMapping {
 	public UUID getId();
 	
 	public Class<?> getObjectClass();
+	
+	public default String getMappingName() {
+		return getClass().getSimpleName() + ": " + getObjectClass().getCanonicalName() + " [" + getId() + "]";
+	}
 
 }

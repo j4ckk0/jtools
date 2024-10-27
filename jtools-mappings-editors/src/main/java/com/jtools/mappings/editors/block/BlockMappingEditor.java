@@ -86,7 +86,7 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 
 	@Override
 	public String getEditorName() {
-		return "Block mapping " + getObjectClass().getName();
+		return mapping.getMappingName();
 	}
 
 	public BlockMappingEditorTable<?> getTable() {
