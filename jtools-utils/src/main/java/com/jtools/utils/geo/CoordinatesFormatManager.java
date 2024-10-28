@@ -6,6 +6,8 @@ package com.jtools.utils.geo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import com.jtools.utils.CommonUtils;
@@ -155,6 +157,32 @@ public class CoordinatesFormatManager {
 		public String toString() {
 			return name();
 		}
+
+		public static String getTooltipText() {
+			StringBuilder sb = new StringBuilder();
+			sb.append("<html>");
+			sb.append("<table>");
+			sb.append("<thead>");
+			sb.append("<tr>");
+			sb.append("<th scope='col'>Label</th>");
+			sb.append("<th scope='col'>Example</th>");
+			sb.append("</tr>");
+			sb.append("</thead>");
+			sb.append("<tbody>");
+
+			for(CoordinatesFormat format : values()) {
+				sb.append("<tr>");
+				sb.append("<td><b>" + format.getLabel() + "</b></td>");
+				sb.append("<td>" + format.getExemple() + "</td>");
+				sb.append("</tr>");
+			}
+
+			sb.append("</tbody>");
+			sb.append("</table>");
+			sb.append("</html>");
+
+			return sb.toString();
+		}
 	}
 
 	private static CoordinatesFormatManager instance;
@@ -174,7 +202,17 @@ public class CoordinatesFormatManager {
 		return instance;
 	}
 
+	protected void initDefaults() {
+		setActiveCoordinatesFormat(CoordinatesFormat.LAT_LON_DMS);
+	}
+
 	public CoordinatesFormat getActiveCoordinatesFormat() {
+		if (activeCoordinatesFormat == null) {
+			Logger.getLogger(getClass().getName()).log(Level.WARNING,
+					"No active coordinates format. Define a default pattern");
+			initDefaults();
+		}
+
 		return activeCoordinatesFormat;
 	}
 
@@ -200,7 +238,7 @@ public class CoordinatesFormatManager {
 
 	public static void main(String[] args) {
 		int testIndex = 0;
-		
+
 		testIndex++;
 		String test = "40°31'21\"";
 		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));

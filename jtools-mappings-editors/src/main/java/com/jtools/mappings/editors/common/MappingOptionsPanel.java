@@ -71,11 +71,17 @@ public class MappingOptionsPanel extends JPanel {
 		coordinatesFormatComboBox.setEditable(false);
 		coordinatesFormatPanel.add(coordinatesFormatComboBox, BorderLayout.CENTER);
 
+		// Initial values
+		dateFormatComboBox.setSelectedItem(DateFormatManager.instance().getActiveDateFormatPattern());
+		coordinatesFormatComboBox.setSelectedItem(CoordinatesFormatManager.instance().getActiveCoordinatesFormat());
+
 		// Listeners
 		dateFormatComboBox.addItemListener((ItemEvent event) -> DateFormatManager.instance().setActiveDateFormat((String) dateFormatComboBox.getSelectedItem()));
+		coordinatesFormatComboBox.addItemListener((ItemEvent event) -> CoordinatesFormatManager.instance().setActiveCoordinatesFormat((CoordinatesFormat) coordinatesFormatComboBox.getSelectedItem()));
 
 		// Tooltips
 		dateFormatComboBox.setToolTipText(ResourcesManager.instance().loadFileContent(DATE_COMBO_BOX_TOOLTIP_FILE));
+		coordinatesFormatComboBox.setToolTipText(CoordinatesFormat.getTooltipText());
 
 		// Sizes
 		Dimension dateFormatLabelPreferredSize = dateFormatLabel.getPreferredSize();
@@ -90,6 +96,7 @@ public class MappingOptionsPanel extends JPanel {
 
 		dateFormatLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		coordinatesFormatLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+
 	}
 
 	public String getDateFormat() {
