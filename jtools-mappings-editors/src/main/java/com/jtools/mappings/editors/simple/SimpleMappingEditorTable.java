@@ -15,7 +15,6 @@ import com.jtools.gui.table.cellEditors.DefaultFieldTableCellEditor;
 import com.jtools.gui.table.cellRenderers.DefaultFieldTableCellRenderer;
 import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.mappings.common.MappingUtils;
-import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingEditorNewRow;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
@@ -89,7 +88,7 @@ public class SimpleMappingEditorTable extends JTable {
 			int row = table.convertRowIndexToModel( table.getEditingRow() );
 			SimpleMappingEditorRow mapperRow = model.getRow(row);
 			if(mapperRow.getRowType() == SimpleMappingRowType.NEW_ROW) {
-				model.addRow(new SimpleMappingEditorNewRow());
+				model.addRow(new SimpleMappingEditorRow());
 			} else {
 				model.removeRow(row);
 			}

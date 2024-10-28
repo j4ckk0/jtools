@@ -19,6 +19,10 @@ public class SimpleMappingEditorRow {
 		this.simpleMappingRow = simpleMappingRow;
 	}
 	
+	public SimpleMappingEditorRow() {
+		this.simpleMappingRow = new SimpleMappingRow();
+	}
+
 	public SimpleMappingRow getSimpleMappingRow() {
 		return simpleMappingRow;
 	}

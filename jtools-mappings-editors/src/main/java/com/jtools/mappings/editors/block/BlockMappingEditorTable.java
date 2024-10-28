@@ -16,7 +16,6 @@ import com.jtools.gui.table.cellRenderers.DefaultFieldTableCellRenderer;
 import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.block.BlockMappingRow;
-import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingEditorNewRow;
 import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import com.jtools.utils.gui.components.ButtonColumn;
 
@@ -93,7 +92,7 @@ public class BlockMappingEditorTable<E extends Object> extends JTable {
 			int row = table.convertRowIndexToModel(table.getEditingRow());
 			BlockMappingEditorRow mapperRow = model.getRow(row);
 			if (mapperRow.getRowType() == BlockMappingRowType.NEW_ROW) {
-				model.addRow(new BlockMappingEditorNewRow());
+				model.addRow(new BlockMappingEditorRow());
 			} else {
 				model.removeRow(row);
 			}

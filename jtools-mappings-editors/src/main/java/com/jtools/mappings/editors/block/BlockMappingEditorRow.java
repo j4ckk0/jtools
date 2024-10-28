@@ -21,6 +21,10 @@ public class BlockMappingEditorRow {
 	
 	protected BlockMappingRow blockMappingRow;
 
+	public BlockMappingEditorRow() {
+		this.blockMappingRow = new BlockMappingRow();
+	}
+	
 	public BlockMappingEditorRow(BlockMappingRow blockMappingRow) {
 		this.blockMappingRow = blockMappingRow;
 	}
