@@ -27,7 +27,7 @@ public class BlockMappingCreateAction extends AEditorAction {
 
 	private static final long serialVersionUID = 5655082933456528045L;
 
-	private transient IDataClassProvider dataProvider;
+	private transient IDataClassProvider dataClassProvider;
 
 	public BlockMappingCreateAction(String name) {
 		super(name);
@@ -40,14 +40,14 @@ public class BlockMappingCreateAction extends AEditorAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (dataProvider == null) {
-			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Data provider not been set");
-			JOptionPane.showMessageDialog(null, "Data provider not been set", "No data", JOptionPane.WARNING_MESSAGE);
+		if (dataClassProvider == null) {
+			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Data class provider not been set");
+			JOptionPane.showMessageDialog(null, "No data class provider has been set", "No provider", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
-		List<Class<?>> possibleDataClasses = dataProvider.getPossibleDataClasses();
-		Class<?> dataClass = dataProvider.getDataClass();
+		List<Class<?>> possibleDataClasses = dataClassProvider.getPossibleDataClasses();
+		Class<?> dataClass = dataClassProvider.getDataClass();
 
 		try {
 			BlockMapping<?> mapping = new BlockMapping<>(dataClass);
@@ -60,6 +60,6 @@ public class BlockMappingCreateAction extends AEditorAction {
 	}
 
 	public void setDataClassProvider(IDataClassProvider dataProvider) {
-		this.dataProvider = dataProvider;
+		this.dataClassProvider = dataProvider;
 	}
 }
