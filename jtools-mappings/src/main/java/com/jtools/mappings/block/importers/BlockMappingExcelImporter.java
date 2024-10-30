@@ -74,7 +74,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 	}
 
 	public <T extends Object> List<T> doImport(Class<T> importedObjectClass, BlockMapping<?> blockMapping, File file,
-			int lastHeaderRow) {
+			int firstDataRowIndex) {
 		List<T> importedObjects = new ArrayList<>();
 
 		try {
@@ -87,7 +87,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 			// Collect info from the sheet
 			Collection<MergedRegion> mergedRegions = MappingUtils.getMergedRegions(sheet);
 			List<FlushInstruction> referenceFlushInstructions = getReferenceFlushInstructions(sheet, mergedRegions,
-					blockMapping, lastHeaderRow);
+					blockMapping, firstDataRowIndex);
 
 			// Init some variables for the algo
 			Map<String, Object> objectsBuffer = new HashMap<>();
@@ -99,7 +99,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 				Row row = rowIterator.next();
 
 				rowIndex++;
-				if (rowIndex <= lastHeaderRow) {
+				if (rowIndex < firstDataRowIndex) {
 					continue;
 				}
 
@@ -126,7 +126,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 	}
 
 	private List<FlushInstruction> getReferenceFlushInstructions(XSSFSheet sheet,
-			Collection<MergedRegion> mergedRegions, BlockMapping<?> blockMapping, int lastHeaderRow) {
+			Collection<MergedRegion> mergedRegions, BlockMapping<?> blockMapping, int firstDataRowIndex) {
 		// Iterate through each rows one by one
 		int rowIndex = -1;
 		Iterator<Row> rowIterator = sheet.iterator();
@@ -135,7 +135,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 			Row row = rowIterator.next();
 
 			rowIndex++;
-			if (rowIndex <= lastHeaderRow) {
+			if (rowIndex < firstDataRowIndex) {
 				continue;
 			}
 
@@ -415,7 +415,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 				list.add(objectToFlush);
 
 			} else {
-				setter.invoke(objectClass, objectToFlush);
+				setter.invoke(object, objectToFlush);
 			}
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE,
