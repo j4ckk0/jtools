@@ -25,7 +25,6 @@ package com.jtools.mappings.editors.actions.block;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,7 +65,7 @@ public class BlockMappingLoadAction extends AEditorAction {
 
 			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(blockMapping, MappingUtils.getPossibleColumns());
 			showEditor(mappingEditor);
-		} catch (InstantiationException | IOException e) {
+		} catch (InstantiationException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error while loading editor", JOptionPane.ERROR_MESSAGE);
@@ -74,6 +73,9 @@ public class BlockMappingLoadAction extends AEditorAction {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, e.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad mapping", JOptionPane.ERROR_MESSAGE);
+		}  catch(Exception e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 }

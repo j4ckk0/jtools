@@ -24,7 +24,6 @@ package com.jtools.mappings.editors.actions.block;
  */
 
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,7 +73,7 @@ public class BlockMappingCreateAction extends AEditorAction {
 
 			BlockMappingEditor<?> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), CommonUtils.classListToArray(possibleDataClasses));
 			showEditor(mappingEditor);
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 		}

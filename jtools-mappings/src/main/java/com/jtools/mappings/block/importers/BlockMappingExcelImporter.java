@@ -29,7 +29,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -519,7 +518,7 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		// Set the value
 		try {
 			MappingUtils.setValueFromCell(cell, object, setter);
-		} catch (IllegalAccessException | InvocationTargetException | ParseException e) {
+		} catch (IllegalAccessException | InvocationTargetException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE,
 					"An error occued while setting the value from cell: " + e.getMessage(), e);
 		}

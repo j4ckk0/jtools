@@ -24,7 +24,6 @@ package com.jtools.tests.mappings.block;
  */
 
 import java.awt.print.Book;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -55,8 +54,9 @@ public class TestBlockExporter {
 
 			mappingEditor.showEditorAsDialog(null, true);
 
-		} catch (IOException e) {
-			Logger.getLogger(TestBlockExporter.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+		} catch (Exception e) {
+			Logger.getLogger(TestBlockExporter.class.getName()).log(Level.SEVERE, e.getMessage());
+			Logger.getLogger(TestBlockExporter.class.getName()).log(Level.FINE, e.getMessage(), e);
 		}
 	}
 

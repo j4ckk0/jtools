@@ -24,7 +24,6 @@ package com.jtools.mappings.editors.actions.simple;
  */
 
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,7 +69,7 @@ public class SimpleMappingCreateAction extends AEditorAction {
 			
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(mapping);
 			showEditor(mappingEditor);
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
 			Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 		}

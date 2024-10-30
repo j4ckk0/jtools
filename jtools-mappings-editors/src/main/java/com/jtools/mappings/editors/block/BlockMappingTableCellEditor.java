@@ -22,7 +22,6 @@ package com.jtools.mappings.editors.block;
 
 import java.awt.Component;
 import java.awt.Window;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -129,7 +128,7 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 					if (editor != null) {
 						editor.showEditorAsDialog(parentWindow, true, getOnOkCallable(editor, table));
 					}
-				} catch (IOException ex) {
+				} catch (Exception ex) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
 					Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 				}
