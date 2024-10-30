@@ -51,7 +51,8 @@ public class SimpleMappingCreateAction extends AEditorAction {
 			SimpleMappingEditor<?> mappingEditor = new SimpleMappingEditor<>(mapping);
 			showEditor(mappingEditor);
 		} catch (IOException ex) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 		}
 	}
 

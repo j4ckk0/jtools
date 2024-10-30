@@ -110,7 +110,8 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 						editor.showEditorAsDialog(parentWindow, true, getOnOkCallable(editor, table));
 					}
 				} catch (IOException ex) {
-					Logger.getLogger(BlockMappingTableCellEditor.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 				}
 			}
 		});

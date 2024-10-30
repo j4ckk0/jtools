@@ -53,7 +53,8 @@ public class SimpleMappingLoadAction extends AEditorAction {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Bad mapping", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
+			Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 		}
 
 	}

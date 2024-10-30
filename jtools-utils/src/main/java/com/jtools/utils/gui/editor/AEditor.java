@@ -285,7 +285,8 @@ public abstract class AEditor extends JPanel {
 						onOK.call();
 					}
 				} catch (Exception ex) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 				}
 			}
 		};
@@ -300,7 +301,8 @@ public abstract class AEditor extends JPanel {
 						onCancel.call();
 					}
 				} catch (Exception ex) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage());
+					Logger.getLogger(getClass().getName()).log(Level.FINE, ex.getMessage(), ex);
 				}
 			}
 		};
