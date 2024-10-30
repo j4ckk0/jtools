@@ -55,7 +55,7 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 		TableModel model = table.getModel();
 
 		if (model instanceof ITableModelWithCellsCustomAlignment) {
-			((JLabel) component).setHorizontalAlignment(
+			component.setHorizontalAlignment(
 					((ITableModelWithCellsCustomAlignment) model).getCellHorizontalAlignment(row, column));
 		}
 

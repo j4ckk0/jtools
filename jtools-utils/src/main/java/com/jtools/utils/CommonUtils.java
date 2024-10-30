@@ -31,6 +31,8 @@ public class CommonUtils {
 
 	public static final String LOAD_EXCEL_DIALOG_TITLE = "Select the input " + CommonUtils.EXCEL_FILES_EXTENSION + " file";
 
+	private CommonUtils() {}
+	
 	/**
 	 * 
 	 * @param propertiesFilePath

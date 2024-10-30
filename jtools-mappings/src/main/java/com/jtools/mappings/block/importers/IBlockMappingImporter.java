@@ -12,7 +12,7 @@ import com.jtools.mappings.block.BlockMapping;
  * @author j4ckk0
  *
  */
-public abstract class ABlockMappingImporter {
+public interface IBlockMappingImporter {
 
 	public abstract <T> List<T> importData(Class<T> objectClass, BlockMapping<?> mapping) throws IOException;
 

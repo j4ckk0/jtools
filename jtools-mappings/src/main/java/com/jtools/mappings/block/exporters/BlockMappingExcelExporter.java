@@ -42,7 +42,7 @@ import com.jtools.utils.objects.ObjectInfoProvider;
  * @author j4ckk0
  *
  */
-public class BlockMappingExcelExporter extends ABlockMappingExporter {
+public class BlockMappingExcelExporter implements IBlockMappingExporter {
 
 	private static BlockMappingExcelExporter instance;
 
@@ -133,7 +133,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 								toColumn);
 						sheet.addMergedRegion(cellRangeAddress);
 
-						formatHeaderRegion(workbook, sheet, cellRangeAddress);
+						formatHeaderRegion(sheet, cellRangeAddress);
 					}
 				}
 
@@ -211,7 +211,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 										cell.setCellStyle(
 												MappingUtils.getCellStyle(workbook, MappingCellStyleType.DATE));
 									} else {
-										cell.setCellValue((String) valueObject.toString());
+										cell.setCellValue(valueObject.toString());
 									}
 
 									if (fromColumn != toColumn) {
@@ -260,7 +260,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 		return row;
 	}
 
-	private void formatHeaderRegion(XSSFWorkbook workbook, XSSFSheet sheet, CellRangeAddress cellRangeAddress) {
+	private void formatHeaderRegion(XSSFSheet sheet, CellRangeAddress cellRangeAddress) {
 		RegionUtil.setBorderBottom(BorderStyle.THIN, cellRangeAddress, sheet);
 		RegionUtil.setBorderTop(BorderStyle.THIN, cellRangeAddress, sheet);
 		RegionUtil.setBorderLeft(BorderStyle.THIN, cellRangeAddress, sheet);

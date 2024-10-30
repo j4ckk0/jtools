@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.block.exporters.ABlockMappingExporter;
+import com.jtools.mappings.block.exporters.IBlockMappingExporter;
 import com.jtools.mappings.block.io.BlockMappingFileManager;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.utils.CommonUtils;
@@ -35,14 +35,14 @@ public abstract class ABlockMappingExportToAction extends AbstractAction {
 
 	private transient BlockMapping<?> blockMapping;
 
-	private transient ABlockMappingExporter exporter;
+	private transient IBlockMappingExporter exporter;
 
-	protected ABlockMappingExportToAction(String name, Icon icon, ABlockMappingExporter exporter) {
+	protected ABlockMappingExportToAction(String name, Icon icon, IBlockMappingExporter exporter) {
 		super(name, icon);
 		this.exporter = exporter;
 	}
 
-	protected ABlockMappingExportToAction(String name, ABlockMappingExporter exporter) {
+	protected ABlockMappingExportToAction(String name, IBlockMappingExporter exporter) {
 		super(name);
 		this.exporter = exporter;
 	}

@@ -17,4 +17,6 @@ public class GuiUtils {
 
 	public static final String EDIT_ICON_TXT = "*";
 	
+	
+	private GuiUtils() {}
 }

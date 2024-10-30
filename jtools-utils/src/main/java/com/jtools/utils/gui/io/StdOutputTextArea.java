@@ -21,10 +21,10 @@ public class StdOutputTextArea extends JTextArea {
 
 	private static final long serialVersionUID = 514734858253559607L;
 
-	private final PrintStream initialOut;
-	private final PrintStream initialErr;
+	private final transient PrintStream initialOut;
+	private final transient PrintStream initialErr;
 
-	private final PrintStream printStream;
+	private final transient PrintStream printStream;
 
 	public StdOutputTextArea(int rows, int columns) {
 		super(rows, columns);
@@ -65,9 +65,6 @@ public class StdOutputTextArea extends JTextArea {
 	}
 
 	private class StdOutputTextAreaOutputStream extends OutputStream {
-
-		public StdOutputTextAreaOutputStream() {
-		}
 
 		@Override
 		public void write(int b) throws IOException {

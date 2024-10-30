@@ -149,7 +149,7 @@ public class CoordinatesFormatManager {
 		}
 
 		public String[] labels() {
-			List<String> list = Arrays.stream(values()).map((m) -> m.getLabel()).toList();
+			List<String> list = Arrays.stream(values()).map(m -> m.getLabel()).toList();
 			return CommonUtils.stringListToArray(list);
 		}
 
@@ -241,142 +241,142 @@ public class CoordinatesFormatManager {
 
 		testIndex++;
 		String test = "40°31'21\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "40 31 21";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N 40°31'21\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "40°31'21\" N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N 40 31 21";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "40 31 21 N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "105°05'39\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "105 05 39";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "E 105°05'39\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "105°05'39\" E";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "105°05'39\" N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41°24'12.2\"N 2°10'26.5\"E";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41.40338, 2.17403";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41.40338 2.17403";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "43.63871944444445";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N43°38'19.39\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "43°38'19.39\"N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "43d 38m 19.39s N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "43 38 19.39";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "43°38.3232'N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N41°36.36 E041°36.00\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41°36.36 N 041°36.00\" E";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41°24'12.2\"N 2°10'26.5\"E";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N41°36\'21.6\" E041°36\'00\"";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "41.606 041.6";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "37 T 716658 4609298";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "37TGG 16658 09298";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "4 Q 6109372363778";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "4QFJ1093763778";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N 51 E 10";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N 51° 0.000000 E 10° 0.000000";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "N 51° 0' 0 E 10° 0' 0";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "32U 570168.862 5650300.787";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "32UNB 70168.862 50300.787";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 
 		testIndex++;
 		test = "433819N";
-		System.out.println("test " + testIndex + " is " + test + " : " + findMatching(test));
+		Logger.getLogger(CoordinatesFormatManager.class.getName()).log(Level.INFO, "test " + testIndex + " is " + test + " : " + findMatching(test));
 	}
 }

@@ -34,6 +34,8 @@ import com.jtools.utils.CommonUtils;
  *
  */
 public class ObjectUtils {
+	
+	private ObjectUtils() {}
 
 	/**
 	 * 

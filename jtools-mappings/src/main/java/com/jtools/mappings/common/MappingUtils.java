@@ -47,13 +47,13 @@ import com.jtools.utils.objects.ObjectUtils;
  */
 public class MappingUtils {
 
-	public static enum MappingFontType {
+	public enum MappingFontType {
 
 		HEADER, BODY;
 
 	}
 
-	public static enum MappingCellStyleType {
+	public enum MappingCellStyleType {
 
 		HEADER, BODY, DATE;
 
@@ -65,7 +65,7 @@ public class MappingUtils {
 
 	private static final char[] ALL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-	public static List<String> possibleColumns = new ArrayList<>();
+	public static final List<String> possibleColumns = new ArrayList<>();
 	static {
 		// Round 1
 		for (int i = 0; i < ALL_LETTERS.length; i++) {
@@ -379,7 +379,7 @@ public class MappingUtils {
 		} else if (Collection.class.isAssignableFrom(valueObject.getClass())) {
 			cell.setCellValue(ObjectUtils.toString(((Collection<?>) valueObject), ", "));
 		} else {
-			cell.setCellValue((String) valueObject.toString());
+			cell.setCellValue(valueObject.toString());
 		}
 	}
 

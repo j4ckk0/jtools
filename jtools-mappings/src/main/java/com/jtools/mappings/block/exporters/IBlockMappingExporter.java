@@ -6,8 +6,8 @@ import java.util.List;
 import com.jtools.mappings.block.BlockMapping;
 import com.jtools.mappings.common.MappingException;
 
-public abstract class ABlockMappingExporter {
+public interface IBlockMappingExporter {
 
-	public abstract <T> void exportData(List<T> data, BlockMapping<?> mappings) throws IOException, MappingException;
+	public <T> void exportData(List<T> data, BlockMapping<?> mappings) throws IOException, MappingException;
 
 }

@@ -29,7 +29,7 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 	private static final long serialVersionUID = 3270825863776856519L;
 
 	private final SimpleMapping<?> mapping;
-	private final List<SimpleMappingEditorRow> editorRows;
+	private final transient List<SimpleMappingEditorRow> editorRows;
 
 	public SimpleMappingEditorTableModel(SimpleMapping<?> mapping) {
 		this.mapping = mapping;

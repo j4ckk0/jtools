@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 import com.jtools.data.DataEditor;
 import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.block.importers.ABlockMappingImporter;
+import com.jtools.mappings.block.importers.IBlockMappingImporter;
 import com.jtools.mappings.block.io.BlockMappingFileManager;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.utils.CommonUtils;
@@ -30,18 +30,18 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 
 	private static final long serialVersionUID = -5347933034897416218L;
 
-	private transient ABlockMappingImporter importer;
+	private transient IBlockMappingImporter importer;
 
 	private transient BlockMapping<?> blockMapping;
 
 	private transient List<?> importedObjects;
 
-	protected ABlockMappingImportFromAction(String name, Icon icon, ABlockMappingImporter importer) {
+	protected ABlockMappingImportFromAction(String name, Icon icon, IBlockMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 	}
 
-	protected ABlockMappingImportFromAction(String name, ABlockMappingImporter importer) {
+	protected ABlockMappingImportFromAction(String name, IBlockMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 	}

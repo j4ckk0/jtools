@@ -190,7 +190,7 @@ public class BlockMappingFileManager {
 
 		// Get date format
 		Object dateFormatProperty = properties.get(DATE_FORMAT_PROPERTY);
-		if (dateFormatProperty == null || !(dateFormatProperty instanceof String)) {
+		if (!(dateFormatProperty instanceof String)) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Unable to find the date format. Using default one.");
 			DateFormatManager.instance().setActiveDateFormat(DateFormatManager.BASIC_DATE_FORMAT);
 		} else {
@@ -199,7 +199,7 @@ public class BlockMappingFileManager {
 
 		// Get formats
 		Object coordinatesFormatProperty = properties.get(COORDINATES_FORMAT_PROPERTY);
-		if (coordinatesFormatProperty == null || !(coordinatesFormatProperty instanceof String)) {
+		if (!(coordinatesFormatProperty instanceof String)) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Unable to find the coordinates format. Using default one.");
 			CoordinatesFormatManager.instance().setActiveCoordinatesFormat(CoordinatesFormat.LAT_LON_DD);
 		} else {
@@ -208,7 +208,7 @@ public class BlockMappingFileManager {
 
 		// Test if the Properties does contains the appropriate mappings
 		Object objectClassProperty = properties.get(OBJECT_CLASS_PROPERTY);
-		if (objectClassProperty == null || !(objectClassProperty instanceof String)) {
+		if (!(objectClassProperty instanceof String)) {
 			throw new MappingException(
 					"Loaded mapping file seems not to be a valid mapping file: no ObjectClass property found");
 		}
@@ -231,9 +231,7 @@ public class BlockMappingFileManager {
 
 				if (key.equals(BLOCK_MAPPING_PROPERTY)) {
 					String json = (String) property.getValue();
-					BlockMapping<?> blockMapping = jsonConverter.fromJson(json, BlockMapping.class);
-					
-					return blockMapping;
+					return jsonConverter.fromJson(json, BlockMapping.class);
 				}
 
 			} catch (SecurityException e) {

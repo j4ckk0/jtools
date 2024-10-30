@@ -41,7 +41,7 @@ import com.jtools.utils.objects.ObjectUtils;
  * @author j4ckk0
  *
  */
-public class BlockMappingExcelImporter extends ABlockMappingImporter {
+public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
 	private static BlockMappingExcelImporter instance;
 

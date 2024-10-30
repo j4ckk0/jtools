@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.simple.SimpleMappingRow;
+import com.jtools.utils.geo.CoordinatesFormatManager;
 import com.jtools.utils.objects.ObjectInfoProvider;
 
 /**
@@ -33,17 +34,17 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 
 	@Override
 	public <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException, MappingException {
-		System.out.println( "-------- Headers ----------");
+		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "-------- Headers ----------");
 		writeHeaderLine(mappings);
-		System.out.println( "");
-		System.out.println( "-------- Data lines ----------");
+		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "");
+		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "-------- Data lines ----------");
 		writeDataLines(data, mappings);
 	}
 
 	private void writeHeaderLine(List<SimpleMappingRow> mappings) {
 		for(SimpleMappingRow mapping : mappings) {
 			int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
-			System.out.println("Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + mapping.getOutputColumnHeader());
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + mapping.getOutputColumnHeader());
 		}
 	}
 
@@ -65,7 +66,7 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 							int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
 
 							Object valueObject = getter.invoke(object);
-							System.out.println("Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + (valueObject != null ? valueObject.toString() : "null") + " [value for field " + field.getName()+ "]");
+							Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + (valueObject != null ? valueObject.toString() : "null") + " [value for field " + field.getName()+ "]");
 						} else {
 							Logger.getLogger(getClass().getName()).log(Level.FINE, "getter not found for field " + field.getName());
 						}
@@ -75,7 +76,7 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}
 			}
-			System.out.println("--");
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "--");
 		}
 	}
 }

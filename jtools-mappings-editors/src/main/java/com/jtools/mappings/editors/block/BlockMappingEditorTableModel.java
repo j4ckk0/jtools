@@ -38,7 +38,7 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 	private final Class<E> objectClass;
 
 	private final BlockMapping<E> mapping;
-	private final List<BlockMappingEditorRow> editorRows;
+	private final transient List<BlockMappingEditorRow> editorRows;
 
 	private final List<Class<?>> possibleClasses;
 
@@ -57,7 +57,7 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		if (rows != null) {
 			for (BlockMappingEditorRow row : rows) {
 				this.editorRows.add(row);
-				addPropertyChangeListener(this, row);
+				addPropertyChangeListener(row);
 			}
 		}
 
@@ -71,17 +71,17 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 	public void insertRow(BlockMappingEditorRow row) {
 		editorRows.add(0, row);
 		fireTableRowsInserted(0, 0);
-		addPropertyChangeListener(this, row);
+		addPropertyChangeListener(row);
 	}
 
 	public void addRow(BlockMappingEditorRow row) {
 		editorRows.add(editorRows.size() - 1, row);
 		fireTableRowsInserted(editorRows.size() - 1, editorRows.size() - 1);
-		addPropertyChangeListener(this, row);
+		addPropertyChangeListener(row);
 	}
 
 	public void removeRow(int row) {
-		removePropertyChangeListener(this, editorRows.get(row));
+		removePropertyChangeListener(editorRows.get(row));
 		editorRows.remove(row);
 		fireTableRowsDeleted(row, row);
 	}
@@ -261,16 +261,14 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		throw new UnsupportedOperationException("Method getWrappedValueAt is unused");
 	}
 
-	private void addPropertyChangeListener(BlockMappingEditorTableModel<E> blockMappingEditorTableModel,
-			BlockMappingEditorRow... rows) {
+	private void addPropertyChangeListener(BlockMappingEditorRow... rows) {
 		for (BlockMappingEditorRow row : rows) {
 			PropertyChangeSupport propertyChangeSupport = row.getPropertyChangeSupport();
 			propertyChangeSupport.addPropertyChangeListener(this);
 		}
 	}
 
-	private void removePropertyChangeListener(BlockMappingEditorTableModel<E> blockMappingEditorTableModel,
-			BlockMappingEditorRow... rows) {
+	private void removePropertyChangeListener(BlockMappingEditorRow... rows) {
 		for (BlockMappingEditorRow row : rows) {
 			PropertyChangeSupport propertyChangeSupport = row.getPropertyChangeSupport();
 			propertyChangeSupport.removePropertyChangeListener(this);
