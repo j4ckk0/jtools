@@ -34,7 +34,6 @@ import java.util.logging.Logger;
 import com.jtools.mappings.common.MappingException;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.simple.SimpleMappingRow;
-import com.jtools.utils.geo.CoordinatesFormatManager;
 import com.jtools.utils.objects.ObjectInfoProvider;
 
 /**
