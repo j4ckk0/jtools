@@ -5,14 +5,12 @@ package com.jtools.mappings.editors.simple;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
-import java.util.List;
 
 import javax.swing.JScrollPane;
 
 import com.jtools.mappings.editors.common.MappingOptionsPanel;
 import com.jtools.mappings.editors.common.MappingRegistry;
 import com.jtools.mappings.simple.SimpleMapping;
-import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.mappings.simple.io.SimpleMappingFileManager;
 import com.jtools.utils.gui.border.MarginTitledBorder;
 import com.jtools.utils.gui.editor.AEditor;
@@ -68,12 +66,13 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 		return mapping.getMappingName();
 	}
 
-	public List<SimpleMappingRow> getRows() {
+	@SuppressWarnings("unchecked")
+	public SimpleMapping<E> apply() {
 		if(mappingEditorTable == null) {
 			throw new IllegalStateException("Editor not initialized. Please call init() method before");
 		}
 
-		return mappingEditorTable.getRows();
+		return (SimpleMapping<E>) mappingEditorTable.apply();
 	}
 
 	public Class<E> getObjectClass() {
@@ -82,7 +81,7 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 
 	@Override
 	protected void save() throws IOException {
-		SimpleMappingFileManager.instance().save(mapping);
+		SimpleMappingFileManager.instance().save(apply());
 	}
 
 	@Override

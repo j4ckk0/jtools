@@ -84,7 +84,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 		
 			Logger.getLogger(getClass().getName()).log(Level.INFO, "Exporting data from provider: " + dataProvider.getProviderName() + " with mapping: " + mapping.getMappingName());
 			
-			List<SimpleMappingRow> rows = mapping.getMappingRows();
+			List<SimpleMappingRow> rows = mapping.getRows();
 			List<?> objectsToExport = dataProvider.getDataList();
 
 			exporter.exportData(objectsToExport, rows);

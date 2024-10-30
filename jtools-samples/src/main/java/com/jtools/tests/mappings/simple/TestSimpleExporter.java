@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 import com.jtools.data.provider.IDataProvider;
 import com.jtools.mappings.editors.simple.SimpleMappingEditor;
 import com.jtools.mappings.simple.SimpleMapping;
-import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.mappings.simple.exporters.SimpleMappingStdOutputExporter;
 import com.jtools.tests.data.models.Person;
 import com.jtools.utils.concurrent.NamedCallable;
@@ -39,9 +38,7 @@ public class TestSimpleExporter {
 				public Void call() throws Exception {
 					List<Person> persons = generateTestData();
 
-					List<SimpleMappingRow> rows = personMappingEditor.getRows();
-
-					SimpleMappingStdOutputExporter.getInstance().exportData(persons, rows);
+					SimpleMappingStdOutputExporter.getInstance().exportData(persons, personMappingEditor.apply().getRows());
 					//ExcelExporter.getInstance().exportData(persons, rows);
 
 					return null;

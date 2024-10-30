@@ -4,7 +4,7 @@
 package com.jtools.mappings.simple;
 
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,10 +22,10 @@ public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 
 	private final Class<E> objectClass;
 
-	private final transient List<SimpleMappingRow> mappings;
+	private final List<SimpleMappingRow> mappings;
 	
 	public SimpleMapping(Class<E> objectClass) {
-		this(objectClass, Collections.emptyList());
+		this(objectClass, new ArrayList<>());
 	}
 
 	public SimpleMapping(Class<E> objectClass, List<SimpleMappingRow> mappings) {
@@ -43,7 +43,7 @@ public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 		return objectClass;
 	}
 
-	public List<SimpleMappingRow> getMappingRows() {
+	public List<SimpleMappingRow> getRows() {
 		return mappings;
 	}
 

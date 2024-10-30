@@ -1,5 +1,6 @@
 package com.jtools.mappings.simple;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
 /**
@@ -7,8 +8,10 @@ import java.lang.reflect.Field;
  * @author j4ckk0
  *
  */
-public class SimpleMappingRow {
+public class SimpleMappingRow implements Serializable {
 
+	private static final long serialVersionUID = 3092423564227174529L;
+	
 	protected String outputColumnHeader;
 	protected String outputColumn;
 	protected Field objectField;

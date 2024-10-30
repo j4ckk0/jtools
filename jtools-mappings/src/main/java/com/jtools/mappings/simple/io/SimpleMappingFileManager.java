@@ -172,7 +172,7 @@ public class SimpleMappingFileManager {
 
 		File mappingFile = CommonUtils.chooseFile(JFileChooser.SAVE_DIALOG, defaultFile, SAVE_SIMPLE_MAPPING_DIALOG_TITLE, SIMPLE_MAPPING_FILE_EXTENSION);
 		if(mappingFile != null) {
-			Properties properties = rowsToProperties(mapping.getObjectClass(), mapping.getMappingRows());
+			Properties properties = rowsToProperties(mapping.getObjectClass(), mapping.getRows());
 
 			mappingsFilePaths.put(mapping.getId(), mappingFile.getAbsolutePath());
 
@@ -290,7 +290,7 @@ public class SimpleMappingFileManager {
 
 		properties.put(DATE_FORMAT_PROPERTY, DateFormatManager.instance().getActiveDateFormatPattern());
 
-		properties.put(COORDINATES_FORMAT_PROPERTY, CoordinatesFormatManager.instance().getActiveCoordinatesFormat());
+		properties.put(COORDINATES_FORMAT_PROPERTY, CoordinatesFormatManager.instance().getActiveCoordinatesFormat().name());
 
 		properties.put(OBJECT_CLASS_PROPERTY, objectClass.getCanonicalName());
 

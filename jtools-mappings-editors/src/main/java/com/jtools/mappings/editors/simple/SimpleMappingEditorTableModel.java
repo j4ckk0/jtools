@@ -6,7 +6,6 @@ package com.jtools.mappings.editors.simple;
 import java.awt.Color;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.SwingConstants;
@@ -18,6 +17,7 @@ import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomBackground;
 import com.jtools.gui.table.tableModels.ITableModelWithMandatoryCells;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingEditorNewRow;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
+import com.jtools.mappings.simple.SimpleMapping;
 import com.jtools.mappings.simple.SimpleMappingRow;
 
 /**
@@ -28,20 +28,20 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 
 	private static final long serialVersionUID = 3270825863776856519L;
 
+	private final SimpleMapping<?> mapping;
 	private final List<SimpleMappingEditorRow> editorRows;
 
-	public SimpleMappingEditorTableModel() {
+	public SimpleMappingEditorTableModel(SimpleMapping<?> mapping) {
+		this.mapping = mapping;
+		List<SimpleMappingRow> rows = mapping.getRows();
+		
 		this.editorRows = new ArrayList<>();
-	}
-
-	public SimpleMappingEditorTableModel(List<SimpleMappingRow> rows) {
-		this.editorRows = new ArrayList<>();
-
-		editorRows.add(new SimpleMappingEditorNewRow());
 
 		for(SimpleMappingRow row : rows) {
 			editorRows.add(new SimpleMappingEditorRow(row));
 		}
+
+		editorRows.add(new SimpleMappingEditorNewRow());
 	}
 
 	public void insertRow(SimpleMappingEditorRow row) {
@@ -59,12 +59,16 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		fireTableRowsDeleted(row, row);
 	}
 
-	public List<SimpleMappingRow> getRows() {
-
-		List<SimpleMappingRow> rows = new ArrayList<>();
-		editorRows.stream().filter(m -> m.getRowType() == SimpleMappingRowType.MAPPING_ROW).map(m -> rows.add(m.getSimpleMappingRow()));
-
-		return Collections.unmodifiableList(rows);
+	public SimpleMapping<?> apply() {
+		mapping.getRows().clear();
+		
+		for(SimpleMappingEditorRow edRow : editorRows) {
+			if(edRow.getRowType() == SimpleMappingRowType.MAPPING_ROW) {
+				mapping.getRows().add(edRow.getSimpleMappingRow());
+			}
+		}
+		
+		return mapping;
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class TestSimpleImporter {
 
 			SimpleMappingEditor<Person> personMappingEditor = new SimpleMappingEditor<>(mapping);
 
-			List<Person> data = SimpleMappingExcelImporter.getInstance().importData(Person.class, personMappingEditor.getRows());
+			List<Person> data = SimpleMappingExcelImporter.getInstance().importData(Person.class, personMappingEditor.apply().getRows());
 			if(data != null) {
 				for(Person p : data) {
 					System.out.println(p);

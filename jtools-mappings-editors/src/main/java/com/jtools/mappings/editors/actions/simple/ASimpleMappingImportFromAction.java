@@ -68,7 +68,7 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 				simpleMapping = SimpleMappingFileManager.instance().loadMapping(choosenMappingFile.getAbsolutePath());
 			}
 
-			importedObjects = importer.importData(simpleMapping.getObjectClass(), simpleMapping.getMappingRows());
+			importedObjects = importer.importData(simpleMapping.getObjectClass(), simpleMapping.getRows());
 
 			if(importedObjects != null) {
 				DataEditor dataEditor = new DataEditor(importedObjects, simpleMapping.getObjectClass());

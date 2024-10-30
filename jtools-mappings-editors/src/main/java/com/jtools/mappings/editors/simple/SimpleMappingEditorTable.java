@@ -4,7 +4,6 @@
 package com.jtools.mappings.editors.simple;
 
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
@@ -17,7 +16,6 @@ import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.mappings.common.MappingUtils;
 import com.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import com.jtools.mappings.simple.SimpleMapping;
-import com.jtools.mappings.simple.SimpleMappingRow;
 import com.jtools.utils.gui.components.ButtonColumn;
 
 /**
@@ -35,7 +33,7 @@ public class SimpleMappingEditorTable extends JTable {
 	 */
 	public SimpleMappingEditorTable(SimpleMapping<?> mapping) {
 
-		SimpleMappingEditorTableModel model = new SimpleMappingEditorTableModel(mapping.getMappingRows());
+		SimpleMappingEditorTableModel model = new SimpleMappingEditorTableModel(mapping);
 		setModel(model);
 
 		setShowGrid(false);
@@ -62,8 +60,8 @@ public class SimpleMappingEditorTable extends JTable {
 		TableUtils.installCenteredLabelsCellRenderers(this);
 	}
 
-	public List<SimpleMappingRow> getRows() {
-		return((SimpleMappingEditorTableModel)getModel()).getRows();
+	public SimpleMapping<?> apply() {
+		return((SimpleMappingEditorTableModel)getModel()).apply();
 	}
 
 	/**
