@@ -246,7 +246,7 @@ public class ObjectUtils {
 			return null;
 		}
 
-		return list.stream().map(n -> n.toString()).collect(Collectors.joining(delimiter));
+		return list.stream().map(Object::toString).collect(Collectors.joining(delimiter));
 	}
 
 	/**

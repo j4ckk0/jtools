@@ -169,7 +169,7 @@ public class CoordinatesFormatManager {
 		}
 
 		public String[] labels() {
-			List<String> list = Arrays.stream(values()).map(m -> m.getLabel()).toList();
+			List<String> list = Arrays.stream(values()).map(CoordinatesFormat::getLabel).toList();
 			return CommonUtils.stringListToArray(list);
 		}
 
