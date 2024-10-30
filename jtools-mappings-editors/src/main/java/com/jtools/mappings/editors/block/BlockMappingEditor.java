@@ -80,7 +80,7 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 	 * @param possibleClasses
 	 * @throws IOException
 	 */
-	public BlockMappingEditor(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) throws IOException {
+	public BlockMappingEditor(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) {
 		this.mapping = blockMapping;
 
 		this.possibleClasses = getPossibleClasses(blockMapping, possibleClasses);

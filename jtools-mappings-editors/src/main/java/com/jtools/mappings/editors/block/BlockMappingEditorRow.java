@@ -37,7 +37,7 @@ public class BlockMappingEditorRow {
 
 	public static final String MAPPING_TYPE_PROPERTY = "MAPPING_TYPE_PROPERTY";
 
-	private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 	
 	protected BlockMappingRow blockMappingRow;
 

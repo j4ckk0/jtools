@@ -26,7 +26,6 @@ package com.jtools.mappings.common;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -254,7 +253,7 @@ public class MappingUtils {
 	}
 
 	public static <T extends Object> void setValueFromCell(Cell cell, T object, Method setter)
-			throws IllegalAccessException, InvocationTargetException, ParseException {
+			throws IllegalAccessException, InvocationTargetException {
 
 		Parameter parameter = setter.getParameters()[0];
 		Class<?> parameterType = parameter.getType();

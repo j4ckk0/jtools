@@ -66,7 +66,7 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	 * @param objectClass
 	 * @throws IOException 
 	 */
-	public SimpleMappingEditor(SimpleMapping<E> mapping) throws IOException {
+	public SimpleMappingEditor(SimpleMapping<E> mapping) {
 		this.mapping = mapping;
 		this.mappingEditorTable = new SimpleMappingEditorTable(mapping);
 

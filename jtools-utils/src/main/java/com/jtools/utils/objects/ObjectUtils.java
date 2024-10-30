@@ -200,7 +200,7 @@ public class ObjectUtils {
 	 */
 	public static Field getField(Class<?> objectClass, String fieldName) {
 		Field field = null;
-		while(field == null && objectClass != Object.class) {
+		while(objectClass != Object.class) {
 			try {
 				field = objectClass.getDeclaredField(fieldName);
 				if(field != null) {
