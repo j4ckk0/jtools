@@ -4,4 +4,4 @@ age=C [Age]
 firstName=A [Pr\u00E9nom]
 lastName=D [Nom]
 object.class=com.jtools.tests.data.models.Person
-josmap=Java Object Simple MAPping
+josm=Java Object Simple Mapping

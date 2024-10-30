@@ -38,8 +38,8 @@ public class DataFileManager {
 
 	public static final String SAVE_MAPPING_DIALOG_TITLE = "Select a mapping file";
 
-	private static final String DATA_FILE_MARK_PROPERTY = "jojop";
-	private static final String DATA_FILE_MARK_VALUE = "Java Object as JsOnified Properties";
+	private static final String DATA_FILE_MARK_PROPERTY = "joj";
+	private static final String DATA_FILE_MARK_VALUE = "Java Object Jsonified";
 
 	private static final String DATA_CLASS_PROPERTY = "DATA_CLASS";
 
@@ -49,7 +49,7 @@ public class DataFileManager {
 
 	public static final String LOAD_DATA_DIALOG_TITLE = "Select data file";
 
-	public static final String DATA_FILE_EXTENSION = ".jojop"; // Java Object as JsOnified Properties
+	public static final String DATA_FILE_EXTENSION = ".joj"; // Java Object Jsonified
 
 	private static final JsonConverter jsonConverter = JaversBuilder.javers().build().getJsonConverter();
 

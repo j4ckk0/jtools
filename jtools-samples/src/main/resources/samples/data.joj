@@ -12,4 +12,4 @@ DATA_OBJECT.2={\n  "eeis"\: [\n    {\n      "id"\: "EEI 1.1",\n      "requiredIn
 DATA_OBJECT.3={\n  "eeis"\: [\n    {\n      "id"\: "EEI 2.1",\n      "requiredInfo"\: ""\n    },\n    {\n      "id"\: "EEI 2.2",\n      "requiredInfo"\: ""\n    }\n  ],\n  "id"\: "SIR 2",\n  "requiredInfo"\: "\\u003c\u00F9lej\u00F9n\u00F9lj\u00F9n"\n}
 DATA_OBJECT.4={\n  "eeis"\: [\n    {\n      "id"\: "EEI 3.1",\n      "requiredInfo"\: ""\n    },\n    {\n      "id"\: "EEI 3.2",\n      "requiredInfo"\: ""\n    }\n  ],\n  "id"\: "SIR 3",\n  "requiredInfo"\: "db"\n}
 DATA_OBJECT.5={\n  "title"\: "Oui oui",\n  "author"\: {\n    "firstName"\: "Riri",\n    "lastName"\: "Canard",\n    "age"\: 0,\n    "dateOfBirth"\: null,\n    "address"\: null,\n    "weight"\: 0.0,\n    "height"\: 0.0,\n    "preferredBooks"\: null\n  },\n  "dateOfPublication"\: null,\n  "editor"\: "GG",\n  "summary"\: null,\n  "numberOfPage"\: 0\n}
-jojop=Java Object as JsOnified Properties
+joj=Java Object Jsonified

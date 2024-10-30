@@ -45,8 +45,8 @@ public class SimpleMappingFileManager {
 	private static final Pattern MAPPING_OUTPUT_COLUMN_PROPERTIES_PARSE_PATTERN = Pattern.compile("(.+) \\[(.+)\\]");
 	private static final String MAPPING_OUTPUT_COLUMN_PROPERTIES_FORMAT_PATTERN = "{0} [{1}]";
 
-	private static final String SIMPLE_MAPPING_FILE_MARK_PROPERTY = "josmap";
-	private static final String SIMPLE_MAPPING_FILE_MARK_VALUE = "Java Object Simple MAPping";
+	private static final String SIMPLE_MAPPING_FILE_MARK_PROPERTY = "josm";
+	private static final String SIMPLE_MAPPING_FILE_MARK_VALUE = "Java Object Simple Mapping";
 
 	private static final String OBJECT_CLASS_PROPERTY = "object.class";
 
@@ -58,7 +58,7 @@ public class SimpleMappingFileManager {
 
 	public static final String LOAD_SIMPLE_MAPPING_DIALOG_TITLE = "Select a simple mapping file";
 
-	public static final String SIMPLE_MAPPING_FILE_EXTENSION = ".josmap"; // Java Object Simple MAPping
+	public static final String SIMPLE_MAPPING_FILE_EXTENSION = ".josm"; // Java Object Simple Mapping
 
 	private static SimpleMappingFileManager instance;
 

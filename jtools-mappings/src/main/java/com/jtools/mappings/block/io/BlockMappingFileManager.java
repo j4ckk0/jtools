@@ -39,8 +39,8 @@ public class BlockMappingFileManager {
 	//
 	//////////////////////////////
 
-	private static final String BLOCK_MAPPING_FILE_MARK_PROPERTY = "jobmap";
-	private static final String BLOCK_MAPPING_FILE_MARK_VALUE = "Java Object Block MAPping";
+	private static final String BLOCK_MAPPING_FILE_MARK_PROPERTY = "jobm";
+	private static final String BLOCK_MAPPING_FILE_MARK_VALUE = "Java Object Block Mapping";
 
 	private static final String OBJECT_CLASS_PROPERTY = "object.class";
 
@@ -54,7 +54,7 @@ public class BlockMappingFileManager {
 
 	public static final String LOAD_BLOCK_MAPPING_DIALOG_TITLE = "Select a block mapping file";
 
-	public static final String BLOCK_MAPPING_FILE_EXTENSION = ".jobmap"; // Java Object Block MAPping
+	public static final String BLOCK_MAPPING_FILE_EXTENSION = ".jobm"; // Java Object Block Mapping
 
 	private static BlockMappingFileManager INSTANCE;
 

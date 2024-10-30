@@ -4,4 +4,4 @@ DATA_CLASS.0=com.jtools.tests.data.models.Person
 DATA_CLASS.1=com.jtools.tests.data.models.Person
 DATA_OBJECT.0={\n  "firstName"\: "Riri",\n  "lastName"\: "DUCK",\n  "age"\: 10,\n  "dateOfBirth"\: "2001-01-01T00\:00\:00",\n  "address"\: {\n    "number"\: 1,\n    "street"\: "rue du canard",\n    "zipCode"\: 111,\n    "city"\: null\n  },\n  "weight"\: 0.0,\n  "height"\: 0.0,\n  "preferredBooks"\: null\n}
 DATA_OBJECT.1={\n  "firstName"\: "Fifi",\n  "lastName"\: "DUCK",\n  "age"\: 12,\n  "dateOfBirth"\: "1999-01-01T00\:00\:00",\n  "address"\: {\n    "number"\: 1,\n    "street"\: "rue du canard",\n    "zipCode"\: 111,\n    "city"\: null\n  },\n  "weight"\: 0.0,\n  "height"\: 0.0,\n  "preferredBooks"\: null\n}
-jojop=Java Object as JsOnified Properties
+joj=Java Object Jsonified
