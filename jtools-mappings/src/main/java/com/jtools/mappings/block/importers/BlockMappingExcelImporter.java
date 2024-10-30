@@ -508,7 +508,7 @@ public class BlockMappingExcelImporter extends ABlockMappingImporter {
 	}
 
 	private BlockMappingRow getMappingRow(BlockMapping<?> blockMapping, String inputColumn) {
-		for (BlockMappingRow mapping : blockMapping.getMappingRows()) {
+		for (BlockMappingRow mapping : blockMapping.getRows()) {
 			List<String> columnsRange = MappingUtils.getColumnsRangeAsList(mapping.getFromColumn(),
 					mapping.getToColumn());
 			if (columnsRange.contains(inputColumn)) {

@@ -10,7 +10,6 @@ import java.beans.PropertyChangeSupport;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.SwingConstants;
@@ -22,7 +21,6 @@ import com.jtools.gui.table.tableModels.ITableModelWithCellsCustomBackground;
 import com.jtools.gui.table.tableModels.ITableModelWithMandatoryCells;
 import com.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
 import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.block.BlockMappingRow;
 import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingEditorNewRow;
 import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import com.jtools.utils.CommonUtils;
@@ -39,12 +37,14 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 
 	private final Class<E> objectClass;
 
+	private final BlockMapping<E> mapping;
 	private final List<BlockMappingEditorRow> editorRows;
 
 	private final List<Class<?>> possibleClasses;
 
-	public BlockMappingEditorTableModel(Class<E> objectClass, Class<?>[] possibleClasses) {
-		this.objectClass = objectClass;
+	public BlockMappingEditorTableModel(BlockMapping<E> mapping, Class<?>[] possibleClasses) {
+		this.mapping = mapping;
+		this.objectClass = mapping.getObjectClass();
 		this.possibleClasses = Arrays.stream(possibleClasses).toList();
 		this.editorRows = new ArrayList<>();
 
@@ -86,12 +86,16 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		fireTableRowsDeleted(row, row);
 	}
 
-	public List<BlockMappingRow> getRows() {
+	public BlockMapping<E> apply() {
+		mapping.getRows().clear();
 		
-		List<BlockMappingRow> rows = new ArrayList<>();
-		editorRows.stream().filter(m -> m.getRowType() == BlockMappingRowType.MAPPING_ROW).map(m -> rows.add(m.getBlockMappingRow()));
+		for(BlockMappingEditorRow edRow : editorRows) {
+			if(edRow.getRowType() == BlockMappingRowType.MAPPING_ROW) {
+				mapping.getRows().add(edRow.getBlockMappingRow());
+			}
+		}
 		
-		return Collections.unmodifiableList(rows);
+		return mapping;
 	}
 
 	@Override

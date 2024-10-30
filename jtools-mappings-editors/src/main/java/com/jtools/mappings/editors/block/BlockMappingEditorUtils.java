@@ -22,7 +22,7 @@ public class BlockMappingEditorUtils {
 	 */
 	public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
 		List<BlockMappingEditorRow> rows = new ArrayList<>();
-		for(BlockMappingRow row : blockMapping.getMappingRows()) {
+		for(BlockMappingRow row : blockMapping.getRows()) {
 			rows.add(new BlockMappingEditorRow(row));
 		}
 		return rows;

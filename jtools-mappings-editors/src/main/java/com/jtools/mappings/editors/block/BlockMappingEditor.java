@@ -93,8 +93,8 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 		return mappingEditorTable;
 	}
 
-	public List<BlockMappingRow> getRows() {
-		return mappingEditorTable.getRows();
+	public BlockMapping<E> apply() {
+		return mappingEditorTable.apply();
 	}
 
 	public Class<?> getObjectClass() {
@@ -115,7 +115,7 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 
 	@Override
 	protected void save() throws IOException {
-		BlockMappingFileManager.instance().save(mapping);
+		BlockMappingFileManager.instance().save(apply());
 	}
 
 	@Override
@@ -158,7 +158,7 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 		if(blockMapping != null) {
 			possibleClasses.add(blockMapping.getObjectClass());
 
-			for(BlockMappingRow mappingRow : blockMapping.getMappingRows()) {
+			for(BlockMappingRow mappingRow : blockMapping.getRows()) {
 				BlockMapping<?> subBlockMapping = mappingRow.getSubBlockMapping();
 				if(subBlockMapping != null) {
 					fillPossibleClassesFomMapping(subBlockMapping, possibleClasses);

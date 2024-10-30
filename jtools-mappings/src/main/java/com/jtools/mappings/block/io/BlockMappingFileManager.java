@@ -232,6 +232,7 @@ public class BlockMappingFileManager {
 				if (key.equals(BLOCK_MAPPING_PROPERTY)) {
 					String json = (String) property.getValue();
 					BlockMapping<?> blockMapping = jsonConverter.fromJson(json, BlockMapping.class);
+					
 					return blockMapping;
 				}
 
@@ -252,16 +253,12 @@ public class BlockMappingFileManager {
 		
 		properties.put(DATE_FORMAT_PROPERTY, DateFormatManager.instance().getActiveDateFormatPattern());
 		
-		properties.put(COORDINATES_FORMAT_PROPERTY, CoordinatesFormatManager.instance().getActiveCoordinatesFormat());
+		properties.put(COORDINATES_FORMAT_PROPERTY, CoordinatesFormatManager.instance().getActiveCoordinatesFormat().name());
 
 		properties.put(OBJECT_CLASS_PROPERTY, objectClass.getCanonicalName());
 
 		String json = jsonConverter.toJson(blockMapping);
 		properties.put(BLOCK_MAPPING_PROPERTY, json);
-
-		// TEST ... TO DELETE
-//		BlockMapping<?> fromJson = jsonConverter.fromJson(json, BlockMapping.class);
-//		System.out.println(fromJson);
 
 		return properties;
 	}

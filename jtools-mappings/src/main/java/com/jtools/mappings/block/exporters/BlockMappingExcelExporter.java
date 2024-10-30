@@ -116,7 +116,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 		List<BlockMapping<?>> subMappings = new ArrayList<>();
 
 		for (BlockMapping<?> mapping : mappings) {
-			for (BlockMappingRow mappingRow : mapping.getMappingRows()) {
+			for (BlockMappingRow mappingRow : mapping.getRows()) {
 
 				String headerValue = mappingRow.getHeaderValue();
 				if (headerValue != null) {
@@ -177,7 +177,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 		// Case of a single object as value
 		else {
 
-			for (BlockMappingRow mappingRow : mapping.getMappingRows()) {
+			for (BlockMappingRow mappingRow : mapping.getRows()) {
 
 				try {
 					int fromColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getFromColumn());
@@ -234,7 +234,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 
 	private int getStartColumn(BlockMapping<?> mapping) {
 		Integer startColumn = null;
-		for (BlockMappingRow mappingRow : mapping.getMappingRows()) {
+		for (BlockMappingRow mappingRow : mapping.getRows()) {
 			int mappingFromColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getFromColumn());
 			if (startColumn == null || mappingFromColumn < startColumn) {
 				startColumn = mappingFromColumn;

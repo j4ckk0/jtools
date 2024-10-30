@@ -15,7 +15,6 @@ import com.jtools.gui.table.cellEditors.DefaultFieldTableCellEditor;
 import com.jtools.gui.table.cellRenderers.DefaultFieldTableCellRenderer;
 import com.jtools.gui.table.utils.TableUtils;
 import com.jtools.mappings.block.BlockMapping;
-import com.jtools.mappings.block.BlockMappingRow;
 import com.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import com.jtools.utils.gui.components.ButtonColumn;
 
@@ -33,7 +32,7 @@ public class BlockMappingEditorTable<E extends Object> extends JTable {
 	 * @param rows
 	 */
 	public BlockMappingEditorTable(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) {
-		BlockMappingEditorTableModel<E> model = new BlockMappingEditorTableModel<E>(blockMapping.getObjectClass(), possibleClasses);
+		BlockMappingEditorTableModel<E> model = new BlockMappingEditorTableModel<E>(blockMapping, possibleClasses);
 		setModel(model);
 
 		setShowGrid(false);
@@ -62,8 +61,9 @@ public class BlockMappingEditorTable<E extends Object> extends JTable {
 		initRows(blockMappingEditorRows);
 	}
 
-	public List<BlockMappingRow> getRows() {
-		return ((BlockMappingEditorTableModel<?>) getModel()).getRows();
+	@SuppressWarnings("unchecked")
+	public BlockMapping<E> apply() {
+		return ((BlockMappingEditorTableModel<E>) getModel()).apply();
 	}
 
 	public void initRows(List<BlockMappingEditorRow> rows) {
