@@ -16,11 +16,11 @@ public class SimpleMappingImportFromExcelAction extends ASimpleMappingImportFrom
 	private static final long serialVersionUID = 5366162869248310896L;
 
 	public SimpleMappingImportFromExcelAction(String name, Icon icon) {
-		super(name, icon, SimpleMappingExcelImporter.getInstance());
+		super(name, icon, SimpleMappingExcelImporter.instance());
 	}
 
 	public SimpleMappingImportFromExcelAction(String name) {
-		super(name, SimpleMappingExcelImporter.getInstance());
+		super(name, SimpleMappingExcelImporter.instance());
 	}
 
 }

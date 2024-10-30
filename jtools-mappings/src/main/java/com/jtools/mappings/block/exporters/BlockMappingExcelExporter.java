@@ -44,17 +44,17 @@ import com.jtools.utils.objects.ObjectInfoProvider;
  */
 public class BlockMappingExcelExporter extends ABlockMappingExporter {
 
-	private static BlockMappingExcelExporter INSTANCE;
+	private static BlockMappingExcelExporter instance;
 
 	private final Map<XSSFSheet, Map<Integer, XSSFRow>> rowsMap = new HashMap<>();
 
 	private int rowIndex;
 
-	public static BlockMappingExcelExporter getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new BlockMappingExcelExporter();
+	public static BlockMappingExcelExporter instance() {
+		if (instance == null) {
+			instance = new BlockMappingExcelExporter();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	public <T> void exportData(List<T> dataList, BlockMapping<?> mappings) throws IOException {
@@ -81,7 +81,7 @@ public class BlockMappingExcelExporter extends ABlockMappingExporter {
 					outputFile = new File(outputFile.getAbsolutePath() + CommonUtils.EXCEL_FILES_EXTENSION);
 				}
 
-				BlockMappingExcelExporter.getInstance().export(dataList, mappings, outputFile);
+				BlockMappingExcelExporter.instance().export(dataList, mappings, outputFile);
 
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the file ?", "Export succeed",
 						JOptionPane.YES_NO_OPTION);

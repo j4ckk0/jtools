@@ -34,7 +34,7 @@ public class DataFileManager {
 	//
 	//////////////////////////////
 
-	private static DataFileManager INSTANCE;
+	private static DataFileManager instance;
 
 	public static final String SAVE_MAPPING_DIALOG_TITLE = "Select a mapping file";
 
@@ -70,10 +70,10 @@ public class DataFileManager {
 	//////////////////////////////
 
 	public static DataFileManager instance() {
-		if (INSTANCE == null) {
-			INSTANCE = new DataFileManager();
+		if (instance == null) {
+			instance = new DataFileManager();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	public void save(List<?> dataList) throws IOException {

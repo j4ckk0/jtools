@@ -38,7 +38,7 @@ public class TestSimpleExporter {
 				public Void call() throws Exception {
 					List<Person> persons = generateTestData();
 
-					SimpleMappingStdOutputExporter.getInstance().exportData(persons, personMappingEditor.apply().getRows());
+					SimpleMappingStdOutputExporter.instance().exportData(persons, personMappingEditor.apply().getRows());
 					//ExcelExporter.getInstance().exportData(persons, rows);
 
 					return null;

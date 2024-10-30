@@ -30,7 +30,7 @@ public class TestBlockImporter {
 
 			BlockMappingEditor<Person> mappingEditor = new BlockMappingEditor<>(mapping, MappingUtils.getPossibleColumns(), Person.class, Book.class);
 
-			List<Person> data = BlockMappingExcelImporter.getInstance().importData(Person.class, mapping);
+			List<Person> data = BlockMappingExcelImporter.instance().importData(Person.class, mapping);
 			if(data != null) {
 				for(Person p : data) {
 					Logger.getLogger(TestBlockImporter.class.getName()).log(Level.INFO, p.toString());

@@ -34,13 +34,13 @@ import com.jtools.utils.objects.ObjectInfoProvider;
  */
 public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 
-	private static SimpleMappingExcelExporter INSTANCE;
+	private static SimpleMappingExcelExporter instance;
 
-	public static SimpleMappingExcelExporter getInstance() {
-		if(INSTANCE == null) {
-			INSTANCE = new SimpleMappingExcelExporter();
+	public static SimpleMappingExcelExporter instance() {
+		if(instance == null) {
+			instance = new SimpleMappingExcelExporter();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	public <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException {
@@ -67,7 +67,7 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 					outputFile = new File(outputFile.getAbsolutePath() + CommonUtils.EXCEL_FILES_EXTENSION);
 				}
 
-				SimpleMappingExcelExporter.getInstance().export(data, mappings, outputFile);
+				SimpleMappingExcelExporter.instance().export(data, mappings, outputFile);
 
 				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the file ?", "Export succeed", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {

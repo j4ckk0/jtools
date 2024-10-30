@@ -16,11 +16,11 @@ public class BlockMappingImportFromExcelAction extends ABlockMappingImportFromAc
 	private static final long serialVersionUID = 5366162869248310896L;
 
 	public BlockMappingImportFromExcelAction(String name, Icon icon) {
-		super(name, icon, BlockMappingExcelImporter.getInstance());
+		super(name, icon, BlockMappingExcelImporter.instance());
 	}
 
 	public BlockMappingImportFromExcelAction(String name) {
-		super(name, BlockMappingExcelImporter.getInstance());
+		super(name, BlockMappingExcelImporter.instance());
 	}
 
 }

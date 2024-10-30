@@ -56,7 +56,7 @@ public class BlockMappingFileManager {
 
 	public static final String BLOCK_MAPPING_FILE_EXTENSION = ".jobm"; // Java Object Block Mapping
 
-	private static BlockMappingFileManager INSTANCE;
+	private static BlockMappingFileManager instance;
 
 	private static final JsonConverter jsonConverter = JaversBuilder.javers().build().getJsonConverter();
 
@@ -79,10 +79,10 @@ public class BlockMappingFileManager {
 	//////////////////////////////
 
 	public static BlockMappingFileManager instance() {
-		if (INSTANCE == null) {
-			INSTANCE = new BlockMappingFileManager();
+		if (instance == null) {
+			instance = new BlockMappingFileManager();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	/**

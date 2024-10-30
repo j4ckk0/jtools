@@ -33,13 +33,13 @@ import com.jtools.utils.objects.ObjectInfoProvider;
  */
 public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 
-	private static SimpleMappingExcelImporter INSTANCE;
+	private static SimpleMappingExcelImporter instance;
 
-	public static SimpleMappingExcelImporter getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new SimpleMappingExcelImporter();
+	public static SimpleMappingExcelImporter instance() {
+		if (instance == null) {
+			instance = new SimpleMappingExcelImporter();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	public <T extends Object> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings)

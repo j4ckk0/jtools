@@ -16,11 +16,11 @@ public class SimpleMappingExportToExcelAction extends ASimpleMappingExportToActi
 	private static final long serialVersionUID = -5666508052700983450L;
 
 	public SimpleMappingExportToExcelAction(String name, Icon icon) {
-		super(name, icon, SimpleMappingExcelExporter.getInstance());
+		super(name, icon, SimpleMappingExcelExporter.instance());
 	}
 
 	public SimpleMappingExportToExcelAction(String name) {
-		super(name, SimpleMappingExcelExporter.getInstance());
+		super(name, SimpleMappingExcelExporter.instance());
 	}
 
 }

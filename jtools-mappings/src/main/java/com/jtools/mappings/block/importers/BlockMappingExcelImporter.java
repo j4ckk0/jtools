@@ -43,18 +43,18 @@ import com.jtools.utils.objects.ObjectUtils;
  */
 public class BlockMappingExcelImporter extends ABlockMappingImporter {
 
-	private static BlockMappingExcelImporter INSTANCE;
+	private static BlockMappingExcelImporter instance;
 
 	private static final String OBJECT_SEPARATOR = ">";
 	private static final String FIELD_SEPARATOR = "#";
 
 	private final FlushInstructionComparator flushInstructionComparator = new FlushInstructionComparator();
 
-	public static BlockMappingExcelImporter getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new BlockMappingExcelImporter();
+	public static BlockMappingExcelImporter instance() {
+		if (instance == null) {
+			instance = new BlockMappingExcelImporter();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	public <T extends Object> List<T> importData(Class<T> importedObjectClass, BlockMapping<?> mapping)

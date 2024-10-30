@@ -22,13 +22,13 @@ import com.jtools.utils.objects.ObjectInfoProvider;
  */
 public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 
-	private static SimpleMappingStdOutputExporter INSTANCE;
+	private static SimpleMappingStdOutputExporter instance;
 
-	public static SimpleMappingStdOutputExporter getInstance() {
-		if(INSTANCE == null) {
-			INSTANCE = new SimpleMappingStdOutputExporter();
+	public static SimpleMappingStdOutputExporter instance() {
+		if(instance == null) {
+			instance = new SimpleMappingStdOutputExporter();
 		}
-		return INSTANCE;
+		return instance;
 	}
 
 	@Override

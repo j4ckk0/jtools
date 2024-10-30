@@ -16,11 +16,11 @@ public class SimpleMappingExportToStdOutputAction extends ASimpleMappingExportTo
 	private static final long serialVersionUID = -5666508052700983450L;
 
 	public SimpleMappingExportToStdOutputAction(String name, Icon icon) {
-		super(name, icon, SimpleMappingStdOutputExporter.getInstance());
+		super(name, icon, SimpleMappingStdOutputExporter.instance());
 	}
 
 	public SimpleMappingExportToStdOutputAction(String name) {
-		super(name, SimpleMappingStdOutputExporter.getInstance());
+		super(name, SimpleMappingStdOutputExporter.instance());
 	}
 
 }
