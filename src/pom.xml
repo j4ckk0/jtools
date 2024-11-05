@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.jtools</groupId>
+	<artifactId>jtools-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<name>Java Tools - Parent</name>
+	<url>https://github.com/j4ckk0/jtools.git</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<modules>
+		<module>jtools-utils</module>
+		<module>jtools-utils-messages</module>
+		<module>jtools-data</module>
+		<module>jtools-gui</module>
+		<module>jtools-gui-desktop</module>
+		<module>jtools-mappings</module>
+		<module>jtools-mappings-editors</module>
+		<module>jtools-samples</module>
+	</modules>
+	<build>
+		<plugins>
+			<!-- Define encoding -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- Build as jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- Add license header -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<configuration>
+					<verbose>false</verbose>
+					<licenseName>apache_v2</licenseName>
+					<organizationName>j4ckk0</organizationName>
+					<inceptionYear>2024</inceptionYear>
+				</configuration>
+				<executions>
+					<execution>
+						<id>first</id>
+						<goals>
+							<goal>update-file-header</goal>
+						</goals>
+						<phase>process-sources</phase>
+						<configuration>
+							<includes>
+								<include>*.java</include>
+							</includes>
+							<roots>
+								<root>src/main/java</root>
+								<root>src/test</root>
+							</roots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Move built jar files -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>						
+							<tasks>
+								<echo>Moving jar files to build folder</echo>
+								<copy todir="${project.basedir}/../../build/" flatten="true">
+          							<fileset dir="${project.build.directory}" includes="**/*.jar" />
+         						</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

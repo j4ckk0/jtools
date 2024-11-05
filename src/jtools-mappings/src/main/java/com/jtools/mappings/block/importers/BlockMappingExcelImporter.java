@@ -561,6 +561,11 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 			}
 			return false;
 		}
+		
+		@Override
+		public int hashCode() {
+			return super.hashCode();
+		}
 
 	}
 
