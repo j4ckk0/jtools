@@ -49,6 +49,33 @@
         		</execution>
     		</executions>
 		</plugin>
+		<!-- Build minimal pom.xml file -->
+		<plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>flatten-maven-plugin</artifactId>
+            <version>1.2.2</version>
+            <configuration>
+                <pomElements>
+                    <repositories>flatten</repositories>
+                </pomElements>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>flatten</id>
+                    <phase>process-resources</phase>
+                    <goals>
+                        <goal>flatten</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>flatten.clean</id>
+                    <phase>clean</phase>
+                    <goals>
+                        <goal>clean</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 		<!-- Move built jar files -->
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -66,6 +93,7 @@
 							<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
           						<fileset dir="${project.build.directory}" includes="**/*.jar" />
          					</copy>
+         					<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml"/>
 						</tasks>
 					</configuration>
 				</execution>
