@@ -45,6 +45,43 @@
   </dependencies>
   
   <build>
+	<plugins>
+		<!-- Build src jar file -->
+		<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-source-plugin</artifactId>
+    		<executions>
+        		<execution>
+            		<id>attach-sources</id>
+            		<goals>
+                		<goal>jar</goal>
+            		</goals>
+        		</execution>
+    		</executions>
+		</plugin>
+		<!-- Move built jar files -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-antrun-plugin</artifactId>
+			<version>1.8</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>run</goal>
+					</goals>
+					<phase>package</phase>
+					<configuration>						
+						<tasks>
+							<echo>Moving jar files to build folder</echo>
+							<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
+          						<fileset dir="${project.build.directory}" includes="**/*.jar" />
+         					</copy>
+						</tasks>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
   </build>
   
 </project>
