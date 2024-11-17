@@ -5,7 +5,7 @@
   <parent>  
 	<groupId>com.jtools</groupId>
 	<artifactId>jtools-parent</artifactId>
-  	<version>1.0</version>
+  	<version>1.1</version>
   </parent>
   
   <artifactId>jtools-mappings</artifactId>
@@ -77,6 +77,19 @@
                 </execution>
             </executions>
         </plugin>
+		<!-- Artifacts checksum -->
+        <plugin>
+            <groupId>net.ju-n.maven.plugins</groupId>
+            <artifactId>checksum-maven-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>artifacts</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 		<!-- Sign artifacts -->
         <plugin>
         	<groupId>org.apache.maven.plugins</groupId>
@@ -111,9 +124,14 @@
          					</copy>
          					<echo>Moving pom files to build folder</echo>
          					<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml"/>
-							<echo>Moving asc files to build folder</echo>
+							<echo>Moving GPG signed (.asc) files to build folder</echo>
 							<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
           						<fileset dir="${project.build.directory}" includes="**/*.asc" />
+         					</copy>
+							<echo>Moving checksum (.sha1, .md5) files to build folder</echo>
+							<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
+          						<fileset dir="${project.build.directory}" includes="**/*.sha1" />
+          						<fileset dir="${project.build.directory}" includes="**/*.md5" />
          					</copy>
 						</target>
 					</configuration>
