@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>  
-	<groupId>com.jtools</groupId>
+	<groupId>org.jtools</groupId>
 	<artifactId>jtools-parent</artifactId>
-  	<version>1.1</version>
+  	<version>1.2</version>
   </parent>
   
   <artifactId>jtools-samples</artifactId>
@@ -18,22 +18,22 @@
 
   <dependencies>
   	<dependency>
-    	<groupId>com.jtools</groupId>
+    	<groupId>org.jtools</groupId>
 	    <artifactId>jtools-data</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   	<dependency>
-    	<groupId>com.jtools</groupId>
+    	<groupId>org.jtools</groupId>
 	    <artifactId>jtools-gui</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   	<dependency>
-    	<groupId>com.jtools</groupId>
+    	<groupId>org.jtools</groupId>
 	    <artifactId>jtools-gui-desktop</artifactId>
 	    <version>${project.version}</version>
 	</dependency>
   	<dependency>
-    	<groupId>com.jtools</groupId>
+    	<groupId>org.jtools</groupId>
 	    <artifactId>jtools-mappings-editors</artifactId>
 	    <version>${project.version}</version>
 	</dependency>

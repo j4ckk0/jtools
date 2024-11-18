@@ -1,11 +1,11 @@
 #2022-11-25T06:01:43.709836250Z
 #Fri Nov 25 07:01:43 CET 2022
-DATA_CLASS.0=com.jtools.tests.data.models.Person
-DATA_CLASS.1=com.jtools.tests.data.models.Person
-DATA_CLASS.2=com.jtools.tests.data.models.SIR
-DATA_CLASS.3=com.jtools.tests.data.models.SIR
-DATA_CLASS.4=com.jtools.tests.data.models.SIR
-DATA_CLASS.5=com.jtools.tests.data.models.Book
+DATA_CLASS.0=org.jtools.tests.data.models.Person
+DATA_CLASS.1=org.jtools.tests.data.models.Person
+DATA_CLASS.2=org.jtools.tests.data.models.SIR
+DATA_CLASS.3=org.jtools.tests.data.models.SIR
+DATA_CLASS.4=org.jtools.tests.data.models.SIR
+DATA_CLASS.5=org.jtools.tests.data.models.Book
 DATA_OBJECT.0={\n  "firstName"\: "Riri",\n  "lastName"\: "Canard",\n  "age"\: 12,\n  "dateOfBirth"\: "2010-11-10T00\:00\:00",\n  "address"\: {\n    "number"\: 1,\n    "street"\: "impasse Daffy",\n    "zipCode"\: 0,\n    "city"\: null\n  },\n  "weight"\: 12.0,\n  "height"\: 14.0,\n  "preferredBooks"\: null\n}
 DATA_OBJECT.1={\n  "firstName"\: "Fifi",\n  "lastName"\: "Canard",\n  "age"\: 8,\n  "dateOfBirth"\: "2015-07-07T00\:00\:00",\n  "address"\: {\n    "number"\: 7,\n    "street"\: "rue picsou",\n    "zipCode"\: 0,\n    "city"\: null\n  },\n  "weight"\: 11.0,\n  "height"\: 6.0,\n  "preferredBooks"\: null\n}
 DATA_OBJECT.2={\n  "eeis"\: [\n    {\n      "id"\: "EEI 1.1",\n      "requiredInfo"\: "isudvh"\n    },\n    {\n      "id"\: "EEI 1.2",\n      "requiredInfo"\: "a\u00D9ELF"\n    }\n  ],\n  "id"\: "SIR 1",\n  "requiredInfo"\: "ldn"\n}

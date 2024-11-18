@@ -3,5 +3,5 @@
 age=C [Age]
 firstName=A [Pr\u00E9nom]
 lastName=D [Nom]
-object.class=com.jtools.tests.data.models.Person
+object.class=org.jtools.tests.data.models.Person
 josm=Java Object Simple Mapping

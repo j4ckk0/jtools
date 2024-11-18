@@ -1,7 +1,7 @@
 #2024-10-30T04:36:14.077598430Z
 #Wed Oct 30 05:36:14 CET 2024
-block.mapping={\n  "id"\: "80f0b4e8-566b-4b77-ba40-a8ba683791b2",\n  "objectClassName"\: "com.jtools.tests.data.models.Person",\n  "mappings"\: [\n    {\n      "fromColumn"\: "A",\n      "toColumn"\: "A",\n      "headerValue"\: "Last name",\n      "objectField"\: {\n        "declaringClass"\: "com.jtools.tests.data.models.Person",\n        "fieldName"\: "lastName"\n      },\n      "subBlockMapping"\: null\n    },\n    {\n      "fromColumn"\: "C",\n      "toColumn"\: "D",\n      "headerValue"\: "Address",\n      "objectField"\: {\n        "declaringClass"\: "com.jtools.tests.data.models.Person",\n        "fieldName"\: "address"\n      },\n      "subBlockMapping"\: {\n        "id"\: "3af7d2d5-efe0-48cb-9472-ede7d423b792",\n        "objectClassName"\: "com.jtools.tests.data.models.Address",\n        "mappings"\: []\n      }\n    }\n  ]\n}
+block.mapping={\n  "id"\: "80f0b4e8-566b-4b77-ba40-a8ba683791b2",\n  "objectClassName"\: "org.jtools.tests.data.models.Person",\n  "mappings"\: [\n    {\n      "fromColumn"\: "A",\n      "toColumn"\: "A",\n      "headerValue"\: "Last name",\n      "objectField"\: {\n        "declaringClass"\: "org.jtools.tests.data.models.Person",\n        "fieldName"\: "lastName"\n      },\n      "subBlockMapping"\: null\n    },\n    {\n      "fromColumn"\: "C",\n      "toColumn"\: "D",\n      "headerValue"\: "Address",\n      "objectField"\: {\n        "declaringClass"\: "org.jtools.tests.data.models.Person",\n        "fieldName"\: "address"\n      },\n      "subBlockMapping"\: {\n        "id"\: "3af7d2d5-efe0-48cb-9472-ede7d423b792",\n        "objectClassName"\: "org.jtools.tests.data.models.Address",\n        "mappings"\: []\n      }\n    }\n  ]\n}
 coordinates.format=LAT_LON_DMS
 date.format=dd/MM/yyyy
 jobm=Java Object Block Mapping
-object.class=com.jtools.tests.data.models.Person
+object.class=org.jtools.tests.data.models.Person
