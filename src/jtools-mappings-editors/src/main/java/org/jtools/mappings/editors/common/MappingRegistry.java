@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.common;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +28,6 @@ import java.util.logging.Logger;
 
 import org.jtools.mappings.common.IMapping;
 import org.jtools.utils.messages.pubsub.DefaultPubSubBus;
-
-/**
- * @author j4ckk0
- *
- */
 public class MappingRegistry {
 
 	private static MappingRegistry instance;

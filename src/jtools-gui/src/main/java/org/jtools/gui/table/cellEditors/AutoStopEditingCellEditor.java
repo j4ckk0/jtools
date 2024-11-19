@@ -4,7 +4,7 @@ package org.jtools.gui.table.cellEditors;
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,6 @@ import java.awt.event.FocusListener;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class AutoStopEditingCellEditor extends AbstractCellEditor implements TableCellEditor, FocusListener {
 
 	private static final long serialVersionUID = 4720841926836417692L;

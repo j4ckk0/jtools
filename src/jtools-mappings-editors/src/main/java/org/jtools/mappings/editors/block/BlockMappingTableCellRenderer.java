@@ -4,7 +4,7 @@ package org.jtools.mappings.editors.block;
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.jtools.mappings.block.BlockMapping;
-
-/**
- * @author j4ckk0
- *
- */
 class BlockMappingTableCellRenderer extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = -4462402854446992691L;

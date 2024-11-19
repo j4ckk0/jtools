@@ -4,7 +4,7 @@ package org.jtools.utils.gui.border;
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,12 +28,6 @@ import javax.swing.AbstractButton;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 import javax.swing.text.JTextComponent;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class MarginLineBorder extends LineBorder {
 
 	//////////////////////////////////////////////////
@@ -41,11 +35,7 @@ public class MarginLineBorder extends LineBorder {
 	// Class variables and constants
 	//
 	//////////////////////////////////////////////////
-
-	/** The serial UID */
 	private static final long serialVersionUID = 4813496499535613615L;
-
-	/** The margins */
 	private Integer topMargin, leftMargin, bottomMargin, rightMargin;
 
 	//////////////////////////////////////////////////
@@ -53,26 +43,9 @@ public class MarginLineBorder extends LineBorder {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
-
-	/**
-	 * 
-	 * @param lineColor
-	 */
 	public MarginLineBorder(Color lineColor) {
 		super(lineColor);
 	}
-
-	/**
-	 * <p>
-	 * Constructor for MarginLineBorder.
-	 * </p>
-	 *
-	 * @param lineColor    a {@link java.awt.Color} object.
-	 * @param topMargin    a int.
-	 * @param leftMargin   a int.
-	 * @param bottomMargin a int.
-	 * @param rightMargin  a int.
-	 */
 	public MarginLineBorder(Color lineColor, int topMargin, int leftMargin, int bottomMargin, int rightMargin) {
 		super(lineColor);
 		this.topMargin = topMargin;

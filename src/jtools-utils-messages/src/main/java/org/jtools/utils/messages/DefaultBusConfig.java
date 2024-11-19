@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.messages;
 
 /*-
  * #%L
  * Java Tools - Utils - Messages
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import java.util.logging.Logger;
 
 import org.jtools.utils.messages.pubsub.DefaultPubSubBus;
 import org.jtools.utils.network.NetworkUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class DefaultBusConfig {
 
 	private static final int FIRST_PORT = 61616;

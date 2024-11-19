@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.simple.importers;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +24,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.jtools.mappings.simple.SimpleMappingRow;
-
-/**
- * @author j4ckk0
- *
- */
 public abstract class ASimpleMappingImporter {
 
 	public abstract <T> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings) throws IOException;

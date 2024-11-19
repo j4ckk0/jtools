@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,19 +25,8 @@ import java.util.List;
 
 import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.block.BlockMappingRow;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingEditorUtils {
-	
-	/**
-	 * 
-	 * @param blockMapping
-	 * @return
-	 */
-	public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
+		public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
 		List<BlockMappingEditorRow> rows = new ArrayList<>();
 		for(BlockMappingRow row : blockMapping.getRows()) {
 			rows.add(new BlockMappingEditorRow(row));

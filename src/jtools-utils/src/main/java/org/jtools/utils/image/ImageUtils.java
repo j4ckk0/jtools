@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.image;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,11 +43,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
-/**
- * @author j4ckk0
- *
- */
 public class ImageUtils {
 
 	public static java.awt.Color hex2Rgb(String colorStr) {

@@ -4,7 +4,7 @@ package org.jtools.utils.gui.border;
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,12 +38,6 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class TitledLineBorder extends TitledBorder {
 
 	private static final long serialVersionUID = -7572972693245059564L;

@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +41,6 @@ import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingEditorNewRow;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import org.jtools.utils.CommonUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingEditorTableModel<E extends Object> extends AbstractTableModel
 implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment,
 ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChangeListener {

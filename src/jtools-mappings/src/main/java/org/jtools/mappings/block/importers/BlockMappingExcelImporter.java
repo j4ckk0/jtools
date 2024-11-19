@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.block.importers;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,11 +51,6 @@ import org.jtools.mappings.common.apachepoi.CellInfo;
 import org.jtools.mappings.common.apachepoi.MergedRegion;
 import org.jtools.mappings.common.importers.ExcelImportConfigPanel;
 import org.jtools.utils.objects.ObjectUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
 	private static BlockMappingExcelImporter instance;
@@ -535,12 +527,6 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		}
 		return null;
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	private class FlushInstruction {
 
 		private final int complexity;

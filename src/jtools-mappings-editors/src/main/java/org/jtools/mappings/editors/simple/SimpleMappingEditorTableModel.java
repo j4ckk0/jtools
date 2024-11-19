@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.simple;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +36,6 @@ import org.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingEd
 import org.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.mappings.simple.SimpleMappingRow;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMappingEditorTableModel extends AbstractTableModel implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment, ITableModelWithCellsCustomBackground {
 
 	private static final long serialVersionUID = 3270825863776856519L;

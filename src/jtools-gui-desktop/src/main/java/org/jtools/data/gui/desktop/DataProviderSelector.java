@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.data.gui.desktop;
 
 /*-
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +39,6 @@ import org.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
-
-/**
- * @author j4ckk0
- *
- */
 public class DataProviderSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
 	private static final long serialVersionUID = -6803902145432674502L;

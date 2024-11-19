@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.tests.data.models;
 
 /*-
  * #%L
  * Java Tools - Samples
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +18,6 @@ package org.jtools.tests.data.models;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * #L%
- */
-
-/**
- * @author j4ckk0
- *
  */
 public class Address {
 

@@ -4,7 +4,7 @@ package org.jtools.mappings.editors.simple;
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,6 @@ import java.lang.reflect.Field;
 
 import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.utils.gui.GuiUtils;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class SimpleMappingEditorRow {
 
 	protected final SimpleMappingRow simpleMappingRow;
@@ -93,13 +87,7 @@ public class SimpleMappingEditorRow {
 			simpleMappingRow.setObjectField(value);
 		}
 	}
-	
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
-	public static class SimpleMappingEditorNewRow extends SimpleMappingEditorRow {
+		public static class SimpleMappingEditorNewRow extends SimpleMappingEditorRow {
 
 		public SimpleMappingEditorNewRow() {
 			super(null);
@@ -115,13 +103,7 @@ public class SimpleMappingEditorRow {
 			return null;
 		}
 	}
-	
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
-	public enum SimpleMappingRowType {
+		public enum SimpleMappingRowType {
 		MAPPING_ROW(GuiUtils.MINUS_ICON_TXT), NEW_ROW(GuiUtils.PLUS_ICON_TXT);
 
 		private final String label;

@@ -4,7 +4,7 @@ package org.jtools.gui.desktop;
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,6 @@ package org.jtools.gui.desktop;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class ClearStdOutputAction extends AbstractAction {
 
 	private static final long serialVersionUID = -915029730697379837L;

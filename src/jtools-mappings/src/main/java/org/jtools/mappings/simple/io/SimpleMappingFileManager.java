@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.simple.io;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,11 +45,6 @@ import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
 import org.jtools.utils.objects.ObjectUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMappingFileManager {
 
 	//////////////////////////////
@@ -105,14 +97,6 @@ public class SimpleMappingFileManager {
 		}
 		return instance;
 	}
-
-	/**
-	 * 
-	 * @param mappingFilepath
-	 * @return
-	 * @throws InstantiationException
-	 * @throws MappingException 
-	 */
 	@SuppressWarnings({ "unchecked" })
 	public <E extends Object> SimpleMapping<E> loadMapping(String mappingFilepath) throws InstantiationException, MappingException {
 		Properties properties;
@@ -157,21 +141,9 @@ public class SimpleMappingFileManager {
 			throw new InstantiationException("An error occured while loading mapping editor: " + e.getMessage());
 		}
 	}
-
-	/**
-	 * 
-	 * @param objectClass
-	 * @return
-	 */
 	public String getDefaultMappingFilePath(Class<?> objectClass) {
 		return "./resources/" + objectClass.getName() + ".properties";
 	}
-
-	/**
-	 * 
-	 * @param objectClass
-	 * @return
-	 */
 	public File getDefaultMappingFile(Class<?> objectClass) {
 		return new File(getDefaultMappingFilePath(objectClass));
 	}

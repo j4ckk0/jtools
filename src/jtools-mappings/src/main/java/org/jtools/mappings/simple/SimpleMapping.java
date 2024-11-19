@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.simple;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.jtools.mappings.common.IMapping;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 
 	private static final long serialVersionUID = -388490711678154083L;

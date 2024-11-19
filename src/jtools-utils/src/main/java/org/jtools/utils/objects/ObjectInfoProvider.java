@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.objects;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,11 +25,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-/**
- * @author j4ckk0
- *
- */
 @SuppressWarnings({"rawtypes"})
 public class ObjectInfoProvider {
 
@@ -49,13 +41,6 @@ public class ObjectInfoProvider {
 		return objectInfo;
 	}
 
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 * @param <E>
-	 */
 	public static class ObjectInfo {
 
 		protected final Class<?> objectClass;

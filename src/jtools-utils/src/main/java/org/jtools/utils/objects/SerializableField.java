@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.objects;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- * @author j4ckk0
- *
- */
 public class SerializableField implements Serializable {
 
 	private static final long serialVersionUID = -4378063640758447458L;

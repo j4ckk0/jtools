@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.gui.editor;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,30 +47,11 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import org.jtools.utils.concurrent.NamedCallable;
-
-/**
- * @author j4ckk0
- *
- */
 public abstract class AEditor extends JPanel {
 
 	private static final long serialVersionUID = 1830181888153315752L;
-
-	/**
-	 * 
-	 * @throws IOException
-	 */
 	protected abstract void save() throws IOException;
-
-	/**
-	 * 
-	 * @return
-	 */
 	protected abstract String getEditorName();
-
-	/**
-	 * 
-	 */
 	protected void onWindowOpened() {
 		// Nothing by default
 	}

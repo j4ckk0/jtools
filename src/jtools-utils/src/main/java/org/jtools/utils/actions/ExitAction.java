@@ -4,7 +4,7 @@ package org.jtools.utils.actions;
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class ExitAction extends AbstractAction {
 
 	private static final long serialVersionUID = -8034632895201890192L;

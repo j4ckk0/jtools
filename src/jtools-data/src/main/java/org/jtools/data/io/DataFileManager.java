@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.data.io;
 
 /*-
  * #%L
  * Java Tools - Data
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,11 +37,6 @@ import org.javers.core.JaversBuilder;
 import org.javers.core.json.JsonConverter;
 import org.jtools.data.DataException;
 import org.jtools.utils.CommonUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class DataFileManager {
 
 	//////////////////////////////

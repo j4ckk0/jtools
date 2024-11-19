@@ -4,7 +4,7 @@ package org.jtools.mappings.block;
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 
 import org.jtools.utils.objects.SerializableField;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class BlockMappingRow implements Serializable {
 
 	private static final long serialVersionUID = -9078066581764951630L;
@@ -70,31 +64,15 @@ public class BlockMappingRow implements Serializable {
 	public String getHeaderValue() {
 		return headerValue;
 	}
-
-	/**
-	 * @param fromColumn the fromColumn to set
-	 */
 	public void setFromColumn(String fromColumn) {
 		this.fromColumn = fromColumn;
 	}
-
-	/**
-	 * @param toColumn the toColumn to set
-	 */
 	public void setToColumn(String toColumn) {
 		this.toColumn = toColumn;
 	}
-
-	/**
-	 * @param headerValue the headerValue to set
-	 */
 	public void setHeaderValue(String headerValue) {
 		this.headerValue = headerValue;
 	}
-
-	/**
-	 * @param objectField the objectField to set
-	 */
 	public void setObjectField(SerializableField objectField) {
 		this.objectField = objectField;
 	}

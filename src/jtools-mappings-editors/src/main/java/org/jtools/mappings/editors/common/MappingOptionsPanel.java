@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.common;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,11 +40,6 @@ import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
 import org.jtools.utils.gui.border.MarginTitledBorder;
 import org.jtools.utils.gui.components.ExtensibleComboBox;
 import org.jtools.utils.resources.ResourcesManager;
-
-/**
- * @author j4ckk0
- *
- */
 public class MappingOptionsPanel extends JPanel {
 
 	private static final long serialVersionUID = 2090830784741546658L;
@@ -126,12 +118,6 @@ public class MappingOptionsPanel extends JPanel {
 	public String getCoordinatesFormat() {
 		return (String) coordinatesFormatComboBox.getSelectedItem();
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	private static class CoordinatesFormatRenderer extends DefaultListCellRenderer {
 		private static final long serialVersionUID = 4084496731811108441L;
 

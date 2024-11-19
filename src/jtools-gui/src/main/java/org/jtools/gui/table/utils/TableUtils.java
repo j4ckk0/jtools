@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.utils;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,11 +43,6 @@ import org.jtools.gui.table.cellRenderers.DefaultDateTableCellRenderer;
 import org.jtools.gui.table.cellRenderers.DefaultObjectsListTableCellRenderer;
 import org.jtools.gui.table.cellRenderers.ObjectWrapperCellRenderer;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
-
-/**
- * @author j4ckk0
- *
- */
 public class TableUtils {
 	
 	//////////////////////////////
@@ -58,11 +50,6 @@ public class TableUtils {
 	// Public methods
 	//
 	//////////////////////////////
-
-	/**
-	 * 
-	 * @param table
-	 */
 	public static void installAutoStopEditingCellEditors(JTable table) {
 
 		TableColumnModel columnModel = table.getColumnModel();
@@ -82,11 +69,6 @@ public class TableUtils {
 		}
 
 	}
-
-	/**
-	 * 
-	 * @param table
-	 */
 	public static void installCenteredLabelsCellRenderers(JTable table) {
 
 		TableColumnModel columnModel = table.getColumnModel();
@@ -106,11 +88,6 @@ public class TableUtils {
 		}
 
 	}
-
-	/**
-	 * 
-	 * @param table
-	 */
 	public static void installDefaultTableCellEditors(JTable table) {
 
 		// Objects

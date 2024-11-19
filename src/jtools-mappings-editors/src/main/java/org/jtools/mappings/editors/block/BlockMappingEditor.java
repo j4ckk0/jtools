@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +36,6 @@ import org.jtools.mappings.editors.common.MappingRegistry;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.border.MarginTitledBorder;
 import org.jtools.utils.gui.editor.AEditor;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingEditor<E extends Object> extends AEditor {
 
 	//////////////////////////////
@@ -71,15 +63,6 @@ public class BlockMappingEditor<E extends Object> extends AEditor {
 	// Constructors
 	//
 	//////////////////////////////
-
-	/**
-	 * 
-	 * @param objectClass
-	 * @param blockMapping
-	 * @param possibleColumns
-	 * @param possibleClasses
-	 * @throws IOException
-	 */
 	public BlockMappingEditor(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) {
 		this.mapping = blockMapping;
 

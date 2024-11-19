@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.gui.components;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,11 +25,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
-
-/**
- * @author j4ckk0
- *
- */
 public class ExtensibleComboBox extends AutoCompleteComboBox {
 
 	private static final long serialVersionUID = -8806799253651420722L;

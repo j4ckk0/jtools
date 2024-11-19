@@ -4,7 +4,7 @@ package org.jtools.gui.table.cellEditors;
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,6 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
-
-/**
- * 
- */
 public class ObjectWrapperCellEditor extends AbstractCellEditor implements TableCellEditor {
 
 	private static final long serialVersionUID = 2558770580026849153L;

@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.messages;
 
 /*-
  * #%L
  * Java Tools - Utils - Messages
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,17 +34,6 @@ import org.apache.activemq.broker.BrokerService;
 import jakarta.jms.Connection;
 import jakarta.jms.JMSException;
 import jakarta.jms.Session;
-
-/**
- * Help:
- * https://examples.javacodegeeks.com/java-development/enterprise-java/jms/jms-messagelistener-example/
- * 
- * Examples: ACTIVEMQ_URL = "tcp://localhost:61616" BROKER_URL = "broker:(" +
- * ACTIVEMQ_URL + ")";
- * 
- * @author j4ckk0
- *
- */
 public abstract class AMessagesBus implements AutoCloseable {
 
 	// //////////////////////////////
@@ -78,14 +64,6 @@ public abstract class AMessagesBus implements AutoCloseable {
 	protected AMessagesBus(String url) {
 		this(url, null);
 	}
-
-	/**
-	 * See options on :
-	 * https://activemq.apache.org/components/classic/documentation/failover-transport-reference
-	 * 
-	 * @param url
-	 * @param clientConnectionProperties
-	 */
 	protected AMessagesBus(String url, Properties clientConnectionProperties) {
 		if(url == null) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Cannot create messages bus: URL is null");

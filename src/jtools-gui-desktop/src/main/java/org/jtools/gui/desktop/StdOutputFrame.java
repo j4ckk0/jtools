@@ -4,7 +4,7 @@ package org.jtools.gui.desktop;
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 
 import org.jtools.utils.gui.io.StdOutputTextArea;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class StdOutputFrame extends JInternalFrame {
 
 	private static final long serialVersionUID = 7894578588310528769L;

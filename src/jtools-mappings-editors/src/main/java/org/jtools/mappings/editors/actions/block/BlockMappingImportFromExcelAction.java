@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.actions.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +23,6 @@ package org.jtools.mappings.editors.actions.block;
 import javax.swing.Icon;
 
 import org.jtools.mappings.block.importers.BlockMappingExcelImporter;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingImportFromExcelAction extends ABlockMappingImportFromAction {
 
 	private static final long serialVersionUID = 5366162869248310896L;

@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.tableModels;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,11 +34,6 @@ import org.jtools.gui.table.tableModels.IObjectRow.NewRow;
 import org.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
 import org.jtools.utils.gui.GuiUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
-
-/**
- * @author j4ckk0
- *
- */
 public class ObjectsTableModel<E extends Object> extends AbstractTableModel implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment, ITableModelWithCellsCustomBackground, ITableModelWithParameterizedTypes {
 
 	private static final long serialVersionUID = 3270825863776856519L;

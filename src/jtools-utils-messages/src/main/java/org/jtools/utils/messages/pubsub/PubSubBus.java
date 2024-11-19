@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.messages.pubsub;
 
 /*-
  * #%L
  * Java Tools - Utils - Messages
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +36,6 @@ import jakarta.jms.MessageConsumer;
 import jakarta.jms.MessageProducer;
 import jakarta.jms.Session;
 import jakarta.jms.Topic;
-
-/**
- * @author j4ckk0
- *
- */
 public class PubSubBus extends AMessagesBus {
 
 	// //////////////////////////////
@@ -66,14 +58,6 @@ public class PubSubBus extends AMessagesBus {
 	public PubSubBus(String url) {
 		this(url, null);
 	}
-
-	/**
-	 * See options on :
-	 * https://activemq.apache.org/components/classic/documentation/failover-transport-reference
-	 * 
-	 * @param url
-	 * @param clientConnectionProperties
-	 */
 	public PubSubBus(String url, Properties clientConnectionProperties) {
 		super(url, clientConnectionProperties);
 

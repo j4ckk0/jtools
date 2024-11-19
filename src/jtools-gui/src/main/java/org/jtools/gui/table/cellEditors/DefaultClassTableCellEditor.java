@@ -4,7 +4,7 @@ package org.jtools.gui.table.cellEditors;
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,12 +52,6 @@ public class DefaultClassTableCellEditor extends DefaultCellEditor {
 
 		return comboBox;
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	private static class ClassComboboxRenderer extends DefaultListCellRenderer {
 
 		private static final long serialVersionUID = 1042572086292515370L;

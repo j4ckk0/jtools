@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.gui.components;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
-
-/**
- * @author j4ckk0
- *
- */
 public class NumberTextField<E extends Number> extends JTextField {
 
 	private static final long serialVersionUID = -3100227894055002252L;
@@ -44,13 +36,6 @@ public class NumberTextField<E extends Number> extends JTextField {
 		doc.setDocumentFilter(new NumberFilter<>(numberClass));
 
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 * @param <E>
-	 */
 	private static class NumberFilter<E extends Number> extends DocumentFilter {
 
 		private final Class<E> numberClass;

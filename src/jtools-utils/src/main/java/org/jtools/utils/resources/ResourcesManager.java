@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.resources;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,12 +33,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.IOUtils;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class ResourcesManager {
 
 	//////////////////////////////////////////////////
@@ -71,21 +62,12 @@ public class ResourcesManager {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
-
-	/**
-	 * 
-	 */
 	private ResourcesManager() {
 		images = new HashMap<>();
 //		preferencesProperties = this.loadExternalProperties(PREFERENCES_PROPERTIES_FILE);
 //		configProperties = this.loadPropertiesInJar(CONFIG_PROPERTIES_FILE);
 //		labelsProperties = this.loadPropertiesInJar(LABEL_PROPERTIES_FILE);
 	}
-
-	/**
-	 * 
-	 * @return
-	 */
 	public static ResourcesManager instance() {
 		if (null == instance) {
 			instance = new ResourcesManager();
@@ -98,12 +80,6 @@ public class ResourcesManager {
 	// Public methods
 	//
 	//////////////////////////////////////////////////
-
-	/**
-	 * 
-	 * @param imageFilename
-	 * @return
-	 */
 	public BufferedImage getImage(String imageFilename) {
 		BufferedImage image = images.get(imageFilename);
 		if (null == image) {

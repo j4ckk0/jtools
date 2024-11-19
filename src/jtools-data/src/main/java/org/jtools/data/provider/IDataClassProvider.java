@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.data.provider;
 
 /*-
  * #%L
  * Java Tools - Data
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +22,6 @@ package org.jtools.data.provider;
 
 import java.util.Collections;
 import java.util.List;
-
-/**
- * @author j4ckk0
- *
- */
 public interface IDataClassProvider {
 
 	public Class<?> getDataClass();

@@ -4,7 +4,7 @@ package org.jtools.gui.desktop;
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,12 +30,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
 
 import org.jtools.utils.gui.components.CascadeDesktopPane;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class ShowComponentSelectorAction extends AbstractAction {
 
 	private static final long serialVersionUID = 2870619093541127857L;

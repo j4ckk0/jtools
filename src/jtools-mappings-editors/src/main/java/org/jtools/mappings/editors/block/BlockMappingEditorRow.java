@@ -4,7 +4,7 @@ package org.jtools.mappings.editors.block;
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,6 @@ import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.block.BlockMappingRow;
 import org.jtools.utils.gui.GuiUtils;
 import org.jtools.utils.objects.SerializableField;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class BlockMappingEditorRow {
 
 	public static final String MAPPING_TYPE_PROPERTY = "MAPPING_TYPE_PROPERTY";
@@ -129,12 +123,6 @@ public class BlockMappingEditorRow {
 	public PropertyChangeSupport getPropertyChangeSupport() {
 		return propertyChangeSupport;
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public static class BlockMappingEditorNewRow extends BlockMappingEditorRow {
 
 		public BlockMappingEditorNewRow() {
@@ -147,12 +135,6 @@ public class BlockMappingEditorRow {
 		}
 
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public enum BlockMappingRowType {
 		MAPPING_ROW(GuiUtils.MINUS_ICON_TXT), NEW_ROW(GuiUtils.PLUS_ICON_TXT);
 

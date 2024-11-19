@@ -4,7 +4,7 @@ package org.jtools.utils.gui.border;
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +25,6 @@ import java.awt.Component;
 import java.awt.Insets;
 
 import javax.swing.border.BevelBorder;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class MarginBevelBorder extends BevelBorder {
 
 	//////////////////////////////////////////////////
@@ -38,11 +32,7 @@ public class MarginBevelBorder extends BevelBorder {
 	// Class variables and constants
 	//
 	//////////////////////////////////////////////////
-
-	/** The serial UID */
 	private static final long serialVersionUID = 2247287585606210963L;
-
-	/** The margins */
 	private int topMargin, leftMargin, bottomMargin, rightMargin;
 
 	//////////////////////////////////////////////////
@@ -50,22 +40,6 @@ public class MarginBevelBorder extends BevelBorder {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
-
-	/**
-	 * <p>
-	 * Constructor for MarginBevelBorder.
-	 * </p>
-	 *
-	 * @param bevelType           a int.
-	 * @param highlightOuterColor a {@link java.awt.Color} object.
-	 * @param highlightInnerColor a {@link java.awt.Color} object.
-	 * @param shadowOuterColor    a {@link java.awt.Color} object.
-	 * @param shadowInnerColor    a {@link java.awt.Color} object.
-	 * @param topMargin           a int.
-	 * @param leftMargin          a int.
-	 * @param bottomMargin        a int.
-	 * @param rightMargin         a int.
-	 */
 	public MarginBevelBorder(int bevelType, Color highlightOuterColor, Color highlightInnerColor,
 			Color shadowOuterColor, Color shadowInnerColor, final int topMargin, final int leftMargin,
 			final int bottomMargin, final int rightMargin) {
@@ -76,20 +50,6 @@ public class MarginBevelBorder extends BevelBorder {
 		this.bottomMargin = bottomMargin;
 		this.rightMargin = rightMargin;
 	}
-
-	/**
-	 * <p>
-	 * Constructor for MarginBevelBorder.
-	 * </p>
-	 *
-	 * @param bevelType    a int.
-	 * @param highlight    a {@link java.awt.Color} object.
-	 * @param shadow       a {@link java.awt.Color} object.
-	 * @param topMargin    a int.
-	 * @param leftMargin   a int.
-	 * @param bottomMargin a int.
-	 * @param rightMargin  a int.
-	 */
 	public MarginBevelBorder(int bevelType, Color highlight, Color shadow, final int topMargin, final int leftMargin,
 			final int bottomMargin, final int rightMargin) {
 		super(bevelType, highlight, shadow);

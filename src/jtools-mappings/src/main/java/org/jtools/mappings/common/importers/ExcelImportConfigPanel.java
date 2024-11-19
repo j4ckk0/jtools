@@ -4,7 +4,7 @@ package org.jtools.mappings.common.importers;
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,12 +37,6 @@ import javax.swing.JTextField;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.components.JLinkButton;
 import org.jtools.utils.gui.components.NumberTextField;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class ExcelImportConfigPanel extends JPanel {
 
 	private static final long serialVersionUID = -1666561068364287203L;

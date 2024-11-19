@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.gui.io;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +29,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
-
-/**
- * @author j4ckk0
- *
- */
 public class StdOutputTextArea extends JTextArea {
 
 	private static final long serialVersionUID = 514734858253559607L;

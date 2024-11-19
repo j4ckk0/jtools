@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.common;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,11 +55,6 @@ import org.jtools.mappings.common.apachepoi.MergedRegion;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.objects.ObjectUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class MappingUtils {
 
 	public enum MappingFontType {

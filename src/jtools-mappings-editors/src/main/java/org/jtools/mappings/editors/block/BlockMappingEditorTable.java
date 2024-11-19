@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,20 +34,9 @@ import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import org.jtools.utils.gui.components.ButtonColumn;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingEditorTable<E extends Object> extends JTable {
 
 	private static final long serialVersionUID = -4774247812741796742L;
-
-	/**
-	 * 
-	 * @param mapper
-	 * @param rows
-	 */
 	public BlockMappingEditorTable(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) {
 		BlockMappingEditorTableModel<E> model = new BlockMappingEditorTableModel<E>(blockMapping, possibleClasses);
 		setModel(model);
@@ -89,12 +75,6 @@ public class BlockMappingEditorTable<E extends Object> extends JTable {
 	public void initRows(List<BlockMappingEditorRow> rows) {
 		((BlockMappingEditorTableModel<?>) getModel()).initRows(rows);
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	private class AddRemoveButtonColumn extends ButtonColumn {
 
 		private static final long serialVersionUID = -6435845128537729287L;

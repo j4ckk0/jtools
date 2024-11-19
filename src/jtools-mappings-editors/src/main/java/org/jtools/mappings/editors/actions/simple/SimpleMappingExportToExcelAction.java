@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.actions.simple;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +23,6 @@ package org.jtools.mappings.editors.actions.simple;
 import javax.swing.Icon;
 
 import org.jtools.mappings.simple.exporters.SimpleMappingExcelExporter;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMappingExportToExcelAction extends ASimpleMappingExportToAction {
 
 	private static final long serialVersionUID = -5666508052700983450L;

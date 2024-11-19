@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.cellEditors;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +36,6 @@ import org.jtools.gui.form.ObjectForm;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
-
-/**
- * @author j4ckk0
- *
- */
 public class DefaultObjectTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
 	private static final long serialVersionUID = 2356764750987524290L;

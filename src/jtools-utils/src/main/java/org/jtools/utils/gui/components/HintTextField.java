@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.gui.components;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,10 +24,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
-
-/**
- *
- */
 class HintTextField extends JTextField implements FocusListener {
 
 	private static final long serialVersionUID = -7219499739575858036L;

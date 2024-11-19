@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.geo;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,12 +28,6 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import org.jtools.utils.CommonUtils;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class CoordinatesFormatManager {
 
 	//
@@ -125,12 +116,6 @@ public class CoordinatesFormatManager {
 
 
 
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public enum CoordinatesFormat {
 
 		LAT_LON_DMS_LAT("LAT_LON_DMS_LAT", "40°31'21\"", LAT_LON_DMS_LAT_REGEX),

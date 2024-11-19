@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.form;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +36,6 @@ import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
 import org.jtools.utils.objects.ObjectUtils;
 import org.jtools.utils.objects.ObjectInfoProvider.ObjectInfo;
-
-/**
- * @author j4ckk0
- *
- */
 public class ObjectForm extends JPanel {
 
 	private static final long serialVersionUID = -520587385214252977L;
@@ -120,10 +112,6 @@ public class ObjectForm extends JPanel {
 		}
 
 	}
-
-	/**
-	 * 
-	 */
 	private void apply() {
 		if (this.clone == null) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE,

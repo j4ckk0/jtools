@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.objects;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,20 +45,9 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.jtools.utils.CommonUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class ObjectUtils {
 	
 	private ObjectUtils() {}
-
-	/**
-	 * 
-	 * @param object to clone
-	 * @return
-	 */
 	public static Object clone(Serializable object) {
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -75,13 +61,6 @@ public class ObjectUtils {
 			return null;
 		}
 	}
-
-	/**
-	 * 
-	 * @param <E>
-	 * @param source
-	 * @param target
-	 */
 	public static <E extends Object> void apply(E source, E target) {
 		if (source == null) {
 			Logger.getLogger(ObjectUtils.class.getName()).log(Level.SEVERE, "Source is null");
@@ -116,13 +95,6 @@ public class ObjectUtils {
 			}
 		}
 	}
-
-	/**
-	 * 
-	 * @param objectClass
-	 * @param field
-	 * @return
-	 */
 	public static Method findSetter(Class<?> objectClass, Field field) {
 		PropertyDescriptor[] propertyDescriptors;
 		try {

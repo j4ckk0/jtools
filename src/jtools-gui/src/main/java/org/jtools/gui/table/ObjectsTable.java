@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,23 +35,12 @@ import org.jtools.gui.table.tableModels.IObjectRow.NewRow;
 import org.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
 import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.utils.gui.components.ButtonColumn;
-
-/**
- * @author j4ckk0
- *
- */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ObjectsTable<E extends Object> extends JTable {
 
 	private static final long serialVersionUID = -4774247812741796742L;
 
 	protected final Class<E> objectClass;
-
-	/**
-	 * 
-	 * @param mapper
-	 * @param rows
-	 */
 	public ObjectsTable(Class<E> objectClass) {
 		this.objectClass = objectClass;
 
@@ -105,12 +91,6 @@ public class ObjectsTable<E extends Object> extends JTable {
 		model.insertRow(new ObjectRow<E>(object));
 		model.fireTableRowsInserted(model.getRowCount() - 1 , model.getRowCount() - 1);
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	private class AddRemoveButtonColumn extends ButtonColumn {
 
 		private static final long serialVersionUID = -6435845128537729287L;

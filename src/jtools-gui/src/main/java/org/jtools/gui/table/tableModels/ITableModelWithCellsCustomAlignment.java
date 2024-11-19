@@ -4,7 +4,7 @@ package org.jtools.gui.table.tableModels;
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,6 @@ package org.jtools.gui.table.tableModels;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * #L%
- */
-
-/**
- * 
- * @author j4ckk0
- *
  */
 public interface ITableModelWithCellsCustomAlignment {
 

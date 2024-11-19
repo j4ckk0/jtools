@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.actions.block;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +39,6 @@ import org.jtools.mappings.block.exporters.IBlockMappingExporter;
 import org.jtools.mappings.block.io.BlockMappingFileManager;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.utils.CommonUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public abstract class ABlockMappingExportToAction extends AbstractAction {
 
 	private static final long serialVersionUID = -1660411517249745107L;

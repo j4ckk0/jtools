@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.common;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,11 +21,6 @@ package org.jtools.mappings.common;
  */
 
 import java.util.UUID;
-
-/**
- * @author j4ckk0
- *
- */
 public interface IMapping {
 
 	public UUID getId();

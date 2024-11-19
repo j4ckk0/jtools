@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.list;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,11 +43,6 @@ import org.jtools.gui.list.cellRenderers.DefaultObjectListCellRenderer;
 import org.jtools.gui.list.listModels.ObjectsListModel;
 import org.jtools.utils.gui.GuiUtils;
 import org.jtools.utils.objects.ObjectUtils;
-
-/**
- * @author j4ckk0
- *
- */
 public class ObjectsListPanel<E extends Object> extends JPanel {
 
 	private static final long serialVersionUID = -844752210816149989L;
@@ -131,12 +123,6 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 			throw new IllegalArgumentException("Unexpected value: " + buttonKey);
 		}
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public abstract static class ObjectsListAction<E extends Object> extends AbstractAction {
 
 		private static final long serialVersionUID = 1555073527470591250L;
@@ -182,13 +168,6 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		return result;
 
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 * @param <E>
-	 */
 	public static class DefaultAddAction<E extends Object> extends ObjectsListAction<E> {
 
 		private static final long serialVersionUID = -471576623493101731L;
@@ -214,13 +193,6 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		}
 
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 * @param <E>
-	 */
 	public static class DefaultRemoveAction<E extends Object> extends ObjectsListAction<E> {
 
 		private static final long serialVersionUID = -2468296432935193901L;

@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.simple.exporters;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,11 +43,6 @@ import org.jtools.mappings.common.MappingUtils.MappingCellStyleType;
 import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 
 	private static SimpleMappingExcelExporter instance;

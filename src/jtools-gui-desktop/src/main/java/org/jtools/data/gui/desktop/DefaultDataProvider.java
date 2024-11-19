@@ -4,7 +4,7 @@ package org.jtools.data.gui.desktop;
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,13 +40,6 @@ import javax.swing.event.InternalFrameEvent;
 import org.jtools.data.provider.DataProviderRegistry;
 import org.jtools.data.provider.IDataProvider;
 import org.jtools.gui.list.cellRenderers.DefaultClassListCellRenderer;
-
-/**
- * Default data provider : only provides possible classes, but no data
- * 
- * @author j4ckk0
- *
- */
 public class DefaultDataProvider extends JInternalFrame implements IDataProvider {
 
 	private static final long serialVersionUID = -7986194491175022109L;

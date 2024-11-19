@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.block.io;
 
 /*-
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,11 +42,6 @@ import org.jtools.utils.CommonUtils;
 import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
-
-/**
- * @author j4ckk0
- *
- */
 public class BlockMappingFileManager {
 
 	//////////////////////////////
@@ -103,14 +95,6 @@ public class BlockMappingFileManager {
 		}
 		return instance;
 	}
-
-	/**
-	 * 
-	 * @param mappingFilepath
-	 * @return
-	 * @throws InstantiationException
-	 * @throws MappingException 
-	 */
 	@SuppressWarnings({ "unchecked" })
 	public <E extends Object> BlockMapping<E> loadMapping(String mappingFilepath) throws InstantiationException, MappingException {
 		Properties properties;
@@ -147,12 +131,6 @@ public class BlockMappingFileManager {
 			throw new InstantiationException("An error occured while loading mapping editor: " + e.getMessage());
 		}
 	}
-
-	/**
-	 * 
-	 * @param mapping
-	 * @throws IOException
-	 */
 	public void save(BlockMapping<?> mapping) throws IOException {
 		String mappingFilepath = getMappingFilepath(mapping.getId());
 
@@ -184,12 +162,6 @@ public class BlockMappingFileManager {
 			}
 		}
 	}
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
 	public String getMappingFilepath(UUID id) {
 		return mappingsFilePaths.get(id);
 	}

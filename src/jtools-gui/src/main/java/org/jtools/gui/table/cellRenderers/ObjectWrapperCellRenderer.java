@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.cellRenderers;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,11 +29,6 @@ import javax.swing.table.TableModel;
 
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
-
-/**
- * @author j4ckk0
- *
- */
 public class ObjectWrapperCellRenderer extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = 693240225989571061L;

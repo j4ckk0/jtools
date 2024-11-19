@@ -4,7 +4,7 @@ package org.jtools.mappings.simple;
  * #%L
  * Java Tools - Mappings
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,6 @@ package org.jtools.mappings.simple;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class SimpleMappingRow implements Serializable {
 
 	private static final long serialVersionUID = 3092423564227174529L;
@@ -47,31 +41,15 @@ public class SimpleMappingRow implements Serializable {
 		this.outputColumn = outputColumn;
 		this.objectField = objectField;
 	}
-
-	/**
-	 * @return the outputColumnHeader
-	 */
 	public String getOutputColumnHeader() {
 		return outputColumnHeader;
 	}
-
-	/**
-	 * @param outputColumnHeader the outputColumnHeader to set
-	 */
 	public void setOutputColumnHeader(String outputColumnHeader) {
 		this.outputColumnHeader = outputColumnHeader;
 	}
-
-	/**
-	 * @return the outputColumn
-	 */
 	public String getOutputColumn() {
 		return outputColumn;
 	}
-
-	/**
-	 * @param outputColumn the outputColumn to set
-	 */
 	public void setOutputColumn(String outputColumn) {
 		this.outputColumn = outputColumn;
 	}

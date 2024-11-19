@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.actions.simple;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +31,6 @@ import org.jtools.data.provider.IDataClassProvider;
 import org.jtools.mappings.editors.simple.SimpleMappingEditor;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.utils.gui.editor.AEditorAction;
-
-/**
- * @author j4ckk0
- *
- */
 public class SimpleMappingCreateAction extends AEditorAction {
 
 	private static final long serialVersionUID = 5655082933456528045L;

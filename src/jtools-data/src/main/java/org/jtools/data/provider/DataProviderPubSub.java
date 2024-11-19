@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.data.provider;
 
 /*-
  * #%L
  * Java Tools - Data
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import java.util.logging.Logger;
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.TextMessage;
-
-/**
- * @author j4ckk0
- *
- */
 public interface DataProviderPubSub {
 
 	public static final String DATA_PROVIDER_ADDED = "DATA_PROVIDER_ADDED_PROPERTY";
@@ -52,16 +44,6 @@ public interface DataProviderPubSub {
 
 		return (TextMessage) message;
 	}
-
-	/**
-	 * Returns the name of the IDataProvider.
-	 * 
-	 * {@code com.jtools.data.provider.IDataProvider.getProviderName()}
-	 * 
-	 * @param message
-	 * @return
-	 * @throws JMSException
-	 */
 	public static String readMessage(Message message) throws JMSException, ClassCastException {
 		TextMessage textMessage = castMessage(message);
 

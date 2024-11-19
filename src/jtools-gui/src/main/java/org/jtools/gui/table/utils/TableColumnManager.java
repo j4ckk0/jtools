@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.utils;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +45,6 @@ import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-
-/**
- *  The TableColumnManager can be used to manage TableColumns. It will give the
- *  user the ability to hide columns and then reshow them in their last viewed
- *  position. This functionality is supported by a popup menu added to the
- *  table header of the table. The TableColumnModel is still used to control
- *  the view for the table. The manager will inovoke the appropriate methods
- *  of the TableColumnModel to hide/show columns as required.
- *
- */
 public class TableColumnManager
 	implements MouseListener, ActionListener, TableColumnModelListener, PropertyChangeListener
 {
@@ -66,25 +53,10 @@ public class TableColumnManager
 	private boolean menuPopup;
 
 	private List<TableColumn> allColumns;
-
-	/**
-	 *  Convenience constructor for creating a TableColumnManager for a table.
-	 *  Support for a popup menu on the table header will be enabled.
-	 *
-	 *  @param table the table whose TableColumns will managed.
-	 */
 	public TableColumnManager(JTable table)
 	{
 		this(table, true);
 	}
-
-	/**
-	 *  Create a TableColumnManager for a table.
-	 *
-	 *  @param table the table whose TableColumns will managed.
-	 *  @param menuPopup enable or disable a popup menu to allow the users to
-	 *				   manager the visibility of TableColumns.
-	 */
 	public TableColumnManager(JTable table, boolean menuPopup)
 	{
 		this.table = table;
@@ -93,14 +65,6 @@ public class TableColumnManager
 		table.addPropertyChangeListener( this );
 		reset();
 	}
-
-	/**
-	 *  Reset the TableColumnManager to only manage the TableColumns that are
-	 *  currently visible in the table.
-	 *
-	 *  Generally this method should only be invoked by the TableColumnManager
-	 *  when the TableModel of the table is changed.
-	 */
 	public void reset()
 	{
 		table.getColumnModel().removeColumnModelListener( this );

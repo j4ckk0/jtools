@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.editors.common;
 
 /*-
  * #%L
  * Java Tools - Mappings Editors
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +31,6 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.ObjectMessage;
 import jakarta.jms.TextMessage;
-
-/**
- * @author j4ckk0
- *
- */
 public interface MappingPubSub {
 
 	public static final String MAPPING_ADDED = "MAPPING_ADDED";
@@ -57,16 +49,6 @@ public interface MappingPubSub {
 
 		return (ObjectMessage) message;
 	}
-
-	/**
-	 * Returns the UUID of the IMapping.
-	 * 
-	 * {@code com.jtools.mappings.common.IMapping.getId()}
-	 * 
-	 * @param message
-	 * @return
-	 * @throws JMSException
-	 */
 	public static UUID readMessage(Message message) throws JMSException, ClassCastException {
 		ObjectMessage objectMessage = castMessage(message);
 

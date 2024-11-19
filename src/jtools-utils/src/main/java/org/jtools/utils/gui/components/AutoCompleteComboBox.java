@@ -4,7 +4,7 @@ package org.jtools.utils.gui.components;
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,22 +31,12 @@ import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
-
-/**
- * 
- * @author j4ckk0
- *
- */
 public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox.KeySelectionManager {
 
 	private static final long serialVersionUID = -790677937456857146L;
 
 	private String searchFor;
 	private long lap;
-
-	/**
-	 * 
-	 */
 	public AutoCompleteComboBox() {
 		super();
 		lap = new java.util.Date().getTime();
@@ -104,12 +94,6 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 	public void fireActionEvent() {
 		super.fireActionEvent();
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public class CBDocument extends PlainDocument {
 		private static final long serialVersionUID = 7985172243562749588L;
 

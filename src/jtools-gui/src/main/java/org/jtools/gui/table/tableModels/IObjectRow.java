@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.gui.table.tableModels;
 
 /*-
  * #%L
  * Java Tools - GUI
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,22 +28,11 @@ import java.util.logging.Logger;
 
 import org.jtools.utils.objects.ObjectInfoProvider;
 import org.jtools.utils.objects.ObjectInfoProvider.ObjectInfo;
-
-/**
- * @author j4ckk0
- *
- */
 public interface IObjectRow {
 
 	public Object getValueAt(int column);
 
 	public void setValueAt(int column, Object value);
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public class ObjectRow<E extends Object> implements IObjectRow {
 
 		protected final E object;
@@ -96,12 +82,6 @@ public interface IObjectRow {
 			return object;
 		}
 	}
-
-	/**
-	 * 
-	 * @author j4ckk0
-	 *
-	 */
 	public class NewRow implements IObjectRow {
 
 		@Override

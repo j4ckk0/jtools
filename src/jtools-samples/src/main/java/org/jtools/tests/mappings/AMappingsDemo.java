@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.tests.mappings;
 
 /*-
  * #%L
  * Java Tools - Samples
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +71,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
-
-/**
- * @author j4ckk0
- *
- */
 public abstract class AMappingsDemo extends JFrame implements PubSubMessageListener {
 
 	private static final long serialVersionUID = 7125491173800101032L;

@@ -4,7 +4,7 @@ package org.jtools.data.gui.desktop;
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import org.jtools.data.provider.IDataProvider;
-
-/**
- * @author j4ckk0
- *
- */
 public class DataProviderListCellRenderer extends DefaultListCellRenderer {
 
 	private static final long serialVersionUID = 5381004978356081557L;

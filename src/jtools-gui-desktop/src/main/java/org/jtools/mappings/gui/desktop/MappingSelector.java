@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.mappings.gui.desktop;
 
 /*-
  * #%L
  * Java Tools - GUI - Desktop
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +41,6 @@ import org.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
-
-/**
- * @author j4ckk0
- *
- */
 public class MappingSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
 	private static final long serialVersionUID = -4168476618127593101L;

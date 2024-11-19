@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils;
 
 /*-
  * #%L
  * Java Tools - Utils
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,11 +35,6 @@ import java.util.Set;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
-
-/**
- * @author j4ckk0
- *
- */
 public class CommonUtils {
 
 	public static final String PROPERTIES_FILES_EXTENSION = ".properties";
@@ -52,14 +44,7 @@ public class CommonUtils {
 	public static final String LOAD_EXCEL_DIALOG_TITLE = "Select the input " + CommonUtils.EXCEL_FILES_EXTENSION + " file";
 
 	private CommonUtils() {}
-	
-	/**
-	 * 
-	 * @param propertiesFilePath
-	 * @return
-	 * @throws IOException
-	 */
-	public static Properties loadProperties(String propertiesFilePath) throws IOException {
+		public static Properties loadProperties(String propertiesFilePath) throws IOException {
 		Properties properties = new Properties();
 
 		File file = new File(propertiesFilePath);
@@ -78,13 +63,6 @@ public class CommonUtils {
 		}
 		return properties;
 	}
-
-	/**
-	 * 
-	 * @param properties
-	 * @param propertiesFilePath
-	 * @throws IOException
-	 */
 	public static void saveProperties(Properties properties, String propertiesFilePath) throws IOException {
 		File file = new File(propertiesFilePath);
 		if (!file.exists()) {
@@ -100,13 +78,6 @@ public class CommonUtils {
 			}
 		}
 	}
-
-	/**
-	 * 
-	 * @param dialogType  JFileChooser.OPEN_DIALOG or JFileChooser.SAVE_DIALOG
-	 * @param defaultFile
-	 * @return
-	 */
 	public static File chooseFile(int dialogType, File defaultFile, String dialogTitle, String fileExtension) {
 
 		String currentDirectoryPath = ".";

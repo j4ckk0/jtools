@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.utils.messages.pointtopoint;
 
 /*-
  * #%L
  * Java Tools - Utils - Messages
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,15 +35,6 @@ import jakarta.jms.MessageListener;
 import jakarta.jms.MessageProducer;
 import jakarta.jms.Queue;
 import jakarta.jms.Session;
-
-/**
- * Examples: 
- * ACTIVEMQ_URL = "tcp://localhost:61616" 
- * BROKER_URL = "broker:(" + ACTIVEMQ_URL + ")";
- * 
- * @author j4ckk0
- *
- */
 public class PointToPointBus extends AMessagesBus {
 
 	// //////////////////////////////
@@ -70,14 +58,6 @@ public class PointToPointBus extends AMessagesBus {
 	public PointToPointBus(String url) {
 		this(url, null);
 	}
-
-	/**
-	 * See options on :
-	 * https://activemq.apache.org/components/classic/documentation/failover-transport-reference
-	 * 
-	 * @param url
-	 * @param clientConnectionProperties
-	 */
 	public PointToPointBus(String url, Properties clientConnectionProperties) {
 		super(url, clientConnectionProperties);
 	}

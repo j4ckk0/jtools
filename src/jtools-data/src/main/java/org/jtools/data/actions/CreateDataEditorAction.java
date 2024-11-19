@@ -1,13 +1,10 @@
-/**
- * 
- */
 package org.jtools.data.actions;
 
 /*-
  * #%L
  * Java Tools - Data
  * %%
- * Copyright (C) 2024 j4ckk0
+ * Copyright (C) 2024 jtools.org
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +26,6 @@ import javax.swing.Icon;
 
 import org.jtools.data.DataEditor;
 import org.jtools.utils.gui.editor.AEditorAction;
-
-/**
- * @author j4ckk0
- *
- */
 public class CreateDataEditorAction extends AEditorAction {
 
 	private static final long serialVersionUID = -8300069996813450384L;
