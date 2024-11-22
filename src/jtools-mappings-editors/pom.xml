@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.jtools</groupId>
 		<artifactId>jtools-parent</artifactId>
-		<version>1.4</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jtools-mappings-editors</artifactId>
@@ -36,7 +36,7 @@
 		<connection>scm:git:${project.basedir}/../.git</connection>
 		<developerConnection>scm:git:${project.basedir}/../.git</developerConnection>
 		<url>http://jtools.org/</url>
-	  <tag>jtools-parent-1.4</tag>
+	  <tag>jtools-parent-1.3</tag>
   </scm>
 
 	<distributionManagement>
