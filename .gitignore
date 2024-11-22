@@ -4,5 +4,8 @@
 /**/.classpath
 /**/.project
 /**/pom.xml.versionsBackup
+/**/pom.xml.tag
+/**/pom.xml.next
+/**/pom.xml.releaseBackup
 /**/.flattened-pom.xml
 /releases/*
