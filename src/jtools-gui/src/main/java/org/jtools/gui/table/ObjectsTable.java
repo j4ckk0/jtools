@@ -30,9 +30,9 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 
 import org.jtools.gui.table.tableModels.IObjectRow;
-import org.jtools.gui.table.tableModels.ObjectsTableModel;
 import org.jtools.gui.table.tableModels.IObjectRow.NewRow;
 import org.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
+import org.jtools.gui.table.tableModels.ObjectsTableModel;
 import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.utils.gui.components.ButtonColumn;
 @SuppressWarnings({ "rawtypes", "unchecked" })
