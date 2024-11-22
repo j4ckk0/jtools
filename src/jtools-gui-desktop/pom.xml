@@ -9,6 +9,7 @@
 
 	<artifactId>jtools-gui-desktop</artifactId>
 	<packaging>jar</packaging>
+	<name>Java Tools - GUI Desktop</name>
 	<description>
     	jtools-gui-desktop
   </description>
