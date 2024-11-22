@@ -29,8 +29,8 @@
     </developers> 
 	
 	<scm>
-    	<connection>scm:git:https://github.com/j4ckk0/jtools.git</connection>
-    	<developerConnection>scm:git:https://github.com/j4ckk0/jtools.git</developerConnection>
+    	<connection>scm:git:${project.basedir}/../.git</connection>
+    	<developerConnection>scm:git:${project.basedir}/../.git</developerConnection>
     	<url>http://jtools.org/</url>
   	  <tag>jtools-parent-1.3</tag>
   </scm>
@@ -180,6 +180,7 @@
 						<phase>install</phase>
 						<configuration>						
 							<target>
+								<echo> ------------- ${project.basedir}/../.git ----------</echo>
 								<echo>Moving jar files to build folder</echo>
 								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
           							<fileset dir="${project.build.directory}" includes="**/*.jar" />
@@ -201,6 +202,7 @@
 				</executions>
 			</plugin>
 			<!-- Move built files -->
+			<!-- 
 			<plugin>
           		<groupId>org.sonatype.central</groupId>
           		<artifactId>central-publishing-maven-plugin</artifactId>
@@ -211,6 +213,7 @@
             		<autoVersionSubmodules>true</autoVersionSubmodules>
           		</configuration>
         	</plugin>
+			-->
 		</plugins>
 	</build>
 </project>
