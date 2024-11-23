@@ -33,7 +33,6 @@ import jakarta.jms.MessageListener;
  * the pubSubMessage event occurs, that object's appropriate
  * method is invoked.
  *
- * @see PubSubMessageEvent
  */
 public interface PubSubMessageListener extends MessageListener {
 

@@ -43,7 +43,6 @@ import jakarta.jms.TextMessage;
  * the defaultMessage event occurs, that object's appropriate
  * method is invoked.
  *
- * @see DefaultMessageEvent
  */
 public class DefaultMessageListener implements MessageListener {
 	
