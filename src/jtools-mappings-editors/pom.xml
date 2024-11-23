@@ -147,7 +147,7 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
-						<phase>deploy</phase>
+						<phase>install</phase>
 						<configuration>
 							<target>
 								<echo>Copy jar files to release folder</echo>
@@ -158,9 +158,9 @@
 								<copy todir="${project.basedir}/../../doc/${project.artifactId}/${project.version}">
 									<fileset dir="${project.build.directory}/apidocs" includes="**/*" />
 								</copy>
-								<echo>Copy minimal pom files to build folder</echo>
-								<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml" />
-								<echo>Moving GPG signed (.asc) files to build folder</echo>
+								<echo>Move minimal pom files to build folder</echo>
+								<move file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml" />
+								<echo>Copy GPG signed (.asc) files to build folder</echo>
 								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
 									<fileset dir="${project.build.directory}" includes="**/*.asc" />
 								</copy>
