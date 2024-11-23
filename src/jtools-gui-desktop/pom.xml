@@ -1,21 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>org.jtools</groupId>
 		<artifactId>jtools-parent</artifactId>
 		<version>1.7-SNAPSHOT</version>
 	</parent>
-
 	<artifactId>jtools-gui-desktop</artifactId>
 	<packaging>jar</packaging>
 	<name>Java Tools - GUI Desktop</name>
 	<description>
     	jtools-gui-desktop
   </description>
-
 	<url>https://github.com/j4ckk0/jtools.git</url>
-
 	<licenses>
 		<license>
 			<name>Apache License Version 2.0</name>
@@ -23,7 +19,6 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-
 	<developers>
 		<developer>
 			<id>j4ckk0</id>
@@ -31,15 +26,12 @@
 			<email>j4ckk057@gmail.com</email>
 		</developer>
 	</developers>
-
 	<scm>
 		<connection>scm:git:${project.basedir}/../.git</connection>
 		<developerConnection>scm:git:${project.basedir}/../.git</developerConnection>
 		<url>http://jtools.org/</url>
-	  <tag>jtools-parent-1.5</tag>
-  </scm>
-  
-<!--
+		<tag>jtools-parent-1.5</tag>
+	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -50,12 +42,9 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-			-->
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.jtools</groupId>
@@ -68,7 +57,6 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<!-- Build src jar file -->
@@ -177,5 +165,4 @@
 			-->
 		</plugins>
 	</build>
-
 </project>

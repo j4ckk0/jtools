@@ -1,59 +1,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
 	<groupId>org.jtools</groupId>
 	<artifactId>jtools-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>1.7-SNAPSHOT</version>
 	<name>Java Tools - Parent</name>
-    <description>
+	<description>
         jtools-parent
     </description>
-	
-	<url>https://github.com/j4ckk0/jtools.git</url> 
-	
-  	<licenses>
-   		<license>
-     		<name>Apache License Version 2.0</name>
-       		<url>https://github.com/j4ckk0/jtools/blob/main/LICENSE</url>
-       		<distribution>repo</distribution>
-    	</license>
-  	</licenses>
-
-    <developers>
-        <developer>
-            <id>j4ckk0</id>
-            <name>Jacques HENRY</name>
-            <email>j4ckk057@gmail.com</email>
-        </developer>
-    </developers> 
-	
+	<url>https://github.com/j4ckk0/jtools.git</url>
+	<licenses>
+		<license>
+			<name>Apache License Version 2.0</name>
+			<url>https://github.com/j4ckk0/jtools/blob/main/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>j4ckk0</id>
+			<name>Jacques HENRY</name>
+			<email>j4ckk057@gmail.com</email>
+		</developer>
+	</developers>
 	<scm>
-    	<connection>scm:git:${project.basedir}/../.git</connection>
-    	<developerConnection>scm:git:${project.basedir}/../.git</developerConnection>
-    	<url>http://jtools.org/</url>
-  	  <tag>jtools-parent-1.5</tag>
-  </scm>
-
-<!--
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-			-->
-	
+		<connection>scm:git:${project.basedir}/../.git</connection>
+		<developerConnection>scm:git:${project.basedir}/../.git</developerConnection>
+		<url>http://jtools.org/</url>
+		<tag>jtools-parent-1.5</tag>
+	</scm>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
 	<modules>
 		<module>jtools-utils</module>
 		<module>jtools-utils-messages</module>
@@ -64,7 +54,6 @@
 		<module>jtools-mappings-editors</module>
 		<module>jtools-samples</module>
 	</modules>
-	
 	<build>
 		<plugins>
 			<!-- Define encoding -->
@@ -114,33 +103,33 @@
 			</plugin>
 			<!-- Build minimal pom.xml file -->
 			<plugin>
-            	<groupId>org.codehaus.mojo</groupId>
-            	<artifactId>flatten-maven-plugin</artifactId>
-            	<version>1.2.2</version>
-            	<configuration>
-                	<pomElements>
-                    	<repositories>flatten</repositories>
-                	</pomElements>
-            	</configuration>
-            	<executions>
-                	<execution>
-                    	<id>flatten</id>
-                    	<phase>process-resources</phase>
-                    	<goals>
-                        	<goal>flatten</goal>
-                    	</goals>
-                	</execution>
-                	<execution>
-                    	<id>flatten.clean</id>
-                    	<phase>clean</phase>
-                    	<goals>
-                        	<goal>clean</goal>
-                    	</goals>
-                	</execution>
-            	</executions>
-        	</plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.2.2</version>
+				<configuration>
+					<pomElements>
+						<repositories>flatten</repositories>
+					</pomElements>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Artifacts checksum -->
-        	<!-- 
+			<!-- 
         	<plugin>
             	<groupId>net.ju-n.maven.plugins</groupId>
             	<artifactId>checksum-maven-plugin</artifactId>
@@ -155,20 +144,20 @@
         	</plugin>
         	-->
 			<!-- Sign artifacts -->
-        	<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-gpg-plugin</artifactId>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
 				<version>3.2.7</version>
-        		<executions>
-              	<execution>
-                	<id>sign-artifacts</id>
-					<phase>verify</phase>
-                	<goals>
-                  	<goal>sign</goal>
-                	</goals>
-              	</execution>
-            	</executions>
-      		</plugin>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Move built files -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -180,24 +169,24 @@
 							<goal>run</goal>
 						</goals>
 						<phase>install</phase>
-						<configuration>						
+						<configuration>
 							<target>
 								<echo> ------------- ${project.basedir}/../.git ----------</echo>
 								<echo>Moving jar files to build folder</echo>
 								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-          							<fileset dir="${project.build.directory}" includes="**/*.jar" />
-         						</copy>
-         						<echo>Moving pom files to build folder</echo>
-         						<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../releases/${project.artifactId}/${project.version}/pom.xml" />
+									<fileset dir="${project.build.directory}" includes="**/*.jar"/>
+								</copy>
+								<echo>Moving pom files to build folder</echo>
+								<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../releases/${project.artifactId}/${project.version}/pom.xml"/>
 								<echo>Moving GPG signed (.asc) files to build folder</echo>
 								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-          							<fileset dir="${project.build.directory}" includes="**/*.asc" />
-         						</copy>
+									<fileset dir="${project.build.directory}" includes="**/*.asc"/>
+								</copy>
 								<echo>Moving checksum (.sha1, .md5) files to build folder</echo>
 								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-          							<fileset dir="${project.build.directory}" includes="**/*.sha1" />
-          							<fileset dir="${project.build.directory}" includes="**/*.md5" />
-         						</copy>
+									<fileset dir="${project.build.directory}" includes="**/*.sha1"/>
+									<fileset dir="${project.build.directory}" includes="**/*.md5"/>
+								</copy>
 							</target>
 						</configuration>
 					</execution>
