@@ -29,16 +29,6 @@
 		<url>http://jtools.org/</url>
 		<tag>1.3</tag>
 	</scm>
-	<!-- <distributionManagement> -->
-	<!-- <snapshotRepository> -->
-	<!-- <id>ossrh</id> -->
-	<!-- <url>https://oss.sonatype.org/content/repositories/snapshots</url> -->
-	<!-- </snapshotRepository> -->
-	<!-- <repository> -->
-	<!-- <id>ossrh</id> -->
-	<!-- <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url> -->
-	<!-- </repository> -->
-	<!-- </distributionManagement> -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -101,6 +91,32 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Sign artifacts -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>3.2.7</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Publish artifacts -->
+			<plugin>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.6.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>central</publishingServerId>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
 			<!-- Build minimal pom.xml file -->
 			<!-- 
 			<plugin>
@@ -130,37 +146,7 @@
 				</executions>
 			</plugin>
         	-->
-			<!-- Artifacts checksum -->
-			<!-- 
-        	<plugin>
-            	<groupId>net.ju-n.maven.plugins</groupId>
-            	<artifactId>checksum-maven-plugin</artifactId>
-            	<version>1.4</version>
-            	<executions>
-                	<execution>
-                    	<goals>
-                        	<goal>artifacts</goal>
-                    	</goals>
-                	</execution>
-            	</executions>
-        	</plugin>
-        	-->
-			<!-- Sign artifacts -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>3.2.7</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- Move built files -->
+			<!-- Copy built files -->
 			<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -171,23 +157,27 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
-						<phase>install</phase>
+						<phase>deploy</phase>
 						<configuration>
 							<target>
-								<echo>Moving jar files to build folder</echo>
-								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.jar"/>
+								<echo>Copy jar files to release folder</echo>
+								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
+									<fileset dir="${project.build.directory}" includes="**/*.jar" />
 								</copy>
-								<echo>Moving pom files to build folder</echo>
-								<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../releases/${project.artifactId}/${project.version}/pom.xml"/>
+								<echo>Copy doc files to doc folder</echo>
+								<copy todir="${project.basedir}/../../doc/${project.artifactId}/${project.version}">
+									<fileset dir="${project.build.directory}/apidocs" includes="**/*" />
+								</copy>
+								<echo>Copy minimal pom files to build folder</echo>
+								<copy file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml" />
 								<echo>Moving GPG signed (.asc) files to build folder</echo>
-								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.asc"/>
+								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
+									<fileset dir="${project.build.directory}" includes="**/*.asc" />
 								</copy>
-								<echo>Moving checksum (.sha1, .md5) files to build folder</echo>
-								<copy todir="${project.basedir}/../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.sha1"/>
-									<fileset dir="${project.build.directory}" includes="**/*.md5"/>
+								<echo>Copy checksum (.sha1, .md5) files to build folder</echo>
+								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
+									<fileset dir="${project.build.directory}" includes="**/*.sha1" />
+									<fileset dir="${project.build.directory}" includes="**/*.md5" />
 								</copy>
 							</target>
 						</configuration>
@@ -195,17 +185,6 @@
 				</executions>
 			</plugin>
 			-->
-			<!-- Publish artifacts -->
-			<plugin>
-				<groupId>org.sonatype.central</groupId>
-				<artifactId>central-publishing-maven-plugin</artifactId>
-				<version>0.6.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<publishingServerId>central</publishingServerId>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>
