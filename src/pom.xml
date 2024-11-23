@@ -3,7 +3,7 @@
 	<groupId>org.jtools</groupId>
 	<artifactId>jtools-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.3</version>
+	<version>1.4</version>
 	<name>Java Tools - Parent</name>
 	<description>
         jtools-parent
@@ -118,11 +118,10 @@
 				</configuration>
 			</plugin>
 			<!-- Build minimal pom.xml file -->
-			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>1.2.2</version>
+				<version>1.6.0</version>
 				<configuration>
 					<pomElements>
 						<repositories>flatten</repositories>
@@ -145,9 +144,7 @@
 					</execution>
 				</executions>
 			</plugin>
-        	-->
 			<!-- Copy built files -->
-			<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -160,31 +157,13 @@
 						<phase>install</phase>
 						<configuration>
 							<target>
-								<echo>Copy jar files to release folder</echo>
-								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.jar" />
-								</copy>
-								<echo>Copy doc files to doc folder</echo>
-								<copy todir="${project.basedir}/../../doc/${project.artifactId}/${project.version}">
-									<fileset dir="${project.build.directory}/apidocs" includes="**/*" />
-								</copy>
 								<echo>Move minimal pom files to build folder</echo>
-								<move file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../../releases/${project.artifactId}/${project.version}/pom.xml" />
-								<echo>Copy GPG signed (.asc) files to build folder</echo>
-								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.asc" />
-								</copy>
-								<echo>Copy checksum (.sha1, .md5) files to build folder</echo>
-								<copy todir="${project.basedir}/../../releases/${project.artifactId}/${project.version}" flatten="true">
-									<fileset dir="${project.build.directory}" includes="**/*.sha1" />
-									<fileset dir="${project.build.directory}" includes="**/*.md5" />
-								</copy>
+								<move file="${project.basedir}/.flattened-pom.xml" toFile="${project.basedir}/../releases/${project.artifactId}/${project.version}/pom.xml" flatten="true" failonerror="false"/>
 							</target>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>
