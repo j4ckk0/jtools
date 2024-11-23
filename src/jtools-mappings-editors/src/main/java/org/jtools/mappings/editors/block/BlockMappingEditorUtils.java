@@ -25,7 +25,19 @@ import java.util.List;
 
 import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.block.BlockMappingRow;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingEditorUtils.
+ */
 public class BlockMappingEditorUtils {
+		
+		/**
+		 * Gets the block mapping editor rows.
+		 *
+		 * @param blockMapping the block mapping
+		 * @return the block mapping editor rows
+		 */
 		public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
 		List<BlockMappingEditorRow> rows = new ArrayList<>();
 		for(BlockMappingRow row : blockMapping.getRows()) {

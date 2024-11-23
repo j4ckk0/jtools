@@ -25,10 +25,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ExtensibleComboBox.
+ */
 public class ExtensibleComboBox extends AutoCompleteComboBox {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8806799253651420722L;
 
+	/**
+	 * Instantiates a new extensible combo box.
+	 */
 	public ExtensibleComboBox() {
 		JTextField tf;
 		if (getEditor() != null) {

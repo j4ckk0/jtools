@@ -45,9 +45,24 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.jtools.utils.CommonUtils;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ObjectUtils.
+ */
 public class ObjectUtils {
 	
+	/**
+	 * Instantiates a new object utils.
+	 */
 	private ObjectUtils() {}
+	
+	/**
+	 * Clone.
+	 *
+	 * @param object the object
+	 * @return the object
+	 */
 	public static Object clone(Serializable object) {
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -61,6 +76,14 @@ public class ObjectUtils {
 			return null;
 		}
 	}
+	
+	/**
+	 * Apply.
+	 *
+	 * @param <E> the element type
+	 * @param source the source
+	 * @param target the target
+	 */
 	public static <E extends Object> void apply(E source, E target) {
 		if (source == null) {
 			Logger.getLogger(ObjectUtils.class.getName()).log(Level.SEVERE, "Source is null");
@@ -95,6 +118,14 @@ public class ObjectUtils {
 			}
 		}
 	}
+	
+	/**
+	 * Find setter.
+	 *
+	 * @param objectClass the object class
+	 * @param field the field
+	 * @return the method
+	 */
 	public static Method findSetter(Class<?> objectClass, Field field) {
 		PropertyDescriptor[] propertyDescriptors;
 		try {
@@ -116,10 +147,11 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClass
-	 * @param field
-	 * @return
+	 * Find getter.
+	 *
+	 * @param objectClass the object class
+	 * @param field the field
+	 * @return the method
 	 */
 	public static Method findGetter(Class<?> objectClass, Field field) {
 		PropertyDescriptor[] propertyDescriptors;
@@ -142,9 +174,10 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClass
-	 * @return
+	 * Gets the fields.
+	 *
+	 * @param objectClass the object class
+	 * @return the fields
 	 */
 	public static List<Field> getFields(Class<?> objectClass) {
 		List<Field> fields = new ArrayList<>();
@@ -164,10 +197,11 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClass
-	 * @param fieldName
-	 * @return
+	 * Gets the field.
+	 *
+	 * @param objectClass the object class
+	 * @param fieldName the field name
+	 * @return the field
 	 */
 	public static Field getField(Class<?> objectClass, String fieldName) {
 		Field field = null;
@@ -188,9 +222,10 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectField
-	 * @return
+	 * Gets the generic type for field.
+	 *
+	 * @param objectField the object field
+	 * @return the generic type for field
 	 */
 	public static Class<?> getGenericTypeForField(Field objectField) {
 		Type genericType = objectField.getGenericType();
@@ -208,9 +243,11 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param list
-	 * @return
+	 * To string.
+	 *
+	 * @param list the list
+	 * @param delimiter the delimiter
+	 * @return the string
 	 */
 	public static String toString(Collection<?> list, CharSequence delimiter) {
 		if(list == null) {
@@ -221,10 +258,11 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClassName
-	 * @param fieldName
-	 * @return
+	 * Gets the field.
+	 *
+	 * @param objectClassName the object class name
+	 * @param fieldName the field name
+	 * @return the field
 	 */
 	public static Field getField(String objectClassName, String fieldName) {
 		try {
@@ -238,9 +276,10 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClassName
-	 * @return
+	 * Gets the object class.
+	 *
+	 * @param objectClassName the object class name
+	 * @return the object class
 	 */
 	public static Class<?> getObjectClass(String objectClassName) {
 		try {
@@ -253,9 +292,10 @@ public class ObjectUtils {
 	}
 
 	/**
-	 * 
-	 * @param objectClassName
-	 * @return
+	 * Instanciate object.
+	 *
+	 * @param objectClassName the object class name
+	 * @return the object
 	 */
 	public static Object instanciateObject(String objectClassName) {
 		try {

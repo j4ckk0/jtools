@@ -28,21 +28,45 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.jtools.mappings.common.IMapping;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMapping.
+ *
+ * @param <E> the element type
+ */
 public class BlockMapping<E extends Object> implements IMapping, Serializable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -388490711678154083L;
 
+	/** The id. */
 	private final UUID id = UUID.randomUUID();
 
+	/** The object class. */
 	private transient Class<E> objectClass;
+	
+	/** The object class name. */
 	private final String objectClassName;
 
+	/** The mappings. */
 	private final List<BlockMappingRow> mappings;
 
+	/**
+	 * Instantiates a new block mapping.
+	 *
+	 * @param objectClass the object class
+	 */
 	public BlockMapping(Class<E> objectClass) {
 		this(objectClass, new ArrayList<>());
 	}
 
+	/**
+	 * Instantiates a new block mapping.
+	 *
+	 * @param objectClass the object class
+	 * @param mappings the mappings
+	 */
 	public BlockMapping(Class<E> objectClass, List<BlockMappingRow> mappings) {
 		super();
 		this.objectClass = objectClass;
@@ -50,11 +74,21 @@ public class BlockMapping<E extends Object> implements IMapping, Serializable {
 		this.mappings = mappings;
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 	@Override
 	public UUID getId() {
 		return id;
 	}
 
+	/**
+	 * Gets the object class.
+	 *
+	 * @return the object class
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public Class<E> getObjectClass() {
@@ -69,10 +103,20 @@ public class BlockMapping<E extends Object> implements IMapping, Serializable {
 		return objectClass;
 	}
 
+	/**
+	 * Gets the object class name.
+	 *
+	 * @return the object class name
+	 */
 	public String getObjectClassName() {
 		return objectClassName;
 	}
 
+	/**
+	 * Gets the rows.
+	 *
+	 * @return the rows
+	 */
 	public List<BlockMappingRow> getRows() {
 		return mappings;
 	}

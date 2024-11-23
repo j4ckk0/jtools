@@ -23,14 +23,31 @@ package org.jtools.mappings.editors.actions.simple;
 import javax.swing.Icon;
 
 import org.jtools.mappings.simple.exporters.SimpleMappingExcelExporter;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingExportToExcelAction.
+ */
 public class SimpleMappingExportToExcelAction extends ASimpleMappingExportToAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5666508052700983450L;
 
+	/**
+	 * Instantiates a new simple mapping export to excel action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public SimpleMappingExportToExcelAction(String name, Icon icon) {
 		super(name, icon, SimpleMappingExcelExporter.instance());
 	}
 
+	/**
+	 * Instantiates a new simple mapping export to excel action.
+	 *
+	 * @param name the name
+	 */
 	public SimpleMappingExportToExcelAction(String name) {
 		super(name, SimpleMappingExcelExporter.instance());
 	}

@@ -71,8 +71,14 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AMappingsDemo.
+ */
 public abstract class AMappingsDemo extends JFrame implements PubSubMessageListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7125491173800101032L;
 
 	// //////////////////////////////
@@ -81,27 +87,70 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	//
 	// //////////////////////////////
 
+	/** The Constant DEMO. */
 	private static final String DEMO = "Demo";
+	
+	/** The Constant MENU. */
 	private static final String MENU = "Menu";
+	
+	/** The Constant EXIT. */
 	private static final String EXIT = "Exit";
+	
+	/** The Constant SHOW_STD_OUTPUT. */
 	private static final String SHOW_STD_OUTPUT = "Show std output";
+	
+	/** The Constant CLEAR_STD_OUTPUT. */
 	private static final String CLEAR_STD_OUTPUT = "Clear std output";
+	
+	/** The Constant SHOW_HIDE_POSSIBLE_DATA_CLASSES. */
 	private static final String SHOW_HIDE_POSSIBLE_DATA_CLASSES = "Show/hide possible data classes";
+	
+	/** The Constant SHOW_HIDE_DATA_PROVIDERS. */
 	private static final String SHOW_HIDE_DATA_PROVIDERS = "Show/hide data providers";
+	
+	/** The Constant SHOW_HIDE_SIMPLE_MAPPINGS. */
 	private static final String SHOW_HIDE_SIMPLE_MAPPINGS = "Show/hide simple mappings";
+	
+	/** The Constant SHOW_HIDE_BLOCK_MAPPINGS. */
 	private static final String SHOW_HIDE_BLOCK_MAPPINGS = "Show/hide block mappings";
+	
+	/** The Constant CREATE_DATA_TABLE. */
 	private static final String CREATE_DATA_TABLE = "Create data table";
+	
+	/** The Constant LOAD_DATA_TABLE. */
 	private static final String LOAD_DATA_TABLE = "Load data table";
+	
+	/** The Constant CREATE_SIMPLE_MAPPING. */
 	private static final String CREATE_SIMPLE_MAPPING = "Create simple mapping";
+	
+	/** The Constant LOAD_SIMPLE_MAPPING. */
 	private static final String LOAD_SIMPLE_MAPPING = "Load simple mapping";
+	
+	/** The Constant EXPORT_DATA_TO_STANDARD_OUTPUT. */
 	private static final String EXPORT_DATA_TO_STANDARD_OUTPUT = "Export data to standard output";
+	
+	/** The Constant CREATE_BLOCK_MAPPING. */
 	private static final String CREATE_BLOCK_MAPPING = "Create block mapping";
+	
+	/** The Constant LOAD_BLOCK_MAPPING. */
 	private static final String LOAD_BLOCK_MAPPING = "Load block mapping";
+	
+	/** The Constant EXPORT_DATA_TO_EXCEL. */
 	private static final String EXPORT_DATA_TO_EXCEL = "Export data to Excel";
+	
+	/** The Constant IMPORT_DATA_FROM_EXCEL. */
 	private static final String IMPORT_DATA_FROM_EXCEL = "Import data from Excel";
+	
+	/** The Constant CONSOLE. */
 	private static final String CONSOLE = "Console";
+	
+	/** The Constant TEST_DATA. */
 	private static final String TEST_DATA = "Test data";
+	
+	/** The Constant SIMPLE_MAPPING. */
 	private static final String SIMPLE_MAPPING = "Simple mapping";
+	
+	/** The Constant BLOCK_MAPPING. */
 	private static final String BLOCK_MAPPING = "Block mapping";
 
 	// //////////////////////////////
@@ -110,39 +159,67 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	//
 	// //////////////////////////////
 
+	/** The tabbed pane. */
 	private final JTabbedPane tabbedPane;
 
+	/** The test data desktop pane. */
 	private final JDesktopPane testDataDesktopPane;
+	
+	/** The simple mapping desktop pane. */
 	private final JDesktopPane simpleMappingDesktopPane;
+	
+	/** The block mapping desktop pane. */
 	private final JDesktopPane blockMappingDesktopPane;
+	
+	/** The console desktop pane. */
 	private final JDesktopPane consoleDesktopPane;
 
+	/** The std output frame. */
 	private final StdOutputFrame stdOutputFrame;
 
+	/** The data provider selector. */
 	private final DataProviderSelector dataProviderSelector;
 
+	/** The simple mapping selector. */
 	private final MappingSelector simpleMappingSelector;
 
+	/** The block mapping selector. */
 	private final MappingSelector blockMappingSelector;
 
+	/** The default data provider. */
 	private final DefaultDataProvider defaultDataProvider;
 
+	/** The create data table action. */
 	private final CreateDataEditorAction createDataTableAction;
+	
+	/** The load data table action. */
 	private final LoadDataAction loadDataTableAction;
 
+	/** The create simple mapping action. */
 	private final SimpleMappingCreateAction createSimpleMappingAction;
+	
+	/** The load simple mapping action. */
 	private final SimpleMappingLoadAction loadSimpleMappingAction;
 
+	/** The create block mapping action. */
 	private final BlockMappingCreateAction createBlockMappingAction;
+	
+	/** The load block mapping action. */
 	private final BlockMappingLoadAction loadBlockMappingAction;
 
+	/** The simple mapping export to std output action. */
 	private final SimpleMappingExportToStdOutputAction simpleMappingExportToStdOutputAction;
+	
+	/** The simple mapping export to excel action. */
 	private final SimpleMappingExportToExcelAction simpleMappingExportToExcelAction;
 
+	/** The block mapping export to excel action. */
 	private final BlockMappingExportToExcelAction blockMappingExportToExcelAction;
 
+	/** The simple mapping import from excel action. */
 	private final SimpleMappingImportFromExcelAction simpleMappingImportFromExcelAction;
 
+	/** The block mapping import from excel action. */
 	private final BlockMappingImportFromExcelAction blockMappingImportFromExcelAction;
 
 	// //////////////////////////////
@@ -151,6 +228,11 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 	//
 	// //////////////////////////////
 
+	/**
+	 * Instantiates a new a mappings demo.
+	 *
+	 * @param testObjectClasses the test object classes
+	 */
 	protected AMappingsDemo(Class<?>[] testObjectClasses) {
 		super(DEMO);
 
@@ -357,6 +439,12 @@ public abstract class AMappingsDemo extends JFrame implements PubSubMessageListe
 		showDataProviderSelectorAction.actionPerformed(null);
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param topicName the topic name
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {

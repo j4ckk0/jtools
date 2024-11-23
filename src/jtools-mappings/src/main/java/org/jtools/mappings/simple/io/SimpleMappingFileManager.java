@@ -45,6 +45,11 @@ import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
 import org.jtools.utils.objects.ObjectUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingFileManager.
+ */
 public class SimpleMappingFileManager {
 
 	//////////////////////////////
@@ -53,26 +58,40 @@ public class SimpleMappingFileManager {
 	//
 	//////////////////////////////
 
+	/** The Constant MAPPING_OUTPUT_COLUMN_PROPERTIES_PARSE_PATTERN. */
 	private static final Pattern MAPPING_OUTPUT_COLUMN_PROPERTIES_PARSE_PATTERN = Pattern.compile("(.+) \\[(.+)\\]");
+	
+	/** The Constant MAPPING_OUTPUT_COLUMN_PROPERTIES_FORMAT_PATTERN. */
 	private static final String MAPPING_OUTPUT_COLUMN_PROPERTIES_FORMAT_PATTERN = "{0} [{1}]";
 
+	/** The Constant SIMPLE_MAPPING_FILE_MARK_PROPERTY. */
 	private static final String SIMPLE_MAPPING_FILE_MARK_PROPERTY = "josm";
+	
+	/** The Constant SIMPLE_MAPPING_FILE_MARK_VALUE. */
 	private static final String SIMPLE_MAPPING_FILE_MARK_VALUE = "Java Object Simple Mapping";
 
+	/** The Constant OBJECT_CLASS_PROPERTY. */
 	private static final String OBJECT_CLASS_PROPERTY = "object.class";
 
+	/** The Constant DATE_FORMAT_PROPERTY. */
 	private static final String DATE_FORMAT_PROPERTY = "date.format";
 
+	/** The Constant COORDINATES_FORMAT_PROPERTY. */
 	private static final String COORDINATES_FORMAT_PROPERTY = "coordinates.format";
 
+	/** The Constant SAVE_SIMPLE_MAPPING_DIALOG_TITLE. */
 	public static final String SAVE_SIMPLE_MAPPING_DIALOG_TITLE = "Select a simple mapping file";
 
+	/** The Constant LOAD_SIMPLE_MAPPING_DIALOG_TITLE. */
 	public static final String LOAD_SIMPLE_MAPPING_DIALOG_TITLE = "Select a simple mapping file";
 
+	/** The Constant SIMPLE_MAPPING_FILE_EXTENSION. */
 	public static final String SIMPLE_MAPPING_FILE_EXTENSION = ".josm"; // Java Object Simple Mapping
 
+	/** The instance. */
 	private static SimpleMappingFileManager instance;
 
+	/** The mappings file paths. */
 	private final Map<UUID, String> mappingsFilePaths = new HashedMap<>();
 
 	//////////////////////////////
@@ -81,6 +100,9 @@ public class SimpleMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instantiates a new simple mapping file manager.
+	 */
 	private SimpleMappingFileManager() {
 
 	}
@@ -91,12 +113,27 @@ public class SimpleMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instance.
+	 *
+	 * @return the simple mapping file manager
+	 */
 	public static SimpleMappingFileManager instance() {
 		if(instance == null) {
 			instance = new SimpleMappingFileManager();
 		}
 		return instance;
 	}
+	
+	/**
+	 * Load mapping.
+	 *
+	 * @param <E> the element type
+	 * @param mappingFilepath the mapping filepath
+	 * @return the simple mapping
+	 * @throws InstantiationException the instantiation exception
+	 * @throws MappingException the mapping exception
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public <E extends Object> SimpleMapping<E> loadMapping(String mappingFilepath) throws InstantiationException, MappingException {
 		Properties properties;
@@ -141,17 +178,32 @@ public class SimpleMappingFileManager {
 			throw new InstantiationException("An error occured while loading mapping editor: " + e.getMessage());
 		}
 	}
+	
+	/**
+	 * Gets the default mapping file path.
+	 *
+	 * @param objectClass the object class
+	 * @return the default mapping file path
+	 */
 	public String getDefaultMappingFilePath(Class<?> objectClass) {
 		return "./resources/" + objectClass.getName() + ".properties";
 	}
+	
+	/**
+	 * Gets the default mapping file.
+	 *
+	 * @param objectClass the object class
+	 * @return the default mapping file
+	 */
 	public File getDefaultMappingFile(Class<?> objectClass) {
 		return new File(getDefaultMappingFilePath(objectClass));
 	}
 
 	/**
-	 * 
-	 * @param mapping
-	 * @throws IOException 
+	 * Save.
+	 *
+	 * @param mapping the mapping
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void save(SimpleMapping<?> mapping) throws IOException {
 		String mappingFilepath = getMappingFilepath(mapping.getId());
@@ -172,9 +224,10 @@ public class SimpleMappingFileManager {
 	}
 
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Gets the mapping filepath.
+	 *
+	 * @param id the id
+	 * @return the mapping filepath
 	 */
 	public String getMappingFilepath(UUID id) {
 		return mappingsFilePaths.get(id);
@@ -186,6 +239,14 @@ public class SimpleMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Properties to rows.
+	 *
+	 * @param properties the properties
+	 * @param objectClass the object class
+	 * @return the list
+	 * @throws MappingException the mapping exception
+	 */
 	private List<SimpleMappingRow> propertiesToRows(Properties properties, Class<?> objectClass) throws MappingException {
 		// Test if the Properties is valid
 		Object fileMarkProperty = properties.get(SIMPLE_MAPPING_FILE_MARK_PROPERTY);
@@ -243,6 +304,14 @@ public class SimpleMappingFileManager {
 		return rows;
 	}
 
+	/**
+	 * Property to row.
+	 *
+	 * @param objectClass the object class
+	 * @param rows the rows
+	 * @param property the property
+	 * @throws SecurityException the security exception
+	 */
 	private void propertyToRow(Class<?> objectClass, List<SimpleMappingRow> rows, Entry<Object, Object> property) throws SecurityException {
 
 		String key = (String)property.getKey();
@@ -273,6 +342,13 @@ public class SimpleMappingFileManager {
 
 	}
 
+	/**
+	 * Rows to properties.
+	 *
+	 * @param objectClass the object class
+	 * @param rows the rows
+	 * @return the properties
+	 */
 	private Properties rowsToProperties(Class<?> objectClass, List<SimpleMappingRow> rows) {
 
 		Properties properties = new Properties();

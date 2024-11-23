@@ -22,8 +22,16 @@ package org.jtools.utils.logging;
 
 import java.net.URL;
 import java.util.Properties;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class LoggingUtils.
+ */
 public class LoggingUtils {
 
+	/**
+	 * Load default config.
+	 */
 	public static void loadDefaultConfig() {
 		Properties props = System.getProperties();
 

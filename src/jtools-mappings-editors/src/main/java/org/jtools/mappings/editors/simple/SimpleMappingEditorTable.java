@@ -34,9 +34,21 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.utils.gui.components.ButtonColumn;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingEditorTable.
+ */
 public class SimpleMappingEditorTable extends JTable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4774247812741796742L;
+	
+	/**
+	 * Instantiates a new simple mapping editor table.
+	 *
+	 * @param mapping the mapping
+	 */
 	public SimpleMappingEditorTable(SimpleMapping<?> mapping) {
 
 		SimpleMappingEditorTableModel model = new SimpleMappingEditorTableModel(mapping);
@@ -66,20 +78,42 @@ public class SimpleMappingEditorTable extends JTable {
 		TableUtils.installCenteredLabelsCellRenderers(this);
 	}
 
+	/**
+	 * Apply.
+	 *
+	 * @return the simple mapping
+	 */
 	public SimpleMapping<?> apply() {
 		return((SimpleMappingEditorTableModel)getModel()).apply();
 	}
+	
+	/**
+	 * The Class AddRemoveButtonColumn.
+	 */
 	private class AddRemoveButtonColumn extends ButtonColumn {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -6435845128537729287L;
 
+		/** The table. */
 		private JTable table;
 
+		/**
+		 * Instantiates a new adds the remove button column.
+		 *
+		 * @param table the table
+		 * @param column the column
+		 */
 		public AddRemoveButtonColumn(JTable table, int column) {
 			super(table, null, column);
 			this.table = table;
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param arg0 the arg 0
+		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleMappingEditorTableModel model = (SimpleMappingEditorTableModel)table.getModel();

@@ -34,9 +34,25 @@ import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import org.jtools.utils.gui.components.ButtonColumn;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingEditorTable.
+ *
+ * @param <E> the element type
+ */
 public class BlockMappingEditorTable<E extends Object> extends JTable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4774247812741796742L;
+	
+	/**
+	 * Instantiates a new block mapping editor table.
+	 *
+	 * @param blockMapping the block mapping
+	 * @param possibleColumns the possible columns
+	 * @param possibleClasses the possible classes
+	 */
 	public BlockMappingEditorTable(BlockMapping<E> blockMapping, String[] possibleColumns, Class<?>... possibleClasses) {
 		BlockMappingEditorTableModel<E> model = new BlockMappingEditorTableModel<E>(blockMapping, possibleClasses);
 		setModel(model);
@@ -67,25 +83,52 @@ public class BlockMappingEditorTable<E extends Object> extends JTable {
 		initRows(blockMappingEditorRows);
 	}
 
+	/**
+	 * Apply.
+	 *
+	 * @return the block mapping
+	 */
 	@SuppressWarnings("unchecked")
 	public BlockMapping<E> apply() {
 		return ((BlockMappingEditorTableModel<E>) getModel()).apply();
 	}
 
+	/**
+	 * Inits the rows.
+	 *
+	 * @param rows the rows
+	 */
 	public void initRows(List<BlockMappingEditorRow> rows) {
 		((BlockMappingEditorTableModel<?>) getModel()).initRows(rows);
 	}
+	
+	/**
+	 * The Class AddRemoveButtonColumn.
+	 */
 	private class AddRemoveButtonColumn extends ButtonColumn {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -6435845128537729287L;
 
+		/** The table. */
 		private JTable table;
 
+		/**
+		 * Instantiates a new adds the remove button column.
+		 *
+		 * @param table the table
+		 * @param column the column
+		 */
 		public AddRemoveButtonColumn(JTable table, int column) {
 			super(table, null, column);
 			this.table = table;
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param arg0 the arg 0
+		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			BlockMappingEditorTableModel<?> model = (BlockMappingEditorTableModel<?>) table.getModel();

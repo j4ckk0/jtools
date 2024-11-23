@@ -38,33 +38,86 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TitledLineBorder.
+ */
 public class TitledLineBorder extends TitledBorder {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7572972693245059564L;
 
+	/** The draw string method. */
 	private static Method drawStringMethod;
 
+	/**
+	 * Instantiates a new titled line border.
+	 *
+	 * @param border the border
+	 * @param title the title
+	 * @param titleJustification the title justification
+	 * @param titlePosition the title position
+	 * @param titleFont the title font
+	 * @param titleColor the title color
+	 */
 	public TitledLineBorder(Border border, String title, int titleJustification, int titlePosition, Font titleFont,
 			Color titleColor) {
 		super(border, title, titleJustification, titlePosition, titleFont, titleColor);
 	}
 
+	/**
+	 * Instantiates a new titled line border.
+	 *
+	 * @param border the border
+	 * @param title the title
+	 * @param titleJustification the title justification
+	 * @param titlePosition the title position
+	 * @param titleFont the title font
+	 */
 	public TitledLineBorder(Border border, String title, int titleJustification, int titlePosition, Font titleFont) {
 		super(border, title, titleJustification, titlePosition, titleFont);
 	}
 
+	/**
+	 * Instantiates a new titled line border.
+	 *
+	 * @param border the border
+	 * @param title the title
+	 * @param titleJustification the title justification
+	 * @param titlePosition the title position
+	 */
 	public TitledLineBorder(Border border, String title, int titleJustification, int titlePosition) {
 		super(border, title, titleJustification, titlePosition);
 	}
 
+	/**
+	 * Instantiates a new titled line border.
+	 *
+	 * @param border the border
+	 */
 	public TitledLineBorder(Border border) {
 		super(border);
 	}
 
+	/**
+	 * Instantiates a new titled line border.
+	 *
+	 * @param title the title
+	 */
 	public TitledLineBorder(String title) {
 		super(title);
 	}
 
+	/**
+	 * Paint border.
+	 *
+	 * @param c the c
+	 * @param g the g
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
+	 */
 	@Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
 		Point textLoc = new Point();
@@ -166,6 +219,16 @@ public class TitledLineBorder extends TitledBorder {
 		g.setColor(color);
 	}
 
+	/**
+	 * Compute intersection.
+	 *
+	 * @param dest the dest
+	 * @param rx the rx
+	 * @param ry the ry
+	 * @param rw the rw
+	 * @param rh the rh
+	 * @return true, if successful
+	 */
 	private boolean computeIntersection(Rectangle dest, int rx, int ry, int rw, int rh) {
 		int x1 = Math.max(rx, dest.x);
 		int x2 = Math.min(rx + rw, dest.x + dest.width);
@@ -183,6 +246,13 @@ public class TitledLineBorder extends TitledBorder {
 		return true;
 	}
 
+	/**
+	 * Gets the font metrics.
+	 *
+	 * @param component the component
+	 * @param g the g
+	 * @return the font metrics
+	 */
 	@SuppressWarnings("deprecation")
 	private FontMetrics getFontMetrics(JComponent component, Graphics g) {
 		if(component != null) {

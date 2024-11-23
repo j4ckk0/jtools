@@ -37,24 +37,48 @@ import javax.swing.JTextField;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.components.JLinkButton;
 import org.jtools.utils.gui.components.NumberTextField;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ExcelImportConfigPanel.
+ */
 public class ExcelImportConfigPanel extends JPanel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1666561068364287203L;
 
+	/** The Constant RIGHT_LEFT_INSETS. */
 	private static final Insets RIGHT_LEFT_INSETS = new Insets(0, 4, 0, 4);
 
+	/** The mapping label. */
 	private final JLabel mappingLabel;
+	
+	/** The mapping text field. */
 	private final JTextField mappingTextField;
 
+	/** The excel file label. */
 	private final JLabel excelFileLabel;
+	
+	/** The excel file text field. */
 	private final JTextField excelFileTextField;
+	
+	/** The excel file selection button. */
 	private final JLinkButton excelFileSelectionButton;
 
+	/** The firs data row index label. */
 	private final JLabel firsDataRowIndexLabel;
+	
+	/** The first data row index text field. */
 	private final NumberTextField<Integer> firstDataRowIndexTextField;
 
+	/** The input file. */
 	private File inputFile;
 
+	/**
+	 * Instantiates a new excel import config panel.
+	 *
+	 * @param objectClass the object class
+	 */
 	public ExcelImportConfigPanel(Class<?> objectClass) {
 
 		setLayout(new GridBagLayout());
@@ -151,10 +175,20 @@ public class ExcelImportConfigPanel extends JPanel {
 
 	}
 
+	/**
+	 * Gets the selected file.
+	 *
+	 * @return the selected file
+	 */
 	public File getSelectedFile() {
 		return inputFile;
 	}
 
+	/**
+	 * Gets the first data row.
+	 *
+	 * @return the first data row
+	 */
 	public int getFirstDataRow() {
 		// -1 is because index is starting on 0 and first line in excel is line 1
 		return Integer.parseInt(firstDataRowIndexTextField.getText()) - 1 ; 

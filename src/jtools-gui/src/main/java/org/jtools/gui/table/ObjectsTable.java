@@ -35,12 +35,27 @@ import org.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
 import org.jtools.gui.table.tableModels.ObjectsTableModel;
 import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.utils.gui.components.ButtonColumn;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectsTable.
+ *
+ * @param <E> the element type
+ */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ObjectsTable<E extends Object> extends JTable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4774247812741796742L;
 
+	/** The object class. */
 	protected final Class<E> objectClass;
+	
+	/**
+	 * Instantiates a new objects table.
+	 *
+	 * @param objectClass the object class
+	 */
 	public ObjectsTable(Class<E> objectClass) {
 		this.objectClass = objectClass;
 
@@ -65,10 +80,20 @@ public class ObjectsTable<E extends Object> extends JTable {
 		TableUtils.installAutoStopEditingCellEditors(this);
 	}
 
+	/**
+	 * Gets the rows.
+	 *
+	 * @return the rows
+	 */
 	public List<IObjectRow> getRows() {
 		return ((ObjectsTableModel) getModel()).getRows();
 	}
 
+	/**
+	 * Gets the data list.
+	 *
+	 * @return the data list
+	 */
 	public List<E> getDataList() {
 		List<IObjectRow> rows = getRows();
 
@@ -82,26 +107,53 @@ public class ObjectsTable<E extends Object> extends JTable {
 		return data;
 	}
 	
+	/**
+	 * Gets the data class.
+	 *
+	 * @return the data class
+	 */
 	public Class<E> getDataClass() {
 		return objectClass;
 	}
 	
+	/**
+	 * Insert row.
+	 *
+	 * @param object the object
+	 */
 	public void insertRow(E object) {
 		ObjectsTableModel model = (ObjectsTableModel) getModel();
 		model.insertRow(new ObjectRow<E>(object));
 		model.fireTableRowsInserted(model.getRowCount() - 1 , model.getRowCount() - 1);
 	}
+	
+	/**
+	 * The Class AddRemoveButtonColumn.
+	 */
 	private class AddRemoveButtonColumn extends ButtonColumn {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -6435845128537729287L;
 
+		/** The table. */
 		private JTable table;
 
+		/**
+		 * Instantiates a new adds the remove button column.
+		 *
+		 * @param table the table
+		 * @param column the column
+		 */
 		public AddRemoveButtonColumn(JTable table, int column) {
 			super(table, null, column);
 			this.table = table;
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param event the event
+		 */
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			ObjectsTableModel model = (ObjectsTableModel) table.getModel();

@@ -26,35 +26,72 @@ import java.util.List;
 import java.util.UUID;
 
 import org.jtools.mappings.common.IMapping;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMapping.
+ *
+ * @param <E> the element type
+ */
 public class SimpleMapping<E extends Object> implements IMapping, Serializable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -388490711678154083L;
 
+	/** The id. */
 	private final UUID id = UUID.randomUUID();
 
+	/** The object class. */
 	private final Class<E> objectClass;
 
+	/** The mappings. */
 	private final List<SimpleMappingRow> mappings;
 	
+	/**
+	 * Instantiates a new simple mapping.
+	 *
+	 * @param objectClass the object class
+	 */
 	public SimpleMapping(Class<E> objectClass) {
 		this(objectClass, new ArrayList<>());
 	}
 
+	/**
+	 * Instantiates a new simple mapping.
+	 *
+	 * @param objectClass the object class
+	 * @param mappings the mappings
+	 */
 	public SimpleMapping(Class<E> objectClass, List<SimpleMappingRow> mappings) {
 		this.objectClass = objectClass;
 		this.mappings = mappings;
 	}
 	
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 	@Override
 	public UUID getId() {
 		return id;
 	}
 
+	/**
+	 * Gets the object class.
+	 *
+	 * @return the object class
+	 */
 	@Override
 	public Class<E> getObjectClass() {
 		return objectClass;
 	}
 
+	/**
+	 * Gets the rows.
+	 *
+	 * @return the rows
+	 */
 	public List<SimpleMappingRow> getRows() {
 		return mappings;
 	}

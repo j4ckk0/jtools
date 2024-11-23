@@ -24,19 +24,43 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectsListModel.
+ *
+ * @param <E> the element type
+ */
 public class ObjectsListModel<E extends Object> extends DefaultListModel<E> {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -890234908906634753L;
 
+	/**
+	 * Gets the elements.
+	 *
+	 * @return the elements
+	 */
 	public List<E> getElements() {
 		return Collections.list(elements());
 	}
 
+	/**
+	 * Gets the size.
+	 *
+	 * @return the size
+	 */
 	@Override
 	public int getSize() {
 		return size();
 	}
 
+	/**
+	 * Gets the element at.
+	 *
+	 * @param index the index
+	 * @return the element at
+	 */
 	@Override
 	public E getElementAt(int index) {
 		return get(index);

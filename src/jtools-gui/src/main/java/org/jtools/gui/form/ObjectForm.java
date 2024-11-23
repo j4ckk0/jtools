@@ -36,23 +36,52 @@ import org.jtools.gui.table.utils.TableUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
 import org.jtools.utils.objects.ObjectUtils;
 import org.jtools.utils.objects.ObjectInfoProvider.ObjectInfo;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectForm.
+ */
 public class ObjectForm extends JPanel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -520587385214252977L;
 
+	/** The object. */
 	private final transient Object object;
+	
+	/** The clone. */
 	private final transient Object clone;
 
+	/** The object info. */
 	private final transient ObjectInfo objectInfo;
 
+	/** The model. */
 	private final transient ObjectFormTableModel model;
+	
+	/** The table. */
 	private final transient JTable table;
 
+	/**
+	 * Instantiates a new object form.
+	 *
+	 * @param objectClass the object class
+	 * @throws InstantiationException the instantiation exception
+	 * @throws IllegalAccessException the illegal access exception
+	 * @throws IllegalArgumentException the illegal argument exception
+	 * @throws InvocationTargetException the invocation target exception
+	 * @throws NoSuchMethodException the no such method exception
+	 * @throws SecurityException the security exception
+	 */
 	public ObjectForm(Class<? extends Object> objectClass) throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		this(objectClass.getDeclaredConstructor().newInstance());
 	}
 
+	/**
+	 * Instantiates a new object form.
+	 *
+	 * @param object the object
+	 */
 	public ObjectForm(Object object) {
 		if (object == null) {
 			throw new InvalidParameterException(
@@ -81,14 +110,29 @@ public class ObjectForm extends JPanel {
 		TableUtils.installAutoStopEditingCellEditors(table);
 	}
 
+	/**
+	 * Checks if is cancelable.
+	 *
+	 * @return true, if is cancelable
+	 */
 	public boolean isCancelable() {
 		return (this.clone != null);
 	}
 
+	/**
+	 * Gets the object.
+	 *
+	 * @return the object
+	 */
 	public Object getObject() {
 		return this.object;
 	}
 
+	/**
+	 * Show dialog.
+	 *
+	 * @return the int
+	 */
 	public int showDialog() {
 
 		JScrollPane jScrollPane = new JScrollPane(this);
@@ -112,6 +156,10 @@ public class ObjectForm extends JPanel {
 		}
 
 	}
+	
+	/**
+	 * Apply.
+	 */
 	private void apply() {
 		if (this.clone == null) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE,

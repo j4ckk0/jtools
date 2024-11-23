@@ -33,6 +33,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.IOUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ResourcesManager.
+ */
 public class ResourcesManager {
 
 	//////////////////////////////////////////////////
@@ -41,20 +46,28 @@ public class ResourcesManager {
 	//
 	//////////////////////////////////////////////////
 
+	/** The instance. */
 	private static ResourcesManager instance;
 
+	/** The Constant LABEL_PROPERTIES_FILE. */
 	protected static final String LABEL_PROPERTIES_FILE = "labels.properties";
 
+	/** The Constant CONFIG_PROPERTIES_FILE. */
 	protected static final String CONFIG_PROPERTIES_FILE = "config.properties";
 
+	/** The Constant PREFERENCES_PROPERTIES_FILE. */
 	protected static final String PREFERENCES_PROPERTIES_FILE = "resources/conf/preferences.properties";
 
+	/** The images. */
 	private HashMap<String, BufferedImage> images;
 
+	/** The preferences properties. */
 	private Properties preferencesProperties;
 
+	/** The labels properties. */
 	private Properties labelsProperties;
 
+	/** The config properties. */
 	private Properties configProperties;
 
 	//////////////////////////////////////////////////
@@ -62,12 +75,22 @@ public class ResourcesManager {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
+	
+	/**
+	 * Instantiates a new resources manager.
+	 */
 	private ResourcesManager() {
 		images = new HashMap<>();
 //		preferencesProperties = this.loadExternalProperties(PREFERENCES_PROPERTIES_FILE);
 //		configProperties = this.loadPropertiesInJar(CONFIG_PROPERTIES_FILE);
 //		labelsProperties = this.loadPropertiesInJar(LABEL_PROPERTIES_FILE);
 	}
+	
+	/**
+	 * Instance.
+	 *
+	 * @return the resources manager
+	 */
 	public static ResourcesManager instance() {
 		if (null == instance) {
 			instance = new ResourcesManager();
@@ -80,6 +103,13 @@ public class ResourcesManager {
 	// Public methods
 	//
 	//////////////////////////////////////////////////
+	
+	/**
+	 * Gets the image.
+	 *
+	 * @param imageFilename the image filename
+	 * @return the image
+	 */
 	public BufferedImage getImage(String imageFilename) {
 		BufferedImage image = images.get(imageFilename);
 		if (null == image) {
@@ -94,9 +124,10 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
+	 * Gets the label.
+	 *
+	 * @param key the key
+	 * @return the label
 	 */
 	public String getLabel(String key) {
 		String langage = getPreferencesProperty("langage");
@@ -109,10 +140,11 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @param replacementValues
-	 * @return
+	 * Gets the label.
+	 *
+	 * @param key the key
+	 * @param replacementValues the replacement values
+	 * @return the label
 	 */
 	public String getLabel(String key, String... replacementValues) {
 		String label = this.getLabel(key);
@@ -123,28 +155,31 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
+	 * Gets the preferences property.
+	 *
+	 * @param key the key
+	 * @return the preferences property
 	 */
 	public String getPreferencesProperty(String key) {
 		return preferencesProperties.getProperty(key);
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
+	 * Gets the config property.
+	 *
+	 * @param key the key
+	 * @return the config property
 	 */
 	public String getConfigProperty(String key) {
 		return configProperties.getProperty(key);
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
-	 * @throws NumberFormatException
+	 * Gets the config property int.
+	 *
+	 * @param key the key
+	 * @return the config property int
+	 * @throws NumberFormatException the number format exception
 	 */
 	public Integer getConfigPropertyInt(String key) throws NumberFormatException {
 		String property = configProperties.getProperty(key);
@@ -159,10 +194,11 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
-	 * @throws NumberFormatException
+	 * Gets the config property float.
+	 *
+	 * @param key the key
+	 * @return the config property float
+	 * @throws NumberFormatException the number format exception
 	 */
 	public Float getConfigPropertyFloat(String key) throws NumberFormatException {
 		String property = configProperties.getProperty(key);
@@ -177,10 +213,11 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
-	 * @throws NumberFormatException
+	 * Gets the config property boolean.
+	 *
+	 * @param key the key
+	 * @return the config property boolean
+	 * @throws NumberFormatException the number format exception
 	 */
 	public Boolean getConfigPropertyBoolean(String key) throws NumberFormatException {
 		String propriete = configProperties.getProperty(key);
@@ -189,9 +226,10 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param filename
-	 * @return
+	 * Load file content.
+	 *
+	 * @param filename the filename
+	 * @return the string
 	 */
 	public String loadFileContent(String filename) {
 		try {
@@ -210,9 +248,10 @@ public class ResourcesManager {
 	//////////////////////////////////////////////////
 
 	/**
-	 * 
-	 * @param propertiesFilename
-	 * @return
+	 * Load external properties.
+	 *
+	 * @param propertiesFilename the properties filename
+	 * @return the properties
 	 */
 	protected Properties loadExternalProperties(String propertiesFilename) {
 		Properties properties = new Properties();
@@ -225,9 +264,10 @@ public class ResourcesManager {
 	}
 
 	/**
-	 * 
-	 * @param propertiesFileName
-	 * @return
+	 * Load properties in jar.
+	 *
+	 * @param propertiesFileName the properties file name
+	 * @return the properties
 	 */
 	protected Properties loadPropertiesInJar(String propertiesFileName) {
 		Properties properties = new Properties();

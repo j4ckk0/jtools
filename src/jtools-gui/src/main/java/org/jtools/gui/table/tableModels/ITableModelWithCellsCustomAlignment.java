@@ -1,5 +1,9 @@
 package org.jtools.gui.table.tableModels;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ITableModelWithCellsCustomAlignment.
+ */
 /*-
  * #%L
  * Java Tools - GUI
@@ -21,6 +25,13 @@ package org.jtools.gui.table.tableModels;
  */
 public interface ITableModelWithCellsCustomAlignment {
 
+	/**
+	 * Gets the cell horizontal alignment.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell horizontal alignment
+	 */
 	public int getCellHorizontalAlignment(int row, int column);
 
 }

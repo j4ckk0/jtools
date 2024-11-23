@@ -38,30 +38,62 @@ import org.jtools.mappings.block.io.BlockMappingFileManager;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ABlockMappingImportFromAction.
+ */
 public abstract class ABlockMappingImportFromAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5347933034897416218L;
 
+	/** The importer. */
 	private transient IBlockMappingImporter importer;
 
+	/** The block mapping. */
 	private transient BlockMapping<?> blockMapping;
 
+	/** The imported objects. */
 	private transient List<?> importedObjects;
 
+	/**
+	 * Instantiates a new a block mapping import from action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param importer the importer
+	 */
 	protected ABlockMappingImportFromAction(String name, Icon icon, IBlockMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 	}
 
+	/**
+	 * Instantiates a new a block mapping import from action.
+	 *
+	 * @param name the name
+	 * @param importer the importer
+	 */
 	protected ABlockMappingImportFromAction(String name, IBlockMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 	}
 
+	/**
+	 * Sets the mapping.
+	 *
+	 * @param mapping the new mapping
+	 */
 	public void setMapping(BlockMapping<?> mapping) {
 		this.blockMapping = mapping;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 
@@ -101,6 +133,11 @@ public abstract class ABlockMappingImportFromAction extends AEditorAction {
 		}
 	}
 
+	/**
+	 * Gets the imported objects.
+	 *
+	 * @return the imported objects
+	 */
 	public List<?> getImportedObjects() {
 		return importedObjects;
 	}

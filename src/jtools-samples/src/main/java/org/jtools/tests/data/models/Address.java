@@ -1,5 +1,9 @@
 package org.jtools.tests.data.models;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Address.
+ */
 /*-
  * #%L
  * Java Tools - Samples
@@ -21,46 +25,95 @@ package org.jtools.tests.data.models;
  */
 public class Address {
 
+	/** The number. */
 	private int number;
 
+	/** The street. */
 	private String street;
 
+	/** The zip code. */
 	private int zipCode;
 
+	/** The city. */
 	private String city;
 
+	/**
+	 * Gets the number.
+	 *
+	 * @return the number
+	 */
 	public int getNumber() {
 		return number;
 	}
 
+	/**
+	 * Sets the number.
+	 *
+	 * @param number the new number
+	 */
 	public void setNumber(int number) {
 		this.number = number;
 	}
 
+	/**
+	 * Gets the street.
+	 *
+	 * @return the street
+	 */
 	public String getStreet() {
 		return street;
 	}
 
+	/**
+	 * Sets the street.
+	 *
+	 * @param street the new street
+	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
+	/**
+	 * Gets the zip code.
+	 *
+	 * @return the zip code
+	 */
 	public int getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * Sets the zip code.
+	 *
+	 * @param zipCode the new zip code
+	 */
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * Gets the city.
+	 *
+	 * @return the city
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * Sets the city.
+	 *
+	 * @param city the new city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return number + " - " + street + " - " + zipCode + " - " + city;

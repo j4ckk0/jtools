@@ -21,14 +21,28 @@ package org.jtools.utils.messages.pubsub;
  */
 
 import org.jtools.utils.messages.DefaultBusConfig;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultPubSubBus.
+ */
 public class DefaultPubSubBus extends PubSubBus {
 
+	/** The instance. */
 	private static DefaultPubSubBus instance;
 
+	/**
+	 * Instantiates a new default pub sub bus.
+	 */
 	private DefaultPubSubBus() {
 		super(DefaultBusConfig.getUrl());
 	}
 
+	/**
+	 * Instance.
+	 *
+	 * @return the default pub sub bus
+	 */
 	public static DefaultPubSubBus instance() {
 		if (instance == null) {
 			instance = new DefaultPubSubBus();

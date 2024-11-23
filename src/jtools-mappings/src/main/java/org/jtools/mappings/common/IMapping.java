@@ -21,12 +21,32 @@ package org.jtools.mappings.common;
  */
 
 import java.util.UUID;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface IMapping.
+ */
 public interface IMapping {
 
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 	public UUID getId();
 	
+	/**
+	 * Gets the object class.
+	 *
+	 * @return the object class
+	 */
 	public Class<?> getObjectClass();
 	
+	/**
+	 * Gets the mapping name.
+	 *
+	 * @return the mapping name
+	 */
 	public default String getMappingName() {
 		return getClass().getSimpleName() + ": " + getObjectClass().getCanonicalName() + " [" + getId() + "]";
 	}

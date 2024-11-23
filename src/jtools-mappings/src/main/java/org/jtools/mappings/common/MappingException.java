@@ -1,5 +1,9 @@
 package org.jtools.mappings.common;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MappingException.
+ */
 /*-
  * #%L
  * Java Tools - Mappings
@@ -21,24 +25,52 @@ package org.jtools.mappings.common;
  */
 public class MappingException extends Exception {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -750168772367146161L;
 
+	/**
+	 * Instantiates a new mapping exception.
+	 */
 	public MappingException() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new mapping exception.
+	 *
+	 * @param message the message
+	 * @param cause the cause
+	 * @param enableSuppression the enable suppression
+	 * @param writableStackTrace the writable stack trace
+	 */
 	public MappingException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
+	/**
+	 * Instantiates a new mapping exception.
+	 *
+	 * @param message the message
+	 * @param cause the cause
+	 */
 	public MappingException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
+	/**
+	 * Instantiates a new mapping exception.
+	 *
+	 * @param message the message
+	 */
 	public MappingException(String message) {
 		super(message);
 	}
 
+	/**
+	 * Instantiates a new mapping exception.
+	 *
+	 * @param cause the cause
+	 */
 	public MappingException(Throwable cause) {
 		super(cause);
 	}

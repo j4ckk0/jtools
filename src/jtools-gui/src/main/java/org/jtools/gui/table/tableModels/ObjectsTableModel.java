@@ -34,47 +34,96 @@ import org.jtools.gui.table.tableModels.IObjectRow.NewRow;
 import org.jtools.gui.table.tableModels.IObjectRow.ObjectRow;
 import org.jtools.utils.gui.GuiUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectsTableModel.
+ *
+ * @param <E> the element type
+ */
 public class ObjectsTableModel<E extends Object> extends AbstractTableModel implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment, ITableModelWithCellsCustomBackground, ITableModelWithParameterizedTypes {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 3270825863776856519L;
 
+	/** The Constant ADD_REMOVE_BUTTON_COL. */
 	public static final int ADD_REMOVE_BUTTON_COL = 0;
 
+	/** The object class. */
 	private final Class<E> objectClass;
 
+	/** The rows. */
 	private final List<IObjectRow> rows;
 
+	/**
+	 * Instantiates a new objects table model.
+	 *
+	 * @param objectClass the object class
+	 * @param rows the rows
+	 */
 	public ObjectsTableModel(Class<E> objectClass, List<IObjectRow> rows) {
 		this.objectClass = objectClass;
 		this.rows = rows;
 	}
 
+	/**
+	 * Adds the row.
+	 *
+	 * @param row the row
+	 */
 	public void addRow(IObjectRow row) {
 		rows.add(rows.size() - 1, row);
 		fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
 	}
 
+	/**
+	 * Insert row.
+	 *
+	 * @param row the row
+	 */
 	public void insertRow(IObjectRow row) {
 		rows.add(0, row);
 		fireTableRowsInserted(0, 0);
 	}
 
+	/**
+	 * Removes the row.
+	 *
+	 * @param row the row
+	 */
 	public void removeRow(int row) {
 		rows.remove(row);
 		fireTableRowsDeleted(row, row);
 	}
 
+	/**
+	 * Gets the rows.
+	 *
+	 * @return the rows
+	 */
 	@SuppressWarnings("rawtypes")
 	public List<ObjectRow> getRows() {
 		return rows.stream().filter(ObjectRow.class::isInstance).map(ObjectRow.class::cast)
 				.collect(Collectors.toUnmodifiableList());
 	}
 
+	/**
+	 * Gets the row count.
+	 *
+	 * @return the row count
+	 */
 	@Override
 	public int getRowCount() {
 		return rows.size();
 	}
 
+	/**
+	 * Gets the value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the value at
+	 */
 	@Override
 	public Object getValueAt(int row, int column) {
 		IObjectRow objectRow = rows.get(row);
@@ -86,6 +135,13 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Checks if is cell editable.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell editable
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		IObjectRow objectRow = rows.get(row);
@@ -97,6 +153,13 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Checks if is cell mandatory.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell mandatory
+	 */
 	@Override
 	public boolean isCellMandatory(int row, int column) {
 		//IObjectRow objectRow = rows.get(row);
@@ -104,6 +167,13 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		return false;
 	}
 
+	/**
+	 * Gets the cell horizontal alignment.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell horizontal alignment
+	 */
 	@Override
 	public int getCellHorizontalAlignment(int row, int column) {
 		switch (column) {
@@ -114,6 +184,13 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Sets the value at.
+	 *
+	 * @param value the value
+	 * @param row the row
+	 * @param column the column
+	 */
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 		IObjectRow objectRow = rows.get(row);
@@ -125,6 +202,12 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Gets the column class.
+	 *
+	 * @param columnIndex the column index
+	 * @return the column class
+	 */
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		switch (columnIndex) {
@@ -135,6 +218,12 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Gets the column parameterized class.
+	 *
+	 * @param columnIndex the column index
+	 * @return the column parameterized class
+	 */
 	@Override
 	public Class<?> getColumnParameterizedClass(int columnIndex) {
 		Field field = ObjectInfoProvider.getObjectInfo(objectClass).getPossibleFields().get(columnIndex-1);
@@ -145,11 +234,22 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		return null;
 	}
 
+	/**
+	 * Gets the column count.
+	 *
+	 * @return the column count
+	 */
 	@Override
 	public int getColumnCount() {
 		return ObjectInfoProvider.getObjectInfo(objectClass).getPossibleFieldsCount() + 1;
 	}
 
+	/**
+	 * Gets the column name.
+	 *
+	 * @param column the column
+	 * @return the column name
+	 */
 	@Override
 	public String getColumnName(int column) {
 		switch (column) {
@@ -160,10 +260,23 @@ public class ObjectsTableModel<E extends Object> extends AbstractTableModel impl
 		}
 	}
 
+	/**
+	 * Gets the row.
+	 *
+	 * @param row the row
+	 * @return the row
+	 */
 	public IObjectRow getRow(int row) {
 		return rows.get(row);
 	}
 
+	/**
+	 * Gets the cell background.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell background
+	 */
 	@Override
 	public Color getCellBackground(int row, int column) {
 		IObjectRow objectRow = getRow(row);

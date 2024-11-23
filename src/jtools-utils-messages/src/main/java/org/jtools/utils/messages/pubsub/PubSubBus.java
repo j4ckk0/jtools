@@ -36,6 +36,11 @@ import jakarta.jms.MessageConsumer;
 import jakarta.jms.MessageProducer;
 import jakarta.jms.Session;
 import jakarta.jms.Topic;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class PubSubBus.
+ */
 public class PubSubBus extends AMessagesBus {
 
 	// //////////////////////////////
@@ -44,9 +49,16 @@ public class PubSubBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/** The topics. */
 	private final Map<String, Topic> topics;
+	
+	/** The topic producers. */
 	private final Map<String, MessageProducer> topicProducers;
+	
+	/** The topic consumers. */
 	private final Map<String, MessageConsumer> topicConsumers;
+	
+	/** The topic messages dispatchers. */
 	private final Map<String, PubSubMessagesDispatcher> topicMessagesDispatchers;
 
 	// //////////////////////////////
@@ -55,9 +67,21 @@ public class PubSubBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Instantiates a new pub sub bus.
+	 *
+	 * @param url the url
+	 */
 	public PubSubBus(String url) {
 		this(url, null);
 	}
+	
+	/**
+	 * Instantiates a new pub sub bus.
+	 *
+	 * @param url the url
+	 * @param clientConnectionProperties the client connection properties
+	 */
 	public PubSubBus(String url, Properties clientConnectionProperties) {
 		super(url, clientConnectionProperties);
 
@@ -67,6 +91,11 @@ public class PubSubBus extends AMessagesBus {
 		this.topicMessagesDispatchers = new HashMap<>();
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void close() throws Exception {
 		if (topics != null) {
@@ -95,6 +124,12 @@ public class PubSubBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @param listener the listener
+	 * @param topicsNames the topics names
+	 */
 	public void addListener(PubSubMessageListener listener, String... topicsNames) {
 
 		if(!isStarted()) {
@@ -112,6 +147,12 @@ public class PubSubBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Removes the listener.
+	 *
+	 * @param listener the listener
+	 * @param topicsNames the topics names
+	 */
 	public void removeListener(PubSubMessageListener listener, String... topicsNames) {
 
 		if(!isStarted()) {
@@ -129,6 +170,12 @@ public class PubSubBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Send object message.
+	 *
+	 * @param topicName the topic name
+	 * @param payload the payload
+	 */
 	public void sendObjectMessage(String topicName, Serializable payload) {
 		
 		if(!isStarted()) {
@@ -149,6 +196,12 @@ public class PubSubBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Send text message.
+	 *
+	 * @param topicName the topic name
+	 * @param payload the payload
+	 */
 	public void sendTextMessage(String topicName, String payload) {
 		
 		if(!isStarted()) {
@@ -175,6 +228,13 @@ public class PubSubBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Gets the consumer.
+	 *
+	 * @param topicName the topic name
+	 * @return the consumer
+	 * @throws JMSException the JMS exception
+	 */
 	private MessageConsumer getConsumer(String topicName) throws JMSException {
 		MessageConsumer consumer = topicConsumers.get(topicName);
 		if (consumer == null) {
@@ -187,6 +247,13 @@ public class PubSubBus extends AMessagesBus {
 		return consumer;
 	}
 
+	/**
+	 * Gets the producer.
+	 *
+	 * @param topicName the topic name
+	 * @return the producer
+	 * @throws JMSException the JMS exception
+	 */
 	private MessageProducer getProducer(String topicName) throws JMSException {
 		MessageProducer producer = topicProducers.get(topicName);
 		if (producer == null) {
@@ -200,6 +267,12 @@ public class PubSubBus extends AMessagesBus {
 		return producer;
 	}
 
+	/**
+	 * Gets the topic.
+	 *
+	 * @param topicName the topic name
+	 * @return the topic
+	 */
 	private Topic getTopic(String topicName) {
 		Topic topic = topics.get(topicName);
 		if (topic == null) {
@@ -216,6 +289,13 @@ public class PubSubBus extends AMessagesBus {
 		return topic;
 	}
 
+	/**
+	 * Gets the messages dispatcher.
+	 *
+	 * @param topicName the topic name
+	 * @return the messages dispatcher
+	 * @throws JMSException the JMS exception
+	 */
 	private PubSubMessagesDispatcher getMessagesDispatcher(String topicName) throws JMSException {
 		PubSubMessagesDispatcher messagesDispatcher = topicMessagesDispatchers.get(topicName);
 		if (messagesDispatcher == null) {

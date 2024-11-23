@@ -28,6 +28,11 @@ import javax.swing.AbstractButton;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 import javax.swing.text.JTextComponent;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MarginLineBorder.
+ */
 public class MarginLineBorder extends LineBorder {
 
 	//////////////////////////////////////////////////
@@ -35,7 +40,11 @@ public class MarginLineBorder extends LineBorder {
 	// Class variables and constants
 	//
 	//////////////////////////////////////////////////
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 4813496499535613615L;
+	
+	/** The right margin. */
 	private Integer topMargin, leftMargin, bottomMargin, rightMargin;
 
 	//////////////////////////////////////////////////
@@ -43,9 +52,25 @@ public class MarginLineBorder extends LineBorder {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
+	
+	/**
+	 * Instantiates a new margin line border.
+	 *
+	 * @param lineColor the line color
+	 */
 	public MarginLineBorder(Color lineColor) {
 		super(lineColor);
 	}
+	
+	/**
+	 * Instantiates a new margin line border.
+	 *
+	 * @param lineColor the line color
+	 * @param topMargin the top margin
+	 * @param leftMargin the left margin
+	 * @param bottomMargin the bottom margin
+	 * @param rightMargin the right margin
+	 */
 	public MarginLineBorder(Color lineColor, int topMargin, int leftMargin, int bottomMargin, int rightMargin) {
 		super(lineColor);
 		this.topMargin = topMargin;
@@ -71,12 +96,6 @@ public class MarginLineBorder extends LineBorder {
 		this.bottomMargin = bottomMargin;
 		this.rightMargin = rightMargin;
 	}
-
-	//////////////////////////////////////////////////
-	//
-	// Public methods
-	//
-	//////////////////////////////////////////////////
 
 	//////////////////////////////////////////////////
 	//
@@ -131,11 +150,5 @@ public class MarginLineBorder extends LineBorder {
 			return insets;
 		}
 	}
-
-	//////////////////////////////////////////////////
-	//
-	// Private methods
-	//
-	//////////////////////////////////////////////////
 
 }

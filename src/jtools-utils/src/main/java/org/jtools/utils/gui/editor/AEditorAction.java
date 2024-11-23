@@ -27,32 +27,68 @@ import javax.swing.Icon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AEditorAction.
+ */
 public abstract class AEditorAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 3954850547522284177L;
 
+	/** The desktop pane. */
 	protected JDesktopPane desktopPane;
 
+	/**
+	 * Instantiates a new a editor action.
+	 */
 	protected AEditorAction() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new a editor action.
+	 *
+	 * @param name the name
+	 */
 	protected AEditorAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Instantiates a new a editor action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	protected AEditorAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Gets the desktop pane.
+	 *
+	 * @return the desktop pane
+	 */
 	public JDesktopPane getDesktopPane() {
 		return desktopPane;
 	}
 
+	/**
+	 * Sets the desktop pane.
+	 *
+	 * @param desktopPane the new desktop pane
+	 */
 	public void setDesktopPane(JDesktopPane desktopPane) {
 		this.desktopPane = desktopPane;
 	}
 
+	/**
+	 * Show editor.
+	 *
+	 * @param mappingEditor the mapping editor
+	 */
 	public void showEditor(AEditor mappingEditor) {
 		if (desktopPane != null) {
 			JInternalFrame editorFrame = mappingEditor.showEditorAsInternalFrame();

@@ -41,19 +41,38 @@ import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingEditorNewRow;
 import org.jtools.mappings.editors.block.BlockMappingEditorRow.BlockMappingRowType;
 import org.jtools.utils.CommonUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingEditorTableModel.
+ *
+ * @param <E> the element type
+ */
 public class BlockMappingEditorTableModel<E extends Object> extends AbstractTableModel
 implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment,
 ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChangeListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 3270825863776856519L;
 
+	/** The object class. */
 	private final Class<E> objectClass;
 
+	/** The mapping. */
 	private final BlockMapping<E> mapping;
+	
+	/** The editor rows. */
 	private final transient List<BlockMappingEditorRow> editorRows;
 
+	/** The possible classes. */
 	private final List<Class<?>> possibleClasses;
 
+	/**
+	 * Instantiates a new block mapping editor table model.
+	 *
+	 * @param mapping the mapping
+	 * @param possibleClasses the possible classes
+	 */
 	public BlockMappingEditorTableModel(BlockMapping<E> mapping, Class<?>[] possibleClasses) {
 		this.mapping = mapping;
 		this.objectClass = mapping.getObjectClass();
@@ -63,6 +82,11 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		editorRows.add(new BlockMappingEditorNewRow());
 	}
 
+	/**
+	 * Inits the rows.
+	 *
+	 * @param rows the rows
+	 */
 	protected void initRows(List<BlockMappingEditorRow> rows) {
 		this.editorRows.clear();
 
@@ -76,28 +100,53 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		this.editorRows.add(new BlockMappingEditorNewRow());
 	}
 
+	/**
+	 * Gets the object class.
+	 *
+	 * @return the object class
+	 */
 	public Class<E> getObjectClass() {
 		return objectClass;
 	}
 
+	/**
+	 * Insert row.
+	 *
+	 * @param row the row
+	 */
 	public void insertRow(BlockMappingEditorRow row) {
 		editorRows.add(0, row);
 		fireTableRowsInserted(0, 0);
 		addPropertyChangeListener(row);
 	}
 
+	/**
+	 * Adds the row.
+	 *
+	 * @param row the row
+	 */
 	public void addRow(BlockMappingEditorRow row) {
 		editorRows.add(editorRows.size() - 1, row);
 		fireTableRowsInserted(editorRows.size() - 1, editorRows.size() - 1);
 		addPropertyChangeListener(row);
 	}
 
+	/**
+	 * Removes the row.
+	 *
+	 * @param row the row
+	 */
 	public void removeRow(int row) {
 		removePropertyChangeListener(editorRows.get(row));
 		editorRows.remove(row);
 		fireTableRowsDeleted(row, row);
 	}
 
+	/**
+	 * Apply.
+	 *
+	 * @return the block mapping
+	 */
 	public BlockMapping<E> apply() {
 		mapping.getRows().clear();
 		
@@ -110,11 +159,23 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		return mapping;
 	}
 
+	/**
+	 * Gets the row count.
+	 *
+	 * @return the row count
+	 */
 	@Override
 	public int getRowCount() {
 		return editorRows.size();
 	}
 
+	/**
+	 * Gets the value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the value at
+	 */
 	@Override
 	public Object getValueAt(int row, int column) {
 		BlockMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -139,6 +200,13 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Checks if is cell editable.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell editable
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		BlockMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -171,6 +239,13 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Checks if is cell mandatory.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell mandatory
+	 */
 	@Override
 	public boolean isCellMandatory(int row, int column) {
 		BlockMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -202,11 +277,25 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Gets the cell horizontal alignment.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell horizontal alignment
+	 */
 	@Override
 	public int getCellHorizontalAlignment(int row, int column) {
 		return SwingConstants.CENTER;
 	}
 
+	/**
+	 * Sets the value at.
+	 *
+	 * @param value the value
+	 * @param row the row
+	 * @param column the column
+	 */
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 		BlockMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -233,27 +322,57 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Gets the column class.
+	 *
+	 * @param columnIndex the column index
+	 * @return the column class
+	 */
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		BlockMappingEditorColumn mappingEditorColumn = BlockMappingEditorColumn.forIndex(columnIndex);
 		return mappingEditorColumn.getColumnClass();
 	}
 
+	/**
+	 * Gets the column count.
+	 *
+	 * @return the column count
+	 */
 	@Override
 	public int getColumnCount() {
 		return BlockMappingEditorColumn.values().length;
 	}
 
+	/**
+	 * Gets the column name.
+	 *
+	 * @param column the column
+	 * @return the column name
+	 */
 	@Override
 	public String getColumnName(int column) {
 		BlockMappingEditorColumn mappingEditorColumn = BlockMappingEditorColumn.forIndex(column);
 		return mappingEditorColumn.getLabel();
 	}
 
+	/**
+	 * Gets the row.
+	 *
+	 * @param row the row
+	 * @return the row
+	 */
 	public BlockMappingEditorRow getRow(int row) {
 		return editorRows.get(row);
 	}
 
+	/**
+	 * Gets the cell background.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell background
+	 */
 	@Override
 	public Color getCellBackground(int row, int column) {
 		BlockMappingEditorRow mappingRow = getRow(row);
@@ -263,16 +382,35 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		return null;
 	}
 
+	/**
+	 * Gets the wrapped class at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped class at
+	 */
 	@Override
 	public Class<?> getWrappedClassAt(int row, int column) {
 		return getObjectClass();
 	}
 
+	/**
+	 * Gets the wrapped value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped value at
+	 */
 	@Override
 	public Object getWrappedValueAt(int row, int column) {
 		throw new UnsupportedOperationException("Method getWrappedValueAt is unused");
 	}
 
+	/**
+	 * Adds the property change listener.
+	 *
+	 * @param rows the rows
+	 */
 	private void addPropertyChangeListener(BlockMappingEditorRow... rows) {
 		for (BlockMappingEditorRow row : rows) {
 			PropertyChangeSupport propertyChangeSupport = row.getPropertyChangeSupport();
@@ -280,6 +418,11 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @param rows the rows
+	 */
 	private void removePropertyChangeListener(BlockMappingEditorRow... rows) {
 		for (BlockMappingEditorRow row : rows) {
 			PropertyChangeSupport propertyChangeSupport = row.getPropertyChangeSupport();
@@ -287,6 +430,11 @@ ITableModelWithCellsCustomBackground, ITableModelWithObjectWrapper, PropertyChan
 		}
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @param evt the evt
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals(BlockMappingEditorRow.MAPPING_TYPE_PROPERTY)) {

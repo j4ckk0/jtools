@@ -24,8 +24,22 @@ import java.io.IOException;
 import java.util.List;
 
 import org.jtools.mappings.simple.SimpleMappingRow;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ASimpleMappingImporter.
+ */
 public abstract class ASimpleMappingImporter {
 
+	/**
+	 * Import data.
+	 *
+	 * @param <T> the generic type
+	 * @param objectClass the object class
+	 * @param mappings the mappings
+	 * @return the list
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public abstract <T> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings) throws IOException;
 
 }

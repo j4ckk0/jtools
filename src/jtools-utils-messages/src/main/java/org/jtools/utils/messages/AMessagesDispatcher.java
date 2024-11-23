@@ -25,14 +25,30 @@ import java.util.Set;
 
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AMessagesDispatcher.
+ *
+ * @param <L> the generic type
+ */
 public abstract class AMessagesDispatcher<L extends MessageListener> implements MessageListener, AutoCloseable {
 
+	/** The listeners. */
 	protected final Set<L> listeners;
 
+	/**
+	 * Instantiates a new a messages dispatcher.
+	 */
 	protected AMessagesDispatcher() {
 		this.listeners = new HashSet<>();
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void close() throws Exception {
 		if (listeners != null) {
@@ -40,18 +56,38 @@ public abstract class AMessagesDispatcher<L extends MessageListener> implements 
 		}
 	}
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @param listener the listener
+	 */
 	public void addListener(L listener) {
 		listeners.add(listener);
 	}
 
+	/**
+	 * Removes the listener.
+	 *
+	 * @param listener the listener
+	 */
 	public void removeListener(L listener) {
 		listeners.remove(listener);
 	}
 
+	/**
+	 * Gets the listeners.
+	 *
+	 * @return the listeners
+	 */
 	public Set<L> getListeners() {
 		return listeners;
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(Message message) {
 		for (MessageListener listener : listeners) {

@@ -42,6 +42,11 @@ import org.jtools.utils.CommonUtils;
 import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager;
 import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingFileManager.
+ */
 public class BlockMappingFileManager {
 
 	//////////////////////////////
@@ -50,27 +55,40 @@ public class BlockMappingFileManager {
 	//
 	//////////////////////////////
 
+	/** The Constant BLOCK_MAPPING_FILE_MARK_PROPERTY. */
 	private static final String BLOCK_MAPPING_FILE_MARK_PROPERTY = "jobm";
+	
+	/** The Constant BLOCK_MAPPING_FILE_MARK_VALUE. */
 	private static final String BLOCK_MAPPING_FILE_MARK_VALUE = "Java Object Block Mapping";
 
+	/** The Constant OBJECT_CLASS_PROPERTY. */
 	private static final String OBJECT_CLASS_PROPERTY = "object.class";
 
+	/** The Constant BLOCK_MAPPING_PROPERTY. */
 	private static final String BLOCK_MAPPING_PROPERTY = "block.mapping";
 
+	/** The Constant DATE_FORMAT_PROPERTY. */
 	private static final String DATE_FORMAT_PROPERTY = "date.format";
 
+	/** The Constant COORDINATES_FORMAT_PROPERTY. */
 	private static final String COORDINATES_FORMAT_PROPERTY = "coordinates.format";
 
+	/** The Constant SAVE_BLOCK_MAPPING_DIALOG_TITLE. */
 	public static final String SAVE_BLOCK_MAPPING_DIALOG_TITLE = "Select a block mapping file";
 
+	/** The Constant LOAD_BLOCK_MAPPING_DIALOG_TITLE. */
 	public static final String LOAD_BLOCK_MAPPING_DIALOG_TITLE = "Select a block mapping file";
 
+	/** The Constant BLOCK_MAPPING_FILE_EXTENSION. */
 	public static final String BLOCK_MAPPING_FILE_EXTENSION = ".jobm"; // Java Object Block Mapping
 
+	/** The instance. */
 	private static BlockMappingFileManager instance;
 
+	/** The Constant jsonConverter. */
 	private static final JsonConverter jsonConverter = JaversBuilder.javers().build().getJsonConverter();
 
+	/** The mappings file paths. */
 	private final Map<UUID, String> mappingsFilePaths = new HashedMap<>();
 
 	//////////////////////////////
@@ -79,6 +97,9 @@ public class BlockMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instantiates a new block mapping file manager.
+	 */
 	private BlockMappingFileManager() {
 
 	}
@@ -89,12 +110,27 @@ public class BlockMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instance.
+	 *
+	 * @return the block mapping file manager
+	 */
 	public static BlockMappingFileManager instance() {
 		if (instance == null) {
 			instance = new BlockMappingFileManager();
 		}
 		return instance;
 	}
+	
+	/**
+	 * Load mapping.
+	 *
+	 * @param <E> the element type
+	 * @param mappingFilepath the mapping filepath
+	 * @return the block mapping
+	 * @throws InstantiationException the instantiation exception
+	 * @throws MappingException the mapping exception
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public <E extends Object> BlockMapping<E> loadMapping(String mappingFilepath) throws InstantiationException, MappingException {
 		Properties properties;
@@ -131,6 +167,13 @@ public class BlockMappingFileManager {
 			throw new InstantiationException("An error occured while loading mapping editor: " + e.getMessage());
 		}
 	}
+	
+	/**
+	 * Save.
+	 *
+	 * @param mapping the mapping
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void save(BlockMapping<?> mapping) throws IOException {
 		String mappingFilepath = getMappingFilepath(mapping.getId());
 
@@ -162,6 +205,13 @@ public class BlockMappingFileManager {
 			}
 		}
 	}
+	
+	/**
+	 * Gets the mapping filepath.
+	 *
+	 * @param id the id
+	 * @return the mapping filepath
+	 */
 	public String getMappingFilepath(UUID id) {
 		return mappingsFilePaths.get(id);
 	}
@@ -172,6 +222,14 @@ public class BlockMappingFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Properties to mapping.
+	 *
+	 * @param properties the properties
+	 * @param objectClass the object class
+	 * @return the block mapping
+	 * @throws MappingException the mapping exception
+	 */
 	private BlockMapping<?> propertiesToMapping(Properties properties, Class<?> objectClass) throws MappingException {
 		// Test if the Properties is valid
 		Object fileMarkProperty = properties.get(BLOCK_MAPPING_FILE_MARK_PROPERTY);
@@ -234,6 +292,13 @@ public class BlockMappingFileManager {
 		return null;
 	}
 
+	/**
+	 * Mapping to properties.
+	 *
+	 * @param objectClass the object class
+	 * @param blockMapping the block mapping
+	 * @return the properties
+	 */
 	private Properties mappingToProperties(Class<?> objectClass, BlockMapping<?> blockMapping) {
 
 		Properties properties = new Properties();

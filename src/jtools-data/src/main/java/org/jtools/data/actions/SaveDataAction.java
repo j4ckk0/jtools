@@ -31,24 +31,52 @@ import javax.swing.Icon;
 
 import org.jtools.data.io.DataFileManager;
 import org.jtools.data.provider.IDataProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SaveDataAction.
+ */
 public class SaveDataAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1709026773373353372L;
 
+	/** The data provider. */
 	private transient IDataProvider dataProvider;
 
+	/**
+	 * Instantiates a new save data action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public SaveDataAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Instantiates a new save data action.
+	 *
+	 * @param name the name
+	 */
 	public SaveDataAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Sets the data provider.
+	 *
+	 * @param dataProvider the new data provider
+	 */
 	public void setDataProvider(IDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 

@@ -35,18 +35,42 @@ import javax.swing.table.TableModel;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomBackground;
 import org.jtools.gui.table.tableModels.ITableModelWithMandatoryCells;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class CenteredLabelsTableCellRenderer.
+ */
 public class CenteredLabelsTableCellRenderer extends DefaultTableCellRenderer {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6089580429216896821L;
 
+	/** The red border. */
 	private static Border redBorder = new LineBorder(Color.RED);
 
+	/** The delegate. */
 	private final DefaultTableCellRenderer delegate;
 
+	/**
+	 * Instantiates a new centered labels table cell renderer.
+	 *
+	 * @param delegate the delegate
+	 */
 	public CenteredLabelsTableCellRenderer(DefaultTableCellRenderer delegate) {
 		this.delegate = delegate;
 	}
 
+	/**
+	 * Gets the table cell renderer component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param hasFocus the has focus
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell renderer component
+	 */
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		Component c = delegate.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

@@ -31,20 +31,43 @@ import org.jtools.data.provider.IDataClassProvider;
 import org.jtools.mappings.editors.simple.SimpleMappingEditor;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingCreateAction.
+ */
 public class SimpleMappingCreateAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5655082933456528045L;
 	
+	/** The data class provider. */
 	private transient IDataClassProvider dataClassProvider;
 
+	/**
+	 * Instantiates a new simple mapping create action.
+	 *
+	 * @param name the name
+	 */
 	public SimpleMappingCreateAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Instantiates a new simple mapping create action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public SimpleMappingCreateAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -67,6 +90,11 @@ public class SimpleMappingCreateAction extends AEditorAction {
 		}
 	}
 
+	/**
+	 * Sets the data class provider.
+	 *
+	 * @param dataProvider the new data class provider
+	 */
 	public void setDataClassProvider(IDataClassProvider dataProvider) {
 		this.dataClassProvider = dataProvider;
 	}

@@ -26,24 +26,58 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class NumberTextField.
+ *
+ * @param <E> the element type
+ */
 public class NumberTextField<E extends Number> extends JTextField {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3100227894055002252L;
 
+	/**
+	 * Instantiates a new number text field.
+	 *
+	 * @param numberClass the number class
+	 */
 	public NumberTextField(Class<E> numberClass) {
 
 		PlainDocument doc = (PlainDocument) getDocument();
 		doc.setDocumentFilter(new NumberFilter<>(numberClass));
 
 	}
+	
+	/**
+	 * The Class NumberFilter.
+	 *
+	 * @param <E> the element type
+	 */
 	private static class NumberFilter<E extends Number> extends DocumentFilter {
 
+		/** The number class. */
 		private final Class<E> numberClass;
 
+		/**
+		 * Instantiates a new number filter.
+		 *
+		 * @param numberClass the number class
+		 */
 		public NumberFilter(Class<E> numberClass) {
 			this.numberClass = numberClass;
 		}
 
+		/**
+		 * Insert string.
+		 *
+		 * @param fb the fb
+		 * @param offset the offset
+		 * @param string the string
+		 * @param attr the attr
+		 * @throws BadLocationException the bad location exception
+		 */
 		@Override
 		public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
 				throws BadLocationException {
@@ -60,6 +94,12 @@ public class NumberTextField<E extends Number> extends JTextField {
 			}
 		}
 
+		/**
+		 * Checks if is accepted.
+		 *
+		 * @param text the text
+		 * @return true, if is accepted
+		 */
 		private boolean isAccepted(String text) {
 			try {
 				if(text == null || text.length() == 0) {
@@ -96,6 +136,16 @@ public class NumberTextField<E extends Number> extends JTextField {
 			}
 		}
 
+		/**
+		 * Replace.
+		 *
+		 * @param fb the fb
+		 * @param offset the offset
+		 * @param length the length
+		 * @param text the text
+		 * @param attrs the attrs
+		 * @throws BadLocationException the bad location exception
+		 */
 		@Override
 		public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
 
@@ -112,6 +162,14 @@ public class NumberTextField<E extends Number> extends JTextField {
 
 		}
 
+		/**
+		 * Removes the.
+		 *
+		 * @param fb the fb
+		 * @param offset the offset
+		 * @param length the length
+		 * @throws BadLocationException the bad location exception
+		 */
 		@Override
 		public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
 			Document doc = fb.getDocument();

@@ -26,26 +26,51 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SerializableField.
+ */
 public class SerializableField implements Serializable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4378063640758447458L;
 
+	/** The field cache. */
 	private static transient Map<String, Field> fieldCache = new HashMap<>();
 
+	/** The declaring class. */
 	private final String declaringClass;
 
+	/** The field name. */
 	private final String fieldName;
 
+	/**
+	 * Instantiates a new serializable field.
+	 *
+	 * @param field the field
+	 */
 	public SerializableField(Field field) {
 		this.declaringClass = field.getDeclaringClass().getCanonicalName();
 		this.fieldName = field.getName();
 	}
 
+	/**
+	 * Instantiates a new serializable field.
+	 *
+	 * @param declaringClass the declaring class
+	 * @param fieldName the field name
+	 */
 	public SerializableField(String declaringClass, String fieldName) {
 		this.declaringClass = declaringClass;
 		this.fieldName = fieldName;
 	}
 
+	/**
+	 * Gets the field.
+	 *
+	 * @return the field
+	 */
 	public Field getField() {
 		try {
 			String key = fieldName+"@"+declaringClass;

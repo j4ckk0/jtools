@@ -39,34 +39,71 @@ import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.mappings.simple.exporters.ASimpleMappingExporter;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.CommonUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ASimpleMappingExportToAction.
+ */
 public abstract class ASimpleMappingExportToAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1660411517249745107L;
 
+	/** The data provider. */
 	private transient IDataProvider dataProvider;
 
+	/** The mapping. */
 	private transient SimpleMapping<?> mapping;
 
+	/** The exporter. */
 	private transient ASimpleMappingExporter exporter;
 
+	/**
+	 * Instantiates a new a simple mapping export to action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param exporter the exporter
+	 */
 	protected ASimpleMappingExportToAction(String name, Icon icon, ASimpleMappingExporter exporter) {
 		super(name, icon);
 		this.exporter = exporter;
 	}
 
+	/**
+	 * Instantiates a new a simple mapping export to action.
+	 *
+	 * @param name the name
+	 * @param exporter the exporter
+	 */
 	protected ASimpleMappingExportToAction(String name, ASimpleMappingExporter exporter) {
 		super(name);
 		this.exporter = exporter;
 	}
 
+	/**
+	 * Sets the data provider.
+	 *
+	 * @param dataProvider the new data provider
+	 */
 	public void setDataProvider(IDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 	}
 
+	/**
+	 * Sets the mapping.
+	 *
+	 * @param mapping the new mapping
+	 */
 	public void setMapping(SimpleMapping<?>  mapping) {
 		this.mapping = mapping;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 

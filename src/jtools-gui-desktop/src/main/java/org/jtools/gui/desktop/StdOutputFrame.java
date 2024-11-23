@@ -27,13 +27,25 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 
 import org.jtools.utils.gui.io.StdOutputTextArea;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class StdOutputFrame.
+ */
 public class StdOutputFrame extends JInternalFrame {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7894578588310528769L;
 
+	/** The std output text area. */
 	private StdOutputTextArea stdOutputTextArea;
+	
+	/** The std output text area scroll pane. */
 	private JScrollPane stdOutputTextAreaScrollPane;
 
+	/**
+	 * Instantiates a new std output frame.
+	 */
 	public StdOutputFrame() {
 		super("Standard output");
 
@@ -47,6 +59,11 @@ public class StdOutputFrame extends JInternalFrame {
 		pack();
 	}
 
+	/**
+	 * Sets the visible.
+	 *
+	 * @param visible the new visible
+	 */
 	@Override
 	public void setVisible(boolean visible) {
 
@@ -74,6 +91,9 @@ public class StdOutputFrame extends JInternalFrame {
 		super.setVisible(visible);
 	}
 
+	/**
+	 * Dispose.
+	 */
 	@Override
 	public void dispose() {
 		if (stdOutputTextArea != null) {
@@ -81,6 +101,9 @@ public class StdOutputFrame extends JInternalFrame {
 		}
 	}
 
+	/**
+	 * Clear.
+	 */
 	public void clear() {
 		if (stdOutputTextArea != null) {
 			stdOutputTextArea.clear();

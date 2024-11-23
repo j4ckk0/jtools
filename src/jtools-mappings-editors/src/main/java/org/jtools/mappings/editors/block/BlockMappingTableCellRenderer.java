@@ -27,10 +27,27 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.jtools.mappings.block.BlockMapping;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingTableCellRenderer.
+ */
 class BlockMappingTableCellRenderer extends DefaultTableCellRenderer {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4462402854446992691L;
 
+	/**
+	 * Gets the table cell renderer component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param hasFocus the has focus
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell renderer component
+	 */
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {

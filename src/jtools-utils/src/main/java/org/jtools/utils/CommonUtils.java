@@ -35,15 +35,34 @@ import java.util.Set;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class CommonUtils.
+ */
 public class CommonUtils {
 
+	/** The Constant PROPERTIES_FILES_EXTENSION. */
 	public static final String PROPERTIES_FILES_EXTENSION = ".properties";
 
+	/** The Constant EXCEL_FILES_EXTENSION. */
 	public static final String EXCEL_FILES_EXTENSION = ".xls";
 
+	/** The Constant LOAD_EXCEL_DIALOG_TITLE. */
 	public static final String LOAD_EXCEL_DIALOG_TITLE = "Select the input " + CommonUtils.EXCEL_FILES_EXTENSION + " file";
 
+	/**
+	 * Instantiates a new common utils.
+	 */
 	private CommonUtils() {}
+		
+		/**
+		 * Load properties.
+		 *
+		 * @param propertiesFilePath the properties file path
+		 * @return the properties
+		 * @throws IOException Signals that an I/O exception has occurred.
+		 */
 		public static Properties loadProperties(String propertiesFilePath) throws IOException {
 		Properties properties = new Properties();
 
@@ -63,6 +82,14 @@ public class CommonUtils {
 		}
 		return properties;
 	}
+	
+	/**
+	 * Save properties.
+	 *
+	 * @param properties the properties
+	 * @param propertiesFilePath the properties file path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void saveProperties(Properties properties, String propertiesFilePath) throws IOException {
 		File file = new File(propertiesFilePath);
 		if (!file.exists()) {
@@ -78,6 +105,16 @@ public class CommonUtils {
 			}
 		}
 	}
+	
+	/**
+	 * Choose file.
+	 *
+	 * @param dialogType the dialog type
+	 * @param defaultFile the default file
+	 * @param dialogTitle the dialog title
+	 * @param fileExtension the file extension
+	 * @return the file
+	 */
 	public static File chooseFile(int dialogType, File defaultFile, String dialogTitle, String fileExtension) {
 
 		String currentDirectoryPath = ".";
@@ -125,9 +162,10 @@ public class CommonUtils {
 	}
 
 	/**
-	 * 
-	 * @param list
-	 * @return
+	 * Class list to array.
+	 *
+	 * @param list the list
+	 * @return the class[]
 	 */
 	public static Class<?>[] classListToArray(List<Class<?>> list) {
 		Class<?>[] array = new Class<?>[list.size()];
@@ -136,9 +174,10 @@ public class CommonUtils {
 	}
 
 	/**
-	 * 
-	 * @param list
-	 * @return
+	 * String list to array.
+	 *
+	 * @param list the list
+	 * @return the string[]
 	 */
 	public static String[] stringListToArray(List<String> list) {
 		String[] array = new String[list.size()];
@@ -147,9 +186,10 @@ public class CommonUtils {
 	}
 
 	/**
-	 * 
-	 * @param set
-	 * @return
+	 * String set to array.
+	 *
+	 * @param set the set
+	 * @return the string[]
 	 */
 	public static String[] stringSetToArray(Set<String> set) {
 		String[] array = new String[set.size()];
@@ -158,11 +198,12 @@ public class CommonUtils {
 	}
 
 	/**
-	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @param map
-	 * @return
+	 * Sort by value.
+	 *
+	 * @param <K> the key type
+	 * @param <V> the value type
+	 * @param map the map
+	 * @return the map
 	 */
 	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
 		List<Entry<K, V>> list = new ArrayList<>(map.entrySet());
@@ -177,23 +218,40 @@ public class CommonUtils {
 	}
 
 	/**
-	 * 
-	 * @author j4ckk0
+	 * The Class ExtensionFileFilter.
 	 *
+	 * @author j4ckk0
 	 */
 	public static class ExtensionFileFilter extends FileFilter {
 
+		/** The file extension. */
 		private String fileExtension;
 
+		/**
+		 * Instantiates a new extension file filter.
+		 *
+		 * @param fileExtension the file extension
+		 */
 		public ExtensionFileFilter(String fileExtension) {
 			this.fileExtension = fileExtension;
 		}
 
+		/**
+		 * Gets the description.
+		 *
+		 * @return the description
+		 */
 		@Override
 		public String getDescription() {
 			return fileExtension + " files";
 		}
 
+		/**
+		 * Accept.
+		 *
+		 * @param file the file
+		 * @return true, if successful
+		 */
 		@Override
 		public boolean accept(File file) {
 			return file.isDirectory() || file.getName().endsWith(fileExtension);

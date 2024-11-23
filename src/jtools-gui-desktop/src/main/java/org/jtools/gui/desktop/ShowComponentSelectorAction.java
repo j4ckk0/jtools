@@ -30,22 +30,46 @@ import javax.swing.JInternalFrame;
 import javax.swing.JTabbedPane;
 
 import org.jtools.utils.gui.components.CascadeDesktopPane;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ShowComponentSelectorAction.
+ */
 public class ShowComponentSelectorAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2870619093541127857L;
 
+	/** The Constant CASCADE_HORIZONTAL_OFFSET. */
 	private static final int CASCADE_HORIZONTAL_OFFSET = 0;
+	
+	/** The Constant CASCADE_VERTICAL_OFFSET. */
 	private static final int CASCADE_VERTICAL_OFFSET = 60;
 
+	/** The desktop pane. */
 	private final JDesktopPane desktopPane;
+	
+	/** The component. */
 	private final Component component;
 
+	/**
+	 * Instantiates a new show component selector action.
+	 *
+	 * @param name the name
+	 * @param desktopPane the desktop pane
+	 * @param component the component
+	 */
 	public ShowComponentSelectorAction(String name, JDesktopPane desktopPane, Component component) {
 		super(name);
 		this.desktopPane = desktopPane;
 		this.component = component;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (!component.isVisible()) {

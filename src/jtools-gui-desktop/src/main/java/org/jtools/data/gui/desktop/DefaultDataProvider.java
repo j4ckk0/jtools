@@ -40,14 +40,27 @@ import javax.swing.event.InternalFrameEvent;
 import org.jtools.data.provider.DataProviderRegistry;
 import org.jtools.data.provider.IDataProvider;
 import org.jtools.gui.list.cellRenderers.DefaultClassListCellRenderer;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultDataProvider.
+ */
 public class DefaultDataProvider extends JInternalFrame implements IDataProvider {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7986194491175022109L;
 
+	/** The data classes. */
 	private final Class<?>[] dataClasses;
 
+	/** The data classes combo box. */
 	private final JComboBox<Class<?>> dataClassesComboBox;
 
+	/**
+	 * Instantiates a new default data provider.
+	 *
+	 * @param dataClasses the data classes
+	 */
 	public DefaultDataProvider(Class<?>[] dataClasses) {
 		super("Example classes provider");
 
@@ -88,16 +101,31 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 
 	}
 
+	/**
+	 * Gets the possible data classes.
+	 *
+	 * @return the possible data classes
+	 */
 	@Override
 	public List<Class<?>> getPossibleDataClasses() {
 		return Arrays.asList(dataClasses);
 	}
 
+	/**
+	 * Gets the data class.
+	 *
+	 * @return the data class
+	 */
 	@Override
 	public Class<?> getDataClass() {
 		return (Class<?>) dataClassesComboBox.getSelectedItem();
 	}
 
+	/**
+	 * Gets the data list.
+	 *
+	 * @return the data list
+	 */
 	@Override
 	public List<?> getDataList() {
 		Logger.getLogger(getClass().getName()).log(Level.WARNING,
@@ -105,6 +133,11 @@ public class DefaultDataProvider extends JInternalFrame implements IDataProvider
 		return Collections.emptyList();
 	}
 
+	/**
+	 * Gets the provider name.
+	 *
+	 * @return the provider name
+	 */
 	@Override
 	public String getProviderName() {
 		return getTitle();

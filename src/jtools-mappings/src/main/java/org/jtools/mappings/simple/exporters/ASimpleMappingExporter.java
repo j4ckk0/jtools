@@ -26,8 +26,21 @@ import java.util.List;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.mappings.simple.SimpleMappingRow;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ASimpleMappingExporter.
+ */
 public abstract class ASimpleMappingExporter {
 
+	/**
+	 * Export data.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws MappingException the mapping exception
+	 */
 	public abstract <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException, MappingException;
 
 }

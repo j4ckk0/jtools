@@ -1,5 +1,9 @@
 package org.jtools.utils.gui;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GuiUtils.
+ */
 /*-
  * #%L
  * Java Tools - Utils
@@ -21,14 +25,21 @@ package org.jtools.utils.gui;
  */
 public class GuiUtils {
 	
+	/** The Constant ARROW_ICON_TXT. */
 	public static final String ARROW_ICON_TXT = "-->";
 
+	/** The Constant MINUS_ICON_TXT. */
 	public static final String MINUS_ICON_TXT = "-";
 
+	/** The Constant PLUS_ICON_TXT. */
 	public static final String PLUS_ICON_TXT = "+";
 
+	/** The Constant EDIT_ICON_TXT. */
 	public static final String EDIT_ICON_TXT = "*";
 	
 	
+	/**
+	 * Instantiates a new gui utils.
+	 */
 	private GuiUtils() {}
 }

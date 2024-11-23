@@ -34,20 +34,43 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.editors.block.BlockMappingEditor;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingCreateAction.
+ */
 public class BlockMappingCreateAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5655082933456528045L;
 
+	/** The data class provider. */
 	private transient IDataClassProvider dataClassProvider;
 
+	/**
+	 * Instantiates a new block mapping create action.
+	 *
+	 * @param name the name
+	 */
 	public BlockMappingCreateAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Instantiates a new block mapping create action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public BlockMappingCreateAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -71,6 +94,11 @@ public class BlockMappingCreateAction extends AEditorAction {
 		}
 	}
 
+	/**
+	 * Sets the data class provider.
+	 *
+	 * @param dataProvider the new data class provider
+	 */
 	public void setDataClassProvider(IDataClassProvider dataProvider) {
 		this.dataClassProvider = dataProvider;
 	}

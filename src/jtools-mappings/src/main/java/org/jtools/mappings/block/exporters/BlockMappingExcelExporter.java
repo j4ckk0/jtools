@@ -53,14 +53,27 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.common.MappingUtils.MappingCellStyleType;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingExcelExporter.
+ */
 public class BlockMappingExcelExporter implements IBlockMappingExporter {
 
+	/** The instance. */
 	private static BlockMappingExcelExporter instance;
 
+	/** The rows map. */
 	private final Map<XSSFSheet, Map<Integer, XSSFRow>> rowsMap = new HashMap<>();
 
+	/** The row index. */
 	private int rowIndex;
 
+	/**
+	 * Instance.
+	 *
+	 * @return the block mapping excel exporter
+	 */
 	public static BlockMappingExcelExporter instance() {
 		if (instance == null) {
 			instance = new BlockMappingExcelExporter();
@@ -68,6 +81,14 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		return instance;
 	}
 
+	/**
+	 * Export data.
+	 *
+	 * @param <T> the generic type
+	 * @param dataList the data list
+	 * @param mappings the mappings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public <T> void exportData(List<T> dataList, BlockMapping<?> mappings) throws IOException {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(new FileFilter() {
@@ -107,6 +128,15 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		}
 	}
 
+	/**
+	 * Export.
+	 *
+	 * @param <T> the generic type
+	 * @param dataList the data list
+	 * @param mapping the mapping
+	 * @param outputFile the output file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private <T> void export(List<T> dataList, BlockMapping<?> mapping, File outputFile) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet("Data");
@@ -123,6 +153,14 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		workbook.close();
 	}
 
+	/**
+	 * Write header.
+	 *
+	 * @param mappings the mappings
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 * @param row the row
+	 */
 	private void writeHeader(List<BlockMapping<?>> mappings, XSSFWorkbook workbook, XSSFSheet sheet, XSSFRow row) {
 		List<BlockMapping<?>> subMappings = new ArrayList<>();
 
@@ -161,6 +199,15 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 
 	}
 
+	/**
+	 * Write data.
+	 *
+	 * @param object the object
+	 * @param mapping the mapping
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 * @param row the row
+	 */
 	private void writeData(Object object, BlockMapping<?> mapping, XSSFWorkbook workbook, XSSFSheet sheet, XSSFRow row) {
 		// Case of a collection as value
 		if (Collection.class.isAssignableFrom(object.getClass())) {
@@ -243,6 +290,12 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		}
 	}
 
+	/**
+	 * Gets the start column.
+	 *
+	 * @param mapping the mapping
+	 * @return the start column
+	 */
 	private int getStartColumn(BlockMapping<?> mapping) {
 		Integer startColumn = null;
 		for (BlockMappingRow mappingRow : mapping.getRows()) {
@@ -254,6 +307,13 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		return startColumn;
 	}
 
+	/**
+	 * Gets the row.
+	 *
+	 * @param sheet the sheet
+	 * @param rowIndex the row index
+	 * @return the row
+	 */
 	private XSSFRow getRow(XSSFSheet sheet, int rowIndex) {
 		Map<Integer, XSSFRow> sheetRowsMap = rowsMap.get(sheet);
 		if (sheetRowsMap == null) {
@@ -271,6 +331,12 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 		return row;
 	}
 
+	/**
+	 * Format header region.
+	 *
+	 * @param sheet the sheet
+	 * @param cellRangeAddress the cell range address
+	 */
 	private void formatHeaderRegion(XSSFSheet sheet, CellRangeAddress cellRangeAddress) {
 		RegionUtil.setBorderBottom(BorderStyle.THIN, cellRangeAddress, sheet);
 		RegionUtil.setBorderTop(BorderStyle.THIN, cellRangeAddress, sheet);

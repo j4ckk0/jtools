@@ -33,13 +33,37 @@ import jakarta.jms.ObjectMessage;
 import jakarta.jms.StreamMessage;
 import jakarta.jms.TextMessage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The listener interface for receiving defaultMessage events.
+ * The class that is interested in processing a defaultMessage
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addDefaultMessageListener</code> method. When
+ * the defaultMessage event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see DefaultMessageEvent
+ */
 public class DefaultMessageListener implements MessageListener {
+	
+	/** The consumer name. */
 	private String consumerName;
 
+	/**
+	 * Instantiates a new default message listener.
+	 *
+	 * @param consumerName the consumer name
+	 */
 	public DefaultMessageListener(String consumerName) {
 		this.consumerName = consumerName;
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(Message message) {
 
@@ -64,6 +88,11 @@ public class DefaultMessageListener implements MessageListener {
 
 	}
 
+	/**
+	 * On text message.
+	 *
+	 * @param message the message
+	 */
 	protected void onTextMessage(TextMessage message) {
 		try {
 			String text = message.getText();
@@ -74,6 +103,11 @@ public class DefaultMessageListener implements MessageListener {
 		}
 	}
 
+	/**
+	 * On object message.
+	 *
+	 * @param message the message
+	 */
 	protected void onObjectMessage(ObjectMessage message) {
 		try {
 			Serializable object = message.getObject();
@@ -85,6 +119,11 @@ public class DefaultMessageListener implements MessageListener {
 		}
 	}
 
+	/**
+	 * On bytes message.
+	 *
+	 * @param message the message
+	 */
 	protected void onBytesMessage(BytesMessage message) {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a BytesMessage");
@@ -94,6 +133,11 @@ public class DefaultMessageListener implements MessageListener {
 		}
 	}
 
+	/**
+	 * On map message.
+	 *
+	 * @param message the message
+	 */
 	protected void onMapMessage(MapMessage message) {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a MapMessage");
@@ -103,6 +147,11 @@ public class DefaultMessageListener implements MessageListener {
 		}
 	}
 
+	/**
+	 * On stream message.
+	 *
+	 * @param message the message
+	 */
 	protected void onStreamMessage(StreamMessage message) {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received a StreamMessage");
@@ -112,6 +161,11 @@ public class DefaultMessageListener implements MessageListener {
 		}
 	}
 
+	/**
+	 * On active MQ message.
+	 *
+	 * @param message the message
+	 */
 	protected void onActiveMQMessage(org.apache.activemq.Message message) {
 		try {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, consumerName + " received an ActiveMQMessage");

@@ -21,8 +21,20 @@ package org.jtools.gui.table.tableModels;
  */
 
 import java.awt.Color;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface ITableModelWithCellsCustomBackground.
+ */
 public interface ITableModelWithCellsCustomBackground {
 
+	/**
+	 * Gets the cell background.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell background
+	 */
 	public Color getCellBackground(int row, int column);
 
 }

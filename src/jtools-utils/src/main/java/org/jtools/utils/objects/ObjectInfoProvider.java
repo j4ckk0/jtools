@@ -25,13 +25,29 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectInfoProvider.
+ */
 @SuppressWarnings({"rawtypes"})
 public class ObjectInfoProvider {
 
+	/** The Constant objectInfoMap. */
 	private static final Map<Class, ObjectInfo> objectInfoMap = new HashMap<>();
 
+	/**
+	 * Instantiates a new object info provider.
+	 */
 	private ObjectInfoProvider() {}
 	
+	/**
+	 * Gets the object info.
+	 *
+	 * @param <E> the element type
+	 * @param objectClass the object class
+	 * @return the object info
+	 */
 	public static <E extends Object> ObjectInfo getObjectInfo(Class<E> objectClass) {
 		ObjectInfo objectInfo = objectInfoMap.get(objectClass);
 		if(objectInfo == null) {
@@ -41,29 +57,61 @@ public class ObjectInfoProvider {
 		return objectInfo;
 	}
 
+	/**
+	 * The Class ObjectInfo.
+	 */
 	public static class ObjectInfo {
 
+		/** The object class. */
 		protected final Class<?> objectClass;
 
+		/** The possible fields. */
 		protected final List<Field> possibleFields;
 
+		/**
+		 * Instantiates a new object info.
+		 *
+		 * @param objectClass the object class
+		 */
 		public ObjectInfo(Class<?> objectClass) {
 			this.objectClass = objectClass;
 			this.possibleFields = ObjectUtils.getFields(objectClass);
 		}
 
+		/**
+		 * Gets the possible fields.
+		 *
+		 * @return the possible fields
+		 */
 		public List<Field> getPossibleFields() {
 			return possibleFields;
 		}
 
+		/**
+		 * Gets the possible fields count.
+		 *
+		 * @return the possible fields count
+		 */
 		public int getPossibleFieldsCount() {
 			return possibleFields.size();
 		}
 
+		/**
+		 * Find getter.
+		 *
+		 * @param field the field
+		 * @return the method
+		 */
 		public Method findGetter(Field field) {
 			return ObjectUtils.findGetter(objectClass, field);
 		}
 
+		/**
+		 * Find setter.
+		 *
+		 * @param field the field
+		 * @return the method
+		 */
 		public Method findSetter(Field field) {
 			return ObjectUtils.findSetter(objectClass, field);
 		}

@@ -29,18 +29,37 @@ import javax.swing.table.TableModel;
 
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import org.jtools.utils.gui.components.NumberTextField;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultNumberTableCellEditor.
+ *
+ * @param <E> the element type
+ */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class DefaultNumberTableCellEditor<E extends Number> extends DefaultCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 8619029332353311810L;
 
+	/** The number class. */
 	private final Class<E> numberClass;
 
+	/**
+	 * Instantiates a new default number table cell editor.
+	 *
+	 * @param numberClass the number class
+	 */
 	public DefaultNumberTableCellEditor(Class<E> numberClass) {
 		super(new NumberTextField<>(numberClass));
 		this.numberClass = numberClass;
 	}
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public E getCellEditorValue() {
 		Object cellEditorValue = super.getCellEditorValue();
@@ -75,6 +94,12 @@ public class DefaultNumberTableCellEditor<E extends Number> extends DefaultCellE
 		return null;
 	}
 
+	/**
+	 * Checks if is assignable from.
+	 *
+	 * @param columnClass the column class
+	 * @return true, if is assignable from
+	 */
 	public static boolean isAssignableFrom(Class<?> columnClass) {
 		if(columnClass.getSimpleName().equals("byte")) {
 			return true;
@@ -97,6 +122,12 @@ public class DefaultNumberTableCellEditor<E extends Number> extends DefaultCellE
 		return false;
 	}
 
+	/**
+	 * Gets the editor for column class.
+	 *
+	 * @param columnClass the column class
+	 * @return the editor for column class
+	 */
 	public static DefaultNumberTableCellEditor getEditorForColumnClass(Class<?> columnClass) {
 		if(columnClass.getSimpleName().equals("byte")) {
 			return new DefaultNumberTableCellEditor(Byte.class);
@@ -119,6 +150,16 @@ public class DefaultNumberTableCellEditor<E extends Number> extends DefaultCellE
 		return null;
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		Component component = super.getTableCellEditorComponent(table, value, isSelected, row, column);

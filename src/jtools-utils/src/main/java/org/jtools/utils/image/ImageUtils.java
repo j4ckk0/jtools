@@ -43,13 +43,31 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ImageUtils.
+ */
 public class ImageUtils {
 
+	/**
+	 * Hex 2 rgb.
+	 *
+	 * @param colorStr the color str
+	 * @return the java.awt. color
+	 */
 	public static java.awt.Color hex2Rgb(String colorStr) {
 		return new java.awt.Color(Integer.valueOf(colorStr.substring(1, 3), 16),
 				Integer.valueOf(colorStr.substring(3, 5), 16), Integer.valueOf(colorStr.substring(5, 7), 16));
 	}
 
+	/**
+	 * Gets the image for text.
+	 *
+	 * @param text the text
+	 * @param alphaValue the alpha value
+	 * @return the image for text
+	 */
 	public static BufferedImage getImageForText(String text, float alphaValue) {
 		// Calculate the size of the image
 		JLabel tmpLabel = new JLabel();
@@ -87,6 +105,14 @@ public class ImageUtils {
 		return bi;
 	}
 
+	/**
+	 * Resize image.
+	 *
+	 * @param originalImage the original image
+	 * @param width the width
+	 * @param height the height
+	 * @return the buffered image
+	 */
 	public static BufferedImage resizeImage(BufferedImage originalImage, int width, int height) {
 		BufferedImage resizedImage = new BufferedImage(width, height, originalImage.getType());
 		Graphics2D g = resizedImage.createGraphics();
@@ -96,10 +122,26 @@ public class ImageUtils {
 		return resizedImage;
 	}
 
+	/**
+	 * Resize icon.
+	 *
+	 * @param originalImage the original image
+	 * @param width the width
+	 * @param height the height
+	 * @return the image icon
+	 */
 	public static ImageIcon resizeIcon(ImageIcon originalImage, int width, int height) {
 		return new ImageIcon(originalImage.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
 	}
 
+	/**
+	 * Save icon.
+	 *
+	 * @param image the image
+	 * @param imageName the image name
+	 * @param imageFormat the image format
+	 * @return the string
+	 */
 	public static String saveIcon(ImageIcon image, String imageName, String imageFormat) {
 		Image img = image.getImage();
 
@@ -112,6 +154,14 @@ public class ImageUtils {
 		return saveImage(bi, imageName, imageFormat);
 	}
 
+	/**
+	 * Save image.
+	 *
+	 * @param imgData the img data
+	 * @param imageName the image name
+	 * @param imageFormat the image format
+	 * @return the string
+	 */
 	public static String saveImage(BufferedImage imgData, String imageName, String imageFormat) {
 		if (imgData == null) {
 			return "";
@@ -132,6 +182,12 @@ public class ImageUtils {
 		return "";
 	}
 
+	/**
+	 * Gets the gray.
+	 *
+	 * @param icon the icon
+	 * @return the gray
+	 */
 	public static Icon getGray(Icon icon) {
 		final int w = icon.getIconWidth();
 		final int h = icon.getIconHeight();
@@ -145,6 +201,15 @@ public class ImageUtils {
 		return new ImageIcon(gray);
 	}
 
+	/**
+	 * Creates the icon.
+	 *
+	 * @param width the width
+	 * @param height the height
+	 * @param borderThickness the border thickness
+	 * @param color the color
+	 * @return the image icon
+	 */
 	public static ImageIcon createIcon(int width, int height, int borderThickness, Color color) {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics = image.createGraphics();
@@ -162,6 +227,14 @@ public class ImageUtils {
 		return new ImageIcon(image);
 	}
 
+	/**
+	 * Gets the color.
+	 *
+	 * @param percentValue the percent value
+	 * @param percentColors the percent colors
+	 * @param colors the colors
+	 * @return the color
+	 */
 	public static Color getColor(float percentValue, float[] percentColors, Color[] colors) {
 
 		if (percentValue < 0 || percentValue > 1) {

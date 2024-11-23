@@ -47,29 +47,52 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import org.jtools.utils.concurrent.NamedCallable;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AEditor.
+ */
 public abstract class AEditor extends JPanel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1830181888153315752L;
+	
+	/**
+	 * Save.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected abstract void save() throws IOException;
+	
+	/**
+	 * Gets the editor name.
+	 *
+	 * @return the editor name
+	 */
 	protected abstract String getEditorName();
+	
+	/**
+	 * On window opened.
+	 */
 	protected void onWindowOpened() {
 		// Nothing by default
 	}
 
 	/**
-	 * 
+	 * On window closed.
 	 */
 	protected void onWindowClosed() {
 		// Nothing by default
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @param modal
-	 * @param onOK
-	 * @param onCancel
-	 * @return
+	 * Show editor as dialog.
+	 *
+	 * @param parentWindow the parent window
+	 * @param modal the modal
+	 * @param onOK the on OK
+	 * @param onCancel the on cancel
+	 * @return the j dialog
 	 */
 	public JDialog showEditorAsDialog(Window parentWindow, boolean modal, NamedCallable<Void> onOK,
 			NamedCallable<Void> onCancel) {
@@ -105,32 +128,35 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @param modal
-	 * @param onOK
-	 * @return
+	 * Show editor as dialog.
+	 *
+	 * @param parentWindow the parent window
+	 * @param modal the modal
+	 * @param onOK the on OK
+	 * @return the j dialog
 	 */
 	public JDialog showEditorAsDialog(Window parentWindow, boolean modal, NamedCallable<Void> onOK) {
 		return this.showEditorAsDialog(parentWindow, modal, onOK, closeCallable());
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @param modal
-	 * @return
+	 * Show editor as dialog.
+	 *
+	 * @param parentWindow the parent window
+	 * @param modal the modal
+	 * @return the j dialog
 	 */
 	public JDialog showEditorAsDialog(Window parentWindow, boolean modal) {
 		return this.showEditorAsDialog(parentWindow, modal, saveAndCloseCallable(), closeCallable());
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @param onOK
-	 * @param onCancel
-	 * @return
+	 * Show editor as frame.
+	 *
+	 * @param parentWindow the parent window
+	 * @param onOK the on OK
+	 * @param onCancel the on cancel
+	 * @return the j frame
 	 */
 	public JFrame showEditorAsFrame(Window parentWindow, NamedCallable<Void> onOK, NamedCallable<Void> onCancel) {
 
@@ -164,29 +190,32 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @param onOK
-	 * @return
+	 * Show editor as frame.
+	 *
+	 * @param parentWindow the parent window
+	 * @param onOK the on OK
+	 * @return the j frame
 	 */
 	public JFrame showEditorAsFrame(Window parentWindow, NamedCallable<Void> onOK) {
 		return this.showEditorAsFrame(parentWindow, onOK, closeCallable());
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @return
+	 * Show editor as frame.
+	 *
+	 * @param parentWindow the parent window
+	 * @return the j frame
 	 */
 	public JFrame showEditorAsFrame(Window parentWindow) {
 		return this.showEditorAsFrame(parentWindow, saveAndCloseCallable(), closeCallable());
 	}
 
 	/**
-	 * 
-	 * @param onOK
-	 * @param onCancel
-	 * @return
+	 * Show editor as internal frame.
+	 *
+	 * @param onOK the on OK
+	 * @param onCancel the on cancel
+	 * @return the j internal frame
 	 */
 	public JInternalFrame showEditorAsInternalFrame(NamedCallable<Void> onOK, NamedCallable<Void> onCancel) {
 
@@ -220,26 +249,29 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param onOK
-	 * @return
+	 * Show editor as internal frame.
+	 *
+	 * @param onOK the on OK
+	 * @return the j internal frame
 	 */
 	public JInternalFrame showEditorAsInternalFrame(NamedCallable<Void> onOK) {
 		return this.showEditorAsInternalFrame(onOK, closeCallable());
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Show editor as internal frame.
+	 *
+	 * @return the j internal frame
 	 */
 	public JInternalFrame showEditorAsInternalFrame() {
 		return this.showEditorAsInternalFrame(saveCallable(), closeCallable());
 	}
 
 	/**
-	 * 
-	 * @param parentWindow
-	 * @return
+	 * Show editor as option dialog.
+	 *
+	 * @param parentWindow the parent window
+	 * @return the int
 	 */
 	public int showEditorAsOptionDialog(Window parentWindow) {
 		Object[] options = { "Save", "Cancel" };
@@ -259,10 +291,11 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @param contentPane
-	 * @param onOK
-	 * @param onCancel
+	 * Builds the content pane.
+	 *
+	 * @param contentPane the content pane
+	 * @param onOK the on OK
+	 * @param onCancel the on cancel
 	 */
 	@SuppressWarnings("serial")
 	protected void buildContentPane(Container contentPane, NamedCallable<Void> onOK, NamedCallable<Void> onCancel) {
@@ -308,7 +341,7 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
+	 * Close.
 	 */
 	public void close() {
 		JInternalFrame internalFrame = (JInternalFrame) SwingUtilities.getAncestorOfClass(JInternalFrame.class, this);
@@ -324,8 +357,9 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Close callable.
+	 *
+	 * @return the named callable
 	 */
 	private NamedCallable<Void> closeCallable() {
 		return new NamedCallable<Void>() {
@@ -343,8 +377,9 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Save callable.
+	 *
+	 * @return the named callable
 	 */
 	private NamedCallable<Void> saveCallable() {
 		return new NamedCallable<Void>() {
@@ -362,8 +397,9 @@ public abstract class AEditor extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Save and close callable.
+	 *
+	 * @return the named callable
 	 */
 	private NamedCallable<Void> saveAndCloseCallable() {
 		return new NamedCallable<Void>() {

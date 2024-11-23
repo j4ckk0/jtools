@@ -48,6 +48,11 @@ import org.jtools.data.provider.IDataProvider;
 import org.jtools.gui.table.ObjectsTable;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditor;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DataEditor.
+ */
 public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 	// //////////////////////////////
@@ -56,17 +61,23 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1428948320263663684L;
 
 
+	/** The objects table map. */
 	private final Map<Class<?>, ObjectsTable<?>> objectsTableMap;
 
+	/** The objects table scroll pane. */
 	private final JScrollPane objectsTableScrollPane;
 
+	/** The object type combobox. */
 	private final JComboBox<Class<?>> objectTypeCombobox;
 
+	/** The object classes. */
 	private final List<Class<?>> objectClasses;
 
+	/** The selected object class. */
 	private Class<?> selectedObjectClass;
 
 	// //////////////////////////////
@@ -75,9 +86,21 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Instantiates a new data editor.
+	 *
+	 * @param objectClasses the object classes
+	 */
 	public DataEditor(Class<?>... objectClasses) {
 		this(null, objectClasses);
 	}
+	
+	/**
+	 * Instantiates a new data editor.
+	 *
+	 * @param dataList the data list
+	 * @param objectsClasses the objects classes
+	 */
 	public DataEditor(List<?> dataList, Class<?>... objectsClasses) {
 
 		this.objectsTableMap = new HashMap<>();
@@ -120,6 +143,11 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		add(objectsTableScrollPane, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Gets the objects table.
+	 *
+	 * @return the objects table
+	 */
 	public ObjectsTable<?> getObjectsTable() {
 		return getObjectsTable(getDataClass());
 	}
@@ -130,21 +158,37 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Gets the editor name.
+	 *
+	 * @return the editor name
+	 */
 	@Override
 	protected String getEditorName() {
 		return "Data table " + hashCode();
 	}
 
+	/**
+	 * On window opened.
+	 */
 	@Override
 	protected void onWindowOpened() {
 		DataProviderRegistry.instance().register(DataEditor.this);
 	}
 
+	/**
+	 * On window closed.
+	 */
 	@Override
 	protected void onWindowClosed() {
 		DataProviderRegistry.instance().unregister(DataEditor.this);
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Override
 	protected void save() throws IOException {
 		Map<Class<?>, List<?>> dataMap = getDataMap();
@@ -165,6 +209,11 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Item state changed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object item = objectTypeCombobox.getSelectedItem();
@@ -182,16 +231,31 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 	
+	/**
+	 * Gets the provider name.
+	 *
+	 * @return the provider name
+	 */
 	@Override
 	public String getProviderName() {
 		return getEditorName();
 	}
 
+	/**
+	 * Gets the data class.
+	 *
+	 * @return the data class
+	 */
 	@Override
 	public Class<?> getDataClass() {
 		return selectedObjectClass;
 	}
 
+	/**
+	 * Gets the data map.
+	 *
+	 * @return the data map
+	 */
 	@Override
 	public Map<Class<?>, List<?>> getDataMap() {
 		Map<Class<?>, List<?>> data = new HashMap<>();
@@ -201,11 +265,21 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		return data;
 	}
 
+	/**
+	 * Gets the data list.
+	 *
+	 * @return the data list
+	 */
 	@Override
 	public List<?> getDataList() {
 		return getDataList(getDataClass());
 	}
 
+	/**
+	 * Gets the possible data classes.
+	 *
+	 * @return the possible data classes
+	 */
 	@Override
 	public List<Class<?>> getPossibleDataClasses() {
 		return Collections.unmodifiableList(objectClasses);
@@ -217,6 +291,13 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Gets the objects table.
+	 *
+	 * @param <T> the generic type
+	 * @param objectClass the object class
+	 * @return the objects table
+	 */
 	@SuppressWarnings("unchecked")
 	private <T> ObjectsTable<T> getObjectsTable(Class<T> objectClass) {
 		ObjectsTable<T> objectsTable = (ObjectsTable<T>) objectsTableMap.get(objectClass);
@@ -227,6 +308,13 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		return objectsTable;
 	}
 
+	/**
+	 * Gets the objects classes.
+	 *
+	 * @param dataList the data list
+	 * @param additionalObjectsClasses the additional objects classes
+	 * @return the objects classes
+	 */
 	private List<Class<?>> getObjectsClasses(List<?> dataList, Class<?>[] additionalObjectsClasses) {
 		List<Class<?>> objectsClasses = new ArrayList<>();
 
@@ -249,6 +337,12 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 		return objectsClasses;
 	}
 
+	/**
+	 * Insert data.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 */
 	@SuppressWarnings("unchecked")
 	private <T> void insertData(T data) {
 		ObjectsTable<T> objectsTable = getObjectsTable((Class<T>) data.getClass());
@@ -261,10 +355,24 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	//
 	// //////////////////////////////
 
+	/**
+	 * The Class ObjectClassComboboxRenderer.
+	 */
 	protected static class ObjectClassComboboxRenderer extends DefaultListCellRenderer {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -6462779953123291622L;
 
+		/**
+		 * Gets the list cell renderer component.
+		 *
+		 * @param list the list
+		 * @param value the value
+		 * @param index the index
+		 * @param isSelected the is selected
+		 * @param cellHasFocus the cell has focus
+		 * @return the list cell renderer component
+		 */
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {

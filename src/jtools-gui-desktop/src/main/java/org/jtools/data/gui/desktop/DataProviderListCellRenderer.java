@@ -27,10 +27,26 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import org.jtools.data.provider.IDataProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DataProviderListCellRenderer.
+ */
 public class DataProviderListCellRenderer extends DefaultListCellRenderer {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5381004978356081557L;
 
+	/**
+	 * Gets the list cell renderer component.
+	 *
+	 * @param list the list
+	 * @param value the value
+	 * @param index the index
+	 * @param isSelected the is selected
+	 * @param cellHasFocus the cell has focus
+	 * @return the list cell renderer component
+	 */
 	@Override
 	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {

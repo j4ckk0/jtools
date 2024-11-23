@@ -43,10 +43,21 @@ import org.jtools.mappings.common.MappingUtils.MappingCellStyleType;
 import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.objects.ObjectInfoProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingExcelExporter.
+ */
 public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 
+	/** The instance. */
 	private static SimpleMappingExcelExporter instance;
 
+	/**
+	 * Instance.
+	 *
+	 * @return the simple mapping excel exporter
+	 */
 	public static SimpleMappingExcelExporter instance() {
 		if(instance == null) {
 			instance = new SimpleMappingExcelExporter();
@@ -54,6 +65,14 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 		return instance;
 	}
 
+	/**
+	 * Export data.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(new FileFilter() {
@@ -93,6 +112,15 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 	}
 
 
+	/**
+	 * Export.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @param outputFile the output file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private <T> void export(List<T> data, List<SimpleMappingRow> mappings, File outputFile) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet("Data");
@@ -106,6 +134,13 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 		workbook.close();
 	}
 
+	/**
+	 * Write header line.
+	 *
+	 * @param mappings the mappings
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 */
 	private void writeHeaderLine(List<SimpleMappingRow> mappings, XSSFWorkbook workbook, XSSFSheet sheet) {
 		XSSFRow headerRow = sheet.createRow(0);
 
@@ -118,6 +153,15 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 		}
 	}
 
+	/**
+	 * Write data lines.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 */
 	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings, XSSFWorkbook workbook, XSSFSheet sheet) {
 
 		int rowCount = 1;

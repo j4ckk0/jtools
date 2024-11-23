@@ -28,19 +28,54 @@ import java.util.logging.Logger;
 
 import org.jtools.utils.objects.ObjectInfoProvider;
 import org.jtools.utils.objects.ObjectInfoProvider.ObjectInfo;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface IObjectRow.
+ */
 public interface IObjectRow {
 
+	/**
+	 * Gets the value at.
+	 *
+	 * @param column the column
+	 * @return the value at
+	 */
 	public Object getValueAt(int column);
 
+	/**
+	 * Sets the value at.
+	 *
+	 * @param column the column
+	 * @param value the value
+	 */
 	public void setValueAt(int column, Object value);
+	
+	/**
+	 * The Class ObjectRow.
+	 *
+	 * @param <E> the element type
+	 */
 	public class ObjectRow<E extends Object> implements IObjectRow {
 
+		/** The object. */
 		protected final E object;
 
+		/**
+		 * Instantiates a new object row.
+		 *
+		 * @param object the object
+		 */
 		public ObjectRow(E object) {
 			this.object = object;
 		}
 
+		/**
+		 * Gets the value at.
+		 *
+		 * @param column the column
+		 * @return the value at
+		 */
 		@Override
 		public Object getValueAt(int column) {
 			try {
@@ -60,6 +95,12 @@ public interface IObjectRow {
 			}
 		}
 
+		/**
+		 * Sets the value at.
+		 *
+		 * @param column the column
+		 * @param value the value
+		 */
 		@Override
 		public void setValueAt(int column, Object value) {
 			try {
@@ -78,17 +119,38 @@ public interface IObjectRow {
 			}
 		}
 
+		/**
+		 * Gets the object.
+		 *
+		 * @return the object
+		 */
 		public E getObject() {
 			return object;
 		}
 	}
+	
+	/**
+	 * The Class NewRow.
+	 */
 	public class NewRow implements IObjectRow {
 
+		/**
+		 * Gets the value at.
+		 *
+		 * @param column the column
+		 * @return the value at
+		 */
 		@Override
 		public Object getValueAt(int column) {
 			return null;
 		}
 
+		/**
+		 * Sets the value at.
+		 *
+		 * @param column the column
+		 * @param value the value
+		 */
 		@Override
 		public void setValueAt(int column, Object value) {
 			// Nothing

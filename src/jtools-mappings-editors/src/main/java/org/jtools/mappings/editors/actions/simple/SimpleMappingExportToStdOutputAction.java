@@ -23,14 +23,31 @@ package org.jtools.mappings.editors.actions.simple;
 import javax.swing.Icon;
 
 import org.jtools.mappings.simple.exporters.SimpleMappingStdOutputExporter;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingExportToStdOutputAction.
+ */
 public class SimpleMappingExportToStdOutputAction extends ASimpleMappingExportToAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5666508052700983450L;
 
+	/**
+	 * Instantiates a new simple mapping export to std output action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public SimpleMappingExportToStdOutputAction(String name, Icon icon) {
 		super(name, icon, SimpleMappingStdOutputExporter.instance());
 	}
 
+	/**
+	 * Instantiates a new simple mapping export to std output action.
+	 *
+	 * @param name the name
+	 */
 	public SimpleMappingExportToStdOutputAction(String name) {
 		super(name, SimpleMappingStdOutputExporter.instance());
 	}

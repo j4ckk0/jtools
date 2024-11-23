@@ -55,26 +55,46 @@ import org.jtools.mappings.common.apachepoi.MergedRegion;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.dates.DateFormatManager;
 import org.jtools.utils.objects.ObjectUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MappingUtils.
+ */
 public class MappingUtils {
 
+	/**
+	 * The Enum MappingFontType.
+	 */
 	public enum MappingFontType {
 
-		HEADER, BODY;
+		/** The header. */
+		HEADER, /** The body. */
+ BODY;
 
 	}
 
+	/**
+	 * The Enum MappingCellStyleType.
+	 */
 	public enum MappingCellStyleType {
 
-		HEADER, BODY, DATE;
+		/** The header. */
+		HEADER, /** The body. */
+ BODY, /** The date. */
+ DATE;
 
 	}
 
+	/** The Constant fontsMap. */
 	private static final Map<Workbook, Map<MappingFontType, XSSFFont>> fontsMap = new HashMap<>();
 
+	/** The Constant cellTypesMap. */
 	private static final Map<Workbook, Map<MappingCellStyleType, XSSFCellStyle>> cellTypesMap = new HashMap<>();
 
+	/** The Constant ALL_LETTERS. */
 	private static final char[] ALL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+	/** The Constant possibleColumns. */
 	public static final List<String> possibleColumns = new ArrayList<>();
 	static {
 		// Round 1
@@ -90,6 +110,13 @@ public class MappingUtils {
 		}
 	}
 
+	/**
+	 * Gets the columns range as list.
+	 *
+	 * @param fromColumn the from column
+	 * @param toColumn the to column
+	 * @return the columns range as list
+	 */
 	public static List<String> getColumnsRangeAsList(String fromColumn, String toColumn) {
 		List<String> possibleColumnsSubset = new ArrayList<>();
 
@@ -113,14 +140,33 @@ public class MappingUtils {
 		return possibleColumnsSubset;
 	}
 
+	/**
+	 * Gets the columns range as array.
+	 *
+	 * @param fromColumn the from column
+	 * @param toColumn the to column
+	 * @return the columns range as array
+	 */
 	public static String[] getColumnsRangeAsArray(String fromColumn, String toColumn) {
 		return CommonUtils.stringListToArray(getColumnsRangeAsList(fromColumn, toColumn));
 	}
 
+	/**
+	 * Gets the possible columns.
+	 *
+	 * @return the possible columns
+	 */
 	public static String[] getPossibleColumns() {
 		return CommonUtils.stringListToArray(possibleColumns);
 	}
 
+	/**
+	 * Gets the font.
+	 *
+	 * @param workbook the workbook
+	 * @param key the key
+	 * @return the font
+	 */
 	private static Font getFont(XSSFWorkbook workbook, MappingFontType key) {
 		Map<MappingFontType, XSSFFont> workbookFontMap = fontsMap.get(workbook);
 		if (workbookFontMap == null) {
@@ -138,6 +184,13 @@ public class MappingUtils {
 		return font;
 	}
 
+	/**
+	 * Creates the font.
+	 *
+	 * @param workbook the workbook
+	 * @param key the key
+	 * @return the XSSF font
+	 */
 	private static XSSFFont createFont(XSSFWorkbook workbook, MappingFontType key) {
 		XSSFFont font = workbook.createFont();
 
@@ -156,6 +209,13 @@ public class MappingUtils {
 		return font;
 	}
 
+	/**
+	 * Gets the cell style.
+	 *
+	 * @param workbook the workbook
+	 * @param key the key
+	 * @return the cell style
+	 */
 	public static XSSFCellStyle getCellStyle(XSSFWorkbook workbook, MappingCellStyleType key) {
 		Map<MappingCellStyleType, XSSFCellStyle> workbookCellTypesMap = cellTypesMap.get(workbook);
 		if (workbookCellTypesMap == null) {
@@ -173,6 +233,13 @@ public class MappingUtils {
 		return cellStyle;
 	}
 
+	/**
+	 * Creates the cell style.
+	 *
+	 * @param workbook the workbook
+	 * @param key the key
+	 * @return the XSSF cell style
+	 */
 	private static XSSFCellStyle createCellStyle(XSSFWorkbook workbook, MappingCellStyleType key) {
 		XSSFCellStyle cellStyle = workbook.createCellStyle();
 
@@ -210,6 +277,13 @@ public class MappingUtils {
 		return cloneWTF;
 	}
 
+	/**
+	 * Gets the value from cell.
+	 *
+	 * @param cell the cell
+	 * @param mergedRegion the merged region
+	 * @return the value from cell
+	 */
 	public static Object getValueFromCell(Cell cell, MergedRegion mergedRegion) {
 
 		// If the cell is in a merged region, parse it
@@ -243,6 +317,16 @@ public class MappingUtils {
 		return null;
 	}
 
+	/**
+	 * Sets the value from cell.
+	 *
+	 * @param <T> the generic type
+	 * @param cell the cell
+	 * @param object the object
+	 * @param setter the setter
+	 * @throws IllegalAccessException the illegal access exception
+	 * @throws InvocationTargetException the invocation target exception
+	 */
 	public static <T extends Object> void setValueFromCell(Cell cell, T object, Method setter)
 			throws IllegalAccessException, InvocationTargetException {
 
@@ -376,6 +460,13 @@ public class MappingUtils {
 				"No case found for " + parameterType.getCanonicalName());
 	}
 
+	/**
+	 * Sets the cell value.
+	 *
+	 * @param workbook the workbook
+	 * @param cell the cell
+	 * @param valueObject the value object
+	 */
 	public static void setCellValue(XSSFWorkbook workbook, XSSFCell cell, Object valueObject) {
 		if (valueObject instanceof Boolean)
 			cell.setCellValue((Boolean) valueObject);
@@ -393,6 +484,13 @@ public class MappingUtils {
 		}
 	}
 
+	/**
+	 * Gets the cell range address.
+	 *
+	 * @param mergedRegions the merged regions
+	 * @param cell the cell
+	 * @return the cell range address
+	 */
 	public static CellRangeAddress getCellRangeAddress(List<CellRangeAddress> mergedRegions, Cell cell) {
 		for (CellRangeAddress cellRangeAddress : mergedRegions) {
 			if (cellRangeAddress.isInRange(cell)) {
@@ -402,10 +500,23 @@ public class MappingUtils {
 		return null;
 	}
 
+	/**
+	 * Checks if is cell merged.
+	 *
+	 * @param mergedRegions the merged regions
+	 * @param cell the cell
+	 * @return true, if is cell merged
+	 */
 	public static boolean isCellMerged(List<CellRangeAddress> mergedRegions, Cell cell) {
 		return getCellRangeAddress(mergedRegions, cell) != null;
 	}
 
+	/**
+	 * Gets the merged regions.
+	 *
+	 * @param sheet the sheet
+	 * @return the merged regions
+	 */
 	public static Collection<MergedRegion> getMergedRegions(XSSFSheet sheet) {
 		Map<CellRangeAddress, MergedRegion> mergedRegions = new HashMap<>();
 
@@ -451,6 +562,13 @@ public class MappingUtils {
 		return mergedRegions.values();
 	}
 
+	/**
+	 * Gets the merged region for cell.
+	 *
+	 * @param mergedRegions the merged regions
+	 * @param cell the cell
+	 * @return the merged region for cell
+	 */
 	public static MergedRegion getMergedRegionForCell(Collection<MergedRegion> mergedRegions, Cell cell) {
 		for (MergedRegion mergedRegion : mergedRegions) {
 			if (mergedRegion.getCellRangeAddress().isInRange(cell)) {

@@ -23,17 +23,35 @@ package org.jtools.gui.desktop;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ClearStdOutputAction.
+ */
 public class ClearStdOutputAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -915029730697379837L;
 
+	/** The std output frame. */
 	private StdOutputFrame stdOutputFrame;
 
+	/**
+	 * Instantiates a new clear std output action.
+	 *
+	 * @param name the name
+	 * @param stdOutputFrame the std output frame
+	 */
 	public ClearStdOutputAction(String name, StdOutputFrame stdOutputFrame) {
 		super(name);
 		this.stdOutputFrame = stdOutputFrame;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (stdOutputFrame != null) {

@@ -1,5 +1,9 @@
 package org.jtools.gui.table.tableModels;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ITableModelWithObjectWrapper.
+ */
 /*-
  * #%L
  * Java Tools - GUI
@@ -21,10 +25,27 @@ package org.jtools.gui.table.tableModels;
  */
 public interface ITableModelWithObjectWrapper {
 	
+	/**
+	 * The Interface ObjectWrapper.
+	 */
 	public static interface ObjectWrapper { }
 
+	/**
+	 * Gets the wrapped class at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped class at
+	 */
 	public Class<?> getWrappedClassAt(int row, int column);
 
+	/**
+	 * Gets the wrapped value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped value at
+	 */
 	public Object getWrappedValueAt(int row, int column);
 
 }

@@ -26,39 +26,84 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.util.CellRangeAddress;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MergedRegion.
+ */
 public class MergedRegion {
 
+	/** The cell range address. */
 	private final CellRangeAddress cellRangeAddress;
+	
+	/** The cells. */
 	private final List<Cell> cells;
+	
+	/** The value. */
 	private Object value = null;
 
+	/** The already processed flag. */
 	private boolean alreadyProcessedFlag;
 
+	/**
+	 * Instantiates a new merged region.
+	 *
+	 * @param cellRangeAddress the cell range address
+	 */
 	public MergedRegion(CellRangeAddress cellRangeAddress) {
 		this.cellRangeAddress = cellRangeAddress;
 		this.cells = new ArrayList<>();
 	}
 
+	/**
+	 * Gets the cell range address.
+	 *
+	 * @return the cell range address
+	 */
 	public CellRangeAddress getCellRangeAddress() {
 		return cellRangeAddress;
 	}
 
+	/**
+	 * Gets the cells.
+	 *
+	 * @return the cells
+	 */
 	public List<Cell> getCells() {
 		return cells;
 	}
 
+	/**
+	 * Gets the value.
+	 *
+	 * @return the value
+	 */
 	public Object getValue() {
 		return value;
 	}
 
+	/**
+	 * Sets the value.
+	 *
+	 * @param value the new value
+	 */
 	public void setValue(Object value) {
 		this.value = value;
 	}
 
+	/**
+	 * Checks if is already processed flag.
+	 *
+	 * @return true, if is already processed flag
+	 */
 	public boolean isAlreadyProcessedFlag() {
 		return alreadyProcessedFlag;
 	}
 
+	/**
+	 * Sets the already processed flag.
+	 *
+	 * @param alreadyProcessedFlag the new already processed flag
+	 */
 	public void setAlreadyProcessedFlag(boolean alreadyProcessedFlag) {
 		this.alreadyProcessedFlag = alreadyProcessedFlag;
 	}

@@ -23,6 +23,11 @@ package org.jtools.utils.gui.border;
 import java.awt.Color;
 
 import javax.swing.border.TitledBorder;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MarginTitledBorder.
+ */
 public class MarginTitledBorder extends TitledBorder {
 
 	//////////////////////////////////////////////////
@@ -30,6 +35,8 @@ public class MarginTitledBorder extends TitledBorder {
 	// Class variables and constants
 	//
 	//////////////////////////////////////////////////
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 4813496499535613615L;
 
 	//////////////////////////////////////////////////
@@ -37,31 +44,34 @@ public class MarginTitledBorder extends TitledBorder {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
+	
+	/**
+	 * Instantiates a new margin titled border.
+	 *
+	 * @param title the title
+	 * @param lineColor the line color
+	 * @param topMargin the top margin
+	 * @param leftMargin the left margin
+	 * @param bottomMargin the bottom margin
+	 * @param rightMargin the right margin
+	 */
 	public MarginTitledBorder(String title, Color lineColor, final int topMargin, final int leftMargin,
 			final int bottomMargin, final int rightMargin) {
 		super(new MarginLineBorder(lineColor, topMargin, leftMargin, bottomMargin, rightMargin), title);
 	}
+	
+	/**
+	 * Instantiates a new margin titled border.
+	 *
+	 * @param title the title
+	 * @param topMargin the top margin
+	 * @param leftMargin the left margin
+	 * @param bottomMargin the bottom margin
+	 * @param rightMargin the right margin
+	 */
 	public MarginTitledBorder(String title, final int topMargin, final int leftMargin, final int bottomMargin,
 			final int rightMargin) {
 		super(new MarginLineBorder(topMargin, leftMargin, bottomMargin, rightMargin), title);
 	}
-
-	//////////////////////////////////////////////////
-	//
-	// Public methods
-	//
-	//////////////////////////////////////////////////
-
-	//////////////////////////////////////////////////
-	//
-	// TitledBorder methods
-	//
-	//////////////////////////////////////////////////
-
-	//////////////////////////////////////////////////
-	//
-	// Private methods
-	//
-	//////////////////////////////////////////////////
 
 }

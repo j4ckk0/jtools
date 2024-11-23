@@ -35,18 +35,40 @@ import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingLoadAction.
+ */
 public class SimpleMappingLoadAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7300287893183273865L;
 
+	/**
+	 * Instantiates a new simple mapping load action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public SimpleMappingLoadAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Instantiates a new simple mapping load action.
+	 *
+	 * @param name the name
+	 */
 	public SimpleMappingLoadAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), SimpleMappingFileManager.LOAD_SIMPLE_MAPPING_DIALOG_TITLE, SimpleMappingFileManager.SIMPLE_MAPPING_FILE_EXTENSION);

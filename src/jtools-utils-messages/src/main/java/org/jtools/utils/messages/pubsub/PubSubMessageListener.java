@@ -22,13 +22,37 @@ package org.jtools.utils.messages.pubsub;
 
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The listener interface for receiving pubSubMessage events.
+ * The class that is interested in processing a pubSubMessage
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addPubSubMessageListener</code> method. When
+ * the pubSubMessage event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see PubSubMessageEvent
+ */
 public interface PubSubMessageListener extends MessageListener {
 
+	/**
+	 * On message.
+	 *
+	 * @param message the message
+	 */
 	@Override
 	public default void onMessage(Message message) {
 		onMessage(null, message);
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param topicName the topic name
+	 * @param message the message
+	 */
 	public void onMessage(String topicName, Message message);
 
 }

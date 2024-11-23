@@ -33,28 +33,58 @@ import javax.swing.table.DefaultTableModel;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import org.jtools.gui.table.tableModels.ITableModelWithParameterizedObjectWrapper;
 import org.jtools.utils.objects.ObjectInfoProvider.ObjectInfo;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectFormTableModel.
+ */
 class ObjectFormTableModel extends DefaultTableModel
 implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObjectWrapper {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5429348199335029848L;
 
+	/** The Constant FIELD_LABEL_COLUMN_INDEX. */
 	private static final int FIELD_LABEL_COLUMN_INDEX = 0;
+	
+	/** The Constant FIELD_VALUE_COLUMN_INDEX. */
 	private static final int FIELD_VALUE_COLUMN_INDEX = 1;
 
+	/** The Constant columns. */
 	private static final int[] columns = new int[] { FIELD_LABEL_COLUMN_INDEX, FIELD_VALUE_COLUMN_INDEX };
 
+	/** The object. */
 	protected final transient Object object;
+	
+	/** The object info. */
 	protected final transient ObjectInfo objectInfo;
 
+	/**
+	 * Instantiates a new object form table model.
+	 *
+	 * @param object the object
+	 * @param objectInfo the object info
+	 */
 	public ObjectFormTableModel(Object object, ObjectInfo objectInfo) {
 		this.object = object;
 		this.objectInfo = objectInfo;
 	}
 
+	/**
+	 * Gets the field.
+	 *
+	 * @param row the row
+	 * @return the field
+	 */
 	public Field getField(int row) {
 		return objectInfo.getPossibleFields().get(row);
 	}
 
+	/**
+	 * Gets the row count.
+	 *
+	 * @return the row count
+	 */
 	@Override
 	public int getRowCount() {
 		if (objectInfo != null) {
@@ -64,6 +94,13 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Gets the value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the value at
+	 */
 	@Override
 	public Object getValueAt(int row, int column) {
 		Field field = getField(row);
@@ -90,6 +127,13 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Sets the value at.
+	 *
+	 * @param value the value
+	 * @param row the row
+	 * @param column the column
+	 */
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 		Field field = getField(row);
@@ -116,6 +160,12 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Gets the column class.
+	 *
+	 * @param column the column
+	 * @return the column class
+	 */
 	@Override
 	public Class<?> getColumnClass(int column) {
 		switch (column) {
@@ -128,11 +178,22 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Gets the column count.
+	 *
+	 * @return the column count
+	 */
 	@Override
 	public int getColumnCount() {
 		return columns.length;
 	}
 
+	/**
+	 * Gets the column name.
+	 *
+	 * @param column the column
+	 * @return the column name
+	 */
 	@Override
 	public String getColumnName(int column) {
 		switch (column) {
@@ -145,6 +206,13 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Checks if is cell editable.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell editable
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		switch (column) {
@@ -157,6 +225,13 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Gets the cell horizontal alignment.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell horizontal alignment
+	 */
 	@Override
 	public int getCellHorizontalAlignment(int row, int column) {
 		switch (column) {
@@ -169,17 +244,38 @@ implements ITableModelWithCellsCustomAlignment, ITableModelWithParameterizedObje
 		}
 	}
 
+	/**
+	 * Gets the wrapped class at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped class at
+	 */
 	@Override
 	public Class<?> getWrappedClassAt(int row, int column) {
 		Field field = getField(row);
 		return field.getType();
 	}
 
+	/**
+	 * Gets the wrapped value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped value at
+	 */
 	@Override
 	public Object getWrappedValueAt(int row, int column) {
 		return getValueAt(row, column);
 	}
 
+	/**
+	 * Gets the wrapped parameterized class.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped parameterized class
+	 */
 	@Override
 	public Class<?> getWrappedParameterizedClass(int row, int column) {
 		Field field = getField(row);

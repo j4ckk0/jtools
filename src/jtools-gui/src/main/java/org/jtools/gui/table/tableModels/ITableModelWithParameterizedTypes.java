@@ -1,5 +1,9 @@
 package org.jtools.gui.table.tableModels;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ITableModelWithParameterizedTypes.
+ */
 /*-
  * #%L
  * Java Tools - GUI
@@ -21,6 +25,12 @@ package org.jtools.gui.table.tableModels;
  */
 public interface ITableModelWithParameterizedTypes {
 
+	/**
+	 * Gets the column parameterized class.
+	 *
+	 * @param columnIndex the column index
+	 * @return the column parameterized class
+	 */
 	public Class<?> getColumnParameterizedClass(int columnIndex);
 
 }

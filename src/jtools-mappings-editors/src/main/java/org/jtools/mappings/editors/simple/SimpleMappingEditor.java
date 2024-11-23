@@ -31,6 +31,13 @@ import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.gui.border.MarginTitledBorder;
 import org.jtools.utils.gui.editor.AEditor;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingEditor.
+ *
+ * @param <E> the element type
+ */
 public class SimpleMappingEditor<E extends Object> extends AEditor {
 
 	// ////////////////////////////
@@ -39,18 +46,27 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	//
 	// ////////////////////////////
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7699822287171134053L;
 
+	/** The mapping. */
 	private final SimpleMapping<E> mapping;
 
+	/** The mapping editor table. */
 	private SimpleMappingEditorTable mappingEditorTable;
 
+	/** The options panel. */
 	private final MappingOptionsPanel optionsPanel;
 
 	// ////////////////////////////
 	//
 	// 	Constructors
 	//
+	/**
+	 * Instantiates a new simple mapping editor.
+	 *
+	 * @param mapping the mapping
+	 */
 	// ////////////////////////////
 		public SimpleMappingEditor(SimpleMapping<E> mapping) {
 		this.mapping = mapping;
@@ -67,11 +83,21 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	//
 	//////////////////////////////
 
+	/**
+	 * Gets the editor name.
+	 *
+	 * @return the editor name
+	 */
 	@Override
 	public String getEditorName() {
 		return mapping.getMappingName();
 	}
 
+	/**
+	 * Apply.
+	 *
+	 * @return the simple mapping
+	 */
 	@SuppressWarnings("unchecked")
 	public SimpleMapping<E> apply() {
 		if(mappingEditorTable == null) {
@@ -81,20 +107,36 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 		return (SimpleMapping<E>) mappingEditorTable.apply();
 	}
 
+	/**
+	 * Gets the object class.
+	 *
+	 * @return the object class
+	 */
 	public Class<E> getObjectClass() {
 		return mapping.getObjectClass();
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Override
 	protected void save() throws IOException {
 		SimpleMappingFileManager.instance().save(apply());
 	}
 
+	/**
+	 * On window opened.
+	 */
 	@Override
 	protected void onWindowOpened() {
 		MappingRegistry.instance().register(mapping);
 	}
 
+	/**
+	 * On window closed.
+	 */
 	@Override
 	protected void onWindowClosed() {
 		MappingRegistry.instance().unregister(mapping);
@@ -106,6 +148,9 @@ public class SimpleMappingEditor<E extends Object> extends AEditor {
 	//
 	//////////////////////////////
 
+	/**
+	 * Builds the panel.
+	 */
 	private void buildPanel() {
 		setLayout(new BorderLayout(6, 6));
 

@@ -22,8 +22,20 @@ package org.jtools.utils.network;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class NetworkUtils.
+ */
 public class NetworkUtils {
 
+	/**
+	 * Gets the free port.
+	 *
+	 * @param ports the ports
+	 * @return the free port
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static int getFreePort(int[] ports) throws IOException {
 		for (int port : ports) {
 			ServerSocket socket;
@@ -41,6 +53,14 @@ public class NetworkUtils {
 		throw new IOException("No free port found");
 	}
 
+	/**
+	 * Gets the free port.
+	 *
+	 * @param firstPort the first port
+	 * @param lastPort the last port
+	 * @return the free port
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static int getFreePort(int firstPort, int lastPort) throws IOException {
 		for (int port = firstPort; port <= lastPort; port++) {
 			ServerSocket socket;

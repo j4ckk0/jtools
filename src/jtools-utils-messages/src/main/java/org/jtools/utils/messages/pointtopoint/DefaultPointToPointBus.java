@@ -21,14 +21,28 @@ package org.jtools.utils.messages.pointtopoint;
  */
 
 import org.jtools.utils.messages.DefaultBusConfig;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultPointToPointBus.
+ */
 public class DefaultPointToPointBus extends PointToPointBus {
 
+	/** The instance. */
 	private static DefaultPointToPointBus instance;
 
+	/**
+	 * Instantiates a new default point to point bus.
+	 */
 	private DefaultPointToPointBus() {
 		super(DefaultBusConfig.getUrl());
 	}
 
+	/**
+	 * Instance.
+	 *
+	 * @return the default point to point bus
+	 */
 	public static DefaultPointToPointBus instance() {
 		if (instance == null) {
 			instance = new DefaultPointToPointBus();

@@ -36,18 +36,40 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.editors.block.BlockMappingEditor;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingLoadAction.
+ */
 public class BlockMappingLoadAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7300287893183273865L;
 
+	/**
+	 * Instantiates a new block mapping load action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public BlockMappingLoadAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Instantiates a new block mapping load action.
+	 *
+	 * @param name the name
+	 */
 	public BlockMappingLoadAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		File choosenMappingFile = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), BlockMappingFileManager.LOAD_BLOCK_MAPPING_DIALOG_TITLE, BlockMappingFileManager.BLOCK_MAPPING_FILE_EXTENSION);

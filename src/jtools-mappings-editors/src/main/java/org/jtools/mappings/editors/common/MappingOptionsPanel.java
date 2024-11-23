@@ -40,22 +40,40 @@ import org.jtools.utils.geo.CoordinatesFormatManager.CoordinatesFormat;
 import org.jtools.utils.gui.border.MarginTitledBorder;
 import org.jtools.utils.gui.components.ExtensibleComboBox;
 import org.jtools.utils.resources.ResourcesManager;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MappingOptionsPanel.
+ */
 public class MappingOptionsPanel extends JPanel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2090830784741546658L;
 
+	/** The renderer. */
 	private final CoordinatesFormatRenderer renderer = new CoordinatesFormatRenderer();
 
+	/** The Constant RIGHT_LEFT_INSETS. */
 	protected static final Insets RIGHT_LEFT_INSETS = new Insets(0, 4, 0, 4);
 
+	/** The Constant DATE_COMBO_BOX_TOOLTIP_FILE. */
 	private static final String DATE_COMBO_BOX_TOOLTIP_FILE = "date-format.html";
 
+	/** The date format label. */
 	private final JLabel dateFormatLabel;
+	
+	/** The date format combo box. */
 	private final ExtensibleComboBox dateFormatComboBox;
 
+	/** The coordinates format label. */
 	private final JLabel coordinatesFormatLabel;
+	
+	/** The coordinates format combo box. */
 	private final JComboBox<CoordinatesFormat> coordinatesFormatComboBox;
 
+	/**
+	 * Instantiates a new mapping options panel.
+	 */
 	public MappingOptionsPanel() {
 
 		setLayout(new GridLayout(2, 1, 6, 6));
@@ -111,16 +129,42 @@ public class MappingOptionsPanel extends JPanel {
 
 	}
 
+	/**
+	 * Gets the date format.
+	 *
+	 * @return the date format
+	 */
 	public String getDateFormat() {
 		return (String) dateFormatComboBox.getSelectedItem();
 	}
 
+	/**
+	 * Gets the coordinates format.
+	 *
+	 * @return the coordinates format
+	 */
 	public String getCoordinatesFormat() {
 		return (String) coordinatesFormatComboBox.getSelectedItem();
 	}
+	
+	/**
+	 * The Class CoordinatesFormatRenderer.
+	 */
 	private static class CoordinatesFormatRenderer extends DefaultListCellRenderer {
+		
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = 4084496731811108441L;
 
+		/**
+		 * Gets the list cell renderer component.
+		 *
+		 * @param list the list
+		 * @param value the value
+		 * @param index the index
+		 * @param isSelected the is selected
+		 * @param cellHasFocus the cell has focus
+		 * @return the list cell renderer component
+		 */
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {

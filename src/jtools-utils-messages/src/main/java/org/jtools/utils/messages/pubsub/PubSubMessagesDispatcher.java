@@ -23,14 +23,30 @@ package org.jtools.utils.messages.pubsub;
 import org.jtools.utils.messages.AMessagesDispatcher;
 
 import jakarta.jms.Message;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class PubSubMessagesDispatcher.
+ */
 public class PubSubMessagesDispatcher extends AMessagesDispatcher<PubSubMessageListener> {
 
+	/** The topic name. */
 	private String topicName;
 
+	/**
+	 * Instantiates a new pub sub messages dispatcher.
+	 *
+	 * @param topicName the topic name
+	 */
 	public PubSubMessagesDispatcher(String topicName) {
 		this.topicName = topicName;
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(Message message) {
 		for (PubSubMessageListener listener : listeners) {

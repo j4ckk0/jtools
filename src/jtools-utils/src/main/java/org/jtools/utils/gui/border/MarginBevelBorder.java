@@ -25,6 +25,11 @@ import java.awt.Component;
 import java.awt.Insets;
 
 import javax.swing.border.BevelBorder;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MarginBevelBorder.
+ */
 public class MarginBevelBorder extends BevelBorder {
 
 	//////////////////////////////////////////////////
@@ -32,7 +37,11 @@ public class MarginBevelBorder extends BevelBorder {
 	// Class variables and constants
 	//
 	//////////////////////////////////////////////////
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2247287585606210963L;
+	
+	/** The right margin. */
 	private int topMargin, leftMargin, bottomMargin, rightMargin;
 
 	//////////////////////////////////////////////////
@@ -40,6 +49,21 @@ public class MarginBevelBorder extends BevelBorder {
 	// Constructors
 	//
 	//////////////////////////////////////////////////
+
+	/**
+	 * 
+	 * Instantiates a new margin bevel border.
+	 *
+	 * @param bevelType the bevel type
+	 * @param highlightOuterColor the highlight outer color
+	 * @param highlightInnerColor the highlight inner color
+	 * @param shadowOuterColor the shadow outer color
+	 * @param shadowInnerColor the shadow inner color
+	 * @param topMargin the top margin
+	 * @param leftMargin the left margin
+	 * @param bottomMargin the bottom margin
+	 * @param rightMargin the right margin
+	 */
 	public MarginBevelBorder(int bevelType, Color highlightOuterColor, Color highlightInnerColor,
 			Color shadowOuterColor, Color shadowInnerColor, final int topMargin, final int leftMargin,
 			final int bottomMargin, final int rightMargin) {
@@ -50,6 +74,18 @@ public class MarginBevelBorder extends BevelBorder {
 		this.bottomMargin = bottomMargin;
 		this.rightMargin = rightMargin;
 	}
+	
+	/**
+	 * Instantiates a new margin bevel border.
+	 *
+	 * @param bevelType the bevel type
+	 * @param highlight the highlight
+	 * @param shadow the shadow
+	 * @param topMargin the top margin
+	 * @param leftMargin the left margin
+	 * @param bottomMargin the bottom margin
+	 * @param rightMargin the right margin
+	 */
 	public MarginBevelBorder(int bevelType, Color highlight, Color shadow, final int topMargin, final int leftMargin,
 			final int bottomMargin, final int rightMargin) {
 		super(bevelType, highlight, shadow);
@@ -101,17 +137,5 @@ public class MarginBevelBorder extends BevelBorder {
 				bottomMargin > 1 ? bottomMargin : ins.bottom, rightMargin > 1 ? rightMargin : ins.right);
 		return ins;
 	}
-
-	//////////////////////////////////////////////////
-	//
-	// Public methods
-	//
-	//////////////////////////////////////////////////
-
-	//////////////////////////////////////////////////
-	//
-	// Private methods
-	//
-	//////////////////////////////////////////////////
 
 }

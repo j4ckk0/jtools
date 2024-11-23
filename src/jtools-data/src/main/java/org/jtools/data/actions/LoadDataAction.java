@@ -32,30 +32,61 @@ import org.jtools.data.DataEditor;
 import org.jtools.data.DataException;
 import org.jtools.data.io.DataFileManager;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class LoadDataAction.
+ */
 public class LoadDataAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1709026773373353372L;
 
+	/** The data classes. */
 	private final Class<?>[] dataClasses;
 
+	/** The show editor. */
 	private boolean showEditor;
 
+	/**
+	 * Instantiates a new load data action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param dataClasses the data classes
+	 */
 	public LoadDataAction(String name, Icon icon, Class<?>[] dataClasses) {
 		super(name, icon);
 		this.dataClasses = dataClasses;
 		this.showEditor = true;
 	}
 
+	/**
+	 * Instantiates a new load data action.
+	 *
+	 * @param name the name
+	 * @param dataClasses the data classes
+	 */
 	public LoadDataAction(String name, Class<?>[] dataClasses) {
 		super(name);
 		this.dataClasses = dataClasses;
 		this.showEditor = true;
 	}
 
+	/**
+	 * Sets the show editor.
+	 *
+	 * @param showEditor the new show editor
+	 */
 	public void setShowEditor(boolean showEditor) {
 		this.showEditor = showEditor;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 

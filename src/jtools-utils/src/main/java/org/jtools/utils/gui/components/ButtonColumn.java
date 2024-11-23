@@ -38,20 +38,52 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ButtonColumn.
+ */
 public class ButtonColumn extends AbstractCellEditor
 	implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener
 {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7504937710534535059L;
+	
+	/** The table. */
 	private JTable table;
+	
+	/** The action. */
 	private Action action;
+	
+	/** The mnemonic. */
 	private int mnemonic;
+	
+	/** The original border. */
 	private Border originalBorder;
+	
+	/** The focus border. */
 	private Border focusBorder;
 
+	/** The render button. */
 	private JButton renderButton;
+	
+	/** The edit button. */
 	private JButton editButton;
+	
+	/** The editor value. */
 	private Object editorValue;
+	
+	/** The is button column editor. */
 	private boolean isButtonColumnEditor;
+	
+	/**
+	 * Instantiates a new button column.
+	 *
+	 * @param table the table
+	 * @param action the action
+	 * @param column the column
+	 */
 	public ButtonColumn(JTable table, Action action, int column)
 	{
 		this.table = table;
@@ -70,20 +102,42 @@ public class ButtonColumn extends AbstractCellEditor
 		table.addMouseListener( this );
 	}
 
+	/**
+	 * Gets the focus border.
+	 *
+	 * @return the focus border
+	 */
 	public Border getFocusBorder()
 	{
 		return focusBorder;
 	}
+	
+	/**
+	 * Sets the focus border.
+	 *
+	 * @param focusBorder the new focus border
+	 */
 	public void setFocusBorder(Border focusBorder)
 	{
 		this.focusBorder = focusBorder;
 		editButton.setBorder( focusBorder );
 	}
 
+	/**
+	 * Gets the mnemonic.
+	 *
+	 * @return the mnemonic
+	 */
 	public int getMnemonic()
 	{
 		return mnemonic;
 	}
+	
+	/**
+	 * Sets the mnemonic.
+	 *
+	 * @param mnemonic the new mnemonic
+	 */
 	public void setMnemonic(int mnemonic)
 	{
 		this.mnemonic = mnemonic;
@@ -91,6 +145,16 @@ public class ButtonColumn extends AbstractCellEditor
 		editButton.setMnemonic(mnemonic);
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(
 		JTable table, Object value, boolean isSelected, int row, int column)
@@ -115,6 +179,11 @@ public class ButtonColumn extends AbstractCellEditor
 		return editButton;
 	}
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public Object getCellEditorValue()
 	{
@@ -123,6 +192,17 @@ public class ButtonColumn extends AbstractCellEditor
 
 //
 //  Implement TableCellRenderer interface
+/**
+ * Gets the table cell renderer component.
+ *
+ * @param table the table
+ * @param value the value
+ * @param isSelected the is selected
+ * @param hasFocus the has focus
+ * @param row the row
+ * @param column the column
+ * @return the table cell renderer component
+ */
 //
 	public Component getTableCellRendererComponent(
 		JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
@@ -170,7 +250,12 @@ public class ButtonColumn extends AbstractCellEditor
 //
 //  Implement ActionListener interface
 //
-	/*
+	/**
+ * Action performed.
+ *
+ * @param e the e
+ */
+/*
 	 *	The button has been pressed. Stop editing and invoke the custom Action
 	 */
 	public void actionPerformed(ActionEvent e)
@@ -190,7 +275,12 @@ public class ButtonColumn extends AbstractCellEditor
 //
 //  Implement MouseListener interface
 //
-	/*
+	/**
+ * Mouse pressed.
+ *
+ * @param e the e
+ */
+/*
 	 *  When the mouse is pressed the editor is invoked. If you then then drag
 	 *  the mouse to another cell before releasing it, the editor is still
 	 *  active. Make sure editing is stopped when the mouse is released.
@@ -202,6 +292,11 @@ public class ButtonColumn extends AbstractCellEditor
 			isButtonColumnEditor = true;
     }
 
+    /**
+     * Mouse released.
+     *
+     * @param e the e
+     */
     public void mouseReleased(MouseEvent e)
     {
     	if (isButtonColumnEditor
@@ -211,7 +306,24 @@ public class ButtonColumn extends AbstractCellEditor
 		isButtonColumnEditor = false;
     }
 
+    /**
+     * Mouse clicked.
+     *
+     * @param e the e
+     */
     public void mouseClicked(MouseEvent e) {}
+	
+	/**
+	 * Mouse entered.
+	 *
+	 * @param e the e
+	 */
 	public void mouseEntered(MouseEvent e) {}
+    
+    /**
+     * Mouse exited.
+     *
+     * @param e the e
+     */
     public void mouseExited(MouseEvent e) {}
 }

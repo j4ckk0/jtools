@@ -22,39 +22,86 @@ package org.jtools.mappings.simple;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingRow.
+ */
 public class SimpleMappingRow implements Serializable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 3092423564227174529L;
 	
+	/** The output column header. */
 	protected String outputColumnHeader;
+	
+	/** The output column. */
 	protected String outputColumn;
+	
+	/** The object field. */
 	protected Field objectField;
 
+	/**
+	 * Instantiates a new simple mapping row.
+	 */
 	public SimpleMappingRow() {
 		this.outputColumnHeader = null;
 		this.outputColumn = null;
 		this.objectField = null;
 	}
 
+	/**
+	 * Instantiates a new simple mapping row.
+	 *
+	 * @param outputColumnHeader the output column header
+	 * @param outputColumn the output column
+	 * @param objectField the object field
+	 */
 	public SimpleMappingRow(String outputColumnHeader, String outputColumn, Field objectField) {
 		this.outputColumnHeader = outputColumnHeader;
 		this.outputColumn = outputColumn;
 		this.objectField = objectField;
 	}
+	
+	/**
+	 * Gets the output column header.
+	 *
+	 * @return the output column header
+	 */
 	public String getOutputColumnHeader() {
 		return outputColumnHeader;
 	}
+	
+	/**
+	 * Sets the output column header.
+	 *
+	 * @param outputColumnHeader the new output column header
+	 */
 	public void setOutputColumnHeader(String outputColumnHeader) {
 		this.outputColumnHeader = outputColumnHeader;
 	}
+	
+	/**
+	 * Gets the output column.
+	 *
+	 * @return the output column
+	 */
 	public String getOutputColumn() {
 		return outputColumn;
 	}
+	
+	/**
+	 * Sets the output column.
+	 *
+	 * @param outputColumn the new output column
+	 */
 	public void setOutputColumn(String outputColumn) {
 		this.outputColumn = outputColumn;
 	}
 
 	/**
+	 * Gets the object field.
+	 *
 	 * @return the objectField
 	 */
 	public Field getObjectField() {
@@ -62,6 +109,8 @@ public class SimpleMappingRow implements Serializable {
 	}
 
 	/**
+	 * Sets the object field.
+	 *
 	 * @param objectField the objectField to set
 	 */
 	public void setObjectField(Field objectField) {

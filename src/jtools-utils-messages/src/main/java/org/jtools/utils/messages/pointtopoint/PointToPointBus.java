@@ -35,6 +35,11 @@ import jakarta.jms.MessageListener;
 import jakarta.jms.MessageProducer;
 import jakarta.jms.Queue;
 import jakarta.jms.Session;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class PointToPointBus.
+ */
 public class PointToPointBus extends AMessagesBus {
 
 	// //////////////////////////////
@@ -43,10 +48,16 @@ public class PointToPointBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/** The ptp queue. */
 	private Queue ptpQueue;
+	
+	/** The ptp producer. */
 	private MessageProducer ptpProducer;
+	
+	/** The ptp consumer. */
 	private MessageConsumer ptpConsumer;
 
+	/** The ptp messages dispatcher. */
 	private PointToPointMessageDispatcher ptpMessagesDispatcher;
 
 	// //////////////////////////////
@@ -55,13 +66,30 @@ public class PointToPointBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Instantiates a new point to point bus.
+	 *
+	 * @param url the url
+	 */
 	public PointToPointBus(String url) {
 		this(url, null);
 	}
+	
+	/**
+	 * Instantiates a new point to point bus.
+	 *
+	 * @param url the url
+	 * @param clientConnectionProperties the client connection properties
+	 */
 	public PointToPointBus(String url, Properties clientConnectionProperties) {
 		super(url, clientConnectionProperties);
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void close() throws Exception {
 
@@ -78,6 +106,11 @@ public class PointToPointBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @param listener the listener
+	 */
 	public void addListener(MessageListener listener) {
 
 		if(!isStarted()) {
@@ -93,6 +126,11 @@ public class PointToPointBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Removes the listener.
+	 *
+	 * @param listener the listener
+	 */
 	public void removeListener(MessageListener listener) {
 
 		if(!isStarted()) {
@@ -108,6 +146,11 @@ public class PointToPointBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Send object message.
+	 *
+	 * @param payload the payload
+	 */
 	public void sendObjectMessage(Serializable payload) {
 		
 		if(!isStarted()) {
@@ -128,6 +171,11 @@ public class PointToPointBus extends AMessagesBus {
 		}
 	}
 
+	/**
+	 * Send text message.
+	 *
+	 * @param payload the payload
+	 */
 	public void sendTextMessage(String payload) {
 		
 		if(!isStarted()) {
@@ -154,6 +202,12 @@ public class PointToPointBus extends AMessagesBus {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Gets the queue.
+	 *
+	 * @return the queue
+	 * @throws JMSException the JMS exception
+	 */
 	private Queue getQueue() throws JMSException {
 		if (ptpQueue == null) {
 			Session session = getSession();
@@ -162,6 +216,12 @@ public class PointToPointBus extends AMessagesBus {
 		return ptpQueue;
 	}
 
+	/**
+	 * Gets the consumer.
+	 *
+	 * @return the consumer
+	 * @throws JMSException the JMS exception
+	 */
 	private MessageConsumer getConsumer() throws JMSException {
 		if (ptpConsumer == null) {
 			Queue queue = getQueue();
@@ -175,6 +235,12 @@ public class PointToPointBus extends AMessagesBus {
 		return ptpConsumer;
 	}
 
+	/**
+	 * Gets the producer.
+	 *
+	 * @return the producer
+	 * @throws JMSException the JMS exception
+	 */
 	private MessageProducer getProducer() throws JMSException {
 		if (ptpProducer == null) {
 			Queue queue = getQueue();
@@ -186,6 +252,12 @@ public class PointToPointBus extends AMessagesBus {
 		return ptpProducer;
 	}
 
+	/**
+	 * Gets the messages dispatcher.
+	 *
+	 * @return the messages dispatcher
+	 * @throws JMSException the JMS exception
+	 */
 	private PointToPointMessageDispatcher getMessagesDispatcher() throws JMSException {
 		if (ptpMessagesDispatcher == null) {
 			this.ptpMessagesDispatcher = new PointToPointMessageDispatcher();

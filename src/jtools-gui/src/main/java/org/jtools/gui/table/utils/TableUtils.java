@@ -43,6 +43,11 @@ import org.jtools.gui.table.cellRenderers.DefaultDateTableCellRenderer;
 import org.jtools.gui.table.cellRenderers.DefaultObjectsListTableCellRenderer;
 import org.jtools.gui.table.cellRenderers.ObjectWrapperCellRenderer;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TableUtils.
+ */
 public class TableUtils {
 	
 	//////////////////////////////
@@ -50,6 +55,11 @@ public class TableUtils {
 	// Public methods
 	//
 	//////////////////////////////
+	/**
+	 * Install auto stop editing cell editors.
+	 *
+	 * @param table the table
+	 */
 	public static void installAutoStopEditingCellEditors(JTable table) {
 
 		TableColumnModel columnModel = table.getColumnModel();
@@ -69,6 +79,12 @@ public class TableUtils {
 		}
 
 	}
+	
+	/**
+	 * Install centered labels cell renderers.
+	 *
+	 * @param table the table
+	 */
 	public static void installCenteredLabelsCellRenderers(JTable table) {
 
 		TableColumnModel columnModel = table.getColumnModel();
@@ -88,6 +104,12 @@ public class TableUtils {
 		}
 
 	}
+	
+	/**
+	 * Install default table cell editors.
+	 *
+	 * @param table the table
+	 */
 	public static void installDefaultTableCellEditors(JTable table) {
 
 		// Objects
@@ -125,8 +147,9 @@ public class TableUtils {
 	}
 
 	/**
-	 * 
-	 * @param table
+	 * Install default table cell renderers.
+	 *
+	 * @param table the table
 	 */
 	public static void installDefaultTableCellRenderers(JTable table) {
 

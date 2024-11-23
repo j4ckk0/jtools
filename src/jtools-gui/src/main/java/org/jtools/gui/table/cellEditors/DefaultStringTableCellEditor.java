@@ -28,14 +28,33 @@ import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultStringTableCellEditor.
+ */
 public class DefaultStringTableCellEditor extends DefaultCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 9059530541068417901L;
 
+	/**
+	 * Instantiates a new default string table cell editor.
+	 */
 	public DefaultStringTableCellEditor() {
 		super(new JTextField());
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		Component component = super.getTableCellEditorComponent(table, value, isSelected, row, column);

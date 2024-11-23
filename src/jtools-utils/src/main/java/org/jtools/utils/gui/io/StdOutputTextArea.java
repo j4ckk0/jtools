@@ -29,15 +29,31 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class StdOutputTextArea.
+ */
 public class StdOutputTextArea extends JTextArea {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 514734858253559607L;
 
+	/** The initial out. */
 	private final transient PrintStream initialOut;
+	
+	/** The initial err. */
 	private final transient PrintStream initialErr;
 
+	/** The print stream. */
 	private final transient PrintStream printStream;
 
+	/**
+	 * Instantiates a new std output text area.
+	 *
+	 * @param rows the rows
+	 * @param columns the columns
+	 */
 	public StdOutputTextArea(int rows, int columns) {
 		super(rows, columns);
 
@@ -49,6 +65,11 @@ public class StdOutputTextArea extends JTextArea {
 		this.printStream = new PrintStream(new StdOutputTextAreaOutputStream());
 	}
 
+	/**
+	 * Redirect std output.
+	 *
+	 * @param enable the enable
+	 */
 	public void redirectStdOutput(boolean enable) {
 		if (enable) {
 			System.setOut(printStream);
@@ -59,15 +80,24 @@ public class StdOutputTextArea extends JTextArea {
 		}
 	}
 
+	/**
+	 * Clear.
+	 */
 	public void clear() {
 		setText("");
 		scrollToEnd();
 	}
 
+	/**
+	 * Dispose.
+	 */
 	public void dispose() {
 		redirectStdOutput(false);
 	}
 
+	/**
+	 * Scroll to end.
+	 */
 	private void scrollToEnd() {
 		try {
 			setCaretPosition(getLineEndOffset(getLineCount() - 1));
@@ -76,8 +106,17 @@ public class StdOutputTextArea extends JTextArea {
 		}
 	}
 
+	/**
+	 * The Class StdOutputTextAreaOutputStream.
+	 */
 	private class StdOutputTextAreaOutputStream extends OutputStream {
 
+		/**
+		 * Write.
+		 *
+		 * @param b the b
+		 * @throws IOException Signals that an I/O exception has occurred.
+		 */
 		@Override
 		public void write(int b) throws IOException {
 			// redirects data to the text area
@@ -92,6 +131,11 @@ public class StdOutputTextArea extends JTextArea {
 		}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		StdOutputTextArea ta = new StdOutputTextArea(100, 100);

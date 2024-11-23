@@ -26,8 +26,21 @@ import java.util.List;
 import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.common.MappingException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface IBlockMappingExporter.
+ */
 public interface IBlockMappingExporter {
 
+	/**
+	 * Export data.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws MappingException the mapping exception
+	 */
 	public <T> void exportData(List<T> data, BlockMapping<?> mappings) throws IOException, MappingException;
 
 }

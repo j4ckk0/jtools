@@ -36,13 +36,27 @@ import org.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingEd
 import org.jtools.mappings.editors.simple.SimpleMappingEditorRow.SimpleMappingRowType;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.mappings.simple.SimpleMappingRow;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingEditorTableModel.
+ */
 public class SimpleMappingEditorTableModel extends AbstractTableModel implements ITableModelWithMandatoryCells, ITableModelWithCellsCustomAlignment, ITableModelWithCellsCustomBackground {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 3270825863776856519L;
 
+	/** The mapping. */
 	private final SimpleMapping<?> mapping;
+	
+	/** The editor rows. */
 	private final transient List<SimpleMappingEditorRow> editorRows;
 
+	/**
+	 * Instantiates a new simple mapping editor table model.
+	 *
+	 * @param mapping the mapping
+	 */
 	public SimpleMappingEditorTableModel(SimpleMapping<?> mapping) {
 		this.mapping = mapping;
 		List<SimpleMappingRow> rows = mapping.getRows();
@@ -56,21 +70,41 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		editorRows.add(new SimpleMappingEditorNewRow());
 	}
 
+	/**
+	 * Insert row.
+	 *
+	 * @param row the row
+	 */
 	public void insertRow(SimpleMappingEditorRow row) {
 		editorRows.add(0, row);
 		fireTableRowsInserted(0, 0);
 	}
 
+	/**
+	 * Adds the row.
+	 *
+	 * @param row the row
+	 */
 	public void addRow(SimpleMappingEditorRow row) {
 		editorRows.add(editorRows.size()-1, row);
 		fireTableRowsInserted(editorRows.size() - 1, editorRows.size() - 1);
 	}
 
+	/**
+	 * Removes the row.
+	 *
+	 * @param row the row
+	 */
 	public void removeRow(int row) {
 		editorRows.remove(row);
 		fireTableRowsDeleted(row, row);
 	}
 
+	/**
+	 * Apply.
+	 *
+	 * @return the simple mapping
+	 */
 	public SimpleMapping<?> apply() {
 		mapping.getRows().clear();
 		
@@ -83,11 +117,23 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		return mapping;
 	}
 
+	/**
+	 * Gets the row count.
+	 *
+	 * @return the row count
+	 */
 	@Override
 	public int getRowCount() {
 		return editorRows.size();
 	}
 
+	/**
+	 * Gets the value at.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the value at
+	 */
 	@Override
 	public Object getValueAt(int row, int column) {
 		SimpleMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -108,6 +154,13 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		}
 	}
 
+	/**
+	 * Checks if is cell editable.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell editable
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		SimpleMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -128,6 +181,13 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		}
 	}
 
+	/**
+	 * Checks if is cell mandatory.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell mandatory
+	 */
 	@Override
 	public boolean isCellMandatory(int row, int column) {
 		SimpleMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -153,11 +213,25 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		}
 	}
 
+	/**
+	 * Gets the cell horizontal alignment.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell horizontal alignment
+	 */
 	@Override
 	public int getCellHorizontalAlignment(int row, int column) {
 		return SwingConstants.CENTER;
 	}
 
+	/**
+	 * Sets the value at.
+	 *
+	 * @param value the value
+	 * @param row the row
+	 * @param column the column
+	 */
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 		SimpleMappingEditorRow mappingEditorRow = editorRows.get(row);
@@ -178,27 +252,57 @@ public class SimpleMappingEditorTableModel extends AbstractTableModel implements
 		}
 	}
 
+	/**
+	 * Gets the column class.
+	 *
+	 * @param columnIndex the column index
+	 * @return the column class
+	 */
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		SimpleMappingEditorColumn mappingEditorColumn = SimpleMappingEditorColumn.forIndex(columnIndex);
 		return mappingEditorColumn.getColumnClass();
 	}
 
+	/**
+	 * Gets the column count.
+	 *
+	 * @return the column count
+	 */
 	@Override
 	public int getColumnCount() {
 		return SimpleMappingEditorColumn.values().length;
 	}
 
+	/**
+	 * Gets the column name.
+	 *
+	 * @param column the column
+	 * @return the column name
+	 */
 	@Override
 	public String getColumnName(int column) {
 		SimpleMappingEditorColumn mappingEditorColumn = SimpleMappingEditorColumn.forIndex(column);
 		return mappingEditorColumn.getLabel();
 	}
 
+	/**
+	 * Gets the row.
+	 *
+	 * @param row the row
+	 * @return the row
+	 */
 	public SimpleMappingEditorRow getRow(int row) {
 		return editorRows.get(row);
 	}
 
+	/**
+	 * Gets the cell background.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the cell background
+	 */
 	@Override
 	public Color getCellBackground(int row, int column) {
 		SimpleMappingEditorRow mappingRow = getRow(row);

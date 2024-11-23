@@ -26,10 +26,26 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DefaultClassTableCellRenderer.
+ */
 public class DefaultClassTableCellRenderer extends DefaultTableCellRenderer {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 439493272034511576L;
 
+	/**
+	 * Gets the table cell renderer component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param hasFocus the has focus
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell renderer component
+	 */
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

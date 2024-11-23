@@ -39,34 +39,71 @@ import org.jtools.mappings.block.exporters.IBlockMappingExporter;
 import org.jtools.mappings.block.io.BlockMappingFileManager;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.utils.CommonUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ABlockMappingExportToAction.
+ */
 public abstract class ABlockMappingExportToAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1660411517249745107L;
 
+	/** The data provider. */
 	private transient IDataProvider dataProvider;
 
+	/** The block mapping. */
 	private transient BlockMapping<?> blockMapping;
 
+	/** The exporter. */
 	private transient IBlockMappingExporter exporter;
 
+	/**
+	 * Instantiates a new a block mapping export to action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param exporter the exporter
+	 */
 	protected ABlockMappingExportToAction(String name, Icon icon, IBlockMappingExporter exporter) {
 		super(name, icon);
 		this.exporter = exporter;
 	}
 
+	/**
+	 * Instantiates a new a block mapping export to action.
+	 *
+	 * @param name the name
+	 * @param exporter the exporter
+	 */
 	protected ABlockMappingExportToAction(String name, IBlockMappingExporter exporter) {
 		super(name);
 		this.exporter = exporter;
 	}
 
+	/**
+	 * Sets the data provider.
+	 *
+	 * @param dataProvider the new data provider
+	 */
 	public void setDataProvider(IDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 	}
 
+	/**
+	 * Sets the mapping.
+	 *
+	 * @param mapping the new mapping
+	 */
 	public void setMapping(BlockMapping<?> mapping) {
 		this.blockMapping = mapping;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 

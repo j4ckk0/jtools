@@ -26,13 +26,27 @@ import java.util.logging.Logger;
 
 import org.jtools.utils.messages.pubsub.DefaultPubSubBus;
 import org.jtools.utils.network.NetworkUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultBusConfig.
+ */
 public class DefaultBusConfig {
 
+	/** The Constant FIRST_PORT. */
 	private static final int FIRST_PORT = 61616;
+	
+	/** The Constant LAST_PORT. */
 	private static final int LAST_PORT = 61716;
 
+	/** The Constant BASE_URL. */
 	private static final String BASE_URL = "tcp://localhost:";
 
+	/**
+	 * Gets the url.
+	 *
+	 * @return the url
+	 */
 	public static String getUrl() {
 		try {
 			int freePort = NetworkUtils.getFreePort(FIRST_PORT, LAST_PORT);

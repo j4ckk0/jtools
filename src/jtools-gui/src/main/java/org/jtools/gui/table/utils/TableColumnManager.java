@@ -45,18 +45,43 @@ import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TableColumnManager.
+ */
 public class TableColumnManager
 	implements MouseListener, ActionListener, TableColumnModelListener, PropertyChangeListener
 {
+	
+	/** The table. */
 	private JTable table;
+	
+	/** The tcm. */
 	private TableColumnModel tcm;
+	
+	/** The menu popup. */
 	private boolean menuPopup;
 
+	/** The all columns. */
 	private List<TableColumn> allColumns;
+	
+	/**
+	 * Instantiates a new table column manager.
+	 *
+	 * @param table the table
+	 */
 	public TableColumnManager(JTable table)
 	{
 		this(table, true);
 	}
+	
+	/**
+	 * Instantiates a new table column manager.
+	 *
+	 * @param table the table
+	 * @param menuPopup the menu popup
+	 */
 	public TableColumnManager(JTable table, boolean menuPopup)
 	{
 		this.table = table;
@@ -65,6 +90,10 @@ public class TableColumnManager
 		table.addPropertyChangeListener( this );
 		reset();
 	}
+	
+	/**
+	 * Reset.
+	 */
 	public void reset()
 	{
 		table.getColumnModel().removeColumnModelListener( this );
@@ -96,8 +125,7 @@ public class TableColumnManager
 	 *  Add/remove support for a popup menu to the table header. The popup
 	 *  menu will give the user control over which columns are visible.
 	 *
-	 *  @param  menuPopup when true support for displaying a popup menu is added
-	 *					otherwise the popup menu is removed.
+	 * @param menuPopup the new menu popup
 	 */
 	public void setMenuPopup(boolean menuPopup)
 	{
@@ -112,8 +140,7 @@ public class TableColumnManager
 	/**
 	 *  Hide a column from view in the table.
 	 *
-	 *  @param  modelColumn  the column index from the TableModel
-	 *					   of the column to be removed
+	 * @param modelColumn the model column
 	 */
 	public void hideColumn(int modelColumn)
 	{
@@ -129,7 +156,7 @@ public class TableColumnManager
 	/**
 	 *  Hide a column from view in the table.
 	 *
-	 *  @param  columnName   the column name of the column to be removed
+	 * @param columnName the column name
 	 */
 	public void hideColumn(Object columnName)
 	{
@@ -150,8 +177,7 @@ public class TableColumnManager
 	/**
 	 *  Hide a column from view in the table.
 	 *
-	 *  @param  column  the TableColumn to be removed from the
-	 *				  TableColumnModel of the table
+	 * @param column the column
 	 */
 	public void hideColumn(TableColumn column)
 	{
@@ -167,8 +193,7 @@ public class TableColumnManager
 	/**
 	 *  Show a hidden column in the table.
 	 *
-	 *  @param  modelColumn  the column index from the TableModel
-	 *					   of the column to be added
+	 * @param modelColumn the model column
 	 */
 	public void showColumn(int modelColumn)
 	{
@@ -185,8 +210,7 @@ public class TableColumnManager
 	/**
 	 *  Show a hidden column in the table.
 	 *
-	 *  @param  columnName   the column name from the TableModel
-	 *					   of the column to be added
+	 * @param columnName the column name
 	 */
 	public void showColumn(Object columnName)
 	{
@@ -204,7 +228,7 @@ public class TableColumnManager
 	 *  Show a hidden column in the table. The column will be positioned
 	 *  at its proper place in the view of the table.
 	 *
-	 *  @param  column   the TableColumn to be shown.
+	 * @param column the column
 	 */
 	private void showColumn(TableColumn column)
 	{
@@ -242,21 +266,53 @@ public class TableColumnManager
 	}
 //
 //  Implement MouseListener
+/**
+ * Mouse pressed.
+ *
+ * @param e the e
+ */
 //
 	public void mousePressed(MouseEvent e)
 	{
 		checkForPopup( e );
 	}
 
+	/**
+	 * Mouse released.
+	 *
+	 * @param e the e
+	 */
 	public void mouseReleased(MouseEvent e)
 	{
 		checkForPopup( e );
 	}
 
+	/**
+	 * Mouse clicked.
+	 *
+	 * @param e the e
+	 */
 	public void mouseClicked(MouseEvent e) {}
+	
+	/**
+	 * Mouse entered.
+	 *
+	 * @param e the e
+	 */
 	public void mouseEntered(MouseEvent e) {}
+	
+	/**
+	 * Mouse exited.
+	 *
+	 * @param e the e
+	 */
 	public void mouseExited(MouseEvent e) {}
 
+	/**
+	 * Check for popup.
+	 *
+	 * @param e the e
+	 */
 	private void checkForPopup(MouseEvent e)
 	{
 		if (e.isPopupTrigger())
@@ -267,6 +323,11 @@ public class TableColumnManager
 		}
 	}
 
+	/**
+	 * Show popup.
+	 *
+	 * @param index the index
+	 */
 	/*
 	 *  Show a popup containing items for all the columns found in the
 	 *  table column manager. The popup will be displayed below the table
@@ -317,7 +378,12 @@ public class TableColumnManager
 //
 //  Implement ActionListener
 //
-	/*
+	/**
+ * Action performed.
+ *
+ * @param event the event
+ */
+/*
 	 *  A table column will either be added to the table or removed from the
 	 *  table depending on the state of the menu item that was clicked.
 	 */
@@ -336,6 +402,11 @@ public class TableColumnManager
 	}
 //
 //  Implement TableColumnModelListener
+/**
+ * Column added.
+ *
+ * @param e the e
+ */
 //
 	public void columnAdded(TableColumnModelEvent e)
 	{
@@ -350,6 +421,11 @@ public class TableColumnManager
 			allColumns.add( column );
 	}
 
+	/**
+	 * Column moved.
+	 *
+	 * @param e the e
+	 */
 	public void columnMoved(TableColumnModelEvent e)
 	{
 		if (e.getFromIndex() == e.getToIndex()) return;
@@ -375,11 +451,33 @@ public class TableColumnManager
 		}
 	}
 
+	/**
+	 * Column margin changed.
+	 *
+	 * @param e the e
+	 */
 	public void columnMarginChanged(ChangeEvent e) {}
+	
+	/**
+	 * Column removed.
+	 *
+	 * @param e the e
+	 */
 	public void columnRemoved(TableColumnModelEvent e) {}
+	
+	/**
+	 * Column selection changed.
+	 *
+	 * @param e the e
+	 */
 	public void columnSelectionChanged(ListSelectionEvent e) {}
 //
 //  Implement PropertyChangeListener
+/**
+ * Property change.
+ *
+ * @param e the e
+ */
 //
 	public void propertyChange(PropertyChangeEvent e)
 	{
@@ -390,14 +488,24 @@ public class TableColumnManager
 		}
 	}
 
+	/**
+	 * The Class SelectPopupMenu.
+	 */
 	/*
 	 *  Allows you to select a specific menu item when the popup is
 	 *  displayed. (ie. this is a bug? fix)
 	 */
 	class SelectPopupMenu extends JPopupMenu
 	{
+		
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -8652771941482916156L;
 
+		/**
+		 * Sets the selected.
+		 *
+		 * @param sel the new selected
+		 */
 		@Override
 		public void setSelected(Component sel)
 		{

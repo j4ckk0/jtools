@@ -31,7 +31,18 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.editors.block.BlockMappingEditor;
 import org.jtools.tests.data.models.Person;
 import org.jtools.utils.concurrent.NamedCallable;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestBlockImporter.
+ */
 public class TestBlockImporter {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		try {
 			BlockMapping<Person> mapping = new BlockMapping<>(Person.class);

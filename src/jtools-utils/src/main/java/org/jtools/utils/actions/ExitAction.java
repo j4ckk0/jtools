@@ -24,18 +24,40 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ExitAction.
+ */
 public class ExitAction extends AbstractAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8034632895201890192L;
 
+	/**
+	 * Instantiates a new exit action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public ExitAction(String name, Icon icon) {
 		super(name, icon);
 	}
 
+	/**
+	 * Instantiates a new exit action.
+	 *
+	 * @param name the name
+	 */
 	public ExitAction(String name) {
 		super(name);
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.exit(0);

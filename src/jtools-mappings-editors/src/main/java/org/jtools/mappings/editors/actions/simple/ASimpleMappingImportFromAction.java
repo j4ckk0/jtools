@@ -38,30 +38,62 @@ import org.jtools.mappings.simple.importers.ASimpleMappingImporter;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ASimpleMappingImportFromAction.
+ */
 public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5347933034897416218L;
 
+	/** The importer. */
 	private transient ASimpleMappingImporter importer;
 
+	/** The simple mapping. */
 	private transient SimpleMapping<?> simpleMapping;
 
+	/** The imported objects. */
 	private transient List<?> importedObjects;
 
+	/**
+	 * Instantiates a new a simple mapping import from action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param importer the importer
+	 */
 	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 	}
 
+	/**
+	 * Instantiates a new a simple mapping import from action.
+	 *
+	 * @param name the name
+	 * @param importer the importer
+	 */
 	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 	}
 
+	/**
+	 * Sets the mapping.
+	 *
+	 * @param mapping the new mapping
+	 */
 	public void setMapping(SimpleMapping<?> mapping) {
 		this.simpleMapping = mapping;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 
@@ -101,6 +133,11 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 		}
 	}
 
+	/**
+	 * Gets the imported objects.
+	 *
+	 * @return the imported objects
+	 */
 	public List<?> getImportedObjects() {
 		return importedObjects;
 	}

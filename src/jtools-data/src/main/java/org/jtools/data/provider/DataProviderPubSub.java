@@ -26,14 +26,29 @@ import java.util.logging.Logger;
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.TextMessage;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface DataProviderPubSub.
+ */
 public interface DataProviderPubSub {
 
+	/** The Constant DATA_PROVIDER_ADDED. */
 	public static final String DATA_PROVIDER_ADDED = "DATA_PROVIDER_ADDED_PROPERTY";
 
+	/** The Constant DATA_PROVIDER_REMOVED. */
 	public static final String DATA_PROVIDER_REMOVED = "DATA_PROVIDER_REMOVED_PROPERTY";
 
+	/** The Constant DATA_PROVIDER_CHANGED. */
 	public static final String DATA_PROVIDER_CHANGED = "DATA_PROVIDER_CHANGED_PROPERTY";
 
+	/**
+	 * Cast message.
+	 *
+	 * @param message the message
+	 * @return the text message
+	 * @throws ClassCastException the class cast exception
+	 */
 	public static TextMessage castMessage(Message message) throws ClassCastException {
 		if (!(message instanceof TextMessage)) {
 			String msg = "Pub/Sub message received. Unexpected message type. Expected: " + TextMessage.class + ". Got: "
@@ -44,6 +59,15 @@ public interface DataProviderPubSub {
 
 		return (TextMessage) message;
 	}
+	
+	/**
+	 * Read message.
+	 *
+	 * @param message the message
+	 * @return the string
+	 * @throws JMSException the JMS exception
+	 * @throws ClassCastException the class cast exception
+	 */
 	public static String readMessage(Message message) throws JMSException, ClassCastException {
 		TextMessage textMessage = castMessage(message);
 

@@ -43,24 +43,55 @@ import org.jtools.gui.list.cellRenderers.DefaultObjectListCellRenderer;
 import org.jtools.gui.list.listModels.ObjectsListModel;
 import org.jtools.utils.gui.GuiUtils;
 import org.jtools.utils.objects.ObjectUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectsListPanel.
+ *
+ * @param <E> the element type
+ */
 public class ObjectsListPanel<E extends Object> extends JPanel {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -844752210816149989L;
 
+	/**
+	 * The Enum Buttons.
+	 */
 	protected enum Buttons {
-		ADD, EDIT, REMOVE
+		
+		/** The add. */
+		ADD, 
+ /** The edit. */
+ EDIT, 
+ /** The remove. */
+ REMOVE
 	}
 
+	/** The objects list. */
 	private final ObjectsList<E> objectsList;
 
+	/** The buttons panel. */
 	private final JPanel buttonsPanel;
 
+	/** The buttons map. */
 	private final Map<Buttons, JButton> buttonsMap;
 
+	/**
+	 * Instantiates a new objects list panel.
+	 *
+	 * @param objectClass the object class
+	 */
 	public ObjectsListPanel(Class<E> objectClass) {
 		this(objectClass, null);
 	}
 
+	/**
+	 * Instantiates a new objects list panel.
+	 *
+	 * @param objectClass the object class
+	 * @param initialValues the initial values
+	 */
 	public ObjectsListPanel(Class<E> objectClass, List<E> initialValues) {
 		super(new BorderLayout(6, 6));
 
@@ -81,6 +112,12 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		objectsList.setCellRenderer(new DefaultObjectListCellRenderer());
 	}
 
+	/**
+	 * Gets the button.
+	 *
+	 * @param buttonKey the button key
+	 * @return the button
+	 */
 	private JButton getButton(Buttons buttonKey) {
 		JButton button = buttonsMap.get(buttonKey);
 		if (button == null) {
@@ -91,6 +128,12 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		return button;
 	}
 
+	/**
+	 * Creates the button.
+	 *
+	 * @param buttonKey the button key
+	 * @return the j button
+	 */
 	@SuppressWarnings("unchecked")
 	protected JButton createButton(Buttons buttonKey) {
 		Action action = getAction(buttonKey);
@@ -111,6 +154,12 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		return button;
 	}
 
+	/**
+	 * Gets the action.
+	 *
+	 * @param buttonKey the button key
+	 * @return the action
+	 */
 	protected Action getAction(Buttons buttonKey) {
 		switch (buttonKey) {
 		case ADD:
@@ -123,41 +172,89 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 			throw new IllegalArgumentException("Unexpected value: " + buttonKey);
 		}
 	}
+	
+	/**
+	 * The Class ObjectsListAction.
+	 *
+	 * @param <E> the element type
+	 */
 	public abstract static class ObjectsListAction<E extends Object> extends AbstractAction {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = 1555073527470591250L;
 
+		/** The Constant TXT_ICON. */
 		public static final String TXT_ICON = "TXT_ICON";
 
+		/** The objects list. */
 		protected final ObjectsList<E> objectsList;
 
+		/**
+		 * Instantiates a new objects list action.
+		 *
+		 * @param name the name
+		 * @param icon the icon
+		 * @param txtIcon the txt icon
+		 * @param objectsList the objects list
+		 */
 		protected ObjectsListAction(String name, Icon icon, String txtIcon, ObjectsList<E> objectsList) {
 			super(name, icon);
 			putValue(TXT_ICON, txtIcon);
 			this.objectsList = objectsList;
 		}
 
+		/**
+		 * Instantiates a new objects list action.
+		 *
+		 * @param name the name
+		 * @param objectsList the objects list
+		 */
 		protected ObjectsListAction(String name, ObjectsList<E> objectsList) {
 			this(name, null, null, objectsList);
 		}
 
+		/**
+		 * Gets the name.
+		 *
+		 * @return the name
+		 */
 		public String getName() {
 			return (String) getValue(Action.NAME);
 		}
 
+		/**
+		 * Gets the icon.
+		 *
+		 * @return the icon
+		 */
 		public Icon getIcon() {
 			return (Icon) getValue(Action.SMALL_ICON);
 		}
 
+		/**
+		 * Gets the txt icon.
+		 *
+		 * @return the txt icon
+		 */
 		public String getTxtIcon() {
 			return (String) getValue(TXT_ICON);
 		}
 	}
 
+	/**
+	 * Gets the elements.
+	 *
+	 * @return the elements
+	 */
 	public List<E> getElements() {
 		return objectsList.getDataList();
 	}
 
+	/**
+	 * Show dialog.
+	 *
+	 * @return the int
+	 */
 	public int showDialog() {
 
 		Object[] options = { "Apply", "Cancel" };
@@ -168,14 +265,31 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		return result;
 
 	}
+	
+	/**
+	 * The Class DefaultAddAction.
+	 *
+	 * @param <E> the element type
+	 */
 	public static class DefaultAddAction<E extends Object> extends ObjectsListAction<E> {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -471576623493101731L;
 
+		/**
+		 * Instantiates a new default add action.
+		 *
+		 * @param objectsList the objects list
+		 */
 		public DefaultAddAction(ObjectsList<E> objectsList) {
 			super("Add", null, GuiUtils.PLUS_ICON_TXT, objectsList);
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// Build form
@@ -193,14 +307,31 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 		}
 
 	}
+	
+	/**
+	 * The Class DefaultRemoveAction.
+	 *
+	 * @param <E> the element type
+	 */
 	public static class DefaultRemoveAction<E extends Object> extends ObjectsListAction<E> {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -2468296432935193901L;
 
+		/**
+		 * Instantiates a new default remove action.
+		 *
+		 * @param objectsList the objects list
+		 */
 		public DefaultRemoveAction(ObjectsList<E> objectsList) {
 			super("Remove", null, GuiUtils.MINUS_ICON_TXT, objectsList);
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			List<E> selectedObjects = objectsList.getSelectedValuesList();
@@ -214,19 +345,30 @@ public class ObjectsListPanel<E extends Object> extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @author j4ckk0
+	 * The Class DefaultEditAction.
 	 *
-	 * @param <E>
+	 * @author j4ckk0
+	 * @param <E> the element type
 	 */
 	public static class DefaultEditAction<E extends Object> extends ObjectsListAction<E> {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -4812290476514216214L;
 
+		/**
+		 * Instantiates a new default edit action.
+		 *
+		 * @param objectsList the objects list
+		 */
 		public DefaultEditAction(ObjectsList<E> objectsList) {
 			super("Edit", null, GuiUtils.EDIT_ICON_TXT, objectsList);
 		}
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			List<E> selectedObjects = objectsList.getSelectedValuesList();

@@ -36,23 +36,51 @@ import org.jtools.gui.form.ObjectForm;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultObjectTableCellEditor.
+ */
 public class DefaultObjectTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2356764750987524290L;
 
+	/** The component. */
 	private final JLabel component =  new JLabel();
 
+	/** The value. */
 	private transient Object value;
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public Object getCellEditorValue() {
 		return value;
 	}
 	
+	/**
+	 * Sets the cell editor value.
+	 *
+	 * @param value the new cell editor value
+	 */
 	public void setCellEditorValue(Object value) {
 		this.value = value;
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		TableModel model = table.getModel();

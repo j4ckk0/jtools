@@ -32,10 +32,21 @@ import org.jtools.mappings.common.MappingException;
 import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.utils.objects.ObjectInfoProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingStdOutputExporter.
+ */
 public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 
+	/** The instance. */
 	private static SimpleMappingStdOutputExporter instance;
 
+	/**
+	 * Instance.
+	 *
+	 * @return the simple mapping std output exporter
+	 */
 	public static SimpleMappingStdOutputExporter instance() {
 		if(instance == null) {
 			instance = new SimpleMappingStdOutputExporter();
@@ -43,6 +54,15 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 		return instance;
 	}
 
+	/**
+	 * Export data.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws MappingException the mapping exception
+	 */
 	@Override
 	public <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException, MappingException {
 		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "-------- Headers ----------");
@@ -52,6 +72,11 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 		writeDataLines(data, mappings);
 	}
 
+	/**
+	 * Write header line.
+	 *
+	 * @param mappings the mappings
+	 */
 	private void writeHeaderLine(List<SimpleMappingRow> mappings) {
 		for(SimpleMappingRow mapping : mappings) {
 			int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
@@ -59,6 +84,14 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 		}
 	}
 
+	/**
+	 * Write data lines.
+	 *
+	 * @param <T> the generic type
+	 * @param data the data
+	 * @param mappings the mappings
+	 * @throws MappingException the mapping exception
+	 */
 	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings) throws MappingException {
 
 		for(T object : data) {

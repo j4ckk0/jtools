@@ -24,13 +24,27 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class HintTextField.
+ */
 class HintTextField extends JTextField implements FocusListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7219499739575858036L;
 
+	/** The hint. */
 	private final String hint;
+	
+	/** The showing hint. */
 	private boolean showingHint;
 
+	/**
+	 * Instantiates a new hint text field.
+	 *
+	 * @param hint the hint
+	 */
 	public HintTextField(final String hint) {
 		super(hint);
 		this.hint = hint;
@@ -38,6 +52,11 @@ class HintTextField extends JTextField implements FocusListener {
 		super.addFocusListener(this);
 	}
 
+	/**
+	 * Focus gained.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void focusGained(FocusEvent e) {
 		if(this.getText().isEmpty()) {
@@ -45,6 +64,12 @@ class HintTextField extends JTextField implements FocusListener {
 			showingHint = false;
 		}
 	}
+	
+	/**
+	 * Focus lost.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		if(this.getText().isEmpty()) {
@@ -53,6 +78,11 @@ class HintTextField extends JTextField implements FocusListener {
 		}
 	}
 
+	/**
+	 * Gets the text.
+	 *
+	 * @return the text
+	 */
 	@Override
 	public String getText() {
 		return showingHint ? "" : super.getText();

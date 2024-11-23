@@ -38,23 +38,51 @@ import org.jtools.gui.table.tableModels.ITableModelWithParameterizedObjectWrappe
 import org.jtools.gui.table.tableModels.ITableModelWithParameterizedTypes;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
 import org.jtools.utils.objects.ObjectUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DefaultObjectsListTableCellEditor.
+ */
 public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 7601888500573169907L;
 
+	/** The component. */
 	private final JLabel component = new JLabel();
 
+	/** The value. */
 	private transient Object value;
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public Object getCellEditorValue() {
 		return value;
 	}
 
+	/**
+	 * Sets the cell editor value.
+	 *
+	 * @param value the new cell editor value
+	 */
 	public void setCellEditorValue(Object value) {
 		this.value = value;
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		setCellEditorValue(value);
@@ -77,6 +105,15 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 		return component;
 	}
 
+	/**
+	 * Gets the parameterized type.
+	 *
+	 * @param model the model
+	 * @param value2 the value 2
+	 * @param row the row
+	 * @param column the column
+	 * @return the parameterized type
+	 */
 	private Class<?> getParameterizedType(TableModel model, Object value2, int row, int column) {
 		if (value instanceof ObjectWrapper) {
 			if (model instanceof ITableModelWithParameterizedObjectWrapper) {
@@ -115,6 +152,13 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 		return null;
 	}
 
+	/**
+	 * Show editor asynch.
+	 *
+	 * @param table the table
+	 * @param parameterizedType the parameterized type
+	 * @param value the value
+	 */
 	private void showEditorAsynch(JTable table, Class<?> parameterizedType, List<?> value) {
 		SwingUtilities.invokeLater(new Runnable() {
 

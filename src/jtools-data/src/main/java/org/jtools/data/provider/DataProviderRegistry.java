@@ -24,16 +24,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jtools.utils.messages.pubsub.DefaultPubSubBus;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DataProviderRegistry.
+ */
 public class DataProviderRegistry {
 
+	/** The instance. */
 	private static DataProviderRegistry instance;
 
+	/** The providers. */
 	private final Map<String, IDataProvider> providers;
 
+	/**
+	 * Instantiates a new data provider registry.
+	 */
 	private DataProviderRegistry() {
 		this.providers = new HashMap<>();
 	}
 
+	/**
+	 * Instance.
+	 *
+	 * @return the data provider registry
+	 */
 	public static DataProviderRegistry instance() {
 		if (instance == null) {
 			instance = new DataProviderRegistry();
@@ -41,18 +56,34 @@ public class DataProviderRegistry {
 		return instance;
 	}
 
+	/**
+	 * Register.
+	 *
+	 * @param provider the provider
+	 */
 	public void register(IDataProvider provider) {
 		providers.put(provider.getProviderName(), provider);
 		
 		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_ADDED, provider.getProviderName());
 	}
 
+	/**
+	 * Unregister.
+	 *
+	 * @param provider the provider
+	 */
 	public void unregister(IDataProvider provider) {
 		providers.remove(provider.getProviderName());
 		
 		DefaultPubSubBus.instance().sendTextMessage(DataProviderPubSub.DATA_PROVIDER_REMOVED, provider.getProviderName());
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param providerName the provider name
+	 * @return the i data provider
+	 */
 	public IDataProvider get(String providerName) {
 		return providers.get(providerName);
 	}

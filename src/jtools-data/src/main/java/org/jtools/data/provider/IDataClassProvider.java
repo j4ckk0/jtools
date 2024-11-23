@@ -22,10 +22,25 @@ package org.jtools.data.provider;
 
 import java.util.Collections;
 import java.util.List;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface IDataClassProvider.
+ */
 public interface IDataClassProvider {
 
+	/**
+	 * Gets the data class.
+	 *
+	 * @return the data class
+	 */
 	public Class<?> getDataClass();
 
+	/**
+	 * Gets the possible data classes.
+	 *
+	 * @return the possible data classes
+	 */
 	public default List<Class<?>> getPossibleDataClasses() {
 		return Collections.singletonList(getDataClass());
 	}

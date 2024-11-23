@@ -31,12 +31,25 @@ import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AutoCompleteComboBox.
+ */
 public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox.KeySelectionManager {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -790677937456857146L;
 
+	/** The search for. */
 	private String searchFor;
+	
+	/** The lap. */
 	private long lap;
+	
+	/**
+	 * Instantiates a new auto complete combo box.
+	 */
 	public AutoCompleteComboBox() {
 		super();
 		lap = new java.util.Date().getTime();
@@ -67,10 +80,22 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 		}
 	}
 
+	/**
+	 * Sets the items.
+	 *
+	 * @param items the new items
+	 */
 	public void setItems(String[] items) {
 		setModel(new DefaultComboBoxModel<String>(items));
 	}
 
+	/**
+	 * Selection for key.
+	 *
+	 * @param aKey the a key
+	 * @param aModel the a model
+	 * @return the int
+	 */
 	public int selectionForKey(char aKey, ComboBoxModel<?> aModel) {
 		long now = new java.util.Date().getTime();
 		if (searchFor != null && aKey == KeyEvent.VK_BACK_SPACE && searchFor.length() > 0) {
@@ -91,12 +116,29 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 		return -1;
 	}
 
+	/**
+	 * Fire action event.
+	 */
 	public void fireActionEvent() {
 		super.fireActionEvent();
 	}
+	
+	/**
+	 * The Class CBDocument.
+	 */
 	public class CBDocument extends PlainDocument {
+		
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = 7985172243562749588L;
 
+		/**
+		 * Insert string.
+		 *
+		 * @param offset the offset
+		 * @param str the str
+		 * @param a the a
+		 * @throws BadLocationException the bad location exception
+		 */
 		public void insertString(int offset, String str, AttributeSet a) throws BadLocationException {
 			if (str == null)
 				return;

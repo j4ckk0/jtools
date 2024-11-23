@@ -28,17 +28,39 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ObjectWrapperCellEditor.
+ */
 public class ObjectWrapperCellEditor extends AbstractCellEditor implements TableCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2558770580026849153L;
 
+	/** The delegate. */
 	private transient TableCellEditor delegate;
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public Object getCellEditorValue() {
 		return delegate.getCellEditorValue();
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
 			int column) {

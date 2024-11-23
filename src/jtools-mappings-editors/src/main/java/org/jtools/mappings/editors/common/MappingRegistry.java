@@ -28,16 +28,31 @@ import java.util.logging.Logger;
 
 import org.jtools.mappings.common.IMapping;
 import org.jtools.utils.messages.pubsub.DefaultPubSubBus;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MappingRegistry.
+ */
 public class MappingRegistry {
 
+	/** The instance. */
 	private static MappingRegistry instance;
 
+	/** The mappings. */
 	private final Map<UUID, IMapping> mappings;
 
+	/**
+	 * Instantiates a new mapping registry.
+	 */
 	private MappingRegistry() {
 		this.mappings = new HashMap<>();
 	}
 
+	/**
+	 * Instance.
+	 *
+	 * @return the mapping registry
+	 */
 	public static MappingRegistry instance() {
 		if (instance == null) {
 			instance = new MappingRegistry();
@@ -45,22 +60,46 @@ public class MappingRegistry {
 		return instance;
 	}
 
+	/**
+	 * Register.
+	 *
+	 * @param mapping the mapping
+	 */
 	public void register(IMapping mapping) {
 		mappings.put(mapping.getId(), mapping);
 		
 		DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.MAPPING_ADDED, mapping.getId());
 	}
 
+	/**
+	 * Unregister.
+	 *
+	 * @param mapping the mapping
+	 */
 	public void unregister(IMapping mapping) {
 		mappings.remove(mapping.getId());
 		
 		DefaultPubSubBus.instance().sendObjectMessage(MappingPubSub.MAPPING_REMOVED, mapping.getId());
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param mappingId the mapping id
+	 * @return the i mapping
+	 */
 	public IMapping get(UUID mappingId) {
 		return mappings.get(mappingId);
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param <M> the generic type
+	 * @param mappingId the mapping id
+	 * @param mappingClass the mapping class
+	 * @return the m
+	 */
 	public <M extends IMapping> M get(UUID mappingId, Class<M> mappingClass) {
 		IMapping mapping = get(mappingId);
 

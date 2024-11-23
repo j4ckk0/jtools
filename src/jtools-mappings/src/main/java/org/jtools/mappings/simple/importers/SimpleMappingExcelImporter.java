@@ -42,10 +42,21 @@ import org.jtools.mappings.common.MappingUtils;
 import org.jtools.mappings.common.importers.ExcelImportConfigPanel;
 import org.jtools.mappings.simple.SimpleMappingRow;
 import org.jtools.utils.objects.ObjectInfoProvider;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class SimpleMappingExcelImporter.
+ */
 public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 
+	/** The instance. */
 	private static SimpleMappingExcelImporter instance;
 
+	/**
+	 * Instance.
+	 *
+	 * @return the simple mapping excel importer
+	 */
 	public static SimpleMappingExcelImporter instance() {
 		if (instance == null) {
 			instance = new SimpleMappingExcelImporter();
@@ -53,6 +64,15 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 		return instance;
 	}
 
+	/**
+	 * Import data.
+	 *
+	 * @param <T> the generic type
+	 * @param objectClass the object class
+	 * @param mappings the mappings
+	 * @return the list
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public <T extends Object> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings)
 			throws IOException {
 
@@ -69,6 +89,16 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 		return null;
 	}
 
+	/**
+	 * Import data.
+	 *
+	 * @param <T> the generic type
+	 * @param objectClass the object class
+	 * @param mappings the mappings
+	 * @param file the file
+	 * @param firstDataRowIndex the first data row index
+	 * @return the list
+	 */
 	public <T extends Object> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings, File file,
 			int firstDataRowIndex) {
 		List<T> data = new ArrayList<>();
@@ -158,6 +188,13 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 		return data;
 	}
 
+	/**
+	 * Gets the mapping.
+	 *
+	 * @param mappings the mappings
+	 * @param inputColumn the input column
+	 * @return the mapping
+	 */
 	private SimpleMappingRow getMapping(List<SimpleMappingRow> mappings, String inputColumn) {
 		for (SimpleMappingRow mapping : mappings) {
 			if (mapping.getOutputColumn().equals(inputColumn)) {

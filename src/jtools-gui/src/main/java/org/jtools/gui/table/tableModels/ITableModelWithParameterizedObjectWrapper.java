@@ -1,5 +1,9 @@
 package org.jtools.gui.table.tableModels;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ITableModelWithParameterizedObjectWrapper.
+ */
 /*-
  * #%L
  * Java Tools - GUI
@@ -21,6 +25,13 @@ package org.jtools.gui.table.tableModels;
  */
 public interface ITableModelWithParameterizedObjectWrapper extends ITableModelWithObjectWrapper {
 
+	/**
+	 * Gets the wrapped parameterized class.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return the wrapped parameterized class
+	 */
 	public Class<?> getWrappedParameterizedClass(int row, int column);
 
 }

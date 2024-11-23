@@ -26,22 +26,47 @@ import javax.swing.Icon;
 
 import org.jtools.data.DataEditor;
 import org.jtools.utils.gui.editor.AEditorAction;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class CreateDataEditorAction.
+ */
 public class CreateDataEditorAction extends AEditorAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -8300069996813450384L;
 
+	/** The data classes. */
 	private final Class<?>[] dataClasses;
 
+	/**
+	 * Instantiates a new creates the data editor action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 * @param dataClasses the data classes
+	 */
 	public CreateDataEditorAction(String name, Icon icon, Class<?>[] dataClasses) {
 		super(name, icon);
 		this.dataClasses = dataClasses;
 	}
 
+	/**
+	 * Instantiates a new creates the data editor action.
+	 *
+	 * @param name the name
+	 * @param dataClasses the data classes
+	 */
 	public CreateDataEditorAction(String name, Class<?>[] dataClasses) {
 		super(name);
 		this.dataClasses = dataClasses;
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 

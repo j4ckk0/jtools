@@ -21,8 +21,20 @@ package org.jtools.utils.concurrent;
  */
 
 import java.util.concurrent.Callable;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface NamedCallable.
+ *
+ * @param <V> the value type
+ */
 public interface NamedCallable<V> extends Callable<V> {
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName();
 
 }

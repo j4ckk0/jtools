@@ -39,12 +39,22 @@ import org.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DataProviderSelector.
+ */
 public class DataProviderSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -6803902145432674502L;
 
+	/** The data providers combo box. */
 	private final JComboBox<IDataProvider> dataProvidersComboBox;
 
+	/**
+	 * Instantiates a new data provider selector.
+	 */
 	public DataProviderSelector() {
 		super("Data provider selector");
 
@@ -71,6 +81,12 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param topicName the topic name
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
@@ -102,6 +118,12 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 		}
 	}
 
+	/**
+	 * Gets the data provider for name.
+	 *
+	 * @param providerName the provider name
+	 * @return the data provider for name
+	 */
 	private IDataProvider getDataProviderForName(String providerName) {
 		for(int i = 0; i < dataProvidersComboBox.getItemCount(); i++) {
 			IDataProvider dataProvider = dataProvidersComboBox.getItemAt(i);
@@ -112,6 +134,11 @@ public class DataProviderSelector extends JInternalFrame implements PubSubMessag
 		return null;
 	}
 
+	/**
+	 * Item state changed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object selectedItem = e.getItem();

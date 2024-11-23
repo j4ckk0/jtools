@@ -23,8 +23,16 @@ package org.jtools.utils.messages.pointtopoint;
 import org.jtools.utils.messages.AMessagesDispatcher;
 
 import jakarta.jms.MessageListener;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class PointToPointMessageDispatcher.
+ */
 public class PointToPointMessageDispatcher extends AMessagesDispatcher<MessageListener> {
 
+	/**
+	 * Instantiates a new point to point message dispatcher.
+	 */
 	public PointToPointMessageDispatcher() {
 		super();
 	}

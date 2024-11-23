@@ -34,6 +34,11 @@ import org.apache.activemq.broker.BrokerService;
 import jakarta.jms.Connection;
 import jakarta.jms.JMSException;
 import jakarta.jms.Session;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class AMessagesBus.
+ */
 public abstract class AMessagesBus implements AutoCloseable {
 
 	// //////////////////////////////
@@ -42,17 +47,28 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
+	/** The Constant BROKER. */
 	private static final String BROKER = "broker:";
+	
+	/** The Constant FAILOVER. */
 	private static final String FAILOVER = "failover:";
 
+	/** The Constant DEFAULT_MAX_RECONNECT_ATTEMPT. */
 	private static final String DEFAULT_MAX_RECONNECT_ATTEMPT = "3";
 
+	/** The broker URL. */
 	private final String brokerURL;
+	
+	/** The client URL. */
 	private final String clientURL;
 
+	/** The broker. */
 	private BrokerService broker;
 
+	/** The connection. */
 	private Connection connection;
+	
+	/** The session. */
 	private Session session;
 
 	// //////////////////////////////
@@ -61,9 +77,21 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Instantiates a new a messages bus.
+	 *
+	 * @param url the url
+	 */
 	protected AMessagesBus(String url) {
 		this(url, null);
 	}
+	
+	/**
+	 * Instantiates a new a messages bus.
+	 *
+	 * @param url the url
+	 * @param clientConnectionProperties the client connection properties
+	 */
 	protected AMessagesBus(String url, Properties clientConnectionProperties) {
 		if(url == null) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Cannot create messages bus: URL is null");
@@ -100,6 +128,11 @@ public abstract class AMessagesBus implements AutoCloseable {
 		}
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void close() throws Exception {
 		if (session != null) {
@@ -119,6 +152,9 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Start.
+	 */
 	public void start() {
 		if (broker == null) {
 			Logger.getLogger(getClass().getName()).log(Level.FINE, "Creating broker at " + brokerURL);
@@ -138,6 +174,11 @@ public abstract class AMessagesBus implements AutoCloseable {
 		}
 	}
 	
+	/**
+	 * Checks if is started.
+	 *
+	 * @return true, if is started
+	 */
 	public boolean isStarted() {
 		return broker != null;
 	}
@@ -148,6 +189,12 @@ public abstract class AMessagesBus implements AutoCloseable {
 	//
 	// //////////////////////////////
 
+	/**
+	 * Gets the session.
+	 *
+	 * @return the session
+	 * @throws JMSException the JMS exception
+	 */
 	protected Session getSession() throws JMSException {
 		if (session == null) {
 

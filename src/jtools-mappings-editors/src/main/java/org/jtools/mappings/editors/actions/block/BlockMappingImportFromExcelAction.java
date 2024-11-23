@@ -23,14 +23,31 @@ package org.jtools.mappings.editors.actions.block;
 import javax.swing.Icon;
 
 import org.jtools.mappings.block.importers.BlockMappingExcelImporter;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingImportFromExcelAction.
+ */
 public class BlockMappingImportFromExcelAction extends ABlockMappingImportFromAction {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5366162869248310896L;
 
+	/**
+	 * Instantiates a new block mapping import from excel action.
+	 *
+	 * @param name the name
+	 * @param icon the icon
+	 */
 	public BlockMappingImportFromExcelAction(String name, Icon icon) {
 		super(name, icon, BlockMappingExcelImporter.instance());
 	}
 
+	/**
+	 * Instantiates a new block mapping import from excel action.
+	 *
+	 * @param name the name
+	 */
 	public BlockMappingImportFromExcelAction(String name) {
 		super(name, BlockMappingExcelImporter.instance());
 	}

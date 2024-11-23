@@ -43,16 +43,29 @@ import javax.swing.table.TableModel;
 import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper;
 import org.jtools.utils.objects.ObjectInfoProvider;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DefaultFieldTableCellEditor.
+ */
 public class DefaultFieldTableCellEditor extends DefaultCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1485761980760991949L;
 
+	/** The field combobox renderer. */
 	private FieldComboboxRenderer fieldComboboxRenderer;
 
+	/** The field combobox listener. */
 	private ItemListener fieldComboboxListener;
 
+	/** The Constant possibleFieldsComboBoxModels. */
 	private static final Map<Class<?>, ComboBoxModel<Field>> possibleFieldsComboBoxModels = new HashMap<>();
 
+	/**
+	 * Instantiates a new default field table cell editor.
+	 *
+	 * @param objectClass the object class
+	 */
 	public DefaultFieldTableCellEditor(Class<?> objectClass) {
 		super(new JComboBox<Field>());
 
@@ -63,10 +76,23 @@ public class DefaultFieldTableCellEditor extends DefaultCellEditor {
 		}
 	}
 
+	/**
+	 * Instantiates a new default field table cell editor.
+	 */
 	public DefaultFieldTableCellEditor() {
 		super(new JComboBox<>());
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		@SuppressWarnings("unchecked")
@@ -94,6 +120,12 @@ public class DefaultFieldTableCellEditor extends DefaultCellEditor {
 		return comboBox;
 	}
 
+	/**
+	 * Sets the combo box model.
+	 *
+	 * @param comboBox the combo box
+	 * @param objectClass the object class
+	 */
 	private void setComboBoxModel(JComboBox<Field> comboBox, Class<?> objectClass) {
 		ComboBoxModel<Field> comboBoxModel = possibleFieldsComboBoxModels.get(objectClass);
 		if (comboBoxModel == null) {
@@ -105,10 +137,25 @@ public class DefaultFieldTableCellEditor extends DefaultCellEditor {
 		}
 		comboBox.setModel(comboBoxModel);
 	}
+	
+	/**
+	 * The Class FieldComboboxRenderer.
+	 */
 	private static class FieldComboboxRenderer extends DefaultListCellRenderer {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = 1042572086292515370L;
 
+		/**
+		 * Gets the list cell renderer component.
+		 *
+		 * @param list the list
+		 * @param value the value
+		 * @param index the index
+		 * @param isSelected the is selected
+		 * @param cellHasFocus the cell has focus
+		 * @return the list cell renderer component
+		 */
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {
@@ -120,14 +167,36 @@ public class DefaultFieldTableCellEditor extends DefaultCellEditor {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving fieldCombobox events.
+	 * The class that is interested in processing a fieldCombobox
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addFieldComboboxListener</code> method. When
+	 * the fieldCombobox event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see FieldComboboxEvent
+	 */
 	private class FieldComboboxListener implements ItemListener {
 
+		/** The table. */
 		private final JTable table;
 
+		/**
+		 * Instantiates a new field combobox listener.
+		 *
+		 * @param table the table
+		 */
 		public FieldComboboxListener(JTable table) {
 			this.table = table;
 		}
 
+		/**
+		 * Item state changed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			table.editingStopped(new ChangeEvent(DefaultFieldTableCellEditor.this));

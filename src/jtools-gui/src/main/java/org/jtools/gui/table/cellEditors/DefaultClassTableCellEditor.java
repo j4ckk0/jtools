@@ -31,16 +31,37 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTable;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DefaultClassTableCellEditor.
+ */
 public class DefaultClassTableCellEditor extends DefaultCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1485761980760991949L;
 
+	/** The class combobox renderer. */
 	private ClassComboboxRenderer classComboboxRenderer;
 
+	/**
+	 * Instantiates a new default class table cell editor.
+	 *
+	 * @param possibleObjectsClasses the possible objects classes
+	 */
 	public DefaultClassTableCellEditor(List<Class<?>> possibleObjectsClasses) {
 		super(new JComboBox<>(new DefaultComboBoxModel<>(possibleObjectsClasses.toArray())));
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		JComboBox<?> comboBox = (JComboBox<?>) super.getTableCellEditorComponent(table, value, isSelected, row, column);
@@ -52,10 +73,25 @@ public class DefaultClassTableCellEditor extends DefaultCellEditor {
 
 		return comboBox;
 	}
+	
+	/**
+	 * The Class ClassComboboxRenderer.
+	 */
 	private static class ClassComboboxRenderer extends DefaultListCellRenderer {
 
+		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = 1042572086292515370L;
 
+		/**
+		 * Gets the list cell renderer component.
+		 *
+		 * @param list the list
+		 * @param value the value
+		 * @param index the index
+		 * @param isSelected the is selected
+		 * @param cellHasFocus the cell has focus
+		 * @return the list cell renderer component
+		 */
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {

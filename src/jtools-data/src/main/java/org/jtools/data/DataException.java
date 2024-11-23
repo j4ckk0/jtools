@@ -1,5 +1,9 @@
 package org.jtools.data;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DataException.
+ */
 /*-
  * #%L
  * Java Tools - Data
@@ -21,24 +25,52 @@ package org.jtools.data;
  */
 public class DataException extends Exception {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -750168772367146161L;
 
+	/**
+	 * Instantiates a new data exception.
+	 */
 	public DataException() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new data exception.
+	 *
+	 * @param message the message
+	 * @param cause the cause
+	 * @param enableSuppression the enable suppression
+	 * @param writableStackTrace the writable stack trace
+	 */
 	public DataException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
+	/**
+	 * Instantiates a new data exception.
+	 *
+	 * @param message the message
+	 * @param cause the cause
+	 */
 	public DataException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
+	/**
+	 * Instantiates a new data exception.
+	 *
+	 * @param message the message
+	 */
 	public DataException(String message) {
 		super(message);
 	}
 
+	/**
+	 * Instantiates a new data exception.
+	 *
+	 * @param cause the cause
+	 */
 	public DataException(Throwable cause) {
 		super(cause);
 	}

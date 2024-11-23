@@ -51,15 +51,30 @@ import org.jtools.mappings.common.apachepoi.CellInfo;
 import org.jtools.mappings.common.apachepoi.MergedRegion;
 import org.jtools.mappings.common.importers.ExcelImportConfigPanel;
 import org.jtools.utils.objects.ObjectUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class BlockMappingExcelImporter.
+ */
 public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
+	/** The instance. */
 	private static BlockMappingExcelImporter instance;
 
+	/** The Constant OBJECT_SEPARATOR. */
 	private static final String OBJECT_SEPARATOR = ">";
+	
+	/** The Constant FIELD_SEPARATOR. */
 	private static final String FIELD_SEPARATOR = "#";
 
+	/** The flush instruction comparator. */
 	private final FlushInstructionComparator flushInstructionComparator = new FlushInstructionComparator();
 
+	/**
+	 * Instance.
+	 *
+	 * @return the block mapping excel importer
+	 */
 	public static BlockMappingExcelImporter instance() {
 		if (instance == null) {
 			instance = new BlockMappingExcelImporter();
@@ -67,6 +82,15 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return instance;
 	}
 
+	/**
+	 * Import data.
+	 *
+	 * @param <T> the generic type
+	 * @param importedObjectClass the imported object class
+	 * @param mapping the mapping
+	 * @return the list
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public <T extends Object> List<T> importData(Class<T> importedObjectClass, BlockMapping<?> mapping)
 			throws IOException {
 
@@ -83,6 +107,16 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return null;
 	}
 
+	/**
+	 * Do import.
+	 *
+	 * @param <T> the generic type
+	 * @param importedObjectClass the imported object class
+	 * @param blockMapping the block mapping
+	 * @param file the file
+	 * @param firstDataRowIndex the first data row index
+	 * @return the list
+	 */
 	public <T extends Object> List<T> doImport(Class<T> importedObjectClass, BlockMapping<?> blockMapping, File file,
 			int firstDataRowIndex) {
 		List<T> importedObjects = new ArrayList<>();
@@ -135,6 +169,15 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return importedObjects;
 	}
 
+	/**
+	 * Gets the reference flush instructions.
+	 *
+	 * @param sheet the sheet
+	 * @param mergedRegions the merged regions
+	 * @param blockMapping the block mapping
+	 * @param firstDataRowIndex the first data row index
+	 * @return the reference flush instructions
+	 */
 	private List<FlushInstruction> getReferenceFlushInstructions(XSSFSheet sheet,
 			Collection<MergedRegion> mergedRegions, BlockMapping<?> blockMapping, int firstDataRowIndex) {
 		// Iterate through each rows one by one
@@ -157,6 +200,15 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return null;
 	}
 
+	/**
+	 * Gets the cells info.
+	 *
+	 * @param row the row
+	 * @param mergedRegions the merged regions
+	 * @param markMergedRegions the mark merged regions
+	 * @param blockMapping the block mapping
+	 * @return the cells info
+	 */
 	private List<CellInfo> getCellsInfo(Row row, Collection<MergedRegion> mergedRegions, boolean markMergedRegions,
 			BlockMapping<?> blockMapping) {
 
@@ -238,6 +290,13 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return cellsInfoList;
 	}
 
+	/**
+	 * Pick flush instructions.
+	 *
+	 * @param cellsInfoList the cells info list
+	 * @param referenceFlushInstructions the reference flush instructions
+	 * @return the list
+	 */
 	private List<FlushInstruction> pickFlushInstructions(List<CellInfo> cellsInfoList,
 			List<FlushInstruction> referenceFlushInstructions) {
 		List<FlushInstruction> flushInstructions = new ArrayList<>();
@@ -280,6 +339,14 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return flushInstructions;
 	}
 
+	/**
+	 * Gets the flush instructions.
+	 *
+	 * @param <T> the generic type
+	 * @param cellsInfoList the cells info list
+	 * @param processFullPath the process full path
+	 * @return the flush instructions
+	 */
 	private <T extends Object> List<FlushInstruction> getFlushInstructions(List<CellInfo> cellsInfoList,
 			boolean processFullPath) {
 
@@ -332,6 +399,13 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
 	}
 
+	/**
+	 * Builds the objects from cells.
+	 *
+	 * @param <T> the generic type
+	 * @param cellsInfoList the cells info list
+	 * @param objectsBuffer the objects buffer
+	 */
 	private <T extends Object> void buildObjectsFromCells(List<CellInfo> cellsInfoList,
 			Map<String, Object> objectsBuffer) {
 
@@ -347,6 +421,15 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
 	}
 
+	/**
+	 * Flush objects buffer.
+	 *
+	 * @param <T> the generic type
+	 * @param flushInstructions the flush instructions
+	 * @param objectsBuffer the objects buffer
+	 * @param importedObjects the imported objects
+	 * @param importedObjectClass the imported object class
+	 */
 	@SuppressWarnings("unchecked")
 	private <T extends Object> void flushObjectsBuffer(List<FlushInstruction> flushInstructions,
 			Map<String, Object> objectsBuffer, List<T> importedObjects, Class<T> importedObjectClass) {
@@ -381,6 +464,14 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		}
 	}
 
+	/**
+	 * Flush object.
+	 *
+	 * @param flushPath the flush path
+	 * @param objectToFlush the object to flush
+	 * @param objectsBuffer the objects buffer
+	 * @return the object
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Object flushObject(String flushPath, Object objectToFlush, Map<String, Object> objectsBuffer) {
 		String[] fieldInfo = flushPath.split(FIELD_SEPARATOR);
@@ -435,6 +526,13 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return object;
 	}
 
+	/**
+	 * Creates the list.
+	 *
+	 * @param object the object
+	 * @param setter the setter
+	 * @return the list
+	 */
 	private List<?> createList(Object object, Method setter) {
 		try {
 			List<?> list = new ArrayList<>();
@@ -449,6 +547,14 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		}
 	}
 
+	/**
+	 * Gets the list.
+	 *
+	 * @param objectClass the object class
+	 * @param object the object
+	 * @param field the field
+	 * @return the list
+	 */
 	private List<?> getList(Class<?> objectClass, Object object, Field field) {
 		try {
 			Method getter = ObjectUtils.findGetter(objectClass, field);
@@ -466,6 +572,13 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return null;
 	}
 
+	/**
+	 * Gets the flush instruction for.
+	 *
+	 * @param flushInstructions the flush instructions
+	 * @param objectToFlushClassName the object to flush class name
+	 * @return the flush instruction for
+	 */
 	protected FlushInstruction getFlushInstructionFor(List<FlushInstruction> flushInstructions,
 			String objectToFlushClassName) {
 		for (FlushInstruction flushInstruction : flushInstructions) {
@@ -476,6 +589,14 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return null;
 	}
 
+	/**
+	 * Sets the value from cell.
+	 *
+	 * @param objectPath the object path
+	 * @param cell the cell
+	 * @param objectsBuffer the objects buffer
+	 * @return the object
+	 */
 	private Object setValueFromCell(String objectPath, Cell cell, Map<String, Object> objectsBuffer) {
 		String[] fieldInfo = objectPath.split(FIELD_SEPARATOR);
 
@@ -517,6 +638,13 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		return object;
 	}
 
+	/**
+	 * Gets the mapping row.
+	 *
+	 * @param blockMapping the block mapping
+	 * @param inputColumn the input column
+	 * @return the mapping row
+	 */
 	private BlockMappingRow getMappingRow(BlockMapping<?> blockMapping, String inputColumn) {
 		for (BlockMappingRow mapping : blockMapping.getRows()) {
 			List<String> columnsRange = MappingUtils.getColumnsRangeAsList(mapping.getFromColumn(),
@@ -527,18 +655,40 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 		}
 		return null;
 	}
+	
+	/**
+	 * The Class FlushInstruction.
+	 */
 	private class FlushInstruction {
 
+		/** The complexity. */
 		private final int complexity;
+		
+		/** The object to flush class name. */
 		private final String objectToFlushClassName;
+		
+		/** The flush path. */
 		private final String flushPath;
 
+		/**
+		 * Instantiates a new flush instruction.
+		 *
+		 * @param complexity the complexity
+		 * @param objectToFlushClassName the object to flush class name
+		 * @param flushPath the flush path
+		 */
 		public FlushInstruction(int complexity, String objectToFlushClassName, String flushPath) {
 			this.complexity = complexity;
 			this.objectToFlushClassName = objectToFlushClassName;
 			this.flushPath = flushPath;
 		}
 
+		/**
+		 * Equals.
+		 *
+		 * @param obj the obj
+		 * @return true, if successful
+		 */
 		@Override
 		public boolean equals(Object obj) {
 			if (obj instanceof FlushInstruction) {
@@ -547,6 +697,11 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 			return false;
 		}
 		
+		/**
+		 * Hash code.
+		 *
+		 * @return the int
+		 */
 		@Override
 		public int hashCode() {
 			return super.hashCode();
@@ -554,8 +709,18 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 
 	}
 
+	/**
+	 * The Class FlushInstructionComparator.
+	 */
 	private class FlushInstructionComparator implements Comparator<FlushInstruction> {
 
+		/**
+		 * Compare.
+		 *
+		 * @param o1 the o 1
+		 * @param o2 the o 2
+		 * @return the int
+		 */
 		@Override
 		public int compare(FlushInstruction o1, FlushInstruction o2) {
 			return o2.complexity - o1.complexity;

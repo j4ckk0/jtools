@@ -23,13 +23,28 @@ package org.jtools.tests.mappings;
 import org.jtools.tests.data.models.Address;
 import org.jtools.tests.data.models.Book;
 import org.jtools.tests.data.models.Person;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MappingsDemoPerson.
+ */
 public class MappingsDemoPerson extends AMappingsDemo {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1509793458200691610L;
 
+	/**
+	 * Instantiates a new mappings demo person.
+	 */
 	public MappingsDemoPerson() {
 		super(new Class[] { Person.class, Book.class, Address.class });
 	}
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		AMappingsDemo frame = new MappingsDemoPerson();
 		frame.pack();

@@ -37,6 +37,11 @@ import org.javers.core.JaversBuilder;
 import org.javers.core.json.JsonConverter;
 import org.jtools.data.DataException;
 import org.jtools.utils.CommonUtils;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class DataFileManager.
+ */
 public class DataFileManager {
 
 	//////////////////////////////
@@ -45,23 +50,34 @@ public class DataFileManager {
 	//
 	//////////////////////////////
 
+	/** The instance. */
 	private static DataFileManager instance;
 
+	/** The Constant SAVE_MAPPING_DIALOG_TITLE. */
 	public static final String SAVE_MAPPING_DIALOG_TITLE = "Select a mapping file";
 
+	/** The Constant DATA_FILE_MARK_PROPERTY. */
 	private static final String DATA_FILE_MARK_PROPERTY = "joj";
+	
+	/** The Constant DATA_FILE_MARK_VALUE. */
 	private static final String DATA_FILE_MARK_VALUE = "Java Object Jsonified";
 
+	/** The Constant DATA_CLASS_PROPERTY. */
 	private static final String DATA_CLASS_PROPERTY = "DATA_CLASS";
 
+	/** The Constant DATA_PROPERTY. */
 	private static final String DATA_PROPERTY = "DATA_OBJECT";
 
+	/** The Constant SAVE_DATA_DIALOG_TITLE. */
 	public static final String SAVE_DATA_DIALOG_TITLE = "Select data file";
 
+	/** The Constant LOAD_DATA_DIALOG_TITLE. */
 	public static final String LOAD_DATA_DIALOG_TITLE = "Select data file";
 
+	/** The Constant DATA_FILE_EXTENSION. */
 	public static final String DATA_FILE_EXTENSION = ".joj"; // Java Object Jsonified
 
+	/** The Constant jsonConverter. */
 	private static final JsonConverter jsonConverter = JaversBuilder.javers().build().getJsonConverter();
 
 	//////////////////////////////
@@ -70,6 +86,9 @@ public class DataFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instantiates a new data file manager.
+	 */
 	private DataFileManager() {
 
 	}
@@ -80,6 +99,11 @@ public class DataFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Instance.
+	 *
+	 * @return the data file manager
+	 */
 	public static DataFileManager instance() {
 		if (instance == null) {
 			instance = new DataFileManager();
@@ -87,6 +111,12 @@ public class DataFileManager {
 		return instance;
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @param dataList the data list
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void save(List<?> dataList) throws IOException {
 		File outputFile = CommonUtils.chooseFile(JFileChooser.SAVE_DIALOG, new File("."), SAVE_DATA_DIALOG_TITLE,
 				DATA_FILE_EXTENSION);
@@ -109,6 +139,13 @@ public class DataFileManager {
 		}
 	}
 
+	/**
+	 * Load.
+	 *
+	 * @return the list
+	 * @throws InstantiationException the instantiation exception
+	 * @throws DataException the data exception
+	 */
 	public List<?> load() throws InstantiationException, DataException {
 		File inputFilePath = CommonUtils.chooseFile(JFileChooser.OPEN_DIALOG, new File("."), LOAD_DATA_DIALOG_TITLE,
 				DATA_FILE_EXTENSION);
@@ -120,6 +157,14 @@ public class DataFileManager {
 		return null;
 	}
 
+	/**
+	 * Load.
+	 *
+	 * @param inputFilePath the input file path
+	 * @return the list
+	 * @throws InstantiationException the instantiation exception
+	 * @throws DataException the data exception
+	 */
 	private List<?> load(String inputFilePath) throws InstantiationException, DataException {
 		Properties properties;
 		try {
@@ -137,6 +182,12 @@ public class DataFileManager {
 	//
 	//////////////////////////////
 
+	/**
+	 * Data to properties.
+	 *
+	 * @param dataList the data list
+	 * @return the properties
+	 */
 	private Properties dataToProperties(List<?> dataList) {
 
 		Properties properties = new Properties();
@@ -155,6 +206,13 @@ public class DataFileManager {
 		return properties;
 	}
 
+	/**
+	 * Properties to data.
+	 *
+	 * @param properties the properties
+	 * @return the list
+	 * @throws DataException the data exception
+	 */
 	private List<?> propertiesToData(Properties properties) throws DataException {
 		// Test if the Properties is valid
 		Object fileMarkProperty = properties.get(DATA_FILE_MARK_PROPERTY);

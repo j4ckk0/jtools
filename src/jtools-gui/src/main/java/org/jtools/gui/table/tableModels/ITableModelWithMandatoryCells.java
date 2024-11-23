@@ -1,5 +1,9 @@
 package org.jtools.gui.table.tableModels;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ITableModelWithMandatoryCells.
+ */
 /*-
  * #%L
  * Java Tools - GUI
@@ -21,6 +25,13 @@ package org.jtools.gui.table.tableModels;
  */
 public interface ITableModelWithMandatoryCells {
 
+	/**
+	 * Checks if is cell mandatory.
+	 *
+	 * @param row the row
+	 * @param column the column
+	 * @return true, if is cell mandatory
+	 */
 	public boolean isCellMandatory(int row, int column);
 
 }

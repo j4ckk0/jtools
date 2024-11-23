@@ -44,29 +44,62 @@ import org.jtools.mappings.block.BlockMapping;
 import org.jtools.mappings.common.MappingUtils;
 import org.jtools.utils.concurrent.NamedCallable;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlockMappingTableCellEditor.
+ */
 class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 4289295153595588330L;
 
+	/** The possible classes. */
 	private final Class<?>[] possibleClasses;
 
+	/** The component. */
 	private final JLabel component = new JLabel();
 
+	/** The value. */
 	private transient Object value;
 
+	/**
+	 * Instantiates a new block mapping table cell editor.
+	 *
+	 * @param possibleClasses the possible classes
+	 */
 	public BlockMappingTableCellEditor(Class<?>... possibleClasses) {
 		this.possibleClasses = possibleClasses;
 	}
 
+	/**
+	 * Gets the cell editor value.
+	 *
+	 * @return the cell editor value
+	 */
 	@Override
 	public Object getCellEditorValue() {
 		return value;
 	}
 
+	/**
+	 * Sets the cell editor value.
+	 *
+	 * @param value the new cell editor value
+	 */
 	public void setCellEditorValue(Object value) {
 		this.value = value;
 	}
 
+	/**
+	 * Gets the table cell editor component.
+	 *
+	 * @param table the table
+	 * @param value the value
+	 * @param isSelected the is selected
+	 * @param row the row
+	 * @param column the column
+	 * @return the table cell editor component
+	 */
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		setCellEditorValue(value);
@@ -94,6 +127,15 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 		return component;
 	}
 
+	/**
+	 * Show editor asynch.
+	 *
+	 * @param table the table
+	 * @param objectField the object field
+	 * @param value the value
+	 * @param row the row
+	 * @param possibleColumns the possible columns
+	 */
 	private void showEditorAsynch(JTable table, Field objectField, Object value, int row, String[] possibleColumns) {
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -136,6 +178,13 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 		});
 	}
 
+	/**
+	 * Gets the on ok callable.
+	 *
+	 * @param editor the editor
+	 * @param table the table
+	 * @return the on ok callable
+	 */
 	private NamedCallable<Void> getOnOkCallable(BlockMappingEditor<?> editor, JTable table) {
 		return new NamedCallable<Void>() {
 
@@ -154,6 +203,13 @@ class BlockMappingTableCellEditor extends AbstractCellEditor implements TableCel
 		};
 	}
 
+	/**
+	 * Gets the object class.
+	 *
+	 * @param objectField the object field
+	 * @param possibleClasses the possible classes
+	 * @return the object class
+	 */
 	public static Class<?> getObjectClass(Field objectField, Class<?>[] possibleClasses) {
 		if (objectField == null) {
 			return null;

@@ -25,16 +25,43 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface IDataProvider.
+ */
 public interface IDataProvider extends IDataClassProvider {
 	
+	/**
+	 * Gets the provider name.
+	 *
+	 * @return the provider name
+	 */
 	public String getProviderName();
 
+	/**
+	 * Gets the data list.
+	 *
+	 * @return the data list
+	 */
 	public List<?> getDataList();
 
+	/**
+	 * Gets the data map.
+	 *
+	 * @return the data map
+	 */
 	public default Map<Class<?>, List<?>> getDataMap() {
 		return Collections.singletonMap(getDataClass(), getDataList());
 	}
 
+	/**
+	 * Gets the data list.
+	 *
+	 * @param <E> the element type
+	 * @param dataClass the data class
+	 * @return the data list
+	 */
 	@SuppressWarnings("unchecked")
 	public default <E> List<E> getDataList(Class<E> dataClass) {
 		Map<Class<?>, List<?>> dataMap = getDataMap();

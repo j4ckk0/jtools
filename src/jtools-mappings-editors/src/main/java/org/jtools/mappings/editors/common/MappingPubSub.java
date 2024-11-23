@@ -31,14 +31,29 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.ObjectMessage;
 import jakarta.jms.TextMessage;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Interface MappingPubSub.
+ */
 public interface MappingPubSub {
 
+	/** The Constant MAPPING_ADDED. */
 	public static final String MAPPING_ADDED = "MAPPING_ADDED";
 
+	/** The Constant MAPPING_REMOVED. */
 	public static final String MAPPING_REMOVED = "MAPPING_REMOVED";
 
+	/** The Constant MAPPING_CHANGED. */
 	public static final String MAPPING_CHANGED = "MAPPING_CHANGED";
 
+	/**
+	 * Cast message.
+	 *
+	 * @param message the message
+	 * @return the object message
+	 * @throws ClassCastException the class cast exception
+	 */
 	public static ObjectMessage castMessage(Message message) throws ClassCastException {
 		if (!(message instanceof ObjectMessage)) {
 			String msg = "Pub/Sub message received. Unexpected message type. Expected: " + TextMessage.class + ". Got: "
@@ -49,6 +64,15 @@ public interface MappingPubSub {
 
 		return (ObjectMessage) message;
 	}
+	
+	/**
+	 * Read message.
+	 *
+	 * @param message the message
+	 * @return the uuid
+	 * @throws JMSException the JMS exception
+	 * @throws ClassCastException the class cast exception
+	 */
 	public static UUID readMessage(Message message) throws JMSException, ClassCastException {
 		ObjectMessage objectMessage = castMessage(message);
 

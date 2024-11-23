@@ -41,14 +41,27 @@ import org.jtools.utils.messages.pubsub.PubSubMessageListener;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MappingSelector.
+ */
 public class MappingSelector extends JInternalFrame implements PubSubMessageListener, ItemListener {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4168476618127593101L;
 
+	/** The mappings combo box. */
 	private final JComboBox<IMapping> mappingsComboBox;
 
+	/** The mapping class. */
 	private final Class<? extends IMapping> mappingClass;
 
+	/**
+	 * Instantiates a new mapping selector.
+	 *
+	 * @param mappingClass the mapping class
+	 */
 	public MappingSelector(Class<? extends IMapping> mappingClass) {
 		super(mappingClass.getSimpleName() + " mappings selector");
 
@@ -77,6 +90,12 @@ public class MappingSelector extends JInternalFrame implements PubSubMessageList
 
 	}
 
+	/**
+	 * On message.
+	 *
+	 * @param topicName the topic name
+	 * @param message the message
+	 */
 	@Override
 	public void onMessage(String topicName, Message message) {
 		try {
@@ -113,6 +132,12 @@ public class MappingSelector extends JInternalFrame implements PubSubMessageList
 		}
 	}
 
+	/**
+	 * Gets the mapping for id.
+	 *
+	 * @param mappingId the mapping id
+	 * @return the mapping for id
+	 */
 	private IMapping getMappingForId(UUID mappingId) {
 		for(int i = 0; i < mappingsComboBox.getItemCount(); i++) {
 			IMapping mapping = mappingsComboBox.getItemAt(i);
@@ -123,6 +148,11 @@ public class MappingSelector extends JInternalFrame implements PubSubMessageList
 		return null;
 	}
 
+	/**
+	 * Item state changed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object selectedItem = e.getItem();
