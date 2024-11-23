@@ -85,7 +85,7 @@ public class TableColumnManager
 	/**
 	 *  Get the popup support.
 	 *
-	 *  @returns the popup support
+	 *  @return the popup support
 	 */
 	public boolean isMenuPopup()
 	{
@@ -96,7 +96,7 @@ public class TableColumnManager
 	 *  Add/remove support for a popup menu to the table header. The popup
 	 *  menu will give the user control over which columns are visible.
 	 *
-	 *  @param  menuPopop when true support for displaying a popup menu is added
+	 *  @param  menuPopup when true support for displaying a popup menu is added
 	 *					otherwise the popup menu is removed.
 	 */
 	public void setMenuPopup(boolean menuPopup)

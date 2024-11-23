@@ -143,8 +143,7 @@ public class ObjectUtils {
 
 	/**
 	 * 
-	 * @param <T>
-	 * @param t
+	 * @param objectClass
 	 * @return
 	 */
 	public static List<Field> getFields(Class<?> objectClass) {
