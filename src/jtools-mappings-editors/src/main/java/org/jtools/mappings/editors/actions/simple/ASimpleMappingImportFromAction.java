@@ -34,7 +34,7 @@ import javax.swing.JOptionPane;
 import org.jtools.data.DataEditor;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.mappings.simple.SimpleMapping;
-import org.jtools.mappings.simple.importers.ASimpleMappingImporter;
+import org.jtools.mappings.simple.importers.ISimpleMappingImporter;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.CommonUtils;
 import org.jtools.utils.gui.editor.AEditorAction;
@@ -49,7 +49,7 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 	private static final long serialVersionUID = -5347933034897416218L;
 
 	/** The importer. */
-	private transient ASimpleMappingImporter importer;
+	private transient ISimpleMappingImporter importer;
 
 	/** The simple mapping. */
 	private transient SimpleMapping<?> simpleMapping;
@@ -64,7 +64,7 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 	 * @param icon the icon
 	 * @param importer the importer
 	 */
-	protected ASimpleMappingImportFromAction(String name, Icon icon, ASimpleMappingImporter importer) {
+	protected ASimpleMappingImportFromAction(String name, Icon icon, ISimpleMappingImporter importer) {
 		super(name, icon);
 		this.importer = importer;
 	}
@@ -75,7 +75,7 @@ public abstract class ASimpleMappingImportFromAction extends AEditorAction {
 	 * @param name the name
 	 * @param importer the importer
 	 */
-	protected ASimpleMappingImportFromAction(String name, ASimpleMappingImporter importer) {
+	protected ASimpleMappingImportFromAction(String name, ISimpleMappingImporter importer) {
 		super(name);
 		this.importer = importer;
 	}

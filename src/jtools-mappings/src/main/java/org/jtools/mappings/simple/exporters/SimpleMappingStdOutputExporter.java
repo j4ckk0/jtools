@@ -37,7 +37,7 @@ import org.jtools.utils.objects.ObjectInfoProvider;
 /**
  * The Class SimpleMappingStdOutputExporter.
  */
-public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter {
+public class SimpleMappingStdOutputExporter implements ISimpleMappingExporter {
 
 	/** The instance. */
 	private static SimpleMappingStdOutputExporter instance;
@@ -87,7 +87,7 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter {
 	 */
 	private void writeHeaderLine(List<SimpleMappingRow> mappings) {
 		for (SimpleMappingRow mapping : mappings) {
-			int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
+			int index = MappingUtils.possibleColumns().indexOf(mapping.getOutputColumn());
 			Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell "
 					+ index + ") : " + mapping.getOutputColumnHeader());
 		}
@@ -119,7 +119,7 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter {
 						Method getter = ObjectInfoProvider.getObjectInfo(object.getClass()).findGetter(field);
 						if (getter != null) {
 
-							int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
+							int index = MappingUtils.possibleColumns().indexOf(mapping.getOutputColumn());
 
 							Object valueObject = getter.invoke(object);
 							Logger.getLogger(getClass().getName()).log(Level.INFO,

@@ -105,7 +105,7 @@ public class MappingUtils {
 	private static final char[] ALL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
 	/** The Constant possibleColumns. */
-	public static final List<String> possibleColumns = new ArrayList<>();
+	protected static final List<String> possibleColumns = new ArrayList<>();
 	static {
 		// Round 1
 		for (int i = 0; i < ALL_LETTERS.length; i++) {
@@ -118,6 +118,10 @@ public class MappingUtils {
 				possibleColumns.add("" + ALL_LETTERS[i] + ALL_LETTERS[j]);
 			}
 		}
+	}
+	
+	public static List<String> possibleColumns() {
+		return possibleColumns;
 	}
 
 	/**

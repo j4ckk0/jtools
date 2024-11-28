@@ -66,7 +66,7 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 						ComboBoxModel<String> aModel = getModel();
 						String current;
 						for (int i = 0; i < aModel.getSize(); i++) {
-							current = aModel.getElementAt(i).toString();
+							current = aModel.getElementAt(i);
 							if (current.toLowerCase().startsWith(text.toLowerCase())) {
 								tf.setText(current);
 								tf.setSelectionStart(text.length());
@@ -119,6 +119,7 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 	/**
 	 * Fire action event.
 	 */
+	@Override
 	public void fireActionEvent() {
 		super.fireActionEvent();
 	}
@@ -146,6 +147,7 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 		 * @param a the a
 		 * @throws BadLocationException the bad location exception
 		 */
+		@Override
 		public void insertString(int offset, String str, AttributeSet a) throws BadLocationException {
 			if (str == null)
 				return;

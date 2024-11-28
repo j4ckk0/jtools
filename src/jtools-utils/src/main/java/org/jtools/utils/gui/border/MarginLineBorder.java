@@ -45,7 +45,16 @@ public class MarginLineBorder extends LineBorder {
 	private static final long serialVersionUID = 4813496499535613615L;
 	
 	/** The right margin. */
-	private Integer topMargin, leftMargin, bottomMargin, rightMargin;
+	private Integer topMargin;
+	
+	/** The left margin. */
+	private Integer leftMargin;
+	
+	/** The bottom margin. */
+	private Integer bottomMargin;
+	
+	/** The right margin. */
+	private Integer rightMargin;
 
 	//////////////////////////////////////////////////
 	//

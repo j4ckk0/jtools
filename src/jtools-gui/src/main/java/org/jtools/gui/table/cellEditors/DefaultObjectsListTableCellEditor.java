@@ -34,9 +34,9 @@ import javax.swing.table.TableModel;
 
 import org.jtools.gui.list.ObjectsListPanel;
 import org.jtools.gui.table.tableModels.ITableModelWithCellsCustomAlignment;
+import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
 import org.jtools.gui.table.tableModels.ITableModelWithParameterizedObjectWrapper;
 import org.jtools.gui.table.tableModels.ITableModelWithParameterizedTypes;
-import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapper;
 import org.jtools.utils.objects.ObjectUtils;
 // TODO: Auto-generated Javadoc
 
@@ -60,7 +60,7 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 	public DefaultObjectsListTableCellEditor() {
 		super();
 	}
-	
+
 	/**
 	 * Gets the cell editor value.
 	 *
@@ -83,11 +83,11 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 	/**
 	 * Gets the table cell editor component.
 	 *
-	 * @param table the table
-	 * @param value the value
+	 * @param table      the table
+	 * @param value      the value
 	 * @param isSelected the is selected
-	 * @param row the row
-	 * @param column the column
+	 * @param row        the row
+	 * @param column     the column
 	 * @return the table cell editor component
 	 */
 	@Override
@@ -96,14 +96,14 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 
 		TableModel model = table.getModel();
 
-		Class<?> parameterizedType = getParameterizedType(model, value, row, column);
+		Class<?> parameterizedType = getParameterizedType(model, row, column);
 
 		if (parameterizedType != null) {
 			showEditorAsynch(table, parameterizedType, (List<?>) value);
 		}
 
 		if (model instanceof ITableModelWithCellsCustomAlignment) {
-			((JLabel) component).setHorizontalAlignment(
+			component.setHorizontalAlignment(
 					((ITableModelWithCellsCustomAlignment) model).getCellHorizontalAlignment(row, column));
 		}
 
@@ -115,13 +115,13 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 	/**
 	 * Gets the parameterized type.
 	 *
-	 * @param model the model
+	 * @param model  the model
 	 * @param value2 the value 2
-	 * @param row the row
+	 * @param row    the row
 	 * @param column the column
 	 * @return the parameterized type
 	 */
-	private Class<?> getParameterizedType(TableModel model, Object value2, int row, int column) {
+	private Class<?> getParameterizedType(TableModel model, int row, int column) {
 		if (value instanceof ObjectWrapper) {
 			if (model instanceof ITableModelWithParameterizedObjectWrapper) {
 				return ((ITableModelWithParameterizedObjectWrapper) model).getWrappedParameterizedClass(row, column);
@@ -162,9 +162,9 @@ public class DefaultObjectsListTableCellEditor extends AbstractCellEditor implem
 	/**
 	 * Show editor asynch.
 	 *
-	 * @param table the table
+	 * @param table             the table
 	 * @param parameterizedType the parameterized type
-	 * @param value the value
+	 * @param value             the value
 	 */
 	private void showEditorAsynch(JTable table, Class<?> parameterizedType, List<?> value) {
 		SwingUtilities.invokeLater(new Runnable() {

@@ -258,7 +258,7 @@ public class BlockMappingExcelImporter implements IBlockMappingImporter {
 			}
 
 			// None empty cell. Get the column letter to get the corresponding mapping row
-			String inputColumn = MappingUtils.possibleColumns.get(cell.getColumnIndex());
+			String inputColumn = MappingUtils.possibleColumns().get(cell.getColumnIndex());
 
 			// Build the "field path" for the cell
 			BlockMapping<?> testedBlockMapping = blockMapping;

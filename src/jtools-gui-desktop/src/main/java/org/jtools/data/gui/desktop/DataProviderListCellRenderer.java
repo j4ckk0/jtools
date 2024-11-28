@@ -38,6 +38,13 @@ public class DataProviderListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = 5381004978356081557L;
 
 	/**
+	 * Instantiates a new data provider list cell renderer.
+	 */
+	public DataProviderListCellRenderer() {
+		super();
+	}
+	
+	/**
 	 * Gets the list cell renderer component.
 	 *
 	 * @param list the list

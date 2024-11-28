@@ -36,7 +36,7 @@ import org.jtools.data.provider.IDataProvider;
 import org.jtools.mappings.common.MappingException;
 import org.jtools.mappings.simple.SimpleMapping;
 import org.jtools.mappings.simple.SimpleMappingRow;
-import org.jtools.mappings.simple.exporters.ASimpleMappingExporter;
+import org.jtools.mappings.simple.exporters.ISimpleMappingExporter;
 import org.jtools.mappings.simple.io.SimpleMappingFileManager;
 import org.jtools.utils.CommonUtils;
 // TODO: Auto-generated Javadoc
@@ -56,7 +56,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 	private transient SimpleMapping<?> mapping;
 
 	/** The exporter. */
-	private transient ASimpleMappingExporter exporter;
+	private transient ISimpleMappingExporter exporter;
 
 	/**
 	 * Instantiates a new a simple mapping export to action.
@@ -65,7 +65,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 	 * @param icon the icon
 	 * @param exporter the exporter
 	 */
-	protected ASimpleMappingExportToAction(String name, Icon icon, ASimpleMappingExporter exporter) {
+	protected ASimpleMappingExportToAction(String name, Icon icon, ISimpleMappingExporter exporter) {
 		super(name, icon);
 		this.exporter = exporter;
 	}
@@ -76,7 +76,7 @@ public abstract class ASimpleMappingExportToAction extends AbstractAction {
 	 * @param name the name
 	 * @param exporter the exporter
 	 */
-	protected ASimpleMappingExportToAction(String name, ASimpleMappingExporter exporter) {
+	protected ASimpleMappingExportToAction(String name, ISimpleMappingExporter exporter) {
 		super(name);
 		this.exporter = exporter;
 	}

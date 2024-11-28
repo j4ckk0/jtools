@@ -129,7 +129,7 @@ public class DefaultObjectTableCellEditor extends AbstractCellEditor implements 
 		}
 
 		if(model instanceof ITableModelWithCellsCustomAlignment) {
-			((JLabel) component).setHorizontalAlignment(((ITableModelWithCellsCustomAlignment)model).getCellHorizontalAlignment(row, column));
+			component.setHorizontalAlignment(((ITableModelWithCellsCustomAlignment)model).getCellHorizontalAlignment(row, column));
 		}
 		
 		component.setText(getCellEditorValue() != null ? getCellEditorValue().toString() : null);

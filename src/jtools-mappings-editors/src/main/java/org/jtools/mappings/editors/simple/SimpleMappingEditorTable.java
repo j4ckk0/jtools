@@ -65,7 +65,7 @@ public class SimpleMappingEditorTable extends JTable {
 		getColumnModel().getColumn(SimpleMappingEditorColumn.OUTPUT_COLUMN_HEARDER_COL.getColumnIndex()).setPreferredWidth(100);
 		getColumnModel().getColumn(SimpleMappingEditorColumn.OUTPUT_COLUMN_HEARDER_COL.getColumnIndex()).setCellEditor(new DefaultCellEditor(new JTextField()));
 
-		getColumnModel().getColumn(SimpleMappingEditorColumn.OUTPUT_COLUMN_COL.getColumnIndex()).setCellEditor(new DefaultCellEditor(new JComboBox<>(MappingUtils.possibleColumns.toArray())));
+		getColumnModel().getColumn(SimpleMappingEditorColumn.OUTPUT_COLUMN_COL.getColumnIndex()).setCellEditor(new DefaultCellEditor(new JComboBox<>(MappingUtils.possibleColumns().toArray())));
 		getColumnModel().getColumn(SimpleMappingEditorColumn.OUTPUT_COLUMN_COL.getColumnIndex()).setPreferredWidth(70);
 
 		getColumnModel().getColumn(SimpleMappingEditorColumn.MAPPING_ARROW_COL.getColumnIndex()).setPreferredWidth(4);

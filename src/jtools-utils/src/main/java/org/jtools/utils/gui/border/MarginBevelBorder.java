@@ -42,7 +42,16 @@ public class MarginBevelBorder extends BevelBorder {
 	private static final long serialVersionUID = 2247287585606210963L;
 	
 	/** The right margin. */
-	private int topMargin, leftMargin, bottomMargin, rightMargin;
+	private int topMargin;
+	
+	/** The left margin. */
+	private int leftMargin;
+	
+	/** The bottom margin. */
+	private int bottomMargin;
+	
+	/** The right margin. */
+	private int rightMargin;
 
 	//////////////////////////////////////////////////
 	//

@@ -45,6 +45,7 @@ public class ObjectWrapperCellEditor extends AbstractCellEditor implements Table
 	 * Instantiates a new object wrapper cell editor.
 	 */
 	public ObjectWrapperCellEditor() {
+		super();
 	}
 	
 	/**

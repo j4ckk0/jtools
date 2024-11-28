@@ -43,6 +43,7 @@ public class ObjectWrapperCellRenderer extends DefaultTableCellRenderer {
 	 * Instantiates a new object wrapper cell renderer.
 	 */
 	public ObjectWrapperCellRenderer() {
+		super();
 	}
 
 	/**

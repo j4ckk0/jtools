@@ -175,8 +175,8 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 
 				String headerValue = mappingRow.getHeaderValue();
 				if (headerValue != null) {
-					int fromColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getFromColumn());
-					int toColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getToColumn());
+					int fromColumn = MappingUtils.possibleColumns().indexOf(mappingRow.getFromColumn());
+					int toColumn = MappingUtils.possibleColumns().indexOf(mappingRow.getToColumn());
 
 					XSSFCell cell = row.createCell(fromColumn);
 
@@ -245,8 +245,8 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 			for (BlockMappingRow mappingRow : mapping.getRows()) {
 
 				try {
-					int fromColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getFromColumn());
-					int toColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getToColumn());
+					int fromColumn = MappingUtils.possibleColumns().indexOf(mappingRow.getFromColumn());
+					int toColumn = MappingUtils.possibleColumns().indexOf(mappingRow.getToColumn());
 
 					Field field = mappingRow.getObjectField();
 					if (field != null) {
@@ -306,7 +306,7 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	private int getStartColumn(BlockMapping<?> mapping) {
 		Integer startColumn = null;
 		for (BlockMappingRow mappingRow : mapping.getRows()) {
-			int mappingFromColumn = MappingUtils.possibleColumns.indexOf(mappingRow.getFromColumn());
+			int mappingFromColumn = MappingUtils.possibleColumns().indexOf(mappingRow.getFromColumn());
 			if (startColumn == null || mappingFromColumn < startColumn) {
 				startColumn = mappingFromColumn;
 			}

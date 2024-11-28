@@ -47,7 +47,7 @@ import org.jtools.utils.objects.ObjectInfoProvider;
 /**
  * The Class SimpleMappingExcelImporter.
  */
-public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
+public class SimpleMappingExcelImporter implements ISimpleMappingImporter {
 
 	/** The instance. */
 	private static SimpleMappingExcelImporter instance;
@@ -137,7 +137,7 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 
-					String inputColumn = MappingUtils.possibleColumns.get(cell.getColumnIndex());
+					String inputColumn = MappingUtils.possibleColumns().get(cell.getColumnIndex());
 
 					SimpleMappingRow mapping = getMapping(mappings, inputColumn);
 					if (mapping != null) {

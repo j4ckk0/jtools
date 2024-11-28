@@ -88,7 +88,7 @@ public class TableUtils {
 			}
 
 			if (cellEditor instanceof TableCellEditor) {
-				column.setCellEditor(new AutoStopEditingCellEditor((TableCellEditor) cellEditor));
+				column.setCellEditor(new AutoStopEditingCellEditor(cellEditor));
 			}
 		}
 

@@ -1,4 +1,4 @@
-package org.jtools.mappings.simple.exporters;
+package org.jtools.mappings.simple.importers;
 
 /*-
  * #%L
@@ -23,31 +23,23 @@ package org.jtools.mappings.simple.exporters;
 import java.io.IOException;
 import java.util.List;
 
-import org.jtools.mappings.common.MappingException;
 import org.jtools.mappings.simple.SimpleMappingRow;
-
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class ASimpleMappingExporter.
+ * The Class ASimpleMappingImporter.
  */
-public abstract class ASimpleMappingExporter {
+public interface ISimpleMappingImporter {
 
 	/**
-	 * Instantiates a new a simple mapping exporter.
-	 */
-	protected ASimpleMappingExporter() {
-	}
-
-	/**
-	 * Export data.
+	 * Import data.
 	 *
-	 * @param <T>      the generic type
-	 * @param data     the data
-	 * @param mappings the mappings
-	 * @throws IOException      Signals that an I/O exception has occurred.
-	 * @throws MappingException the mapping exception
+	 * @param <T>         the generic type
+	 * @param objectClass the object class
+	 * @param mappings    the mappings
+	 * @return the list
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public abstract <T> void exportData(List<T> data, List<SimpleMappingRow> mappings)
-			throws IOException, MappingException;
+	public <T> List<T> importData(Class<T> objectClass, List<SimpleMappingRow> mappings) throws IOException;
 
 }

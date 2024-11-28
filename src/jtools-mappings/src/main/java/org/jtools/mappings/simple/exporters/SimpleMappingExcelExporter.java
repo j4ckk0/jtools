@@ -48,7 +48,7 @@ import org.jtools.utils.objects.ObjectInfoProvider;
 /**
  * The Class SimpleMappingExcelExporter.
  */
-public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
+public class SimpleMappingExcelExporter implements ISimpleMappingExporter {
 
 	/** The instance. */
 	private static SimpleMappingExcelExporter instance;
@@ -153,7 +153,7 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 
 		// exclude the first column which is the ID field
 		for (SimpleMappingRow mapping : mappings) {
-			int i = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
+			int i = MappingUtils.possibleColumns().indexOf(mapping.getOutputColumn());
 			XSSFCell headerCell = headerRow.createCell(i);
 			headerCell.setCellValue(mapping.getOutputColumnHeader());
 			headerCell.setCellStyle(MappingUtils.getCellStyle(workbook, MappingCellStyleType.HEADER));
@@ -185,7 +185,7 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 						if (getter != null) {
 							Object valueObject = getter.invoke(object);
 
-							int i = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
+							int i = MappingUtils.possibleColumns().indexOf(mapping.getOutputColumn());
 							XSSFCell cell = row.createCell(i);
 
 							MappingUtils.setCellValue(workbook, cell, valueObject);
