@@ -132,6 +132,13 @@ public class AutoCompleteComboBox extends JComboBox<String> implements JComboBox
 		private static final long serialVersionUID = 7985172243562749588L;
 
 		/**
+		 * Instantiates a new CB document.
+		 */
+		protected CBDocument() {
+			super();
+		}
+		
+		/**
 		 * Insert string.
 		 *
 		 * @param offset the offset

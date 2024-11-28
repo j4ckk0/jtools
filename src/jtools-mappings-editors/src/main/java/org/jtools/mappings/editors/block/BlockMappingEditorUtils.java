@@ -31,16 +31,23 @@ import org.jtools.mappings.block.BlockMappingRow;
  * The Class BlockMappingEditorUtils.
  */
 public class BlockMappingEditorUtils {
-		
-		/**
-		 * Gets the block mapping editor rows.
-		 *
-		 * @param blockMapping the block mapping
-		 * @return the block mapping editor rows
-		 */
-		public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
+
+	/**
+	 * Instantiates a new block mapping editor utils.
+	 */
+	private BlockMappingEditorUtils() {
+		super();
+	}
+
+	/**
+	 * Gets the block mapping editor rows.
+	 *
+	 * @param blockMapping the block mapping
+	 * @return the block mapping editor rows
+	 */
+	public static List<BlockMappingEditorRow> getBlockMappingEditorRows(BlockMapping<?> blockMapping) {
 		List<BlockMappingEditorRow> rows = new ArrayList<>();
-		for(BlockMappingRow row : blockMapping.getRows()) {
+		for (BlockMappingRow row : blockMapping.getRows()) {
 			rows.add(new BlockMappingEditorRow(row));
 		}
 		return rows;

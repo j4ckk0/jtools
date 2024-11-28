@@ -40,6 +40,13 @@ import org.jtools.utils.dates.DateFormatManager;
 public class TestSimpleExporter {
 	
 	/**
+	 * Instantiates a new test simple exporter.
+	 */
+	private TestSimpleExporter() {
+		super();
+	}
+
+	/**
 	 * The main method.
 	 *
 	 * @param args the arguments

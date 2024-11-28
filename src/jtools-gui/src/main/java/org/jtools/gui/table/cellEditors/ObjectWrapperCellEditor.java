@@ -42,6 +42,12 @@ public class ObjectWrapperCellEditor extends AbstractCellEditor implements Table
 	private transient TableCellEditor delegate;
 
 	/**
+	 * Instantiates a new object wrapper cell editor.
+	 */
+	public ObjectWrapperCellEditor() {
+	}
+	
+	/**
 	 * Gets the cell editor value.
 	 *
 	 * @return the cell editor value

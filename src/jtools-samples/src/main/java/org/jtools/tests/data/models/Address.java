@@ -38,6 +38,13 @@ public class Address {
 	private String city;
 
 	/**
+	 * Instantiates a new address.
+	 */
+	public Address() {
+		super();
+	}
+
+	/**
 	 * Gets the number.
 	 *
 	 * @return the number

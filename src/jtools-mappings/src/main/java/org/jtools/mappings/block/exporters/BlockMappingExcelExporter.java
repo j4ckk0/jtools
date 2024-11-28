@@ -82,9 +82,15 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	}
 
 	/**
+	 * Instantiates a new block mapping excel exporter.
+	 */
+	private BlockMappingExcelExporter() {
+	}
+
+	/**
 	 * Export data.
 	 *
-	 * @param <T> the generic type
+	 * @param <T>      the generic type
 	 * @param dataList the data list
 	 * @param mappings the mappings
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -131,9 +137,9 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	/**
 	 * Export.
 	 *
-	 * @param <T> the generic type
-	 * @param dataList the data list
-	 * @param mapping the mapping
+	 * @param <T>        the generic type
+	 * @param dataList   the data list
+	 * @param mapping    the mapping
 	 * @param outputFile the output file
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -158,8 +164,8 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	 *
 	 * @param mappings the mappings
 	 * @param workbook the workbook
-	 * @param sheet the sheet
-	 * @param row the row
+	 * @param sheet    the sheet
+	 * @param row      the row
 	 */
 	private void writeHeader(List<BlockMapping<?>> mappings, XSSFWorkbook workbook, XSSFSheet sheet, XSSFRow row) {
 		List<BlockMapping<?>> subMappings = new ArrayList<>();
@@ -202,13 +208,14 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	/**
 	 * Write data.
 	 *
-	 * @param object the object
-	 * @param mapping the mapping
+	 * @param object   the object
+	 * @param mapping  the mapping
 	 * @param workbook the workbook
-	 * @param sheet the sheet
-	 * @param row the row
+	 * @param sheet    the sheet
+	 * @param row      the row
 	 */
-	private void writeData(Object object, BlockMapping<?> mapping, XSSFWorkbook workbook, XSSFSheet sheet, XSSFRow row) {
+	private void writeData(Object object, BlockMapping<?> mapping, XSSFWorkbook workbook, XSSFSheet sheet,
+			XSSFRow row) {
 		// Case of a collection as value
 		if (Collection.class.isAssignableFrom(object.getClass())) {
 			int rowIndexBefore = rowIndex;
@@ -310,7 +317,7 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	/**
 	 * Gets the row.
 	 *
-	 * @param sheet the sheet
+	 * @param sheet    the sheet
 	 * @param rowIndex the row index
 	 * @return the row
 	 */
@@ -334,7 +341,7 @@ public class BlockMappingExcelExporter implements IBlockMappingExporter {
 	/**
 	 * Format header region.
 	 *
-	 * @param sheet the sheet
+	 * @param sheet            the sheet
 	 * @param cellRangeAddress the cell range address
 	 */
 	private void formatHeaderRegion(XSSFSheet sheet, CellRangeAddress cellRangeAddress) {

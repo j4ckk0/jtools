@@ -59,17 +59,24 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 	 * @return the simple mapping excel exporter
 	 */
 	public static SimpleMappingExcelExporter instance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new SimpleMappingExcelExporter();
 		}
 		return instance;
 	}
 
 	/**
+	 * Instantiates a new simple mapping excel exporter.
+	 */
+	private SimpleMappingExcelExporter() {
+		super();
+	}
+
+	/**
 	 * Export data.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
+	 * @param <T>      the generic type
+	 * @param data     the data
 	 * @param mappings the mappings
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -89,18 +96,19 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 		});
 
 		int result = fileChooser.showSaveDialog(null);
-		if(result == JFileChooser.APPROVE_OPTION) {
+		if (result == JFileChooser.APPROVE_OPTION) {
 			try {
 
 				File outputFile = fileChooser.getSelectedFile();
-				if(!outputFile.getAbsolutePath().endsWith(CommonUtils.EXCEL_FILES_EXTENSION)){
+				if (!outputFile.getAbsolutePath().endsWith(CommonUtils.EXCEL_FILES_EXTENSION)) {
 					outputFile = new File(outputFile.getAbsolutePath() + CommonUtils.EXCEL_FILES_EXTENSION);
 				}
 
 				SimpleMappingExcelExporter.instance().export(data, mappings, outputFile);
 
-				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the file ?", "Export succeed", JOptionPane.YES_NO_OPTION);
-				if(confirm == JOptionPane.YES_OPTION) {
+				int confirm = JOptionPane.showConfirmDialog(null, "Do you want to open the file ?", "Export succeed",
+						JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
 					Desktop.getDesktop().open(outputFile);
 				}
 
@@ -111,13 +119,12 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 		}
 	}
 
-
 	/**
 	 * Export.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
-	 * @param mappings the mappings
+	 * @param <T>        the generic type
+	 * @param data       the data
+	 * @param mappings   the mappings
 	 * @param outputFile the output file
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -139,13 +146,13 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 	 *
 	 * @param mappings the mappings
 	 * @param workbook the workbook
-	 * @param sheet the sheet
+	 * @param sheet    the sheet
 	 */
 	private void writeHeaderLine(List<SimpleMappingRow> mappings, XSSFWorkbook workbook, XSSFSheet sheet) {
 		XSSFRow headerRow = sheet.createRow(0);
 
 		// exclude the first column which is the ID field
-		for(SimpleMappingRow mapping : mappings) {
+		for (SimpleMappingRow mapping : mappings) {
 			int i = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
 			XSSFCell headerCell = headerRow.createCell(i);
 			headerCell.setCellValue(mapping.getOutputColumnHeader());
@@ -156,25 +163,26 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 	/**
 	 * Write data lines.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
+	 * @param <T>      the generic type
+	 * @param data     the data
 	 * @param mappings the mappings
 	 * @param workbook the workbook
-	 * @param sheet the sheet
+	 * @param sheet    the sheet
 	 */
-	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings, XSSFWorkbook workbook, XSSFSheet sheet) {
+	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings, XSSFWorkbook workbook,
+			XSSFSheet sheet) {
 
 		int rowCount = 1;
-		for(T object : data) {
+		for (T object : data) {
 			XSSFRow row = sheet.createRow(rowCount);
 
-			for(SimpleMappingRow mapping : mappings) {
+			for (SimpleMappingRow mapping : mappings) {
 				try {
 					Field field = mapping.getObjectField();
-					if(field != null) {
+					if (field != null) {
 
 						Method getter = ObjectInfoProvider.getObjectInfo(object.getClass()).findGetter(field);
-						if(getter != null) {
+						if (getter != null) {
 							Object valueObject = getter.invoke(object);
 
 							int i = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
@@ -182,10 +190,11 @@ public class SimpleMappingExcelExporter extends ASimpleMappingExporter {
 
 							MappingUtils.setCellValue(workbook, cell, valueObject);
 						} else {
-							Logger.getLogger(getClass().getName()).log(Level.FINE, "getter not found for field " + field.getName());
+							Logger.getLogger(getClass().getName()).log(Level.FINE,
+									"getter not found for field " + field.getName());
 						}
 					}
-				} catch(Exception e) {
+				} catch (Exception e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}

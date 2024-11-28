@@ -35,12 +35,19 @@ public class DefaultBusConfig {
 
 	/** The Constant FIRST_PORT. */
 	private static final int FIRST_PORT = 61616;
-	
+
 	/** The Constant LAST_PORT. */
 	private static final int LAST_PORT = 61716;
 
 	/** The Constant BASE_URL. */
 	private static final String BASE_URL = "tcp://localhost:";
+
+	/**
+	 * Instantiates a new default bus config.
+	 */
+	private DefaultBusConfig() {
+		super();
+	}
 
 	/**
 	 * Gets the url.

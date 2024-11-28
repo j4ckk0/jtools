@@ -41,6 +41,13 @@ public class DefaultObjectsListTableCellRenderer extends DefaultTableCellRendere
 	private static final long serialVersionUID = -2847050927447501258L;
 
 	/**
+	 * Instantiates a new default objects list table cell renderer.
+	 */
+	public DefaultObjectsListTableCellRenderer() {
+		super();
+	}
+	
+	/**
 	 * Gets the table cell renderer component.
 	 *
 	 * @param table the table

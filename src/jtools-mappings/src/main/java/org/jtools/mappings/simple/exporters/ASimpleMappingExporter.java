@@ -33,14 +33,21 @@ import org.jtools.mappings.simple.SimpleMappingRow;
 public abstract class ASimpleMappingExporter {
 
 	/**
+	 * Instantiates a new a simple mapping exporter.
+	 */
+	protected ASimpleMappingExporter() {
+	}
+
+	/**
 	 * Export data.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
+	 * @param <T>      the generic type
+	 * @param data     the data
 	 * @param mappings the mappings
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException      Signals that an I/O exception has occurred.
 	 * @throws MappingException the mapping exception
 	 */
-	public abstract <T> void exportData(List<T> data, List<SimpleMappingRow> mappings) throws IOException, MappingException;
+	public abstract <T> void exportData(List<T> data, List<SimpleMappingRow> mappings)
+			throws IOException, MappingException;
 
 }

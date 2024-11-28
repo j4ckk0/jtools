@@ -32,6 +32,12 @@ import org.jtools.mappings.simple.SimpleMappingRow;
 public abstract class ASimpleMappingImporter {
 
 	/**
+	 * Instantiates a new a simple mapping importer.
+	 */
+	protected ASimpleMappingImporter() {
+	}
+	
+	/**
 	 * Import data.
 	 *
 	 * @param <T> the generic type

@@ -94,7 +94,7 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	public DataEditor(Class<?>... objectClasses) {
 		this(null, objectClasses);
 	}
-	
+
 	/**
 	 * Instantiates a new data editor.
 	 *
@@ -230,7 +230,7 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 	// IDataProvider methods
 	//
 	// //////////////////////////////
-	
+
 	/**
 	 * Gets the provider name.
 	 *
@@ -362,6 +362,13 @@ public class DataEditor extends AEditor implements ItemListener, IDataProvider {
 
 		/** The Constant serialVersionUID. */
 		private static final long serialVersionUID = -6462779953123291622L;
+
+		/**
+		 * Instantiates a new object class combobox renderer.
+		 */
+		public ObjectClassComboboxRenderer() {
+			super();
+		}
 
 		/**
 		 * Gets the list cell renderer component.

@@ -49,12 +49,26 @@ import org.jtools.gui.table.tableModels.ITableModelWithObjectWrapper.ObjectWrapp
  * The Class TableUtils.
  */
 public class TableUtils {
-	
+
+
+	//////////////////////////////
+	//
+	// Constructors
+	//
+	//////////////////////////////
+
+	/**
+	 * Instantiates a new table utils.
+	 */
+	private TableUtils() {
+	}
+
 	//////////////////////////////
 	//
 	// Public methods
 	//
 	//////////////////////////////
+
 	/**
 	 * Install auto stop editing cell editors.
 	 *
@@ -79,7 +93,7 @@ public class TableUtils {
 		}
 
 	}
-	
+
 	/**
 	 * Install centered labels cell renderers.
 	 *
@@ -104,7 +118,7 @@ public class TableUtils {
 		}
 
 	}
-	
+
 	/**
 	 * Install default table cell editors.
 	 *

@@ -38,12 +38,19 @@ public class MappingListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -7027193234153254198L;
 
 	/**
+	 * Instantiates a new mapping list cell renderer.
+	 */
+	public MappingListCellRenderer() {
+		super();
+	}
+
+	/**
 	 * Gets the list cell renderer component.
 	 *
-	 * @param list the list
-	 * @param value the value
-	 * @param index the index
-	 * @param isSelected the is selected
+	 * @param list         the list
+	 * @param value        the value
+	 * @param index        the index
+	 * @param isSelected   the is selected
 	 * @param cellHasFocus the cell has focus
 	 * @return the list cell renderer component
 	 */

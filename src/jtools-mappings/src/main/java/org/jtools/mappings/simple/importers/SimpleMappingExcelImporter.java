@@ -65,11 +65,17 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 	}
 
 	/**
+	 * Instantiates a new simple mapping excel importer.
+	 */
+	private SimpleMappingExcelImporter() {
+	}
+
+	/**
 	 * Import data.
 	 *
-	 * @param <T> the generic type
+	 * @param <T>         the generic type
 	 * @param objectClass the object class
-	 * @param mappings the mappings
+	 * @param mappings    the mappings
 	 * @return the list
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -92,10 +98,10 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 	/**
 	 * Import data.
 	 *
-	 * @param <T> the generic type
-	 * @param objectClass the object class
-	 * @param mappings the mappings
-	 * @param file the file
+	 * @param <T>               the generic type
+	 * @param objectClass       the object class
+	 * @param mappings          the mappings
+	 * @param file              the file
 	 * @param firstDataRowIndex the first data row index
 	 * @return the list
 	 */
@@ -142,7 +148,7 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 								if (setter.getParameterCount() == 1) {
 									Parameter parameter = setter.getParameters()[0];
 									Class<?> parameterType = parameter.getType();
-									
+
 									try {
 
 										MappingUtils.setValueFromCell(cell, object, setter);
@@ -191,7 +197,7 @@ public class SimpleMappingExcelImporter extends ASimpleMappingImporter {
 	/**
 	 * Gets the mapping.
 	 *
-	 * @param mappings the mappings
+	 * @param mappings    the mappings
 	 * @param inputColumn the input column
 	 * @return the mapping
 	 */

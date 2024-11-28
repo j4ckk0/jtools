@@ -37,7 +37,14 @@ import org.jtools.utils.concurrent.NamedCallable;
  * The Class TestBlockImporter.
  */
 public class TestBlockImporter {
-	
+
+	/**
+	 * Instantiates a new test block importer.
+	 */
+	private TestBlockImporter() {
+		super();
+	}
+
 	/**
 	 * The main method.
 	 *

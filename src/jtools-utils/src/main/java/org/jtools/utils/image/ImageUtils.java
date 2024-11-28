@@ -51,6 +51,13 @@ import javax.swing.UIManager;
 public class ImageUtils {
 
 	/**
+	 * Instantiates a new image utils.
+	 */
+	private ImageUtils() {
+		super();
+	}
+
+	/**
 	 * Hex 2 rgb.
 	 *
 	 * @param colorStr the color str

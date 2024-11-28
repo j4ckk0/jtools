@@ -53,6 +53,13 @@ public class DefaultObjectTableCellEditor extends AbstractCellEditor implements 
 	private transient Object value;
 
 	/**
+	 * Instantiates a new default object table cell editor.
+	 */
+	public DefaultObjectTableCellEditor() {
+		super();
+	}
+	
+	/**
 	 * Gets the cell editor value.
 	 *
 	 * @return the cell editor value

@@ -36,6 +36,13 @@ public class DefaultObjectListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -6782564778984334994L;
 
 	/**
+	 * Instantiates a new default object list cell renderer.
+	 */
+	public DefaultObjectListCellRenderer() {
+		super();
+	}
+	
+	/**
 	 * Gets the list cell renderer component.
 	 *
 	 * @param list the list

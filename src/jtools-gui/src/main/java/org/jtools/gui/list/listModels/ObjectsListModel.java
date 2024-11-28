@@ -37,6 +37,13 @@ public class ObjectsListModel<E extends Object> extends DefaultListModel<E> {
 	private static final long serialVersionUID = -890234908906634753L;
 
 	/**
+	 * Instantiates a new objects list model.
+	 */
+	public ObjectsListModel() {
+		super();
+	}
+	
+	/**
 	 * Gets the elements.
 	 *
 	 * @return the elements

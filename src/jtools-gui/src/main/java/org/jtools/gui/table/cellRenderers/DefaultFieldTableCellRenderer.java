@@ -37,6 +37,13 @@ public class DefaultFieldTableCellRenderer extends DefaultTableCellRenderer {
 	private static final long serialVersionUID = 439493272034511576L;
 
 	/**
+	 * Instantiates a new default field table cell renderer.
+	 */
+	public DefaultFieldTableCellRenderer() {
+		super();
+	}
+	
+	/**
 	 * Gets the table cell renderer component.
 	 *
 	 * @param table the table

@@ -30,6 +30,13 @@ import java.net.ServerSocket;
 public class NetworkUtils {
 
 	/**
+	 * Instantiates a new network utils.
+	 */
+	private NetworkUtils() {
+		super();
+	}
+
+	/**
 	 * Gets the free port.
 	 *
 	 * @param ports the ports

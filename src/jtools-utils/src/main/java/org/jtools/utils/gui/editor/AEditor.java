@@ -56,21 +56,28 @@ public abstract class AEditor extends JPanel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1830181888153315752L;
-	
+
+	/**
+	 * Instantiates a new a editor.
+	 */
+	protected AEditor() {
+		super();
+	}
+
 	/**
 	 * Save.
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	protected abstract void save() throws IOException;
-	
+
 	/**
 	 * Gets the editor name.
 	 *
 	 * @return the editor name
 	 */
 	protected abstract String getEditorName();
-	
+
 	/**
 	 * On window opened.
 	 */
@@ -104,14 +111,14 @@ public abstract class AEditor extends JPanel {
 		Container contentPane = editorFrame.getContentPane();
 
 		buildContentPane(contentPane, onOK, onCancel);
-		
+
 		editorFrame.addWindowListener(new WindowAdapter() {
-			
+
 			@Override
 			public void windowOpened(WindowEvent e) {
 				onWindowOpened();
 			}
-			
+
 			@Override
 			public void windowClosed(WindowEvent e) {
 				onWindowClosed();
@@ -167,14 +174,14 @@ public abstract class AEditor extends JPanel {
 		Container contentPane = editorFrame.getContentPane();
 
 		buildContentPane(contentPane, onOK, onCancel);
-		
+
 		editorFrame.addWindowListener(new WindowAdapter() {
-			
+
 			@Override
 			public void windowOpened(WindowEvent e) {
 				onWindowOpened();
 			}
-			
+
 			@Override
 			public void windowClosed(WindowEvent e) {
 				onWindowClosed();
@@ -228,14 +235,14 @@ public abstract class AEditor extends JPanel {
 		Container contentPane = editorFrame.getContentPane();
 
 		buildContentPane(contentPane, onOK, onCancel);
-		
+
 		editorFrame.addInternalFrameListener(new InternalFrameAdapter() {
-			
+
 			@Override
 			public void internalFrameOpened(InternalFrameEvent e) {
 				onWindowOpened();
 			}
-			
+
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {
 				onWindowClosed();
@@ -368,7 +375,7 @@ public abstract class AEditor extends JPanel {
 				close();
 				return null;
 			}
-			
+
 			@Override
 			public String getName() {
 				return "Close";
@@ -388,7 +395,7 @@ public abstract class AEditor extends JPanel {
 				save();
 				return null;
 			}
-			
+
 			@Override
 			public String getName() {
 				return "Save";
@@ -409,7 +416,7 @@ public abstract class AEditor extends JPanel {
 				close();
 				return null;
 			}
-			
+
 			@Override
 			public String getName() {
 				return "Save & close";

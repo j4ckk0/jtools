@@ -40,28 +40,33 @@ public class ObjectWrapperCellRenderer extends DefaultTableCellRenderer {
 	private static final long serialVersionUID = 693240225989571061L;
 
 	/**
+	 * Instantiates a new object wrapper cell renderer.
+	 */
+	public ObjectWrapperCellRenderer() {
+	}
+
+	/**
 	 * Gets the table cell renderer component.
 	 *
-	 * @param table the table
-	 * @param value the value
+	 * @param table      the table
+	 * @param value      the value
 	 * @param isSelected the is selected
-	 * @param hasFocus the has focus
-	 * @param row the row
-	 * @param column the column
+	 * @param hasFocus   the has focus
+	 * @param row        the row
+	 * @param column     the column
 	 * @return the table cell renderer component
 	 */
 	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-			int row, int column) {
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-		if(c instanceof JLabel) {
+		if (c instanceof JLabel) {
 			TableModel model = table.getModel();
-			if(value instanceof ObjectWrapper && model instanceof ITableModelWithObjectWrapper) {
-				Object wrappedValue = ((ITableModelWithObjectWrapper)model).getWrappedValueAt(row, column);
-				((JLabel)c).setText(wrappedValue != null ? wrappedValue.toString() : null);
+			if (value instanceof ObjectWrapper && model instanceof ITableModelWithObjectWrapper) {
+				Object wrappedValue = ((ITableModelWithObjectWrapper) model).getWrappedValueAt(row, column);
+				((JLabel) c).setText(wrappedValue != null ? wrappedValue.toString() : null);
 			} else {
-				((JLabel)c).setText(value != null ? value.toString() : null);
+				((JLabel) c).setText(value != null ? value.toString() : null);
 			}
 		}
 		return c;

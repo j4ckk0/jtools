@@ -29,16 +29,23 @@ import javax.swing.JDesktopPane;
  * The Class CascadeDesktopPane.
  */
 public class CascadeDesktopPane extends JDesktopPane {
-	
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 419155362915146329L;
-	
+
 	/** The Constant DEFAUT_HORIZONTAL_OFFSET. */
 	private static final int DEFAUT_HORIZONTAL_OFFSET = 60;
-	
+
 	/** The Constant DEFAULT_VERTICAL_OFFSET. */
 	private static final int DEFAULT_VERTICAL_OFFSET = 60;
-	
+
+	/**
+	 * Instantiates a new cascade desktop pane.
+	 */
+	public CascadeDesktopPane() {
+		super();
+	}
+
 	/**
 	 * Adds the.
 	 *
@@ -49,7 +56,7 @@ public class CascadeDesktopPane extends JDesktopPane {
 	public Component add(Component comp) {
 		return add(comp, DEFAUT_HORIZONTAL_OFFSET, DEFAULT_VERTICAL_OFFSET);
 	}
-	
+
 	/**
 	 * Adds the.
 	 *

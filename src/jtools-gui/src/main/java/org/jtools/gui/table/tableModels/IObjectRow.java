@@ -135,6 +135,13 @@ public interface IObjectRow {
 	public class NewRow implements IObjectRow {
 
 		/**
+		 * Instantiates a new new row.
+		 */
+		public NewRow() {
+			super();
+		}
+		
+		/**
 		 * Gets the value at.
 		 *
 		 * @param column the column

@@ -37,6 +37,13 @@ import org.jtools.utils.concurrent.NamedCallable;
 public class TestSimpleImporter {
 	
 	/**
+	 * Instantiates a new test simple importer.
+	 */
+	private TestSimpleImporter() {
+		super();
+	}
+
+	/**
 	 * The main method.
 	 *
 	 * @param args the arguments

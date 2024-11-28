@@ -40,6 +40,13 @@ import org.jtools.utils.dates.DateFormatManager;
 public class TestBlockExporter {
 	
 	/**
+	 * Instantiates a new test block exporter.
+	 */
+	private TestBlockExporter() {
+		super();
+	}
+
+	/**
 	 * The main method.
 	 *
 	 * @param args the arguments

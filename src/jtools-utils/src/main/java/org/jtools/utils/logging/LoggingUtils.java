@@ -30,6 +30,13 @@ import java.util.Properties;
 public class LoggingUtils {
 
 	/**
+	 * Instantiates a new logging utils.
+	 */
+	private LoggingUtils() {
+		super();
+	}
+	
+	/**
 	 * Load default config.
 	 */
 	public static void loadDefaultConfig() {

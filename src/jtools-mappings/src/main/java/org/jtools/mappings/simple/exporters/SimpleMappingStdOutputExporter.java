@@ -37,7 +37,7 @@ import org.jtools.utils.objects.ObjectInfoProvider;
 /**
  * The Class SimpleMappingStdOutputExporter.
  */
-public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
+public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter {
 
 	/** The instance. */
 	private static SimpleMappingStdOutputExporter instance;
@@ -48,19 +48,26 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 	 * @return the simple mapping std output exporter
 	 */
 	public static SimpleMappingStdOutputExporter instance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new SimpleMappingStdOutputExporter();
 		}
 		return instance;
 	}
 
 	/**
+	 * Instantiates a new simple mapping std output exporter.
+	 */
+	private SimpleMappingStdOutputExporter() {
+
+	}
+
+	/**
 	 * Export data.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
+	 * @param <T>      the generic type
+	 * @param data     the data
 	 * @param mappings the mappings
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException      Signals that an I/O exception has occurred.
 	 * @throws MappingException the mapping exception
 	 */
 	@Override
@@ -68,7 +75,8 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "-------- Headers ----------");
 		writeHeaderLine(mappings);
 		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "");
-		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO, "-------- Data lines ----------");
+		Logger.getLogger(SimpleMappingStdOutputExporter.class.getName()).log(Level.INFO,
+				"-------- Data lines ----------");
 		writeDataLines(data, mappings);
 	}
 
@@ -78,44 +86,52 @@ public class SimpleMappingStdOutputExporter extends ASimpleMappingExporter  {
 	 * @param mappings the mappings
 	 */
 	private void writeHeaderLine(List<SimpleMappingRow> mappings) {
-		for(SimpleMappingRow mapping : mappings) {
+		for (SimpleMappingRow mapping : mappings) {
 			int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
-			Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + mapping.getOutputColumnHeader());
+			Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell "
+					+ index + ") : " + mapping.getOutputColumnHeader());
 		}
 	}
 
 	/**
 	 * Write data lines.
 	 *
-	 * @param <T> the generic type
-	 * @param data the data
+	 * @param <T>      the generic type
+	 * @param data     the data
 	 * @param mappings the mappings
 	 * @throws MappingException the mapping exception
 	 */
-	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings) throws MappingException {
+	private <T extends Object> void writeDataLines(List<T> data, List<SimpleMappingRow> mappings)
+			throws MappingException {
 
-		for(T object : data) {
-			for(SimpleMappingRow mapping : mappings) {
+		for (T object : data) {
+			for (SimpleMappingRow mapping : mappings) {
 				try {
 					Field field = mapping.getObjectField();
-					if(field != null) {
-						if(field.getDeclaringClass() != object.getClass()) {
-							throw new MappingException("Loaded mappings do not match with the object to export. Objects are " + object.getClass() + ". Field is declared in " + field.getDeclaringClass());
+					if (field != null) {
+						if (field.getDeclaringClass() != object.getClass()) {
+							throw new MappingException(
+									"Loaded mappings do not match with the object to export. Objects are "
+											+ object.getClass() + ". Field is declared in "
+											+ field.getDeclaringClass());
 						}
 
-
 						Method getter = ObjectInfoProvider.getObjectInfo(object.getClass()).findGetter(field);
-						if(getter != null) {
+						if (getter != null) {
 
 							int index = MappingUtils.possibleColumns.indexOf(mapping.getOutputColumn());
 
 							Object valueObject = getter.invoke(object);
-							Logger.getLogger(getClass().getName()).log(Level.INFO, "Column " + mapping.getOutputColumn() + " (Cell " + index + ") : " + (valueObject != null ? valueObject.toString() : "null") + " [value for field " + field.getName()+ "]");
+							Logger.getLogger(getClass().getName()).log(Level.INFO,
+									"Column " + mapping.getOutputColumn() + " (Cell " + index + ") : "
+											+ (valueObject != null ? valueObject.toString() : "null")
+											+ " [value for field " + field.getName() + "]");
 						} else {
-							Logger.getLogger(getClass().getName()).log(Level.FINE, "getter not found for field " + field.getName());
+							Logger.getLogger(getClass().getName()).log(Level.FINE,
+									"getter not found for field " + field.getName());
 						}
 					}
-				} catch(IllegalAccessException | InvocationTargetException e) {
+				} catch (IllegalAccessException | InvocationTargetException e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage());
 					Logger.getLogger(getClass().getName()).log(Level.FINE, e.getMessage(), e);
 				}

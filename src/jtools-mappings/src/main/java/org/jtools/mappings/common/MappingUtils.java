@@ -63,13 +63,21 @@ import org.jtools.utils.objects.ObjectUtils;
 public class MappingUtils {
 
 	/**
+	 * Instantiates a new mapping utils.
+	 */
+	private MappingUtils() {
+
+	}
+
+	/**
 	 * The Enum MappingFontType.
 	 */
 	public enum MappingFontType {
 
 		/** The header. */
-		HEADER, /** The body. */
- BODY;
+		HEADER,
+		/** The body. */
+		BODY;
 
 	}
 
@@ -79,9 +87,11 @@ public class MappingUtils {
 	public enum MappingCellStyleType {
 
 		/** The header. */
-		HEADER, /** The body. */
- BODY, /** The date. */
- DATE;
+		HEADER,
+		/** The body. */
+		BODY,
+		/** The date. */
+		DATE;
 
 	}
 
@@ -114,7 +124,7 @@ public class MappingUtils {
 	 * Gets the columns range as list.
 	 *
 	 * @param fromColumn the from column
-	 * @param toColumn the to column
+	 * @param toColumn   the to column
 	 * @return the columns range as list
 	 */
 	public static List<String> getColumnsRangeAsList(String fromColumn, String toColumn) {
@@ -144,7 +154,7 @@ public class MappingUtils {
 	 * Gets the columns range as array.
 	 *
 	 * @param fromColumn the from column
-	 * @param toColumn the to column
+	 * @param toColumn   the to column
 	 * @return the columns range as array
 	 */
 	public static String[] getColumnsRangeAsArray(String fromColumn, String toColumn) {
@@ -164,7 +174,7 @@ public class MappingUtils {
 	 * Gets the font.
 	 *
 	 * @param workbook the workbook
-	 * @param key the key
+	 * @param key      the key
 	 * @return the font
 	 */
 	private static Font getFont(XSSFWorkbook workbook, MappingFontType key) {
@@ -188,7 +198,7 @@ public class MappingUtils {
 	 * Creates the font.
 	 *
 	 * @param workbook the workbook
-	 * @param key the key
+	 * @param key      the key
 	 * @return the XSSF font
 	 */
 	private static XSSFFont createFont(XSSFWorkbook workbook, MappingFontType key) {
@@ -213,7 +223,7 @@ public class MappingUtils {
 	 * Gets the cell style.
 	 *
 	 * @param workbook the workbook
-	 * @param key the key
+	 * @param key      the key
 	 * @return the cell style
 	 */
 	public static XSSFCellStyle getCellStyle(XSSFWorkbook workbook, MappingCellStyleType key) {
@@ -237,7 +247,7 @@ public class MappingUtils {
 	 * Creates the cell style.
 	 *
 	 * @param workbook the workbook
-	 * @param key the key
+	 * @param key      the key
 	 * @return the XSSF cell style
 	 */
 	private static XSSFCellStyle createCellStyle(XSSFWorkbook workbook, MappingCellStyleType key) {
@@ -280,7 +290,7 @@ public class MappingUtils {
 	/**
 	 * Gets the value from cell.
 	 *
-	 * @param cell the cell
+	 * @param cell         the cell
 	 * @param mergedRegion the merged region
 	 * @return the value from cell
 	 */
@@ -291,7 +301,7 @@ public class MappingUtils {
 			return mergedRegion.getValue();
 		}
 
-		if(cell == null) {
+		if (cell == null) {
 			return null;
 		}
 
@@ -320,11 +330,11 @@ public class MappingUtils {
 	/**
 	 * Sets the value from cell.
 	 *
-	 * @param <T> the generic type
-	 * @param cell the cell
+	 * @param <T>    the generic type
+	 * @param cell   the cell
 	 * @param object the object
 	 * @param setter the setter
-	 * @throws IllegalAccessException the illegal access exception
+	 * @throws IllegalAccessException    the illegal access exception
 	 * @throws InvocationTargetException the invocation target exception
 	 */
 	public static <T extends Object> void setValueFromCell(Cell cell, T object, Method setter)
@@ -463,8 +473,8 @@ public class MappingUtils {
 	/**
 	 * Sets the cell value.
 	 *
-	 * @param workbook the workbook
-	 * @param cell the cell
+	 * @param workbook    the workbook
+	 * @param cell        the cell
 	 * @param valueObject the value object
 	 */
 	public static void setCellValue(XSSFWorkbook workbook, XSSFCell cell, Object valueObject) {
@@ -488,7 +498,7 @@ public class MappingUtils {
 	 * Gets the cell range address.
 	 *
 	 * @param mergedRegions the merged regions
-	 * @param cell the cell
+	 * @param cell          the cell
 	 * @return the cell range address
 	 */
 	public static CellRangeAddress getCellRangeAddress(List<CellRangeAddress> mergedRegions, Cell cell) {
@@ -504,7 +514,7 @@ public class MappingUtils {
 	 * Checks if is cell merged.
 	 *
 	 * @param mergedRegions the merged regions
-	 * @param cell the cell
+	 * @param cell          the cell
 	 * @return true, if is cell merged
 	 */
 	public static boolean isCellMerged(List<CellRangeAddress> mergedRegions, Cell cell) {
@@ -539,10 +549,10 @@ public class MappingUtils {
 					if (cell != null) {
 
 						CellRangeAddress cellRangeAddress = getCellRangeAddress(cellRangeAddresses, cell);
-						if(cellRangeAddress != null) {
+						if (cellRangeAddress != null) {
 
 							MergedRegion mergedRegion = mergedRegions.get(cellRangeAddress);
-							if(mergedRegion == null) {
+							if (mergedRegion == null) {
 								mergedRegion = new MergedRegion(cellRangeAddress);
 								mergedRegions.put(cellRangeAddress, mergedRegion);
 							}
@@ -566,7 +576,7 @@ public class MappingUtils {
 	 * Gets the merged region for cell.
 	 *
 	 * @param mergedRegions the merged regions
-	 * @param cell the cell
+	 * @param cell          the cell
 	 * @return the merged region for cell
 	 */
 	public static MergedRegion getMergedRegionForCell(Collection<MergedRegion> mergedRegions, Cell cell) {

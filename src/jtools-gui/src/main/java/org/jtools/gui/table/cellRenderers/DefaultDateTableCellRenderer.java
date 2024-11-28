@@ -52,6 +52,13 @@ public class DefaultDateTableCellRenderer extends DefaultTableCellRenderer {
 	private static final long serialVersionUID = 3612223582479646873L;
 
 	/**
+	 * Instantiates a new default date table cell renderer.
+	 */
+	public DefaultDateTableCellRenderer() {
+		super();
+	}
+	
+	/**
 	 * Gets the table cell renderer component.
 	 *
 	 * @param table the table
