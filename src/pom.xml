@@ -3,7 +3,7 @@
 	<groupId>org.jtools</groupId>
 	<artifactId>jtools-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.4</version>
+	<version>1.5</version>
 	<name>Java Tools - Parent</name>
 	<description>
         jtools-parent
@@ -154,7 +154,7 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
-						<phase>install</phase>
+						<phase>deploy</phase>
 						<configuration>
 							<target>
 								<echo>Move minimal pom files to build folder</echo>
